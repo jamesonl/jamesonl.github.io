@@ -1,10 +1,6 @@
 ---
 layout: post
-title: First Post
+title: Something Noteworthy
 ---
 
-Hello and welcome to my blog!
-
-<!-- ![_config.yml]({{ site.baseurl }}/images/config.png) -->
-
-I'm getting things set up for now. Check back later!!
+How are you supposed to _start a blog?_ A famous quote? A copy-right free photo of something completely unrelated to the article?
