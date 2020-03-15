@@ -28,4 +28,4 @@ To simplify, I've put together a few resources for others to help me in my journ
  - My [twitter](https://twitter.com/mimoemergence)
  - The [Emergence Studio newsletter](https://emergencestudio.substack.com/)
 
-If you find yourself similarly motivated
+If you find yourself similarly motivated, I hope that you join me on this journey.

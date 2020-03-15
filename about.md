@@ -33,4 +33,4 @@ I hope that you enjoy my writings, and always feel free to reach out to me! I'm 
 
 Online, I also go by [mimoemergence](https://twitter.com/mimoemergence).
 
-[better.thinking@mimo.training](mailto:better.thinking@mimo.training)
+[jameson.lee@emergence.studio](mailto:jameson.lee@emergence.studio)!
