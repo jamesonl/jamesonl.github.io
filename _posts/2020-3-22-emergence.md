@@ -3,7 +3,7 @@ layout: post
 title: What is Emergence Studio?
 ---
 
-# Systems Thinking Applied to Wicked Problems
+## Systems Thinking Applied to Wicked Problems
 
 Fundamentally, I believe that [problems worth solving](https://www.wickedproblems.com/1_wicked_problems.php) as **[system problems](https://en.wikipedia.org/wiki/Systems_theory)**.
 

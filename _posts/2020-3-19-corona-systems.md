@@ -3,11 +3,9 @@ layout: post
 title: In the Times of Coronavirus, A Collection of Responses and Questions
 ---
 
-# Global Impact
+## Global Impact
 
-How could one not address this?
-
-At the same time, it seems like I'm not the only one considering the effects of coronavirus. From the immediate to the long term (think 1 year out), here is an (evolving) list of all the global stimulus plans that are being worked on in order to address the fallout of this crisis.
+How could one not address this? I'm not the only one considering the effects of coronavirus. From the immediate to the long term (think 1 year out), here is an (evolving) list of all the global stimulus plans that are being worked on in order to address the fallout of this crisis.
 
 ## Stimulus Plans, by Segment / Geography
 
