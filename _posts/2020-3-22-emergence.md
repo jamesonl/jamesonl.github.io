@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What is Emergence Studio?
+tagline: A framework for transformation
 ---
 
 ## Systems Thinking Applied to Wicked Problems

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: In the Times of Coronavirus, A Collection of Responses and Questions
+tagline: Global stimulus and action plans in review
 ---
 
 ## Global Impact
