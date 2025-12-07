@@ -21,3 +21,9 @@ The `README notebook` section also ships with six sample entries you can edit or
 - Wire the pagination script into a standalone asset if the notebook grows into its own page.
 - Layer in optional accent colors via CSS custom properties that can be toggled per page.
 - Add permalinks from the homepage table to the GitHub source for each README to encourage collaboration.
+
+## Running the site locally
+
+1. Install dependencies with `bundle install`, which pulls in GitHub Pages, Jekyll, and supporting plugins from the new `Gemfile`.【F:Gemfile†L1-L9】
+2. Build the site with `bundle exec jekyll build` to ensure templates and collections compile without errors.【9f4ea1†L1-L3】
+3. Optionally, run `bundle exec jekyll serve --livereload` to preview changes at `http://localhost:4000`.【F:Gemfile†L1-L9】
