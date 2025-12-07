@@ -9,7 +9,26 @@
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
   </head>
-  <body class="site-body">
+  <body class="site-body is-locked">
+    <div class="access-screen" data-access-screen aria-live="polite">
+      <div class="access-box">
+        <h1 class="access-title">Access required</h1>
+        <p class="access-copy">This notebook is for collaborators. Enter the password to continue.</p>
+        <form class="access-form" data-access-form>
+          <label class="access-label" for="access-password">Password</label>
+          <input
+            id="access-password"
+            class="access-input"
+            type="password"
+            name="password"
+            autocomplete="current-password"
+            data-access-input
+          />
+          <button type="submit" class="link-button access-button">Unlock</button>
+          <p class="access-error" data-access-error aria-live="assertive"></p>
+        </form>
+      </div>
+    </div>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-wrapper">
       <header class="site-header">
@@ -53,6 +72,52 @@
         </div>
       </footer>
     </div>
+    <script>
+      (function () {
+        const PASSWORD = "emerg3nce";
+        const storageKey = "site-access";
+        const body = document.body;
+        const gate = document.querySelector("[data-access-screen]");
+        const form = document.querySelector("[data-access-form]");
+        const input = document.querySelector("[data-access-input]");
+        const error = document.querySelector("[data-access-error]");
+
+        function unlock() {
+          body.classList.remove("is-locked");
+          if (gate) {
+            gate.style.display = "none";
+          }
+        }
+
+        try {
+          if (localStorage.getItem(storageKey) === "granted") {
+            unlock();
+            return;
+          }
+        } catch (e) {
+          // localStorage unavailable; continue with manual check.
+        }
+
+        if (!form || !input) {
+          return;
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          const value = (input.value || "").trim();
+          if (value === PASSWORD) {
+            try {
+              localStorage.setItem(storageKey, "granted");
+            } catch (e) {
+              // ignore storage errors
+            }
+            unlock();
+          } else if (error) {
+            error.textContent = "Incorrect password. Please try again.";
+          }
+        });
+      })();
+    </script>
     {% include analytics.html %}
   </body>
 </html>

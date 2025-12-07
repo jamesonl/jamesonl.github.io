@@ -19,32 +19,11 @@ title: Home
   <div class="hero-now">
     <h2 class="section-title">Now</h2>
     <ul class="list-dashed">
-      <li>Drafting retro-futurist playbooks for data activation teams.</li>
-      <li>Writing about automation rituals that keep collaborators humane.</li>
-      <li>Experimenting with simple operating dashboards made from text files.</li>
+      <li>Exploring how to apply reasoning techniques to systems design.</li>
+      <li>Mapping best practices into commercial structures people can navigate.</li>
+      <li>Documenting wayfinding rituals for teams shipping long-running programs.</li>
     </ul>
   </div>
-</section>
-
-<section class="home-section">
-  <header class="section-header">
-    <h2 class="section-title">Latest writing</h2>
-    <a class="section-link" href="{{ site.baseurl }}/">View archive</a>
-  </header>
-  {% assign recent_posts = site.posts | slice: 0, 3 %}
-  {% if recent_posts.size > 0 %}
-  <ul class="post-list">
-    {% for post in recent_posts %}
-    <li class="post-card">
-      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-      <p class="post-meta">{{ post.date | date: "%b %d, %Y" }}</p>
-      <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
-    </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <p>No posts yet. Pull up a chair—notes are on the way.</p>
-  {% endif %}
 </section>
 
 <section class="home-section">

@@ -20,6 +20,79 @@ body {
   line-height: 1.6;
 }
 
+.is-locked .site-wrapper {
+  display: none;
+}
+
+.access-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #ffffff;
+  color: #111111;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 1px solid #111111;
+  z-index: 100;
+}
+
+.is-locked .access-screen {
+  display: flex;
+}
+
+.access-box {
+  max-width: 480px;
+  width: 100%;
+  border: 1px solid #111111;
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+.access-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.access-copy {
+  margin: 0 0 1.25rem;
+}
+
+.access-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.access-label {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.access-input {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #111111;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.access-input:focus-visible {
+  outline: 2px dashed #111111;
+  outline-offset: 3px;
+}
+
+.access-button {
+  width: fit-content;
+}
+
+.access-error {
+  margin: 0;
+  min-height: 1.25rem;
+  color: #b00020;
+}
+
 a {
   color: inherit;
   text-decoration: underline;
