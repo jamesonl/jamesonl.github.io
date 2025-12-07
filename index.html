@@ -1,18 +1,157 @@
 ---
 layout: default
+title: Home
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+<section class="home-section hero">
+  <div class="hero-intro">
+    <p class="hero-label">{{ site.description }}</p>
+    <h1 class="hero-title">Building humane systems in black and white.</h1>
+    <p class="hero-copy">
+      I map complex data environments, coach teams through change, and document the rituals that help ideas stick. This site is a
+      low-fi lab notebook—expect monochrome notes on emergence, operating models, and tooling.
+    </p>
+    <div class="hero-actions">
+      <a class="link-button" href="{{ site.baseurl }}/about">About</a>
+      <a class="link-button" href="{{ site.baseurl }}/requests">Requests</a>
+    </div>
+  </div>
+  <div class="hero-now">
+    <h2 class="section-title">Now</h2>
+    <ul class="list-dashed">
+      <li>Exploring how to apply reasoning techniques to systems design.</li>
+      <li>Mapping best practices into commercial structures people can navigate.</li>
+      <li>Documenting wayfinding rituals for teams shipping long-running programs.</li>
+    </ul>
+  </div>
+</section>
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+<section class="home-section">
+  <h2 class="section-title">Future experiments</h2>
+  <div class="experiment-grid">
+    <div class="experiment-card">
+      <h3>Narrative résumé</h3>
+      <p>Typewritten timeline pages that stitch together case studies, rituals, and outcomes.</p>
+    </div>
+    <div class="experiment-card">
+      <h3>Systems atlas</h3>
+      <p>Printable maps that cluster essays and talks by theme instead of chronology.</p>
+    </div>
+    <div class="experiment-card">
+      <h3>Signal dashboard</h3>
+      <p>Plain-text dashboards that track inputs—books, experiments, playlists—at a glance.</p>
+    </div>
+  </div>
+</section>
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+{% assign readme_items = site.readmes | sort: 'date' | reverse %}
+{% assign total_readmes = readme_items | size %}
+{% if total_readmes > 0 %}
+  {% assign total_pages = total_readmes | minus: 1 | divided_by: 5 | plus: 1 %}
+<section class="home-section">
+  <h2 class="section-title">README notebook</h2>
+  <p class="section-intro">Fresh README files land here. Drop a new markdown file into <code>_readmes/</code> and it will appear below.</p>
+  <div class="table-scroll">
+    <table class="readme-table" data-readme-table>
+      <thead>
+        <tr>
+          <th scope="col">README</th>
+          <th scope="col">Last updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in readme_items %}
+        {% assign page_number = forloop.index0 | divided_by: 5 %}
+        <tr class="readme-row" data-page="{{ page_number }}">
+          <td>
+            <a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
+            {% if item.summary %}
+            <p class="readme-summary">{{ item.summary }}</p>
+            {% endif %}
+          </td>
+          <td class="readme-date">{{ item.date | date: "%b %d, %Y" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if total_pages > 1 %}
+  <nav class="readme-pagination" data-readme-pagination data-total-pages="{{ total_pages }}" aria-label="README pagination">
+    <button type="button" class="page-nav" data-prev>Prev</button>
+    <div class="page-numbers" role="group" aria-label="Pages">
+      {% assign last_index = total_pages | minus: 1 %}
+      {% for i in (0..last_index) %}
+      <button type="button" class="page-number" data-page-target="{{ i }}">{{ i | plus: 1 }}</button>
+      {% endfor %}
+    </div>
+    <button type="button" class="page-nav" data-next>Next</button>
+  </nav>
+  {% endif %}
+  <noscript>
+    <p class="noscript-note">Pagination needs JavaScript. With scripts disabled you'll see every README at once.</p>
+  </noscript>
+</section>
+{% else %}
+<section class="home-section">
+  <h2 class="section-title">README notebook</h2>
+  <p class="section-intro">Add markdown files inside <code>_readmes/</code> to populate this list.</p>
+</section>
+{% endif %}
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+<script>
+  (function () {
+    const pagination = document.querySelector('[data-readme-pagination]');
+    const table = document.querySelector('[data-readme-table]');
+    if (!pagination || !table) {
+      return;
+    }
+    const rows = Array.from(table.querySelectorAll('.readme-row'));
+    const totalPages = parseInt(pagination.dataset.totalPages || '1', 10);
+    const prev = pagination.querySelector('[data-prev]');
+    const next = pagination.querySelector('[data-next]');
+    const pageButtons = Array.from(pagination.querySelectorAll('[data-page-target]'));
+    let currentPage = 0;
+
+    function render() {
+      rows.forEach((row) => {
+        const page = parseInt(row.getAttribute('data-page') || '0', 10);
+        row.style.display = page === currentPage ? '' : 'none';
+      });
+      pageButtons.forEach((button) => {
+        const target = parseInt(button.getAttribute('data-page-target') || '0', 10);
+        const isActive = target === currentPage;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      if (prev) {
+        prev.disabled = currentPage === 0;
+      }
+      if (next) {
+        next.disabled = currentPage >= totalPages - 1;
+      }
+    }
+
+    function setPage(page) {
+      if (page < 0 || page >= totalPages) {
+        return;
+      }
+      currentPage = page;
+      render();
+    }
+
+    if (prev) {
+      prev.addEventListener('click', () => setPage(currentPage - 1));
+    }
+    if (next) {
+      next.addEventListener('click', () => setPage(currentPage + 1));
+    }
+    pageButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = parseInt(button.getAttribute('data-page-target') || '0', 10);
+        setPage(target);
+      });
+    });
+
+    render();
+  })();
+</script>

@@ -6,7 +6,7 @@
 name: Jameson Lee
 
 # Short bio or description (displayed in the header)
-description: Systems Thinker, Data Engineer
+description: Building Wayfinding Systems
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://avatars3.githubusercontent.com/u/6571170?s=400&u=6be4e68f06c163669a730393e0ab2165fd2dd419&v=4
@@ -49,6 +49,20 @@ url: jamesonl.github.io
 # then add in the baseurl here, like this: "/repository-name"
 baseurl: ""
 
+# Collections
+collections:
+  readmes:
+    output: true
+    permalink: /readmes/:name/
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+      type: readmes
+    values:
+      layout: page
+
 #
 # !! You don't need to change any of the configuration flags below !!
 #
@@ -73,7 +87,7 @@ sass:
   style: :expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
-gems:
+plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
 

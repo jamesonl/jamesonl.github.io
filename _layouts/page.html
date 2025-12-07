@@ -3,14 +3,14 @@ layout: default
 ---
 
 <article class="page">
-
-  <h1>{{ page.title }}</h1>
-
-  <div class="post">
-    {{ page.tagline }}
-  </div>
-
-  <!-- <div class="entry">
+  <header class="page-header">
+    <p class="page-kicker">{{ site.description }}</p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.tagline %}
+    <p class="page-tagline">{{ page.tagline }}</p>
+    {% endif %}
+  </header>
+  <div class="page-body">
     {{ content }}
-  </div> -->
+  </div>
 </article>
