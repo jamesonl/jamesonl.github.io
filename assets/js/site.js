@@ -22,11 +22,15 @@
     { minAge: 2800, maxAge: 4300, alpha: 0.15, width: 0.95 },
     { minAge: 4300, maxAge: TRAIL_LIFETIME, alpha: 0.08, width: 0.8 },
   ];
+  const CLICK_MARK_LIFETIME = 6200;
+  const CLICK_MARK_MAX = 36;
+  const CLICK_MARK_SIZE = 7.5;
   const THRESHOLDS = [0.18, 0.26, 0.34, 0.42, 0.5, 0.58, 0.66, 0.74, 0.82];
   const sources = [];
   const contourPaths = [];
   const trailPoints = [];
   const trailPaths = [];
+  const clickMarks = [];
   const pointer = {
     x: VIEW_WIDTH * 0.5,
     y: VIEW_HEIGHT * 0.5,
@@ -37,6 +41,7 @@
   let safeRects = [];
   let contourLayer = null;
   let trailLayer = null;
+  let clickLayer = null;
   let rafId = 0;
   let lastFrame = 0;
   let lastTimestamp = 0;
@@ -618,6 +623,39 @@
     });
   }
 
+  function registerClickMark(x, y, timestamp) {
+    clickMarks.push({ x, y, time: timestamp });
+    if (clickMarks.length > CLICK_MARK_MAX) {
+      clickMarks.splice(0, clickMarks.length - CLICK_MARK_MAX);
+    }
+  }
+
+  function renderClickMarks(timestamp) {
+    while (clickMarks.length && timestamp - clickMarks[0].time > CLICK_MARK_LIFETIME) {
+      clickMarks.shift();
+    }
+
+    clickLayer.innerHTML = clickMarks
+      .map((mark) => {
+        const age = timestamp - mark.time;
+        const progress = clamp(age / CLICK_MARK_LIFETIME, 0, 1);
+        const opacity = lerp(0.34, 0, smoothstep(progress));
+        const size = lerp(CLICK_MARK_SIZE, CLICK_MARK_SIZE + 1.2, progress * 0.6);
+        const x0 = (mark.x - size).toFixed(2);
+        const y0 = (mark.y - size).toFixed(2);
+        const x1 = (mark.x + size).toFixed(2);
+        const y1 = (mark.y + size).toFixed(2);
+        const x2 = (mark.x - size).toFixed(2);
+        const y2 = (mark.y + size).toFixed(2);
+        const x3 = (mark.x + size).toFixed(2);
+        const y3 = (mark.y - size).toFixed(2);
+        return `<path class="topo-click-mark" d="M ${x0} ${y0} L ${x1} ${y1} M ${x2} ${y2} L ${x3} ${y3}" style="opacity:${opacity.toFixed(
+          3
+        )}" />`;
+      })
+      .join("");
+  }
+
   function buildContours(fieldData, normalizedThreshold) {
     const { values, min, max } = fieldData;
     const threshold = lerp(min, max, normalizedThreshold);
@@ -710,8 +748,9 @@
     }
 
     renderTrail(timestamp);
+    renderClickMarks(timestamp);
 
-    if (!reducedMotionQuery.matches || trailPoints.length) {
+    if (!reducedMotionQuery.matches || trailPoints.length || clickMarks.length) {
       rafId = window.requestAnimationFrame(frame);
     } else {
       rafId = 0;
@@ -729,14 +768,18 @@
     trailPaths.length = 0;
     sources.length = 0;
     trailPoints.length = 0;
+    clickMarks.length = 0;
     rebuildSafeZones();
 
     contourLayer = createSvgElement("g");
     contourLayer.setAttribute("class", "topo-contours");
     trailLayer = createSvgElement("g");
     trailLayer.setAttribute("class", "topo-trails");
+    clickLayer = createSvgElement("g");
+    clickLayer.setAttribute("class", "topo-clicks");
     svg.appendChild(contourLayer);
     svg.appendChild(trailLayer);
+    svg.appendChild(clickLayer);
 
     THRESHOLDS.forEach(() => {
       const path = createSvgElement("path");
@@ -766,7 +809,7 @@
     lastFrame = 0;
     lastTimestamp = 0;
     resetContours();
-    if (!reducedMotionQuery.matches || trailPoints.length) {
+    if (!reducedMotionQuery.matches || trailPoints.length || clickMarks.length) {
       rafId = window.requestAnimationFrame(frame);
     }
   }
@@ -795,6 +838,14 @@
 
   document.addEventListener("pointerleave", () => {
     pointer.active = false;
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    const timestamp = performance.now();
+    registerClickMark(viewportToViewX(event.clientX), viewportToViewY(event.clientY), timestamp);
+    if (!rafId) {
+      rafId = window.requestAnimationFrame(frame);
+    }
   });
 
   if (typeof reducedMotionQuery.addEventListener === "function") {

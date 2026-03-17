@@ -191,6 +191,15 @@ blockquote {
   mix-blend-mode: multiply;
 }
 
+.topo-click-mark {
+  fill: none;
+  stroke: rgba(84, 96, 108, 0.34);
+  stroke-width: 1.05;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  mix-blend-mode: multiply;
+}
+
 .site-header,
 .site-footer {
   background: rgba(255, 252, 247, 0.82);
