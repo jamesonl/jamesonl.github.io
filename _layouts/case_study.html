@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<article class="case-study">
+  <header class="page-header">
+    <p class="page-kicker">{{ page.kicker | default: "Selected work" }}</p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.summary %}
+    <p class="page-tagline">{{ page.summary }}</p>
+    {% endif %}
+    <div class="meta-cluster">
+      {% if page.role %}
+      <span class="meta-pill">{{ page.role }}</span>
+      {% endif %}
+      {% if page.period %}
+      <span class="meta-pill">{{ page.period }}</span>
+      {% endif %}
+      {% for theme in page.themes %}
+      <span class="meta-pill">{{ theme }}</span>
+      {% endfor %}
+    </div>
+  </header>
+
+  <div class="case-study-grid">
+    <div class="page-body">
+      {{ content }}
+    </div>
+    <aside class="case-study-sidebar">
+      {% if page.problem %}
+      <section class="info-card">
+        <p class="card-kicker">Problem</p>
+        <p>{{ page.problem }}</p>
+      </section>
+      {% endif %}
+
+      {% if page.approach %}
+      <section class="info-card">
+        <p class="card-kicker">Approach</p>
+        <p>{{ page.approach }}</p>
+      </section>
+      {% endif %}
+
+      {% if page.outcomes %}
+      <section class="info-card">
+        <p class="card-kicker">What changed</p>
+        <ul class="list-dashed compact">
+          {% for item in page.outcomes %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+      {% if page.tools %}
+      <section class="info-card">
+        <p class="card-kicker">Tools and methods</p>
+        <div class="meta-cluster">
+          {% for tool in page.tools %}
+          <span class="meta-pill">{{ tool }}</span>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </aside>
+  </div>
+</article>

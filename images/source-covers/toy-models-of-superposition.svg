@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.11">
+    <path d="M92 117C178 99 258 123 344 125C430 105 494 99 548 199" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 263C170 239 250 247 332 279C404 369 488 327 550 321" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 531C202 485 286 579 364 531C442 481 510 601 548 555" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAJFBMVEXMm3pHcEzKmnzKmXnMm3ofHx4VGRoKExZgTUCMbFevhmo8My1lDZPxAAAABHRSTlN0ADExwE1W2QAAA3lJREFUeJztmtlyozAQRZ3MgAz8//9OwHGCbi+3JTHlclV33iJAR9KhteDb599Xxu3j9tL6vwgSIAESIAESIAESIAESIAES4G0AljsGKb8YYJ1miLLUAMUtHgZYyoSx1VeQ4lGAbRYAZa2uuMMV82o8qgtglfVPcz3Ma3GLBwGweY+orxGdFOqCGMCqVT8JDaELQhrGABQF9/A1nEMaxgAUBY8qLtAwBKApeNRwgYYhAF3BPerrREddBKAruAfRMJINIwCL2QGoIV4Y0DACYCi4x7iGAQBLwaOGYQ0DALaCspM3LL8CwKn+Ag05gKOg0smYMqmGHMBR8GjjoIYUQCiINQxqSAGgSfOGbUQNG7MhBcD2L9hG1BB7iGjIAMQkv2IbsZMbsyEDwNo2lekcjRoSAFTw6FDfM3GLryEBEFlQ++eQhgQAHvVojXjVRjT0AcSzVhvLpnY19AGwNzeX6xlNGroA1itP0l2Thi6AUHA1CgY0dAFwMH9aQmbdFg09AFHN71gCGnSBWMU6GnoAhoJ7mIOjFxdbQwfAm3XQMxgDMYfbGjoA7ttEPIuvDR0A910jW+H42tAGIM+AFmIqwGJTQxtAmYjPcZWGJgBb3KkTtXO7NQYmAE3oxDMoni0NTQA6iGRhFNXQAuD3o2eFaGikAgtAXQr5l5BJ2dDQAIjsL3DKwWwYGwMDgCw5HtGmoZENDQDcgG0aAOlkZzKlAPJccNsm+QfBsqGqoQ4gzyT8LfLzoo61oQqA/kSj57RCBfDPJLyon4PZUJuRVIDe6ns01ACMo+lAEA2LoqEG4B6L+VH8JykaKgC9Ch4AzRoqAP0KTvTcUGqoAIgE0xCzf2iGxSpAv4JHFa2HZhJgQME9iIbiS5YA8I6mQwCNGgoAMQKFBL5pvoYiGwoAoeBCAvdI5OwWNUQAsdSkJ/7kDqYhAjTsa5+BfTb7T4QJCwDiWyqHuUlDAOj57iX2SE0fVAGAGKXHkIY1QOMx63cMaVgDkOG0YsKoi93v+hWA/EQaqr9Vw2qnXAG0J4FvcHIfNuusYQXQpWDgRk/DMwB7n+wY0PAM0Kmggt7wXf8EIBSEqd2L/mx4AuhV8IAn99qDewLY8LdaUQUDN9/xh14/xb8AK/m1mh/it2xwWmEWv8/P+RIgARIgARIgARIgARIgARLg/wH8eW39H/8AlgYZBmcarjUAAAAASUVORK5CYII=" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">AI & LANGUAGE · ESSAY</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Toy Models of</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Superposition</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Transformer Circuits</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2025-01-15</text>
+</svg>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.09">
+    <path d="M92 80C178 62 258 176 344 88C430 68 494 152 548 172" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 316C170 292 250 220 332 332C404 422 488 290 550 294" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 504C202 458 286 552 364 504C442 454 510 574 548 528" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAElBMVEUvelz///+HsJ8qeFm1z8UmdlZu63TuAAAAdElEQVR4nO3bMQEAIAgAQQTtX9nZAuBwn+AKfKzhAgDgE8DO9vYDyFPNnXwBFc0VAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwG+A6eFxfPmcCwBgHHABAA4UZUkppdgAAAAASUVORK5CYII=" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">FORECASTING & OPERATIONS · MANUAL</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Workforce</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Management AI</text>
+  <text x="76" y="472" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Forecasting for</text>
+  <text x="76" y="530" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Dummies</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">NICE Systems</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2020-11-23</text>
+</svg>

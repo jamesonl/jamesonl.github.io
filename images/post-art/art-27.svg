@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title-27 desc-27">
+  <title id="title-27">Abstract geometric post art 28</title>
+  <desc id="desc-27">An iridescent prism composition built from planes, lattices, and reflective block faces.</desc>
+  <defs>
+    <linearGradient id="bg-27" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6f0e7" />
+      <stop offset="55%" stop-color="rgba(215, 236, 232, 0.96)" />
+      <stop offset="100%" stop-color="rgba(243, 221, 194, 0.92)" />
+    </linearGradient>
+    <linearGradient id="top-27" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(215, 236, 232, 0.94)" />
+      <stop offset="50%" stop-color="rgba(243, 221, 194, 0.7)" />
+      <stop offset="100%" stop-color="rgba(113, 182, 177, 0.56)" />
+    </linearGradient>
+    <linearGradient id="left-27" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(215, 236, 232, 0.7)" />
+      <stop offset="100%" stop-color="rgba(113, 182, 177, 0.28)" />
+    </linearGradient>
+    <linearGradient id="right-27" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(243, 221, 194, 0.72)" />
+      <stop offset="100%" stop-color="rgba(242, 176, 143, 0.24)" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="640" fill="url(#bg-27)" />
+  <rect x="24" y="24" width="912" height="592" rx="28" fill="none" stroke="rgba(113, 182, 177, 0.1)" stroke-width="1.4" />
+  <polygon points="-5.3,481.6 219.4,481.6 181.2,569.6 -43.5,569.6" fill="rgba(215, 236, 232, 0.22)" stroke="rgba(113, 182, 177, 0.12)" stroke-width="1.2" />
+  <polygon points="405.2,348.9 884.8,348.9 929.1,429.3 449.5,429.3" fill="rgba(243, 221, 194, 0.22)" stroke="rgba(113, 182, 177, 0.12)" stroke-width="1.2" />
+  <polygon points="412.8,369.4 921.8,369.4 807.8,455.9 298.8,455.9" fill="rgba(215, 236, 232, 0.22)" stroke="rgba(113, 182, 177, 0.12)" stroke-width="1.2" />
+  <polyline points="202.6,135.7 398.2,167.4 430.3,161.6" fill="none" stroke="rgba(113, 182, 177, 0.24)" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round" />
+  <polyline points="150.1,119.4 248.1,198.6 282.8,182.9" fill="none" stroke="rgba(242, 176, 143, 0.24)" stroke-width="2.32" stroke-linecap="round" stroke-linejoin="round" />
+  <polyline points="299.8,434.2 478.1,509.9 531.2,547.9" fill="none" stroke="rgba(113, 182, 177, 0.24)" stroke-width="2.00" stroke-linecap="round" stroke-linejoin="round" />
+  <polyline points="542.1,448.8 685.1,506.0 740.3,540.7" fill="none" stroke="rgba(242, 176, 143, 0.24)" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round" />
+  <polyline points="471.9,408.5 593.7,396.7 661.6,410.3" fill="none" stroke="rgba(113, 182, 177, 0.24)" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" />
+  <polyline points="247.6,383.1 372.0,440.7 406.1,464.8" fill="none" stroke="rgba(242, 176, 143, 0.24)" stroke-width="1.93" stroke-linecap="round" stroke-linejoin="round" />
+  <polygon points="320.1,446.3 433.5,446.3 378.6,503.6 265.2,503.6" fill="rgba(215, 236, 232, 0.3)" stroke="rgba(242, 176, 143, 0.16)" stroke-width="1.2" />
+  <polygon points="469.9,374.3 579.4,374.3 629.6,411.8 520.1,411.8" fill="rgba(243, 221, 194, 0.3)" stroke="rgba(242, 176, 143, 0.16)" stroke-width="1.2" />
+  <polygon points="518.5,181.4 617.3,181.4 568.0,218.4 469.2,218.4" fill="rgba(215, 236, 232, 0.3)" stroke="rgba(242, 176, 143, 0.16)" stroke-width="1.2" />
+  <polygon points="170.1,419.1 267.9,419.1 290.3,461.1 192.5,461.1" fill="rgba(243, 221, 194, 0.3)" stroke="rgba(242, 176, 143, 0.16)" stroke-width="1.2" />
+  <polygon points="430.1,111.6 532.4,160.3 430.1,207.2 327.9,160.3" fill="url(#top-27)" stroke="rgba(113, 182, 177, 0.28)" stroke-width="1.5" />
+  <polygon points="327.9,160.3 430.1,207.2 430.1,388.0 327.9,341.0" fill="rgba(215, 236, 232, 0.4)" stroke="rgba(113, 182, 177, 0.26)" stroke-width="1.3" />
+  <polygon points="430.1,207.2 532.4,160.3 532.4,341.0 430.1,388.0" fill="rgba(243, 221, 194, 0.44)" stroke="rgba(242, 176, 143, 0.26)" stroke-width="1.3" />
+  <polygon points="430.1,102.9 550.1,222.9 430.1,342.9 310.1,222.9" fill="none" stroke="rgba(113, 182, 177, 0.16)" stroke-width="1.2" />
+  <polygon points="430.1,58.9 594.1,222.9 430.1,386.9 266.1,222.9" fill="none" stroke="rgba(242, 176, 143, 0.12)" stroke-width="1.1" />
+  <polygon points="82.5,175.3 104.0,196.7 82.5,218.2 61.1,196.7" fill="rgba(242, 176, 143, 0.18)" stroke="rgba(113, 182, 177, 0.2)" stroke-width="1.2" />
+  <polygon points="82.0,167.8 101.0,186.7 82.0,205.6 63.1,186.7" fill="rgba(215, 236, 232, 0.18)" stroke="rgba(113, 182, 177, 0.2)" stroke-width="1.2" />
+  <polygon points="660.6,388.4 677.9,405.7 660.6,422.9 643.4,405.7" fill="rgba(242, 176, 143, 0.18)" stroke="rgba(113, 182, 177, 0.2)" stroke-width="1.2" />
+  <polygon points="487.9,442.3 508.0,462.4 487.9,482.5 467.8,462.4" fill="rgba(215, 236, 232, 0.18)" stroke="rgba(113, 182, 177, 0.2)" stroke-width="1.2" />
+  <polygon points="395.1,250.2 408.9,264.1 395.1,278.0 381.2,264.1" fill="rgba(242, 176, 143, 0.18)" stroke="rgba(113, 182, 177, 0.2)" stroke-width="1.2" />
+</svg>

@@ -1,0 +1,1148 @@
+[
+  {
+    "title": "Dan Wang's 2019 Annual Letter",
+    "source_url": "https://danwang.co/2019-letter",
+    "publication": "Dan Wang",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-01-08",
+    "featured": true
+  },
+  {
+    "title": "How to take smart notes",
+    "source_url": "https://www.lesswrong.com/posts/T382CLwAjsy3fmecf/how-to-take-smart-notes-ahrens-2017",
+    "publication": "LessWrong",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-01-08",
+    "featured": true
+  },
+  {
+    "title": "PALETTE OF SYSTEMS THINKING TOOLS",
+    "source_url": "https://thesystemsthinker.com/palette-of-systems-thinking-tools",
+    "publication": "The Systems Thinker",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-01-08"
+  },
+  {
+    "title": "Technical Conversations",
+    "source_url": "https://nadiaeghbal.com/technical-conversations",
+    "publication": "Nadia Eghbal",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-01-08"
+  },
+  {
+    "title": "Tools for Thought: The Concept of a Support System",
+    "source_url": "https://www.nap.edu/read/11019/chapter/8",
+    "publication": "National Academies Press",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-01-08",
+    "featured": true
+  },
+  {
+    "title": "Long-term forecasting with machine learning models",
+    "source_url": "https://thuijskens.github.io/2016/08/03/time-series-forecasting",
+    "publication": "Thomas Huijskens",
+    "category": "Forecasting & Operations",
+    "source_type": "Article",
+    "first_seen": "2020-01-09"
+  },
+  {
+    "title": "Multiple-Output Modelling for Multi-Step-Ahead Time Series Forecasting",
+    "source_url": "https://pdfs.semanticscholar.org/4c36/dc84c4c1e7a40cd1e7347cddc4a733e7aeff.pdf",
+    "publication": "Semantic Scholar",
+    "category": "Forecasting & Operations",
+    "source_type": "Paper",
+    "first_seen": "2020-01-09"
+  },
+  {
+    "title": "State-Space Representation",
+    "source_url": "https://en.wikipedia.org/wiki/State-space_representation",
+    "publication": "Wikipedia",
+    "category": "Forecasting & Operations",
+    "source_type": "Reference",
+    "first_seen": "2020-01-09"
+  },
+  {
+    "title": "Conway's law",
+    "source_url": "http://www.melconway.com/Home/Conways_Law.html",
+    "publication": "Mel Conway",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-01-11"
+  },
+  {
+    "title": "Creating Learning Organizations",
+    "source_url": "https://thesystemsthinker.com/creating-learning-organizations",
+    "publication": "The Systems Thinker",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-01-11"
+  },
+  {
+    "title": "Integrating Systems Thinking and Design Thinking",
+    "source_url": "https://thesystemsthinker.com/integrating-systems-thinking-and-design-thinking",
+    "publication": "The Systems Thinker",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-01-11"
+  },
+  {
+    "title": "Review: Slack",
+    "source_url": "http://tools-for-thought.com/2008/03/13/review-slack",
+    "publication": "Tools for Thought",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-01-11"
+  },
+  {
+    "title": "Principles of Marketing: Forecasting",
+    "source_url": "https://open.lib.umn.edu/principlesmarketing/chapter/16-3-forecasting",
+    "publication": "University of Minnesota",
+    "category": "Forecasting & Operations",
+    "source_type": "Manual",
+    "first_seen": "2020-01-11"
+  },
+  {
+    "title": "Definite Optimism as Human Capital",
+    "source_url": "https://danwang.co/definite-optimism-as-human-capital",
+    "publication": "Dan Wang",
+    "category": "Organizations & Strategy",
+    "source_type": "Essay",
+    "first_seen": "2020-01-15"
+  },
+  {
+    "title": "A Home for Pino",
+    "source_url": "https://100r.co/site/a_home_for_pino.html",
+    "publication": "100 Rabbits",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-01-17"
+  },
+  {
+    "title": "Advances in MRO planning and scheduling systems",
+    "source_url": "https://www.mro-network.com/manuals-repair/advances-mro-planning-and-scheduling-systems",
+    "publication": "MRO Network",
+    "category": "Forecasting & Operations",
+    "source_type": "Article",
+    "first_seen": "2020-01-17"
+  },
+  {
+    "title": "Tying Predictive Maintenance into Inventory Management",
+    "source_url": "https://www.mro-network.com/maintenance-repair-overhaul/tying-predictive-maintenance-inventory-management",
+    "publication": "MRO Network",
+    "category": "Forecasting & Operations",
+    "source_type": "Article",
+    "first_seen": "2020-01-17"
+  },
+  {
+    "title": "What Companies Do To Forecast Parts Demand",
+    "source_url": "https://www.mro-network.com/maintenance-repair-overhaul/what-companies-do-forecast-parts-demand",
+    "publication": "MRO Network",
+    "category": "Forecasting & Operations",
+    "source_type": "Article",
+    "first_seen": "2020-01-17"
+  },
+  {
+    "title": "Why You Shouldn't Use Moving Average in Aircraft Spare Parts Forecasting",
+    "source_url": "https://www.ptc.com/en/service-software-blog/moving-average-aircraft-spare-parts-forecasting",
+    "publication": "PTC",
+    "category": "Forecasting & Operations",
+    "source_type": "Article",
+    "first_seen": "2020-01-17"
+  },
+  {
+    "title": "Leading Ethically Through Foresight",
+    "source_url": "https://thesystemsthinker.com/leading-ethically-through-foresight",
+    "publication": "The Systems Thinker",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-01-19"
+  },
+  {
+    "title": "Analogy as the Core of Cognition",
+    "source_url": "http://prelectur.stanford.edu/lecturers/hofstadter/analogy.html",
+    "publication": "Stanford",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-01-22"
+  },
+  {
+    "title": "Independent Research",
+    "source_url": "https://nadiaeghbal.com/independent-research",
+    "publication": "Nadia Eghbal",
+    "category": "Organizations & Strategy",
+    "source_type": "Essay",
+    "first_seen": "2020-02-02"
+  },
+  {
+    "title": "Knowledge in Pieces",
+    "source_url": "http://worrydream.com/refs/diSessa%20-%20Knowledge%20in%20Pieces.pdf",
+    "publication": "Worrydream reference",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2020-02-02"
+  },
+  {
+    "title": "The Philosophy of Computer Science",
+    "source_url": "https://plato.stanford.edu/entries/computer-science",
+    "publication": "Stanford Encyclopedia of Philosophy",
+    "category": "Systems & Sensemaking",
+    "source_type": "Reference",
+    "first_seen": "2020-02-02"
+  },
+  {
+    "title": "Chronicle of the Death of a Laboratory",
+    "source_url": "http://www.bitsavers.org/pdf/sri/arc/HOT2002_Chronicle_of_the_Death_of_a_Laboratory.pdf",
+    "publication": "Bitsavers",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2020-02-09"
+  },
+  {
+    "title": "Interactive Planning",
+    "source_url": "https://en.wikipedia.org/wiki/Interactive_planning",
+    "publication": "Wikipedia",
+    "category": "Systems & Sensemaking",
+    "source_type": "Reference",
+    "first_seen": "2020-02-09"
+  },
+  {
+    "title": "Speculative Everything: Design, Fiction, and Social Dreaming",
+    "source_url": "https://mitpress.mit.edu/books/speculative-everything",
+    "publication": "MIT Press",
+    "category": "Design & Interfaces",
+    "source_type": "Book",
+    "first_seen": "2020-02-09"
+  },
+  {
+    "title": "Answers Are Easy, Questions Are Hard",
+    "source_url": "https://dubroy.com/blog/answers-are-easy-questions-are-hard",
+    "publication": "Patrick Dubroy",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-02-16"
+  },
+  {
+    "title": "Do you use spatial organization?",
+    "source_url": "https://dubroy.com/blog/do-you-use-spatial-organization",
+    "publication": "Patrick Dubroy",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-02-16"
+  },
+  {
+    "title": "The Economics of Hierarchies and Polyarchies",
+    "source_url": "https://www.nber.org/papers/w1334",
+    "publication": "NBER",
+    "category": "Organizations & Strategy",
+    "source_type": "Paper",
+    "first_seen": "2021-03-06"
+  },
+  {
+    "title": "Open Tabs Are Cognitive Spaces",
+    "source_url": "https://rybakov.com/blog/open_tabs_are_cognitive_spaces",
+    "publication": "Rybakov",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-02-23"
+  },
+  {
+    "title": "The Future of Browser History",
+    "source_url": "https://www.freecodecamp.org/news/browserhistory-2abad38022b1",
+    "publication": "freeCodeCamp",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-02-23"
+  },
+  {
+    "title": "A Big Little Idea Called Legibility",
+    "source_url": "https://www.ribbonfarm.com/2010/07/26/a-big-little-idea-called-legibility",
+    "publication": "Ribbonfarm",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-02-29",
+    "featured": true
+  },
+  {
+    "title": "EASA AI Roadmap: A human-centric approach to AI in aviation",
+    "source_url": "https://www.easa.europa.eu/sites/default/files/dfu/EASA-AI-Roadmap-v1.0.pdf",
+    "publication": "EASA",
+    "category": "Forecasting & Operations",
+    "source_type": "Report",
+    "first_seen": "2020-02-29"
+  },
+  {
+    "title": "Google is not enough",
+    "source_url": "https://dubroy.com/blog/google-is-not-enough",
+    "publication": "Patrick Dubroy",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-02-29"
+  },
+  {
+    "title": "Journeys & Notes: Designing Social Computing for Non-Places",
+    "source_url": "https://dl.acm.org/doi/10.1145/2858036.2858573",
+    "publication": "ACM",
+    "category": "Design & Interfaces",
+    "source_type": "Paper",
+    "first_seen": "2020-02-29"
+  },
+  {
+    "title": "Reading Your Browser's History with SQLite",
+    "source_url": "http://2016.padjo.org/tutorials/sqlite-your-browser-history",
+    "publication": "Padjo",
+    "category": "Tools for Thought",
+    "source_type": "Manual",
+    "first_seen": "2020-02-29"
+  },
+  {
+    "title": "Impute",
+    "source_url": "http://www.farooq-javed.com/farooqjaved/2019/8/31/impute",
+    "publication": "Farooq Javed",
+    "category": "Forecasting & Operations",
+    "source_type": "Essay",
+    "first_seen": "2020-03-09"
+  },
+  {
+    "title": "Systems Thinking Applied to Teaming",
+    "source_url": "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.201.2203&rep=rep1&type=pdf",
+    "publication": "CiteSeerX",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2020-03-09"
+  },
+  {
+    "title": "Approaches to Data Science and Machine Learning",
+    "source_url": "http://www.farooq-javed.com/farooqjaved/2018/9/5/approaches-to-data-and-ml",
+    "publication": "Farooq Javed",
+    "category": "AI & Language",
+    "source_type": "Essay",
+    "first_seen": "2020-03-10"
+  },
+  {
+    "title": "Netflix TechBlog: Data Science and the Art of Producing Entertainment at Netflix",
+    "source_url": "https://netflixtechblog.com/studio-production-data-science-646ee2cc21a1",
+    "publication": "Netflix TechBlog",
+    "category": "Forecasting & Operations",
+    "source_type": "Article",
+    "first_seen": "2020-03-10"
+  },
+  {
+    "title": "Nebulosity",
+    "source_url": "https://meaningness.com/nebulosity",
+    "publication": "Meaningness",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-04-01"
+  },
+  {
+    "title": "Notes on Notation",
+    "source_url": "https://www.christophlabacher.com/notes/notes-on-notation",
+    "publication": "Christoph Labacher",
+    "category": "Design & Interfaces",
+    "source_type": "Essay",
+    "first_seen": "2020-04-01"
+  },
+  {
+    "title": "Stances trump systems",
+    "source_url": "https://meaningness.com/stances-trump-systems",
+    "publication": "Meaningness",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-04-01"
+  },
+  {
+    "title": "The Architectural Relevance of Cybernetics",
+    "source_url": "https://cmusyntheticecologies.files.wordpress.com/2014/01/pask_gordon_the-architectural-relevance-of-cybernetics.pdf",
+    "publication": "Gordon Pask",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2020-04-01"
+  },
+  {
+    "title": "Emergent Properties",
+    "source_url": "https://plato.stanford.edu/archives/sum2015/entries/properties-emergent",
+    "publication": "Stanford Encyclopedia of Philosophy",
+    "category": "Systems & Sensemaking",
+    "source_type": "Reference",
+    "first_seen": "2020-04-06"
+  },
+  {
+    "title": "Dancing with Systems",
+    "source_url": "http://donellameadows.org/archives/dancing-with-systems",
+    "publication": "Donella Meadows",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-04-10",
+    "featured": true
+  },
+  {
+    "title": "Simulation is not the answer",
+    "source_url": "",
+    "publication": "Systems Thinking",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-04-10"
+  },
+  {
+    "title": "Systems Thinking: An Operational Perspective of the Universe",
+    "source_url": "",
+    "publication": "Systems Thinking",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-04-10"
+  },
+  {
+    "title": "Cool Tools: A Catalog of Possibilities",
+    "source_url": "",
+    "publication": "Kevin Kelly",
+    "creator": "Kevin Kelly",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2020-05-30"
+  },
+  {
+    "title": "How Demand Planning can Improve the Supply Chain",
+    "source_url": "https://www.michiganstateuniversityonline.com/resources/supply-chain/how-demand-planning-improves-supply-chain",
+    "publication": "Michigan State University",
+    "category": "Forecasting & Operations",
+    "source_type": "Article",
+    "first_seen": "2020-04-30"
+  },
+  {
+    "title": "Documentation as an Open Source Practice",
+    "source_url": "https://blog.digitalocean.com/documentation-as-an-open-source-practice",
+    "publication": "DigitalOcean",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-05-03"
+  },
+  {
+    "title": "Creating Knowledge Objects",
+    "source_url": "",
+    "publication": "Systems Thinking",
+    "category": "Tools for Thought",
+    "source_type": "Manual",
+    "first_seen": "2020-05-04"
+  },
+  {
+    "title": "Knowledge Management—Emerging Perspectives",
+    "source_url": "",
+    "publication": "Systems Thinking",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-06-27"
+  },
+  {
+    "title": "The Morning Paper: Local-first software",
+    "source_url": "https://blog.acolyer.org/2019/11/20/local-first-software",
+    "publication": "The Morning Paper",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-05-17"
+  },
+  {
+    "title": "How to capture thoughts efficiently?",
+    "source_url": "https://thinkingtools.space/t/how-to-capture-thoughts-efficiently/53/4",
+    "publication": "Thinking Tools",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-06-27"
+  },
+  {
+    "title": "Scenius or Communal Genius",
+    "source_url": "https://www.wired.com/2008/06/scenius-or-comm",
+    "publication": "Wired",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-07-04"
+  },
+  {
+    "title": "Bureaucracy & Organizational Politics",
+    "source_url": "",
+    "publication": "Systems Thinking",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-07-19"
+  },
+  {
+    "title": "Emergent Understanding - Learning without Teaching",
+    "source_url": "",
+    "publication": "Systems Thinking",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-07-27"
+  },
+  {
+    "title": "How to Think: The Skill you were never taught",
+    "source_url": "https://fs.blog/2015/08/how-to-think",
+    "publication": "Farnam Street",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-08-13"
+  },
+  {
+    "title": "A Personal Philosophy of Shared Knowledge",
+    "source_url": "https://www.are.na/blog/willa-koerner",
+    "publication": "Are.na",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2020-08-15"
+  },
+  {
+    "title": "Interaction Structures of the Universe",
+    "source_url": "",
+    "publication": "Systems Thinking",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2020-08-15"
+  },
+  {
+    "title": "Why Forecasts Fail",
+    "source_url": "https://academic.oup.com/isr/article-abstract/1/2/11/1832386?redirectedFrom=PDF",
+    "publication": "International Security Review",
+    "category": "Forecasting & Operations",
+    "source_type": "Paper",
+    "first_seen": "2020-09-13"
+  },
+  {
+    "title": "Models and Modeling for Manpower Planning",
+    "source_url": "https://apps.dtic.mil/dtic/tr/fulltext/u2/623393.pdf",
+    "publication": "DTIC",
+    "category": "Forecasting & Operations",
+    "source_type": "Paper",
+    "first_seen": "2020-11-23"
+  },
+  {
+    "title": "Workforce Management AI Forecasting for Dummies",
+    "source_url": "https://www.crmxchange.com/uploadedFiles/Featured_White_Papers/PDF/workforce_management_AI_forecasting_for_dummies.pdf",
+    "publication": "NICE Systems",
+    "category": "Forecasting & Operations",
+    "source_type": "Manual",
+    "first_seen": "2020-11-23"
+  },
+  {
+    "title": "The Organization of Delegated Expertise",
+    "source_url": "https://web.mit.edu/curhan/www/docs/Articles/biases/67_J_Personality_and_Social_Psychology_366,_1994.pdf",
+    "publication": "London Business School",
+    "category": "Organizations & Strategy",
+    "source_type": "Paper",
+    "first_seen": "2020-12-27"
+  },
+  {
+    "title": "5 Reasons for Scenario-Based Design",
+    "source_url": "http://testingeducation.org/BBST/testdesign/CarrollScenarios.pdf",
+    "publication": "Testing Education",
+    "category": "Design & Interfaces",
+    "source_type": "Paper",
+    "first_seen": "2021-01-31"
+  },
+  {
+    "title": "What is a Dynabook?",
+    "source_url": "http://www.vpri.org/pdf/hc_what_Is_a_dynabook.pdf",
+    "publication": "VPRI",
+    "category": "Tools for Thought",
+    "source_type": "Paper",
+    "first_seen": "2021-07-06",
+    "featured": true
+  },
+  {
+    "title": "The Extended Mind",
+    "source_url": "http://consc.net/papers/extended.html",
+    "publication": "Andy Clark & David Chalmers",
+    "category": "Tools for Thought",
+    "source_type": "Paper",
+    "first_seen": "2021-07-08",
+    "featured": true
+  },
+  {
+    "title": "Painkillers vs. Vitamins",
+    "source_url": "https://medium.com/strategy-dynamics/painkillers-vs-vitamins-d3bdc76ddd31",
+    "publication": "Strategy Dynamics",
+    "category": "Organizations & Strategy",
+    "source_type": "Essay",
+    "first_seen": "2021-07-12"
+  },
+  {
+    "title": "Reflections on 2020 as an independent researcher",
+    "source_url": "https://andymatuschak.org/2020",
+    "publication": "Andy Matuschak",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2021-05-28"
+  },
+  {
+    "title": "Why books don't work",
+    "source_url": "https://andymatuschak.org/books",
+    "publication": "Andy Matuschak",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2021-10-19"
+  },
+  {
+    "title": "The 8 metaphors of organization",
+    "source_url": "https://www.ribbonfarm.com/2010/07/13/the-eight-metaphors-of-organization",
+    "publication": "Ribbonfarm",
+    "category": "Systems & Sensemaking",
+    "source_type": "Essay",
+    "first_seen": "2022-01-31"
+  },
+  {
+    "title": "A Brief Guide to Interactive Planning and Idealized Design",
+    "source_url": "https://www.ida.liu.se/~steho87/und/htdd01/AckoffGuidetoIdealizedRedesign.pdf",
+    "publication": "Ackoff guide",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2022-07-17"
+  },
+  {
+    "title": "Technologically Coded Authority",
+    "source_url": "https://web.stanford.edu/class/sts175/NewFiles/Algocratic%20Governance.pdf",
+    "publication": "Stanford",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2022-07-17"
+  },
+  {
+    "title": "Self-organization in Communicating Groups",
+    "source_url": "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.221.1730&rep=rep1&type=pdf",
+    "publication": "CiteSeerX",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2022-07-19"
+  },
+  {
+    "title": "Choice Architecture",
+    "source_url": "https://en.wikipedia.org/wiki/Choice_architecture",
+    "publication": "Wikipedia",
+    "category": "Design & Interfaces",
+    "source_type": "Reference",
+    "first_seen": "2022-11-03"
+  },
+  {
+    "title": "Strategically Ignorant",
+    "source_url": "https://devonzuegel.com/post/strategically-ignorant",
+    "publication": "Devon Zuegel",
+    "category": "Tools for Thought",
+    "source_type": "Essay",
+    "first_seen": "2022-11-09"
+  },
+  {
+    "title": "Language Models are Few-Shot Learners",
+    "source_url": "https://arxiv.org/pdf/2005.14165.pdf",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-02-12"
+  },
+  {
+    "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "source_url": "https://arxiv.org/pdf/2005.11401.pdf",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-02-12"
+  },
+  {
+    "title": "Attention is all you need",
+    "source_url": "http://nlp.seas.harvard.edu/2018/04/03/attention.html",
+    "publication": "Harvard NLP",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-02-08",
+    "featured": true
+  },
+  {
+    "title": "Constitutional AI: Harmlessness from AI Feedback",
+    "source_url": "https://arxiv.org/pdf/2212.08073.pdf",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-02-20"
+  },
+  {
+    "title": "Emergent Abilities of Large Language Models",
+    "source_url": "https://arxiv.org/pdf/2206.07682.pdf",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-02-20"
+  },
+  {
+    "title": "Training language models to follow instructions with human feedback",
+    "source_url": "https://arxiv.org/pdf/2203.02155.pdf",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-02-20"
+  },
+  {
+    "title": "Attention is not Explanation",
+    "source_url": "https://arxiv.org/pdf/1902.10186.pdf",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-03-05"
+  },
+  {
+    "title": "Holistic Evaluation of Language Models",
+    "source_url": "https://arxiv.org/pdf/2211.09110.pdf",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-03-05"
+  },
+  {
+    "title": "Is Attention Interpretable?",
+    "source_url": "https://arxiv.org/pdf/1906.03731.pdf",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-03-05"
+  },
+  {
+    "title": "Polysemanticity and Capacity in Neural Networks",
+    "source_url": "https://arxiv.org/pdf/2210.01892.pdf",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-03-09"
+  },
+  {
+    "title": "Community-qualified leads are the future of sales",
+    "source_url": "https://www.quotapath.com/blog/community-qualified-leads",
+    "publication": "QuotaPath",
+    "category": "Organizations & Strategy",
+    "source_type": "Article",
+    "first_seen": "2023-06-09"
+  },
+  {
+    "title": "An Innovative Approach To Improving NDR",
+    "source_url": "https://www.valuize.co/innovate-your-saas-revenue-model",
+    "publication": "Valuize",
+    "category": "Organizations & Strategy",
+    "source_type": "Article",
+    "first_seen": "2023-06-09"
+  },
+  {
+    "title": "How Quickly Should You Grow to Key ARR Milestones?",
+    "source_url": "https://kellblog.com/2022/08/21/how-quickly-should-you-grow-to-key-arr-milestones-the-rule-of-56789",
+    "publication": "Kellblog",
+    "category": "Organizations & Strategy",
+    "source_type": "Essay",
+    "first_seen": "2023-04-29"
+  },
+  {
+    "title": "The Decomposition of Marketing",
+    "source_url": "https://kellblog.com/2022/08/31/the-decomposition-of-marketing",
+    "publication": "Kellblog",
+    "category": "Organizations & Strategy",
+    "source_type": "Essay",
+    "first_seen": "2023-04-29"
+  },
+  {
+    "title": "You can't fix a CAC Payback period",
+    "source_url": "https://kellblog.com/2022/10/11/you-cant-fix-a-cac-payback-period-the-operator-vs-investor-view-of-saas-metrics",
+    "publication": "Kellblog",
+    "category": "Organizations & Strategy",
+    "source_type": "Essay",
+    "first_seen": "2023-04-29"
+  },
+  {
+    "title": "MemGPT: Towards LLMs as Operating Systems",
+    "source_url": "https://arxiv.org/pdf/2310.08560.pdf",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2024-01-25",
+    "featured": true
+  },
+  {
+    "title": "The Illustrated Transformer",
+    "source_url": "https://jalammar.github.io/illustrated-transformer",
+    "publication": "Jay Alammar",
+    "category": "Design & Interfaces",
+    "source_type": "Essay",
+    "first_seen": "2024-06-25",
+    "featured": true
+  },
+  {
+    "title": "Transformer Inference Arithmetic",
+    "source_url": "https://kipp.ly/transformer-inference-arithmetic",
+    "publication": "Kipply",
+    "category": "AI & Language",
+    "source_type": "Essay",
+    "first_seen": "2024-06-25"
+  },
+  {
+    "title": "Microsoft GraphRAG Repository Review",
+    "source_url": "https://github.com/microsoft/graphrag",
+    "publication": "GitHub",
+    "category": "AI & Language",
+    "source_type": "Manual",
+    "first_seen": "2024-08-28"
+  },
+  {
+    "title": "A system literacy manifesto",
+    "source_url": "https://www.dubberly.com/wp-content/uploads/2016/02/systems_literacy.pdf",
+    "publication": "Hugh Dubberly",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2024-09-03",
+    "featured": true
+  },
+  {
+    "title": "Tools and Tasks in Sensemaking: A Visual Accessibility Perspective",
+    "source_url": "https://arxiv.org/abs/2404.00192",
+    "publication": "arXiv",
+    "category": "Design & Interfaces",
+    "source_type": "Paper",
+    "first_seen": "2024-09-03"
+  },
+  {
+    "title": "Network-centric warfare & operations",
+    "source_url": "https://en.wikipedia.org/wiki/Network-centric_warfare",
+    "publication": "Wikipedia",
+    "category": "Systems & Sensemaking",
+    "source_type": "Reference",
+    "first_seen": "2024-09-04"
+  },
+  {
+    "title": "Observe, Orient, Decide, Act (OODA) loop",
+    "source_url": "https://en.wikipedia.org/wiki/OODA_loop",
+    "publication": "Wikipedia",
+    "category": "Systems & Sensemaking",
+    "source_type": "Reference",
+    "first_seen": "2024-09-04"
+  },
+  {
+    "title": "SenseMaking",
+    "source_url": "https://en.wikipedia.org/wiki/Sensemaking",
+    "publication": "Wikipedia",
+    "category": "Systems & Sensemaking",
+    "source_type": "Reference",
+    "first_seen": "2024-09-04"
+  },
+  {
+    "title": "Understanding Generative AI-Assisted Data Analysis Workflows",
+    "source_url": "https://arxiv.org/pdf/2407.02903",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2024-09-04"
+  },
+  {
+    "title": "AI-Resilient Interfaces",
+    "source_url": "https://arxiv.org/abs/2405.08447",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2024-09-08"
+  },
+  {
+    "title": "How to Fix a Broken Go-To-Market Motion Using a Steady-State Funnel",
+    "source_url": "https://kellblog.com/2022/11/06/how-to-fix-a-broken-go-to-market-motion-using-a-steady-state-funnel",
+    "publication": "Kellblog",
+    "category": "Organizations & Strategy",
+    "source_type": "Essay",
+    "first_seen": "2024-09-08"
+  },
+  {
+    "title": "GraphRAG: Unlocking LLM discovery on narrative private data",
+    "source_url": "https://www.microsoft.com/en-us/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data",
+    "publication": "Microsoft Research",
+    "category": "AI & Language",
+    "source_type": "Essay",
+    "first_seen": "2024-09-14"
+  },
+  {
+    "title": "Language is primarily a tool for communication rather than thought",
+    "source_url": "https://gwern.net/doc/psychology/linguistics/2024-fedorenko.pdf",
+    "publication": "Gwern / Fedorenko",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2024-09-14",
+    "featured": true
+  },
+  {
+    "title": "The Interface Theory of Perception",
+    "source_url": "https://sites.socsci.uci.edu/~ddhoff/interface.pdf",
+    "publication": "Donald Hoffman",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2024-09-22"
+  },
+  {
+    "title": "Making Sense of Knowledge Intensive Processes",
+    "source_url": "https://arxiv.org/pdf/2401.17866",
+    "publication": "arXiv",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2024-09-22"
+  },
+  {
+    "title": "A Proposal for a Scenario Classification Framework",
+    "source_url": "https://www.researchgate.net/publication/226801181_A_Proposal_for_a_Scenario_Classification_Framework",
+    "publication": "ResearchGate",
+    "category": "Systems & Sensemaking",
+    "source_type": "Paper",
+    "first_seen": "2024-09-23"
+  },
+  {
+    "title": "Building Effective Agents",
+    "source_url": "https://www.anthropic.com/research/building-effective-agents",
+    "publication": "Anthropic",
+    "category": "AI & Language",
+    "source_type": "Essay",
+    "first_seen": "2025-01-13",
+    "featured": true
+  },
+  {
+    "title": "Developing a Computer Use Model",
+    "source_url": "https://www.anthropic.com/news/developing-computer-use",
+    "publication": "Anthropic",
+    "category": "AI & Language",
+    "source_type": "Essay",
+    "first_seen": "2025-01-14"
+  },
+  {
+    "title": "Toy Models of Superposition",
+    "source_url": "https://transformer-circuits.pub/2022/toy_model/index.html",
+    "publication": "Transformer Circuits",
+    "category": "AI & Language",
+    "source_type": "Essay",
+    "first_seen": "2025-01-15"
+  },
+  {
+    "title": "Cognitive Architectures for Language Agents",
+    "source_url": "https://arxiv.org/abs/2309.02427",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2025-01-06"
+  },
+  {
+    "title": "Sundial: A Family of Highly Capable Time Series Foundation Models",
+    "source_url": "https://arxiv.org/html/2502.00816v1",
+    "publication": "arXiv",
+    "category": "Forecasting & Operations",
+    "source_type": "Paper",
+    "first_seen": "2025-02-07"
+  },
+  {
+    "title": "AI Agents That Matter",
+    "source_url": "https://arxiv.org/pdf/2407.01502",
+    "publication": "arXiv",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2025-03-04"
+  },
+  {
+    "title": "Agents",
+    "source_url": "https://huyenchip.com/2025/01/07/agents.html",
+    "publication": "Huyen Chip",
+    "category": "AI & Language",
+    "source_type": "Essay",
+    "first_seen": "2025-03-05"
+  },
+  {
+    "title": "Context management with OpenAI",
+    "source_url": "https://openai.github.io/openai-agents-python/context",
+    "publication": "OpenAI",
+    "category": "AI & Language",
+    "source_type": "Manual",
+    "first_seen": "2025-03-30"
+  },
+  {
+    "title": "Review of the OpenAI Agents SDK",
+    "source_url": "https://openai.github.io/openai-agents-python/quickstart",
+    "publication": "OpenAI",
+    "category": "AI & Language",
+    "source_type": "Manual",
+    "first_seen": "2025-03-30"
+  },
+  {
+    "title": "Agent2Agent (A2A) Protocol",
+    "source_url": "https://google.github.io/A2A",
+    "publication": "Google",
+    "category": "AI & Language",
+    "source_type": "Manual",
+    "first_seen": "2025-05-11"
+  },
+  {
+    "title": "Review of DSPy",
+    "source_url": "https://github.com/stanfordnlp/dspy",
+    "publication": "GitHub",
+    "category": "AI & Language",
+    "source_type": "Manual",
+    "first_seen": "2025-06-19"
+  },
+  {
+    "title": "Why language models hallucinate",
+    "source_url": "https://cdn.openai.com/pdf/d04913be-3f6f-4d2b-b283-ff432ef4aaa5/why-language-models-hallucinate.pdf",
+    "publication": "OpenAI",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2025-09-09",
+    "featured": true
+  },
+  {
+    "title": "Second Treatise of Government",
+    "source_url": "",
+    "creator": "John Locke",
+    "publication": "Kindle notes",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2020-02-09"
+  },
+  {
+    "title": "How Forests Think",
+    "source_url": "",
+    "creator": "Eduardo Kohn",
+    "publication": "Kindle notes",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2021-02-13"
+  },
+  {
+    "title": "Forms of Talk",
+    "source_url": "",
+    "creator": "Erving Goffman",
+    "publication": "Book notes",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2022-04-24"
+  },
+  {
+    "title": "Connected",
+    "source_url": "",
+    "creator": "Nicholas Christakis and James Fowler",
+    "publication": "Book notes",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2022-05-30"
+  },
+  {
+    "title": "Community and Privacy",
+    "source_url": "",
+    "creator": "Serge Chermayeff and Christopher Alexander",
+    "publication": "Book notes",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2022-10-25"
+  },
+  {
+    "title": "Building Evolutionary Architectures",
+    "source_url": "",
+    "creator": "Neal Ford, Rebecca Parsons, and Patrick Kua",
+    "publication": "Book notes",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2023-01-23"
+  },
+  {
+    "title": "Building Scalable, Explainable, and Adaptive NLP Models with Retrieval",
+    "source_url": "",
+    "publication": "Paper notes",
+    "category": "AI & Language",
+    "source_type": "Paper",
+    "first_seen": "2023-02-12"
+  },
+  {
+    "title": "Crafting Interpreters",
+    "source_url": "",
+    "creator": "Robert Nystrom",
+    "publication": "Book notes",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2024-01-23"
+  },
+  {
+    "title": "Language and Thought in Action",
+    "source_url": "",
+    "creator": "S. I. Hayakawa",
+    "publication": "Book notes",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2024-08-17"
+  },
+  {
+    "title": "Sensemaking: A Structure for an Intelligence Revolution",
+    "source_url": "",
+    "publication": "Kindle notes",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2024-09-16"
+  },
+  {
+    "title": "What Computers Still Can't Do",
+    "source_url": "",
+    "creator": "Hubert Dreyfus",
+    "publication": "Book notes",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2024-10-24"
+  },
+  {
+    "title": "3am Epiphany",
+    "source_url": "",
+    "publication": "Notebook collection",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Notebook",
+    "first_seen": ""
+  },
+  {
+    "title": "Career Therapy",
+    "source_url": "",
+    "publication": "Notebook collection",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Notebook",
+    "first_seen": ""
+  },
+  {
+    "title": "Decision Systems for Inventory Management and Production Planning",
+    "source_url": "",
+    "publication": "Notebook collection",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Notebook",
+    "first_seen": ""
+  },
+  {
+    "title": "Dive Into Deep Learning",
+    "source_url": "",
+    "publication": "Notebook collection",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Notebook",
+    "first_seen": ""
+  },
+  {
+    "title": "General System Theory",
+    "source_url": "",
+    "publication": "Notebook collection",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Notebook",
+    "first_seen": "",
+    "featured": true
+  },
+  {
+    "title": "Systemantics",
+    "source_url": "",
+    "publication": "Notebook collection",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Notebook",
+    "first_seen": ""
+  },
+  {
+    "title": "Unflattening",
+    "source_url": "",
+    "publication": "Notebook collection",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Notebook",
+    "first_seen": "",
+    "featured": true
+  }
+]

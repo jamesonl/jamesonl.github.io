@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.10">
+    <path d="M92 79C178 61 258 145 344 87C430 67 494 121 548 261" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 285C170 261 250 309 332 301C404 391 488 289 550 383" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 593C202 547 286 641 364 593C442 543 510 663 548 617" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAJUlEQVQ4jWP8//8/IwMFgIkSzaMGjBowjAxgZJh1/v+AuoBiAwA0nAWFatR+QwAAAABJRU5ErkJggg==" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">TOOLS FOR THOUGHT · ESSAY</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Open Tabs Are</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Cognitive Spaces</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Rybakov</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2020-02-23</text>
+</svg>

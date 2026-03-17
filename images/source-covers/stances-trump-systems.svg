@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.09">
+    <path d="M92 73C178 55 258 139 344 81C430 61 494 115 548 215" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 279C170 255 250 263 332 295C404 385 488 283 550 337" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 547C202 501 286 595 364 547C442 497 510 617 548 571" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUALqD//8w/YqvthwC/y8HP2MR3W1A7RHjf5cYPOqOGYEaycSgvVahPb66fsLtffLCPo7kfR6Wvvb5/lrb2w2b98LIeOYzSiy2VZjzfggnQfBO3fDXniAvBdx0PNJaokHGDf4RvibPwnSb64ZnxpTLvlhn52YwpHE3uAAAAiklEQVQYlV3P6RKDIAwE4A0pgtS72tPW3u//iI0EZzrur/ABM1nQKrCbOZbI6wCDOQVRGQeTAJ7yBKRSWb2gBermH+R1axB/K5RwIezDIVugwpFP58vILoEH+HprJs4EbAHYFrxFdxfQxcxDIN85AV3MdAJ1gtSJn0Qv7qVcPA5v5n748PglrOv/AP+oBO+6dV7uAAAAAElFTkSuQmCC" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">SYSTEMS & SENSEMAKING · ESSAY</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Stances trump</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">systems</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Meaningness</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2020-04-01</text>
+</svg>

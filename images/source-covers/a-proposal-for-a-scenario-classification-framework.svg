@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.09">
+    <path d="M92 40C178 22 258 76 344 48C430 28 494 52 548 112" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 216C170 192 250 160 332 232C404 322 488 250 550 234" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 444C202 398 286 492 364 444C442 394 510 514 548 468" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAANlBMVEXz8/MTHh4BAgImKir///////8EFxdHcEz////////g4eG7vLxPUFB9f3+XmJhmZ2fP0NCrrKz4eZRPAAAACnRSTlP3////Jf//AHkY0pPABAAABTpJREFUeJztm4uyoyAMhoFsbasi+P4vu4By0QZEwDqzW07nXDxT+PwJIYmUPJ/vF3nc0sjr/XyS55+bhjcIf57kfeP4iuBNXneO/3i8yK0CKAluHl8R/AB+AD+AH8C/DZDR+3UA/cCFEJwP/R0AZBiZal2nv4/D1wF6wRiltOs6qn8wIb8LMIAZ3DX1R1SEKwAGRtdhqfkyv8cILgCQsIzJqDJBTplBoBCZhfYAZFzGt6Ynx0UQ+BbAbMZjwvVMuJkNNn8JAMz9i7BjzsxSQMdqDiC1ALsZJ8CAR6ywOYBeApSJ7cV5irrD5gDcAODz/RUAYVZg3PNdDUCEsfj0BnQpgPECLL/bawAiTuf/AaB3A3gF+iFo6Nq8WIGZhQ1bGxcrMOjAyLbvAdAPgCVAuEEBOwUmMssGIP2+STlsmuxj4DsFJF8anFJAssNGRz5LFB73A4KeUUBv6fSodQxGZJPFXXFih8ABloh2E1ivV4KryqwZ3/eJD0VEdIdAr80TV4lNSODF76iP+RUC7LwLEdhsL1iof4yuApVc+fFhDBoA8xCwD/WWgGQXf/VmYsZTAHo67Y2yadObnETn9KFs3PQxGQC+7cqkKnR38RDAZjh7AAPBA1PYaLAEpVsoEyZ1eJyWdEQiCuDzDZMDhB2avGj7DnMnAGiYlATgLA6g5tUSbENAbiSggRUMlO4xMwFslokCqBSE2VkIFe+NBOo96w2TidGoHzwCoEmANQvd577zUhhg4zT0cpjGdXzUBA8AJEAK4DE5M9jIy61wat47tuLgidkBQA9JBez/P9w8t1UBWDuI3v8hQFqBh3ALdet55o0fVS57iju8NEBagbin6Ll2l53Z1BiIRJ5Sp0DvAD7WWD/zkep9W8QT0wyAAwUIWJkxP28Cm1T/GQAHCjxGuxBPZAKnAA4U8ADoTtcAIFcBdhVApgKJdV4JcKCANcIEYiXAgQLSLcP8ksg5gAMFZrcjFyc4dQoI6waKTaBOgX6NTeOl6GqAtAI2MKSxvbYeIKmApPhe2BIgpUB6I2gEkFCgB7sG8XC3DUBcARcU11jgMUBMATJb/c/UhQsAcAX62ecEtNgJZwGsCghdFFmLJSrQBmaT09r7z1MgzM5Nhm63INqNxXtAJoAbalMcWa+xLh7stgLYlEl2DdLRZhsAa+uwvXt1gQ9tKnyZCqiJ16/OJ8Qt7j4DwK4CWzB0mUiV+z0BsPoBv937sk2V/8sGgD2AdItgbDMJZxVwMUBXHoeeAfhQwKWDrezwtAKuKoEkpBcAfCqwFh3NSqjdBzIAEAVcUUA54waTcF4BHYyjpaFLADAFQjusn4QSBR6TlSB6MqQZAKqAPSZiioEXA+AKuKS0Ji3OA8AVcFXkXVH4AoCIAn4SlBnUxQWFCgTOoHItFirgCsLVZlCqgI8MKr1BsQK+WF/nkssV8PWZquCkXAE1CW4tVvijgwcWNLXz+6D5qjrhsPr8/VM4Bxg8PSxdCkkAO8sxgOCZTbFHTD+2W3uH6KYn/HPkwjg9BeCCr3gEHGSPlBa5gxRAIHDU4Xsz0E65YFuIv6Wfgr7ZiJ6X0AS085bYnU+Y8WOW/TAJ2B1hEHwaJNK/hMASGYiDo9w5ACrmY2w7/HJegqGmRjgL0nZ9pPoMAg4AQLEGAKitD2NwsIJCA4ClFGRepirQMVcmwg8BDGI93aFPt5zK2fAzJPqokNyfJVoOpMU616f5zQkPETs/mw9Q3IhuZ9/TEqCk/QB+AD+AH8D9ADcTkPs/+Hz7R79v//D73R///wsGpEdMfec+FAAAAABJRU5ErkJggg==" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">SYSTEMS & SENSEMAKING · PAPER</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">A Proposal for a</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Scenario</text>
+  <text x="76" y="472" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Classification</text>
+  <text x="76" y="530" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Framework</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">ResearchGate</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2024-09-23</text>
+</svg>

@@ -2,33 +2,46 @@
 layout: page
 title: About
 permalink: /about/
+body_class: about-page
+tagline: I work at the intersection of systems thinking, forecasting, AI, and the practical craft of helping people stay oriented.
+kicker: About Jameson
 ---
 
-Hello! I'm Jameson.
+<div class="about-intro">
+  <div class="about-intro-copy">
 
-My day-to-day work focuses on helping teams tune the systems that support them—how they share knowledge, how tools fit together, and how operations stay nimble as goals change. Moving between product strategy, operations, and customer-facing roles taught me to translate between builders and the people they're building for, and to test ideas patiently rather than chase hype.
+I like helping teams think more clearly when the work is messy, cross-functional, or changing faster than the systems around it. My background spans product strategy, operations, customer-facing work, and documentation, which means I usually land in the space between the technical system and the people trying to use it well.
 
-Fundamentally, I still believe that **all problems are systems problems.** Taking them apart asks that we understand ourselves, the systems we create, and how those systems change over time. This process of understanding, experimentation, and reconfiguration is how individuals and groups alike address [wicked problems](https://en.wikipedia.org/wiki/Wicked_problem).
+The through-line is simple: make complex work easier to see. Sometimes that means designing a forecasting workflow. Sometimes it means building a lighter planning rhythm, a better knowledge tool, or an AI-assisted process that keeps humans firmly in the loop.
 
-My passion is for exploring the concept of [emergence](https://en.wikipedia.org/wiki/Emergence) when looking at how people change the way they work with other people, technology, and methodologies. I keep returning to questions like:
-- How can changing the way we think improve our ability to solve complex problems?
-- How does changing the way we work (with others, technology, or the methods applied) magnify what we produce beyond the original goal?
-- How can systems thinking unlock this pattern of improvement for others?
+  </div>
+  {% if site.avatar %}
+  <figure class="about-portrait">
+    <img src="{{ site.avatar }}" alt="Portrait of Jameson Lee" loading="lazy">
+  </figure>
+  {% endif %}
+</div>
 
-Writing here helps me explore those questions in public. This blog is an opportunity to develop my own voice, capture notes from the things I read, and connect threads long after a project has wrapped. It's a humble practice: start small, learn quickly, and let real-world feedback shape the next step.
+## What I spend time on
 
-Thus the reason for this blog: to capture my notes, thoughts, and expanded conclusions based on the things I read, watch, and the people I meet. My focus on emergence comes from the belief that the habits we form around technology change once they leave the individual context; tools only matter when teams adapt them together.
+- Decision systems that help teams see priorities, risks, and tradeoffs earlier.
+- Forecasting and analytics workflows that support planning without pretending uncertainty does not exist.
+- Human-centered AI tools that summarize, route, and structure information while preserving review and accountability.
+- Tools-for-thought experiments that make notes, reading, and shared context more reusable.
 
-My points of inspiration include:
-- Tools for thought and the communities exploring them
-- Douglas Engelbart's vision for augmenting human intellect
-- Yoga, which keeps me grounded and attentive
-- Time in nature, a constant reminder to notice patterns and stay curious
+## Why this combination matters to me
 
-That mix keeps me quietly motivated to keep seeking my fullest expression—showing up with care, listening closely, and refining the craft a little bit at a time. If any of this resonates, please reach out. I'm always keen to learn from others.
+I am drawn to systems because they reveal how much of a problem lives outside the headline description. A forecasting model only matters if the surrounding workflow makes it useful. An AI assistant only matters if people can inspect it, trust it, and learn from it. A note-taking or documentation practice only matters if it survives real collaboration.
 
-### Contact me
+That is why I keep returning to questions about emergence, coordination, and augmenting human judgment. I am interested in how better tools change behavior, how better habits change what a team can notice, and how small design choices can compound into more thoughtful work.
 
-Online, I also go by [mimoemergence](https://twitter.com/mimoemergence).
+## How I like to work
 
-[jameson.lee@emergence.studio](mailto:jameson.lee@emergence.studio)!
+- Start with the real decision, not the tool.
+- Keep systems legible enough that other people can extend them.
+- Prefer small, testable loops over big promises.
+- Treat writing as part of the product, not a cleanup task at the end.
+
+Outside of project work, I read widely across forecasting, AI, systems thinking, science fiction, and tools for thought. Writing here is my way of turning that reading into patterns I can reuse and share.
+
+If that sounds useful, [get in touch]({{ site.baseurl }}/contact/).

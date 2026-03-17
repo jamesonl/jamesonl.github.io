@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+<article class="page book-page">
+  <header class="page-header">
+    <p class="page-kicker">{{ page.category }}{% if page.series %} · {{ page.series }}{% endif %}</p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.impact_blurb and page.impact_blurb != "" %}
+    <p class="page-tagline">{{ page.impact_blurb }}</p>
+    {% else %}
+    <p class="page-tagline">Reflection in progress.</p>
+    {% endif %}
+    <div class="meta-cluster">
+      <span class="meta-pill">{{ page.author }}</span>
+      {% if page.recommended_for and page.recommended_for != "" %}
+      <span class="meta-pill">{{ page.recommended_for }}</span>
+      {% endif %}
+      {% if page.reflection_status %}
+      <span class="meta-pill">{{ page.reflection_status }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="book-page-grid">
+    <aside class="book-page-sidebar">
+      <div class="book-cover book-cover-feature">
+        <img src="{{ site.baseurl }}{{ page.cover_image }}" alt="Cover of {{ page.title }} by {{ page.author }}" />
+      </div>
+      <div class="book-actions">
+        <a class="link-button book-button" href="{{ page.amazon_url }}" target="_blank" rel="noopener">View on Amazon</a>
+        <a class="link-button ghost book-button" href="{{ site.baseurl }}/readinglist">Back to shelf</a>
+      </div>
+    </aside>
+
+    <div class="page-body">
+      {% if page.key_idea and page.key_idea != "" %}
+      <section class="callout compact">
+        <p class="card-kicker">Key idea</p>
+        <p>{{ page.key_idea }}</p>
+      </section>
+      {% endif %}
+
+      {% if page.lasting_impact and page.lasting_impact != "" %}
+      <section class="callout compact">
+        <p class="card-kicker">Lasting impact</p>
+        <p>{{ page.lasting_impact }}</p>
+      </section>
+      {% endif %}
+
+      {{ content }}
+    </div>
+  </div>
+</article>

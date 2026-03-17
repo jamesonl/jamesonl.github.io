@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.09">
+    <path d="M92 74C178 56 258 140 344 82C430 62 494 116 548 136" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 280C170 256 250 184 332 296C404 386 488 284 550 258" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 468C202 422 286 516 364 468C442 418 510 538 548 492" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABdElEQVQ4jWN0UrT6z4AH7L13lBGfPAs+SXTw7+8/xkd3H2p+fP9BRFpe5raIhOhzJmI1///7l7EgLPNIskfM1aLInIPH9h7xI8kF1y9eN796/oqVvoXhAStnm43aRjrHSTLg1KETngwMDAwRadGdZg6WO2DiRHvh2+evvAwMDAxs7OzfkcXhLlBUU2LQMdVjOHv4NIOmoTaDrJIcw54NOxkYGBgYLhw/Z3/vxl19BgYGhmN7j/hzcHN+0dDTPItigKGVMUN2XQHDozsPGORUFBgYGBgYnj18ysDAwMCwa932hPPHzzoxMDAwrJ23spCLh+szhgEwwM3Lw9BT0c7w5sVrhkunLzKU99QwZNfl57Owsf7aunxjWv201mATW7NdGF6AgS0rNjJsX7UF3dBPHBzsXxkYGBj4+PnecnFzfYHJYQTivRt3sQYiLkB0LNDegNfPXzFcPHme4eO7D1gVSinI3NEzMzjEw8fzEVmckdLcSLEXAJKIe1GksUa/AAAAAElFTkSuQmCC" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">SYSTEMS & SENSEMAKING · ESSAY</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">A Big Little Idea</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Called Legibility</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Ribbonfarm</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2020-02-29</text>
+</svg>

@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<article class="page vault-page">
+  <div class="vault-shell is-locked" data-vault-shell data-token-id="{{ page.token_id }}">
+    <header class="page-header">
+      <p class="page-kicker">{{ page.kicker | default: "Private company brief" }}</p>
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.summary %}
+      <p class="page-tagline">{{ page.summary }}</p>
+      {% endif %}
+      <div class="meta-cluster">
+        {% if page.company %}
+        <span class="meta-pill">{{ page.company }}</span>
+        {% endif %}
+        {% if page.resume_variant %}
+        <span class="meta-pill">{{ page.resume_variant }}</span>
+        {% endif %}
+        {% if page.expires_on %}
+        <span class="meta-pill">Expires {{ page.expires_on }}</span>
+        {% endif %}
+      </div>
+    </header>
+
+    <div class="vault-banner" data-vault-gate>
+      <p>This page is gated. Access is granted only through a signed link that sets a short-lived access cookie for this specific brief.</p>
+    </div>
+
+    <div class="page-body" data-vault-content hidden>
+      {{ content }}
+    </div>
+  </div>
+</article>
+
+<script>
+  (function () {
+    const shell = document.querySelector("[data-vault-shell]");
+    const content = document.querySelector("[data-vault-content]");
+    const gate = document.querySelector("[data-vault-gate]");
+    if (!shell || !content || !gate) {
+      return;
+    }
+
+    const tokenId = shell.getAttribute("data-token-id");
+    const cookies = document.cookie.split(";").map((part) => part.trim());
+    const hasAccess = cookies.some((part) => part === `vault_access=${tokenId}`);
+
+    if (hasAccess) {
+      shell.classList.remove("is-locked");
+      gate.hidden = true;
+      content.hidden = false;
+    }
+  })();
+</script>

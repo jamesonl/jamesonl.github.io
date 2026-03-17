@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.09">
+    <path d="M92 89C178 71 258 95 344 97C430 77 494 71 548 251" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 235C170 211 250 299 332 251C404 341 488 299 550 373" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 583C202 537 286 631 364 583C442 533 510 653 548 607" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAIVBMVEVHcEzpKyzpKyzpKyzpKyzpKyzpKyzpKyzpKyzpKyzpKyxjcQ49AAAACnRSTlMAJ+IUxKhxO1SLUnrqRgAAAsBJREFUeJzFmwuagyAQg7HUR7n/gVdqlUEZVhCSXCD7bf+kdWY0hiQ7sZy/mt5u4bkvo3Puw3KfvbtzL4778Hm5TZbhPu3ujgCAXbELGtH2i3SHA7CM7qQB6D5/zu7O4SooQC/1BrnbKeUOS+D0Trs7NwPcr9gF9a/gOePeP4Ep6CN1TWAa+kgdK1iFXqpfBevQIwDIQR+pSwL/xS6oQwJvYBfUvIJvYSfUtoLtPeyEmiZwKXVvmsDb0Es1S2AB9JHaVHAR9JFa/AgqhV6qQQKLoZd6DEAVdkLPKjj/A+OOnlRwLfRS9QAMD7ATqqzgJ9BHqqvgiq5VVFPBT6GXKk9gC+yECiu4vmsVFVVwM+yCChLYwX1VyT9/Hmpks2kBPIfanD9iFJiLDGQQkQMHMYiYM/6QUWAGQcgoMIMgZhSYQRAzCtQRxIwCdQRBo0D9WxszCtQRRIwCV02aP2oboyGIGsarCKK2MRqCqG2MhiBsG6MgiNvGKAiCEqgiiNvGpBFEbWNUBHH70DSCMAAUBIH70CSCyH1oEkHgPjSJIPIkI4UgdCGeQhDpP3ATmEQQepKSQBBXwV7L9Q/AnqRcHwixJylXBMEnKRcE0TdJlxJAnqSYBILoq7gzgtgEJhAE+18QhFaw1wlB+FXgCUE0ABcE4VeBJwTxV4HxWAx+FXhCkHAWGiMIrmCvCEHCYXKEID6BJwQJ/hGC8Ao2MYKUw2yBIOUwWyLIOMyWCHIu8wOChAo2ciZBuswPCBIq2MgHQtK7IQeCjAr2OhCkJFAgyKhgrx1B1rsxO4KkBIaxGCeB5kCQ9nLUzKxgL+rLUeZAkJXAHUHa22k/BFkVbHYESRXsNVIT+EOQl8ANQV4CzYYgrYLNhiD1BdmRC4BHkAqAfyDkVbDXi1nBxj8Qcj+AFUHuB2CZFew1Eb8Dv3r1/w78A4CNdnDu/1//AAAAAElFTkSuQmCC" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">FORECASTING & OPERATIONS · ARTICLE</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Advances in MRO</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">planning and</text>
+  <text x="76" y="472" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">scheduling systems</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">MRO Network</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2020-01-17</text>
+</svg>

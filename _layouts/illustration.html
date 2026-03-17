@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<article class="page illustration-page">
+  <header class="page-header">
+    <p class="page-kicker">Visual journal</p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.caption %}
+    <p class="page-tagline">{{ page.caption }}</p>
+    {% endif %}
+  </header>
+
+  <div class="page-body">
+    <figure class="illustration-figure">
+      <img src="{{ site.baseurl }}{{ page.image }}" alt="{{ page.alt }}" />
+      {% if page.alt %}
+      <figcaption>{{ page.alt }}</figcaption>
+      {% endif %}
+    </figure>
+
+    {% if page.themes %}
+    <div class="meta-cluster">
+      {% for theme in page.themes %}
+      <span class="meta-pill">{{ theme }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if page.reflection %}
+    <p class="lede">{{ page.reflection }}</p>
+    {% endif %}
+
+    {{ content }}
+
+    {% if page.related_reading %}
+    <section class="callout">
+      <p class="card-kicker">Related reading</p>
+      <ul class="list-dashed compact">
+        {% for item in page.related_reading %}
+        <li>
+          {% if item.url %}
+          <a href="{{ item.url }}">{{ item.label }}</a>
+          {% else %}
+          {{ item.label }}
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  </div>
+</article>

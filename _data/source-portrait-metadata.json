@@ -1,0 +1,74 @@
+{
+  "connected": {
+    "cover_image": "/images/source-portraits/connected.jpg",
+    "cover_alt": "Portrait of Nicholas Christakis",
+    "cover_kind": "author_portrait",
+    "cover_subject": "Nicholas Christakis",
+    "cover_credit": "Paul Schnaittacher",
+    "cover_credit_url": "https://commons.wikimedia.org/wiki/File:Nicholas_Christakis_(cropped).jpg",
+    "cover_license": "CC BY 3.0"
+  },
+  "forms-of-talk": {
+    "cover_image": "/images/source-portraits/forms-of-talk.jpg",
+    "cover_alt": "Portrait of Erving Goffman",
+    "cover_kind": "author_portrait",
+    "cover_subject": "Erving Goffman",
+    "cover_credit": "Unknown author",
+    "cover_credit_url": "https://commons.wikimedia.org/wiki/File:Erving_Goffman_circa_1940.jpg",
+    "cover_license": "Public domain"
+  },
+  "language-and-thought-in-action": {
+    "cover_image": "/images/source-portraits/language-and-thought-in-action.jpg",
+    "cover_alt": "Portrait of S. I. Hayakawa",
+    "cover_kind": "author_portrait",
+    "cover_subject": "S. I. Hayakawa",
+    "cover_credit": "Cyrena Chang, Los Angeles Times",
+    "cover_credit_url": "https://commons.wikimedia.org/wiki/File:Senator_S.I._Hayakawa_wearing_his_tam-%C3%B3-shanter,_1981.jpg",
+    "cover_license": "CC BY 4.0"
+  },
+  "second-treatise-of-government": {
+    "cover_image": "/images/source-portraits/second-treatise-of-government.jpg",
+    "cover_alt": "Portrait of John Locke",
+    "cover_kind": "author_portrait",
+    "cover_subject": "John Locke",
+    "cover_credit": "Godfrey Kneller",
+    "cover_credit_url": "https://commons.wikimedia.org/wiki/File:Godfrey_Kneller_-_Portrait_of_John_Locke_(Hermitage).jpg",
+    "cover_license": "Public domain"
+  },
+  "the-economics-of-hierarchies-and-polyarchies": {
+    "cover_image": "/images/source-portraits/the-economics-of-hierarchies-and-polyarchies.jpg",
+    "cover_alt": "Portrait of Joseph Stiglitz",
+    "cover_kind": "author_portrait",
+    "cover_subject": "Joseph Stiglitz",
+    "cover_credit": "J\u00e9r\u00e9my Barande",
+    "cover_credit_url": "https://commons.wikimedia.org/wiki/File:Joseph_E._Stiglitz,_2019_(cropped).jpg",
+    "cover_license": "CC BY-SA 2.0"
+  },
+  "the-extended-mind": {
+    "cover_image": "/images/source-portraits/the-extended-mind.jpg",
+    "cover_alt": "Portrait of David Chalmers",
+    "cover_kind": "author_portrait",
+    "cover_subject": "David Chalmers",
+    "cover_credit": "DannyGolcman",
+    "cover_credit_url": "https://commons.wikimedia.org/wiki/File:David_chalmers.jpg",
+    "cover_license": "CC BY-SA 4.0"
+  },
+  "the-interface-theory-of-perception": {
+    "cover_image": "/images/source-portraits/the-interface-theory-of-perception.jpg",
+    "cover_alt": "Portrait of Donald D. Hoffman",
+    "cover_kind": "author_portrait",
+    "cover_subject": "Donald D. Hoffman",
+    "cover_credit": "photography: Themindoftheuniverse / retouching: Aur\u00e9lien Pierre",
+    "cover_credit_url": "https://commons.wikimedia.org/wiki/File:Donald_Hoffman.jpg",
+    "cover_license": "CC BY-SA 4.0"
+  },
+  "what-computers-still-can-t-do": {
+    "cover_image": "/images/source-portraits/what-computers-still-can-t-do.jpg",
+    "cover_alt": "Portrait of Hubert Dreyfus",
+    "cover_kind": "author_portrait",
+    "cover_subject": "Hubert Dreyfus",
+    "cover_credit": "J\u00f6rg Noller",
+    "cover_credit_url": "https://commons.wikimedia.org/wiki/File:Hubert_Dreyfus_(cropped).jpg",
+    "cover_license": "CC BY-SA 3.0 de"
+  }
+}

@@ -1,157 +1,150 @@
 ---
 layout: default
 title: Home
+body_class: home-page
 ---
 
-<section class="home-section hero">
+{% assign featured_case_studies = site.case_studies | where: "featured", true %}
+{% assign featured_illustration = site.illustrations | where: "featured", true | first %}
+
+<section class="home-hero">
   <div class="hero-intro">
-    <p class="hero-label">{{ site.description }}</p>
-    <h1 class="hero-title">Building humane systems in black and white.</h1>
+    <p class="eyebrow">Emergent systems, intelligent design, and predictive systems</p>
+    <h1 class="hero-title">I write and draw toward legible intelligence, emergent systems, and foresight.</h1>
     <p class="hero-copy">
-      I map complex data environments, coach teams through change, and document the rituals that help ideas stick. This site is a
-      low-fi lab notebook—expect monochrome notes on emergence, operating models, and tooling.
+      This site is a notebook for the ideas I keep returning to: systems that evolve, intelligence that stays legible, and predictive tools that help people orient without flattening the human part of the work.
     </p>
     <div class="hero-actions">
-      <a class="link-button" href="{{ site.baseurl }}/about">About</a>
-      <a class="link-button" href="{{ site.baseurl }}/requests">Requests</a>
+      <a class="link-button" href="{{ site.baseurl }}/work">Work</a>
+      <a class="link-button secondary" href="{{ site.baseurl }}/writing">Writing</a>
+      <a class="link-button ghost" href="{{ site.baseurl }}/readinglist">Reading</a>
     </div>
   </div>
-  <div class="hero-now">
-    <h2 class="section-title">Now</h2>
-    <ul class="list-dashed">
-      <li>Exploring how to apply reasoning techniques to systems design.</li>
-      <li>Mapping best practices into commercial structures people can navigate.</li>
-      <li>Documenting wayfinding rituals for teams shipping long-running programs.</li>
-    </ul>
+
+  <aside class="hero-visual">
+    <div class="hero-visual-shell">
+      {% if featured_illustration %}
+      <img src="{{ site.baseurl }}{{ featured_illustration.image }}" alt="{{ featured_illustration.alt }}" />
+      {% else %}
+      <svg viewBox="0 0 320 320" role="img" aria-label="Topographic line study">
+        <path d="M56 173c25-58 96-95 150-77 37 13 63 53 57 93-6 42-47 74-95 74-62 0-120-41-112-90z" />
+        <path d="M79 171c20-42 72-69 113-56 29 10 49 40 44 70-5 31-35 54-72 54-47 0-89-30-85-68z" />
+        <path d="M98 168c14-28 48-45 77-36 21 7 35 28 32 50-4 23-24 40-50 40-32 0-61-21-59-54z" />
+        <path d="M190 92c11-20 37-33 58-28 14 4 24 16 22 31-3 18-19 31-39 31-28 0-49-16-41-34z" />
+      </svg>
+      {% endif %}
+    </div>
+  </aside>
+</section>
+
+<section class="home-section thematic-flow">
+  <header class="section-header">
+    <div>
+      <p class="section-kicker">Thematic overview</p>
+      <h2 class="section-title plain">A natural order for the work</h2>
+    </div>
+    <p class="section-intro">This homepage is an orientation layer. It should tell you what I care about, how I approach problems, and where each thread continues.</p>
+  </header>
+
+  <div class="theme-sequence">
+    <article class="theme-band">
+      <div class="theme-band-head">
+        <p class="card-kicker">How I think</p>
+        <h3>Reading, synthesis, and tools for thought</h3>
+      </div>
+      <p>I use reading, note systems, and sketching to turn scattered ideas into usable structure. Forecasting, speculative fiction, design, and systems thinking all show up here as ways of training attention.</p>
+      <ul class="list-dashed compact">
+        <li>Reading trails that sharpen how I frame uncertainty and systems behavior.</li>
+        <li>Notes and drawings that turn abstract ideas into reusable shapes.</li>
+        <li>Experiments with tools that help context survive collaboration.</li>
+      </ul>
+      <a class="text-link" href="{{ site.baseurl }}/readinglist">Browse the bookshelf</a>
+    </article>
+
+    <article class="theme-band">
+      <div class="theme-band-head">
+        <p class="card-kicker">What I build</p>
+        <h3>Decision systems, ML workflows, and calmer planning structures</h3>
+      </div>
+      <p>The technical layer matters, but the deeper interest is making a system legible enough that people will trust it, question it, and keep using it after the first launch.</p>
+      <ul class="list-dashed compact">
+        <li>Forecasting routines that convert noisy signals into planning inputs.</li>
+        <li>Human-in-the-loop AI workflows that support review and accountability.</li>
+        <li>Operational artifacts that reduce coordination drag and preserve context.</li>
+      </ul>
+      <a class="text-link" href="{{ site.baseurl }}/work">See selected systems work</a>
+    </article>
+
+    <article class="theme-band">
+      <div class="theme-band-head">
+        <p class="card-kicker">How I work</p>
+        <h3>Human-centered, pragmatic, and built for real teams</h3>
+      </div>
+      <p>I like problems where the hard part is not only analysis or implementation, but helping a group see the same picture at the same time. The systems I care about need to survive handoffs, ambiguity, and change.</p>
+      <ul class="list-dashed compact">
+        <li>Design for judgment, not just automation.</li>
+        <li>Favor rhythms and artifacts people can actually maintain.</li>
+        <li>Leave behind structures that make future decisions easier.</li>
+      </ul>
+      <a class="text-link" href="{{ site.baseurl }}/about">Read the working philosophy</a>
+    </article>
   </div>
 </section>
 
 <section class="home-section">
-  <h2 class="section-title">Future experiments</h2>
-  <div class="experiment-grid">
-    <div class="experiment-card">
-      <h3>Narrative résumé</h3>
-      <p>Typewritten timeline pages that stitch together case studies, rituals, and outcomes.</p>
+  <header class="section-header">
+    <div>
+      <p class="section-kicker">Proof of work</p>
+      <h2 class="section-title plain">A few representative engagements</h2>
     </div>
-    <div class="experiment-card">
-      <h3>Systems atlas</h3>
-      <p>Printable maps that cluster essays and talks by theme instead of chronology.</p>
-    </div>
-    <div class="experiment-card">
-      <h3>Signal dashboard</h3>
-      <p>Plain-text dashboards that track inputs—books, experiments, playlists—at a glance.</p>
-    </div>
-  </div>
-</section>
+    <a class="section-link" href="{{ site.baseurl }}/work">Open the full work page</a>
+  </header>
 
-{% assign readme_items = site.readmes | sort: 'date' | reverse %}
-{% assign total_readmes = readme_items | size %}
-{% if total_readmes > 0 %}
-  {% assign total_pages = total_readmes | minus: 1 | divided_by: 5 | plus: 1 %}
-<section class="home-section">
-  <h2 class="section-title">README notebook</h2>
-  <p class="section-intro">Fresh README files land here. Drop a new markdown file into <code>_readmes/</code> and it will appear below.</p>
-  <div class="table-scroll">
-    <table class="readme-table" data-readme-table>
-      <thead>
-        <tr>
-          <th scope="col">README</th>
-          <th scope="col">Last updated</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in readme_items %}
-        {% assign page_number = forloop.index0 | divided_by: 5 %}
-        <tr class="readme-row" data-page="{{ page_number }}">
-          <td>
-            <a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
-            {% if item.summary %}
-            <p class="readme-summary">{{ item.summary }}</p>
-            {% endif %}
-          </td>
-          <td class="readme-date">{{ item.date | date: "%b %d, %Y" }}</td>
-        </tr>
+  <div class="proof-strip">
+    {% for item in featured_case_studies limit: 3 %}
+    <article class="proof-card">
+      <p class="card-kicker">{{ item.role }}</p>
+      <h3><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></h3>
+      <p>{{ item.summary }}</p>
+      <div class="meta-cluster">
+        {% for theme in item.themes limit: 3 %}
+        <span class="meta-pill">{{ theme }}</span>
         {% endfor %}
-      </tbody>
-    </table>
+      </div>
+    </article>
+    {% endfor %}
   </div>
-  {% if total_pages > 1 %}
-  <nav class="readme-pagination" data-readme-pagination data-total-pages="{{ total_pages }}" aria-label="README pagination">
-    <button type="button" class="page-nav" data-prev>Prev</button>
-    <div class="page-numbers" role="group" aria-label="Pages">
-      {% assign last_index = total_pages | minus: 1 %}
-      {% for i in (0..last_index) %}
-      <button type="button" class="page-number" data-page-target="{{ i }}">{{ i | plus: 1 }}</button>
-      {% endfor %}
-    </div>
-    <button type="button" class="page-nav" data-next>Next</button>
-  </nav>
-  {% endif %}
-  <noscript>
-    <p class="noscript-note">Pagination needs JavaScript. With scripts disabled you'll see every README at once.</p>
-  </noscript>
 </section>
-{% else %}
+
 <section class="home-section">
-  <h2 class="section-title">README notebook</h2>
-  <p class="section-intro">Add markdown files inside <code>_readmes/</code> to populate this list.</p>
+  <header class="section-header">
+    <div>
+      <p class="section-kicker">Where to next</p>
+      <h2 class="section-title plain">Inside the notebook</h2>
+    </div>
+    <p class="section-intro">These pages hold the longer reflections, case studies, and book notes that sit behind the front page.</p>
+  </header>
+
+  <div class="route-grid">
+    <a class="route-card" href="{{ site.baseurl }}/work">
+      <p class="card-kicker">Work</p>
+      <h3>Selected systems work</h3>
+      <p>Case studies on forecasting, AI workflows, and operational structures shaped into practice.</p>
+    </a>
+    <a class="route-card" href="{{ site.baseurl }}/writing">
+      <p class="card-kicker">Writing</p>
+      <h3>Essays and reflections</h3>
+      <p>Longer pieces on systems, interfaces, prediction, and the patterns I keep revisiting.</p>
+    </a>
+    <a class="route-card" href="{{ site.baseurl }}/readinglist">
+      <p class="card-kicker">Reading</p>
+      <h3>Bookshelf and reading reflections</h3>
+      <p>A cover-first shelf of the books I keep returning to, each one opening into a longer reflection.</p>
+    </a>
+    <a class="route-card" href="{{ site.baseurl }}/about">
+      <p class="card-kicker">About</p>
+      <h3>Background and working approach</h3>
+      <p>A more direct explanation of the problems I care about and the way I like to work through them.</p>
+    </a>
+  </div>
 </section>
-{% endif %}
-
-<script>
-  (function () {
-    const pagination = document.querySelector('[data-readme-pagination]');
-    const table = document.querySelector('[data-readme-table]');
-    if (!pagination || !table) {
-      return;
-    }
-    const rows = Array.from(table.querySelectorAll('.readme-row'));
-    const totalPages = parseInt(pagination.dataset.totalPages || '1', 10);
-    const prev = pagination.querySelector('[data-prev]');
-    const next = pagination.querySelector('[data-next]');
-    const pageButtons = Array.from(pagination.querySelectorAll('[data-page-target]'));
-    let currentPage = 0;
-
-    function render() {
-      rows.forEach((row) => {
-        const page = parseInt(row.getAttribute('data-page') || '0', 10);
-        row.style.display = page === currentPage ? '' : 'none';
-      });
-      pageButtons.forEach((button) => {
-        const target = parseInt(button.getAttribute('data-page-target') || '0', 10);
-        const isActive = target === currentPage;
-        button.classList.toggle('is-active', isActive);
-        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-      });
-      if (prev) {
-        prev.disabled = currentPage === 0;
-      }
-      if (next) {
-        next.disabled = currentPage >= totalPages - 1;
-      }
-    }
-
-    function setPage(page) {
-      if (page < 0 || page >= totalPages) {
-        return;
-      }
-      currentPage = page;
-      render();
-    }
-
-    if (prev) {
-      prev.addEventListener('click', () => setPage(currentPage - 1));
-    }
-    if (next) {
-      next.addEventListener('click', () => setPage(currentPage + 1));
-    }
-    pageButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const target = parseInt(button.getAttribute('data-page-target') || '0', 10);
-        setPage(target);
-      });
-    });
-
-    render();
-  })();
-</script>

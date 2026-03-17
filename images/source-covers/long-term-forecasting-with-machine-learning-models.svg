@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.09">
+    <path d="M92 93C178 75 258 159 344 101C430 81 494 135 548 115" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 299C170 275 250 163 332 315C404 405 488 303 550 237" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 447C202 401 286 495 364 447C442 397 510 517 548 471" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAY1BMVEUmKC3///8XGiCLjI309PTd29xXV1ofIiceICaYlpgjJSqhn6EUFx4rLDHQzs85Oj5GRUmtqqxRUFQ1NTqEg4Xp6OlqZ2vW1dY3MzkHDRZ8eX20tLVlYmZAP0PGxse8u7xxcXTq5/acAAABkUlEQVR4nO3a246CMBSFYagcNqUeKicRFd//KUcxDAHCUM2unYv137ZJP2soCeB5CCGEEEIIIYSMkjH9WRxbBpTJSvleWgWk/krVwTFg5xpgeQdkvgbQmd0dEJkugqXFgyA51XbXf+yBOp2rcIYIirBqLqRsL98RhLqW6VgQpOWBavrG8i+DOo4B4fErv30ojiaAyPYJCAAAAAAAAAAAAAAAAAAAAAAAAAAAAACfA0g9YueZA6jUWqfsG/QG4PYc3whXAIrC57h2B0i68Yb7OaopQGZtN95yP8Q3BdDlNa/lfpNkvAOJpXPCECCzsB8nJwC69BPubgB120/Ima9DM4Ck3wm5kx0Qwzu2jRMAVW4B/SHQAVxchqoZJqS86xsB5H74B3y95QWQAUDkgS2AJDUFHGsxScnWtwKQJK73pBmt7xfpZlYSjgBMdyMpvLK5Lb6+Xozrfiy98614e/VHO6b78VZ/sjojQK5+QWEZsP4Jx38FVFyAaH65GXXnOgfi6XljGPPNECGEEEIIIYSQjX4APpQcljaQsL0AAAAASUVORK5CYII=" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">FORECASTING & OPERATIONS · ARTICLE</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Long-term</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">forecasting with</text>
+  <text x="76" y="472" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">machine learning</text>
+  <text x="76" y="530" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">models</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Thomas Huijskens</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2020-01-09</text>
+</svg>

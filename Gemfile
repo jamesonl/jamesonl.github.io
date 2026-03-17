@@ -1,8 +1,7 @@
 source "https://rubygems.org"
 
-# Use GitHub Pages to match the production environment
-# Includes Jekyll and supported plugins
-gem "github-pages", group: :jekyll_plugins
-
-# Jekyll 3 requires webrick for local serve
-gem "webrick", "~> 1.8"
+gem "jekyll", "~> 4.4"
+gem "jekyll-feed", "~> 0.17"
+gem "jekyll-sitemap", "~> 1.4"
+gem "kramdown-parser-gfm", "~> 1.1"
+gem "webrick", "~> 1.9"

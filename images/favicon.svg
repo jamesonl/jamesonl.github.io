@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Jameson Lee favicon</title>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#176c6a" />
+      <stop offset="100%" stop-color="#b9682f" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="#fff8ef" />
+  <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#bg)" />
+  <path d="M24 18h16v5H30v18c0 5 3 8 8 8 1.5 0 3-.2 4.4-.7V54c-1.9.6-4 .9-6.1.9-8.7 0-14.3-4.9-14.3-14V18Z" fill="#fff8ef" />
+</svg>

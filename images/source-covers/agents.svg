@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.11">
+    <path d="M92 102C178 84 258 108 344 110C430 90 494 84 548 184" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 248C170 224 250 232 332 264C404 354 488 312 550 306" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 516C202 470 286 564 364 516C442 466 510 586 548 540" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT01MTU3Nzo6IytIOD89RTRFRTcBCgoKDQwNGg8PGjclHyU3Lzc3Nzc3Mjc3Nzc3NzcyNzcrNzctNzc3NTU3NzUtMTU3ODc1NTQ1NzUxLTUrLTU1Mv/AABEIADAAMAMBIgACEQEDEQH/xAAaAAACAwEBAAAAAAAAAAAAAAAFBgEEBwMC/8QAMhAAAgEDAgQDBwIHAAAAAAAAAQIDAAQRBRIGEyExQWGRBxUiUYHB8COhFDIzQnGC0f/EABgBAAMBAQAAAAAAAAAAAAAAAAIDBAUA/8QAHxEAAgICAwEBAQAAAAAAAAAAAQIAAwQREiExQSIT/9oADAMBAAIRAxEAPwAHwlGG5sBUEYdcZx40x65d2+iaHcTuyyFFCfLecYAGPCgfAscbcRm3ddys8ygf6k/aivtN0tDa2CJCyQNdJG7GTPc9PvWeG/fE/ZY677iO/GlzKv8AD3lsDGT0JcllHh6U1ahdx8yB7KTnrPbL8Q6FgSBk+lVZdJt762ENzZwEqCvNVhuTA7iuvsytL67sxPHJA0cAMKpMmcZIbOQR5012XjsQP5FTqTZaoscjnbOzhuW6KO3Xx/PCjs+q3c7qZkniTb8wQPl26DxH0q97p1GC6aezsdNSR1GW+IA/Q0SPvdEXfpmnzMTk4wAP2pBfY0Jxq37Mz4SvY4+J45y4jjM5w7dsEEUzcc3j6taCxgula3J3m4A6K69Qo/7WfmdveKmMKu5gR/cO1PmkvB7ujieWJ2Zcuo8/KrcXGS2zk3wQci0ouhEDU9Uu7Swms5Yttzj+qHOOo7geYNP/ALJWD2d5boATtR8eopY4hsra6uoIYyd6Sbd8ZzhMeI8vtU6LBq2lXc09rhbbB/XjIJHn5ChyMf1RDrtJGzNiCFmLAb17ADNSOZuAcbF86zW24q1OFNhm3IpwByeg+mDRO2421FFxyYCSen6e1j+9RHGcRouB6mZC3aIoqK4IIZcnPjTpwy2baYMgVy3h/ilxAvYd6PcPxM8U+1ihBGDVwQ2HS+xAcJ2ZVsrq4sbmdLhHWR5mKnHw7T2oqic/mBJTEGGNuOnp6/gFe5raaRNsqLKB2YdCK5YQPvmRsrgbeoqS+u5H5GV12VOnES2IopInSWNFlQ/zKO9UDKkrDYoAXpnGM+dXH1iOGHMduN8qEDK9PlQeBsEEHvTKg3rRNhHiz//Z" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">AI & LANGUAGE · ESSAY</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Agents</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Huyen Chip</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2025-03-05</text>
+</svg>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.09">
+    <path d="M92 86C178 68 258 122 344 94C430 74 494 98 548 158" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 262C170 238 250 206 332 278C404 368 488 296 550 280" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 490C202 444 286 538 364 490C442 440 510 560 548 514" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHIAAAByCAMAAAC4A3VPAAAAM1BMVEUMx9P///+G4+nC8fRJ1d5n3OQby9az7fE60tsqztmU5uyk6u7R9Pfw+/x34OZY2eHh+PkRHJHLAAAB1ElEQVRoge2Xi27bMAxFOYqkXrbs///aUWlXyF7aVJlbFMM9sBFRUnJMhXYiIgAAAAAAAAAA4H/i1wBDCSWUUEL5lcoSBo4zdRxKp/gflGGMjzN5HJJTDCWUUEIJJZTvKy1/rzLF3or++7h9k1L/tJVkHNqI4hAu1ymHzPQwdeUyhvUypa2DxA5jR/QypY5Ra+8r7TJlHaM45nxkal0/Vh6icKzRkXydcixKV9p+31imjB8r22k03V3aqTvkkTKfV++ec5mqnUdKGm6+l9VLy9lYZ42Pnj5vNfu2BeBDokFmhUQy4EuXxriPt5thHXZIpvG1jJaS5oWfuijd/k4lyxPp/RDy3D39JL4+msVfxFRiIOXt1qG0sVDjvpH0WTn5KRuZKKtws8SNvMH9UJ7aDPcqldWYOErMNbHF3DtCjrakaF6pfrDsfnLNqtwj5WAxBS++PkpTO9oXZfDLXKq3RZhK8o4ShFOj0Gvypqw9oa1Fq5xZPMegdFPu/JSSY/UtuxVfqlpK76i7sO5Jsz/NorlEYvXLCbG/gZfdmhV5MsvA4obsH5ViqYv1b8U7bPUMfWlL9L8GYfGb1HNnqkqeLkvZSgn5NUudVAIAAAAAAAAAAFP8BsOyEWXlCZA1AAAAAElFTkSuQmCC" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">SYSTEMS & SENSEMAKING · PAPER</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">A Brief Guide to</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Interactive</text>
+  <text x="76" y="472" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Planning and</text>
+  <text x="76" y="530" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Idealized Design</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Ackoff guide</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2022-07-17</text>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.09">
+    <path d="M92 92C178 74 258 128 344 100C430 80 494 104 548 124" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 268C170 244 250 172 332 284C404 374 488 302 550 246" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 456C202 410 286 504 364 456C442 406 510 526 548 480" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAY1BMVEXy8vI0MjHd3d0qJyZ8fHz19fXR0dEuLCrs7Oy4uLjLy8s3NTQwLi34+PgsKinv7+/m5eVOTk1HRUXBwcE8OjnX19d0c3KIh4eVlJRVVFNsa2qysrJfXl1aWVibm5qlpKQiHx7EcQZhAAAEp0lEQVR4nO2b63K0KBCGBVQ8IDDgYTyMzv1f5epkqzJbuzaozWSrvvSvpCrST96GBhqIol/7tf+TqeyIKaW2jxJEAGpzf7O2SNO0oTRbIXAoEhrz0tfq2pj+McTdPOa2oDpTKACM+JsQgkv2ZMI82hWjoFRfjMdBgDcSyUvziBebbvH4PMDfFOxJpk0IfToYlwBeJrkZ5qLRPwawCsGFiW16TgUMgI2B1e3YnEFAAlhN1q2lxwOBB0AIE509PCQwAVYVbstREXABiJDDQRGQAdY4rCIcIUAHIKLs9AECfABCnm3h3xFCABA5pd4aBAFYO4K3BmEAiOwLTw0CAawZofEjCAVAmGc/CAZAZOs1N7kAxLcdJXh2PhI4AMyb1XUpGZP+JOXoIQEMIAr9ZrQp8jmeTCn9GPgtvQog0+rtT6uXKZrfJyJ9CNignBrAADz995o7SapE21gwDxlYflGB/wJ4WVXpe+9WQbiDcBJgE6Lp3IHg92AAqwqRnZwEAmrhIsCKoGMXAIvDKbB9nd0deVQYVxOXAFYRlhIeDayDR+JVgCiaYQBhKNjGdQDVwVFgSwV9fh0gyeCxwHv488sAUVIYMAqygBpBAIiSBZRA3kMDRLrnAAAfNNAKCkCUQwCktsEB6AAFgc3BAdQIKSCH4AAR7cGBACwOXSsiT4AMzEYMGIhICmQWBACSIRKAolAyknFwBSINNjPsdwIsgGzZb4WIfn9GxAJQeQ0AAKsSLICoeACdoMzDAzQDkI7FGB6AtkA2Zkt4AN1BAPvbA6RMuA6DGWpnf2WKpkC2QADxBwBGIASy3c1EaAAqhwD2UyEegIUmg58G4NOfDvCJEGT5TwPAw/APSEQaTsW7331oMtrfmuBNxzGwHpD7y2I0gBRakJAPLEiKCRiGwPYUbVU8AhsDcWuCA+gFWhX3+xUCJICEQoNAttCXOAoUUIWAdcH3htoCESBsDA5AoTxIZHMWwHdVrNIWOvgxKvTuWI8GEiAGaqUoAEnRQRUaAXQBpDphDpWI1r1xYACVghUivr8pwAFIqAWLxXJ/Z4oDkFloY7zORPsTAQqASmcoCW1lyrAATQ5X6zk0BhAAmhE+rxATVCu/ngmbfIDPjDhUqb6sgCryCT4xgip0lwESXSwPx9kpm8EecAlANfZeO47QhdGhAFRTLAN3HuHDZ3ZnAZJkdT/Gxnl0LSeXAIcB1t8z3dhlHp4et2/KwuXfCVAl3xapTNMmteO97YXPHQ7ZVc484rjEYr9vnq8/jcsyd8OtJu7Yv752B8B5jef2ZsaYUmz3eHycb/6NOwBOAPFP83T9ZWsK8JrMQ13lIp3Xtfdwl9lajw4QEMCrAwYEkAP18x8IQE6+/sMAiMFT/zAA4hl7//9BLjbX98TfPz6A7PNDD4CwL7eLtvHJf6EA+G2MjvnHfuCQHnSP/cSjOtD7cAGELAerDv/7WACc122RnXGPASBkPS1Ndc79VQAhGTOd1afdXwAQXIq6b+c0uuD9BMDXez/GhJm6xdKL3r8A5IEHj7W59VPbzfn2yO+y85fptPC27bWnVl83vI+P+D1L3vcefobm+9d+7afsL9DRZD7mGKbwAAAAAElFTkSuQmCC" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">SYSTEMS & SENSEMAKING · ESSAY</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Dan Wang's 2019</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Annual Letter</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Dan Wang</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2020-01-08</text>
+</svg>

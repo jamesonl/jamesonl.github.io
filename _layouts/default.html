@@ -6,118 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.name }} — {{ site.description }}</title>
     {% include meta.html %}
+    <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/images/favicon.svg" />
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
   </head>
-  <body class="site-body is-locked">
-    <div class="access-screen" data-access-screen aria-live="polite">
-      <div class="access-box">
-        <h1 class="access-title">Access required</h1>
-        <p class="access-copy">This notebook is for collaborators. Enter the password to continue.</p>
-        <form class="access-form" data-access-form>
-          <label class="access-label" for="access-password">Password</label>
-          <input
-            id="access-password"
-            class="access-input"
-            type="password"
-            name="password"
-            autocomplete="current-password"
-            data-access-input
-          />
-          <button type="submit" class="link-button access-button">Unlock</button>
-          <p class="access-error" data-access-error aria-live="assertive"></p>
-        </form>
-      </div>
-    </div>
+  <body class="site-body{% if page.body_class %} {{ page.body_class }}{% endif %}">
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-wrapper">
+      <div class="topo-field" aria-hidden="true" data-topo-field>
+        <div class="topo-glow"></div>
+        <svg class="topo-svg" viewBox="0 0 1440 960" preserveAspectRatio="xMidYMid slice"></svg>
+      </div>
       <header class="site-header">
-        <div class="site-inner">
+        <div class="site-inner site-header-shell">
           <div class="site-brand">
             <a class="site-title" href="{{ site.baseurl }}/">{{ site.name }}</a>
             <p class="site-tagline">{{ site.description }}</p>
           </div>
-          <nav class="site-nav" aria-label="Primary">
-            <a href="{{ site.baseurl }}/">Writing</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-            <a href="{{ site.baseurl }}/readinglist">Reading List</a>
-            <a href="{{ site.baseurl }}/requests">Requests</a>
-          </nav>
+          <div class="site-header-actions">
+            <nav class="site-nav" aria-label="Primary">
+              <a{% if page.url == "/" %} class="is-active"{% endif %} href="{{ site.baseurl }}/">Home</a>
+              <a{% if page.url == "/work/" or page.collection == "case_studies" %} class="is-active"{% endif %} href="{{ site.baseurl }}/work">Work</a>
+              <a{% if page.url == "/writing/" or page.collection == "posts" %} class="is-active"{% endif %} href="{{ site.baseurl }}/writing">Writing</a>
+              <a{% if page.url == "/readinglist/" or page.url == "/inspiration/" or page.collection == "illustrations" or page.collection == "books" or page.collection == "sources" %} class="is-active"{% endif %} href="{{ site.baseurl }}/readinglist">Reading</a>
+              <a{% if page.url == "/about/" %} class="is-active"{% endif %} href="{{ site.baseurl }}/about">About</a>
+            </nav>
+          </div>
         </div>
       </header>
-      <main id="main-content" class="site-main site-inner">
-        {{ content }}
+      <main id="main-content" class="site-main">
+        <div class="site-inner site-main-flow">
+          {{ content }}
+        </div>
       </main>
       <footer class="site-footer">
-        <div class="site-inner">
-          <p>&copy; {{ site.time | date: "%Y" }} {{ site.name }}.</p>
-          <ul class="site-links">
-            {% assign socials = site.footer-links %}
-            {% if socials.email %}
-            <li><a href="mailto:{{ socials.email }}">Email</a></li>
-            {% endif %}
-            {% if socials.github %}
-            <li><a href="https://github.com/{{ socials.github }}" rel="noopener">GitHub</a></li>
-            {% endif %}
-            {% if socials.twitter %}
-            <li><a href="https://twitter.com/{{ socials.twitter }}" rel="noopener">Twitter</a></li>
-            {% endif %}
-            {% if socials.linkedin %}
-            <li><a href="https://www.linkedin.com/in/{{ socials.linkedin }}" rel="noopener">LinkedIn</a></li>
-            {% endif %}
-            {% if socials.rss %}
-            <li><a href="{{ site.baseurl }}/feed.xml">RSS</a></li>
-            {% endif %}
+        <div class="site-inner site-footer-shell">
+          <div class="footer-copy">
+            <p class="footer-note">Reflections on emergent systems, intelligent design, predictive systems, and the forms ideas take while becoming useful.</p>
+            <a class="link-button secondary" href="{{ site.baseurl }}/contact">Contact</a>
+          </div>
+          <ul class="site-links" aria-label="Footer links">
+            <li><a href="{{ site.socials.x }}" rel="noopener">X</a></li>
+            <li><a href="{{ site.socials.linkedin }}" rel="noopener">LinkedIn</a></li>
+            <li>
+              <a
+                href="{{ site.baseurl }}/contact"
+                data-email-link
+                data-email-local="{{ site.contact.email_local }}"
+                data-email-domain="{{ site.contact.email_domain }}"
+              >Email</a>
+            </li>
           </ul>
         </div>
       </footer>
     </div>
-    <script>
-      (function () {
-        const PASSWORD = "emerg3nce";
-        const storageKey = "site-access";
-        const body = document.body;
-        const gate = document.querySelector("[data-access-screen]");
-        const form = document.querySelector("[data-access-form]");
-        const input = document.querySelector("[data-access-input]");
-        const error = document.querySelector("[data-access-error]");
-
-        function unlock() {
-          body.classList.remove("is-locked");
-          if (gate) {
-            gate.style.display = "none";
-          }
-        }
-
-        try {
-          if (localStorage.getItem(storageKey) === "granted") {
-            unlock();
-            return;
-          }
-        } catch (e) {
-          // localStorage unavailable; continue with manual check.
-        }
-
-        if (!form || !input) {
-          return;
-        }
-
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-          const value = (input.value || "").trim();
-          if (value === PASSWORD) {
-            try {
-              localStorage.setItem(storageKey, "granted");
-            } catch (e) {
-              // ignore storage errors
-            }
-            unlock();
-          } else if (error) {
-            error.textContent = "Incorrect password. Please try again.";
-          }
-        });
-      })();
-    </script>
     {% include analytics.html %}
+    <script src="{{ site.baseurl }}/assets/js/site.js" defer></script>
   </body>
 </html>

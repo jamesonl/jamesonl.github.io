@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.10">
+    <path d="M92 109C178 91 258 85 344 117C430 97 494 61 548 201" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 225C170 201 250 249 332 241C404 331 488 319 550 323" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 533C202 487 286 581 364 533C442 483 510 603 548 557" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAV1BMVEUAAAD///+Tk5Pe3t4rKyvp6emzs7OMjIz29vatra1jY2OhoaHPz8/Z2dlgYGBWVlbExMQ/Pz8RERE0NDR+fn54eHgZGRloaGi+vr5RUVFtbW1ycnI6Ojo4dJT2AAACAUlEQVR4nO2ZfVPCMAzGE8bG3oExhrB9/89pkomHnq6c1Yvo8/sjvfrctbFN06wQAQAAAAAAAAAAAATZjmqH46TN6aR2Og7ajNt79Fh2zLymVuyKKGVOiVbSaWktdhfWY9myjZNqYyPLPGpTm5nP52U9fg1GHaaxMZkKtcVLp1F7uSzrY/wS6DA9ZWIT2mtnT4nYjHqbJqhHs941vTRVk4nd1rUuatZUYvtmtw7rj0+Zsv5vNScHok2eb4gOCdfyp4zTMqzHMuhOVjI+c04l2wHLxdZUaWcI6dEOHG+ivJujvLuN8nFZP0Y7MLGFdGJj9nPIs4W8Bj5PIT3aAU0uiWyrLKts6BPzE+lK57LhiSW/kP5tdJ927tO/zqrYi20LPe1DVWlY9UUrdl+s7tFjSS2jb1gXd5gDWxaaN3ZLpGE9lhPbmcotyKr5zLGdOT15XJbL+unxHXDfAv8gvOJ2DL0TkXsqdr+M3ly3WvsuXccf6NEOULtUcLRh/fFxL0rnwPYry90/TNw/zdw/TonOF7XdeNCmtEr/MFqyv5zv0b/JgWGcbicY3jvwuR6L9xa4B6H7MXRPRP6p2J1f9T7gUZC4l2TuRal7Wf4K3gfwPuDlgPsW+AfhFbwPeKVi98socN12eB/4edyL0jmw8T7wr98HvH++BwAAAAAAAAAAwF/nGaLsQ4/gnq+PAAAAAElFTkSuQmCC" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">TOOLS FOR THOUGHT · ESSAY</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">A Home for Pino</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">100 Rabbits</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2020-01-17</text>
+</svg>

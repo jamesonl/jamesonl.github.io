@@ -1,0 +1,5 @@
+{% assign art_variant = include.variant | default: 0 %}
+{% assign art_src = "/images/post-art/art-" | append: art_variant | append: ".svg" %}
+<div class="post-illustration-frame{% if include.compact %} compact{% endif %}{% if include.feature %} feature{% endif %}">
+  <img src="{{ site.baseurl }}{{ art_src }}" alt="{{ include.alt | default: 'Abstract geometric illustration' }}" loading="lazy" decoding="async" />
+</div>

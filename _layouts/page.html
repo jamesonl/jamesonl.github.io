@@ -4,7 +4,7 @@ layout: default
 
 <article class="page">
   <header class="page-header">
-    <p class="page-kicker">{{ site.description }}</p>
+    <p class="page-kicker">{{ page.kicker | default: site.description }}</p>
     <h1 class="page-title">{{ page.title }}</h1>
     {% if page.tagline %}
     <p class="page-tagline">{{ page.tagline }}</p>

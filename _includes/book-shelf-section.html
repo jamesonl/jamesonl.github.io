@@ -1,0 +1,28 @@
+<section class="bookshelf-section">
+  <header class="section-header compact">
+    <div>
+      <p class="section-kicker">{{ include.title }}</p>
+      <h3 class="section-title plain">{{ include.heading | default: include.title }}</h3>
+    </div>
+    {% if include.subtitle %}
+    <p class="section-intro">{{ include.subtitle }}</p>
+    {% endif %}
+  </header>
+
+  <div class="bookshelf-grid">
+    {% assign shelf_books = include.books | sort: "order" %}
+    {% for book in shelf_books %}
+    <article class="book-card">
+      <a class="book-shelf-link" href="{{ site.baseurl }}{{ book.url }}">
+        <span class="book-cover">
+          <img src="{{ site.baseurl }}{{ book.cover_image }}" alt="Cover of {{ book.title }} by {{ book.author }}" loading="lazy" decoding="async" />
+        </span>
+        <span class="book-copy">
+          <span class="book-title">{{ book.title }}</span>
+          <span class="book-author">{{ book.author }}</span>
+        </span>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+</section>

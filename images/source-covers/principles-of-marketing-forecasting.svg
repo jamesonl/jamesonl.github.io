@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.09">
+    <path d="M92 60C178 42 258 156 344 68C430 48 494 132 548 232" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 296C170 272 250 280 332 312C404 402 488 270 550 354" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 564C202 518 286 612 364 564C442 514 510 634 548 588" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAclBMVEX/zDN6ABn/zzPhoi2CDBt2ABhyABjvsy/QjSrUkiv/0jT/yjP7xDJ9ABrxuDDclyzqqi+CABu2aiXenS2LFRy0YiScSh/2vzGOJh2EGRvDeSenUyKUMx6rWSO+cCaiTSGaQh/RhyqgQCHIgCikSCLHdShgaTp2AAADLklEQVR4nO2a23LiMAyGExEFcEIwh24SoFBo+/6vuM6BZndHtmx3ctEd/VedsSJ/yLIsJ00SkUgkEolEIpFIJLIKeAXZBUsvOB1qY1azZotFFEF522SMUuMZtpxVljUqCuAXpozyQwew4ezwODMAZyYAAiAAAiAAAvDfA3BW0QBvOaKdwYzhCND9aQ1DZ7aLAkjqyuie027fqtqoMGZFZ1Y9LKj30piVUfP33Wb9ZnGMK/WHmbKtAx6TyI509P1ujWxTT56htgUgzU/fAYDlzpoE+FJ82amr3ayNa4lHx6+OJGz10zNUjp2I528EwLnF8fIEKM6uDYvbuD3gXNle+XrwDGtnKforW4KkTu5KhJcKes4LU7FOkQGo2AvHvue80qViMst0XAhe2FK8M55BtyzoR0wWwIo9ZFJ8FFA6M3BQvo4IQcmtbK+VWntYjdkSJHViVnb0vDz6cOI1dH6PlR3U+JmloXlY8Bk4/jZPs8B6CFtPx/66B4WgoCPrR0XuHryE1EMga+Dm7rXgeCOfxr1/MaAzEM+F18KY85c8Q9A/D4GsLcaBV9F5BThQq4CvBT91L7WlSgBelQkNvwhZacoz2aCgZx7Sp9tQzIA7eFJ878xqqpPCpvQjOFGON105B7Bsj2mSW9m9F1UrOg99AEBnFP3NDJVa6ysTgU+9WBTdW06KwKs/VOSjaX/wNk3TMgBt2x7NYsEho0Jw5m8IQAeva65Bp46b0mS767JF7SnT/M4VA7oPHDNQ87N36gGgoo5JbLl6aNlAfUMRBGBCSY0NXZxj/iX51NBShQHQecjeU6hS92wqAwFAk/Xs4QKwhG1sqwMBEkX2FK48tNTA58UiFAAqqmq5+kO6w/+6WoUCJHCnhu39IWjyEDtP46EAyQfZV9jysCTvwlPaBgNYnsDHvzNfd4NId9mxH1tCEACsB5d0e7YZxl7GtS323dsoe5XtB4MB2E9ZaT4B8BU+AoD3KQA/ECD30mYugKRYeqkq2PdGkQA+H+rHj/UzAfhLAARAAH4awNAPODQvQKJXvAK/O0G15jV98Zjjf6FmcSoSiUQikUgkEolEItEc+g0AFEl+FowgTgAAAABJRU5ErkJggg==" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">FORECASTING & OPERATIONS · MANUAL</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Principles of</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Marketing:</text>
+  <text x="76" y="472" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Forecasting</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">University of</text>
+  <text x="76" y="738" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Minnesota</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2020-01-11</text>
+</svg>

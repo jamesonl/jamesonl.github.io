@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="896" viewBox="0 0 640 896" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="896" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="860" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="820" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.10">
+    <path d="M92 82C178 64 258 178 344 90C430 70 494 154 548 254" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 318C170 294 250 302 332 334C404 424 488 292 550 376" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 586C202 540 286 634 364 586C442 536 510 656 548 610" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <text x="140" y="173" text-anchor="middle" fill="#F5F1EB" font-family="IBM Plex Mono, monospace" font-size="54" font-weight="600">HD</text>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">BOOKS, MANUALS & NOTEBOOKS · BOOK</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">What Computers</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Still Can't Do</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Hubert Dreyfus</text>
+  <path d="M76 782H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="830" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2024-10-24</text>
+</svg>

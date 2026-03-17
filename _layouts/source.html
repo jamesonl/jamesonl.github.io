@@ -1,0 +1,82 @@
+---
+layout: default
+---
+
+<article class="page source-page">
+  <header class="page-header">
+    <p class="page-kicker">
+      {{ page.category }}{% if page.source_type %} · {{ page.source_type }}{% endif %}{% if page.first_seen %} · {{ page.first_seen }}{% endif %}
+    </p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.impact_blurb and page.impact_blurb != "" %}
+    <p class="page-tagline">{{ page.impact_blurb }}</p>
+    {% else %}
+    <p class="page-tagline">Reflection in progress.</p>
+    {% endif %}
+    <div class="meta-cluster">
+      {% if page.creator and page.creator != "" %}
+      <span class="meta-pill">{{ page.creator }}</span>
+      {% endif %}
+      {% if page.publication and page.publication != "" %}
+      <span class="meta-pill">{{ page.publication }}</span>
+      {% endif %}
+      {% if page.domain and page.domain != "" %}
+      <span class="meta-pill">{{ page.domain }}</span>
+      {% endif %}
+      {% if page.reflection_status %}
+      <span class="meta-pill">{{ page.reflection_status }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="book-page-grid source-page-grid">
+    <aside class="book-page-sidebar source-page-sidebar">
+      <div class="book-cover book-cover-feature source-cover-feature">
+        <img src="{{ site.baseurl }}{{ page.cover_image }}" alt="{{ page.cover_alt | default: page.title }}" loading="lazy" decoding="async" />
+      </div>
+      {% if page.cover_credit and page.cover_credit != "" %}
+      <p class="cover-attribution">
+        {% if page.cover_subject and page.cover_subject != "" %}Portrait of {{ page.cover_subject }}.{% endif %}
+        Credit:
+        {% if page.cover_credit_url and page.cover_credit_url != "" %}
+        <a href="{{ page.cover_credit_url }}" target="_blank" rel="noopener">{{ page.cover_credit }}</a>
+        {% else %}
+        {{ page.cover_credit }}
+        {% endif %}
+        {% if page.cover_license and page.cover_license != "" %}<span> · {{ page.cover_license }}</span>{% endif %}
+      </p>
+      {% endif %}
+      <div class="book-actions source-actions">
+        {% if page.source_url and page.source_url != "" %}
+        <a class="link-button book-button" href="{{ page.source_url }}" target="_blank" rel="noopener">Open source</a>
+        {% endif %}
+        <a class="link-button ghost book-button" href="{{ site.baseurl }}/inspiration">Back to inspiration library</a>
+      </div>
+    </aside>
+
+    <div class="page-body">
+      {% if page.key_idea and page.key_idea != "" %}
+      <section class="callout compact">
+        <p class="card-kicker">Key idea</p>
+        <p>{{ page.key_idea }}</p>
+      </section>
+      {% endif %}
+
+      {% if page.lasting_impact and page.lasting_impact != "" %}
+      <section class="callout compact">
+        <p class="card-kicker">Lasting impact</p>
+        <p>{{ page.lasting_impact }}</p>
+      </section>
+      {% endif %}
+
+      {% if page.revisit_trigger and page.revisit_trigger != "" %}
+      <section class="callout compact">
+        <p class="card-kicker">When I return to this</p>
+        <p>{{ page.revisit_trigger }}</p>
+      </section>
+      {% endif %}
+
+      {{ content }}
+    </div>
+  </div>
+</article>

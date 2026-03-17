@@ -1,0 +1,307 @@
+{
+  "danwang.co": {
+    "icon_path": "/images/source-icons/danwang-co.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=danwang.co"
+  },
+  "lesswrong.com": {
+    "icon_path": "/images/source-icons/lesswrong-com.ico",
+    "mime": "image/x-icon",
+    "source": "https://lesswrong.com/favicon.ico"
+  },
+  "thesystemsthinker.com": {
+    "icon_path": "/images/source-icons/thesystemsthinker-com.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=thesystemsthinker.com"
+  },
+  "nadiaeghbal.com": {
+    "icon_path": "/images/source-icons/nadiaeghbal-com.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=nadiaeghbal.com"
+  },
+  "nap.edu": {
+    "icon_path": "/images/source-icons/nap-edu.png",
+    "mime": "image/png",
+    "source": "https://nap.edu/apple-touch-icon.png"
+  },
+  "thuijskens.github.io": {
+    "icon_path": "/images/source-icons/thuijskens-github-io.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=thuijskens.github.io"
+  },
+  "pdfs.semanticscholar.org": {
+    "icon_path": "/images/source-icons/pdfs-semanticscholar-org.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=pdfs.semanticscholar.org"
+  },
+  "en.wikipedia.org": {
+    "icon_path": "/images/source-icons/en-wikipedia-org.png",
+    "mime": "image/png",
+    "source": "https://en.wikipedia.org/apple-touch-icon.png"
+  },
+  "open.lib.umn.edu": {
+    "icon_path": "/images/source-icons/open-lib-umn-edu.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=open.lib.umn.edu"
+  },
+  "100r.co": {
+    "icon_path": "/images/source-icons/100r-co.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=100r.co"
+  },
+  "mro-network.com": {
+    "icon_path": "/images/source-icons/mro-network-com.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=mro-network.com"
+  },
+  "ptc.com": {
+    "icon_path": "/images/source-icons/ptc-com.png",
+    "mime": "image/png",
+    "source": "https://ptc.com/favicon.ico"
+  },
+  "prelectur.stanford.edu": {
+    "icon_path": "/images/source-icons/prelectur-stanford-edu.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=prelectur.stanford.edu"
+  },
+  "worrydream.com": {
+    "icon_path": "/images/source-icons/worrydream-com.ico",
+    "mime": "image/x-icon",
+    "source": "https://worrydream.com/favicon.ico"
+  },
+  "plato.stanford.edu": {
+    "icon_path": "/images/source-icons/plato-stanford-edu.png",
+    "mime": "image/png",
+    "source": "https://plato.stanford.edu/apple-touch-icon.png"
+  },
+  "bitsavers.org": {
+    "icon_path": "/images/source-icons/bitsavers-org.ico",
+    "mime": "image/x-icon",
+    "source": "https://bitsavers.org/favicon.ico"
+  },
+  "mitpress.mit.edu": {
+    "icon_path": "/images/source-icons/mitpress-mit-edu.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=mitpress.mit.edu"
+  },
+  "nber.org": {
+    "icon_path": "/images/source-icons/nber-org.ico",
+    "mime": "image/x-icon",
+    "source": "https://nber.org/favicon.ico"
+  },
+  "rybakov.com": {
+    "icon_path": "/images/source-icons/rybakov-com.ico",
+    "mime": "image/x-icon",
+    "source": "https://rybakov.com/favicon.ico"
+  },
+  "freecodecamp.org": {
+    "icon_path": "/images/source-icons/freecodecamp-org.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=freecodecamp.org"
+  },
+  "ribbonfarm.com": {
+    "icon_path": "/images/source-icons/ribbonfarm-com.ico",
+    "mime": "image/x-icon",
+    "source": "https://ribbonfarm.com/favicon.ico"
+  },
+  "easa.europa.eu": {
+    "icon_path": "/images/source-icons/easa-europa-eu.ico",
+    "mime": "image/x-icon",
+    "source": "https://easa.europa.eu/favicon.ico"
+  },
+  "dl.acm.org": {
+    "icon_path": "/images/source-icons/dl-acm-org.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=dl.acm.org"
+  },
+  "2016.padjo.org": {
+    "icon_path": "/images/source-icons/2016-padjo-org.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=2016.padjo.org"
+  },
+  "citeseerx.ist.psu.edu": {
+    "icon_path": "/images/source-icons/citeseerx-ist-psu-edu.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=citeseerx.ist.psu.edu"
+  },
+  "netflixtechblog.com": {
+    "icon_path": "/images/source-icons/netflixtechblog-com.ico",
+    "mime": "image/x-icon",
+    "source": "https://netflixtechblog.com/favicon.ico"
+  },
+  "meaningness.com": {
+    "icon_path": "/images/source-icons/meaningness-com.ico",
+    "mime": "image/x-icon",
+    "source": "https://meaningness.com/favicon.ico"
+  },
+  "christophlabacher.com": {
+    "icon_path": "/images/source-icons/christophlabacher-com.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=christophlabacher.com"
+  },
+  "cmusyntheticecologies.files.wordpress.com": {
+    "icon_path": "/images/source-icons/cmusyntheticecologies-files-wordpress-com.ico",
+    "mime": "image/x-icon",
+    "source": "https://cmusyntheticecologies.files.wordpress.com/favicon.ico"
+  },
+  "donellameadows.org": {
+    "icon_path": "/images/source-icons/donellameadows-org.png",
+    "mime": "image/png",
+    "source": "https://donellameadows.org/favicon.ico"
+  },
+  "michiganstateuniversityonline.com": {
+    "icon_path": "/images/source-icons/michiganstateuniversityonline-com.png",
+    "mime": "image/png",
+    "source": "https://michiganstateuniversityonline.com/apple-touch-icon.png"
+  },
+  "blog.digitalocean.com": {
+    "icon_path": "/images/source-icons/blog-digitalocean-com.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=blog.digitalocean.com"
+  },
+  "blog.acolyer.org": {
+    "icon_path": "/images/source-icons/blog-acolyer-org.ico",
+    "mime": "image/x-icon",
+    "source": "https://blog.acolyer.org/favicon.ico"
+  },
+  "thinkingtools.space": {
+    "icon_path": "/images/source-icons/thinkingtools-space.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=thinkingtools.space"
+  },
+  "wired.com": {
+    "icon_path": "/images/source-icons/wired-com.png",
+    "mime": "image/png",
+    "source": "https://wired.com/apple-touch-icon.png"
+  },
+  "fs.blog": {
+    "icon_path": "/images/source-icons/fs-blog.png",
+    "mime": "image/png",
+    "source": "https://fs.blog/apple-touch-icon.png"
+  },
+  "are.na": {
+    "icon_path": "/images/source-icons/are-na.png",
+    "mime": "image/png",
+    "source": "https://are.na/apple-touch-icon.png"
+  },
+  "academic.oup.com": {
+    "icon_path": "/images/source-icons/academic-oup-com.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=academic.oup.com"
+  },
+  "apps.dtic.mil": {
+    "icon_path": "/images/source-icons/apps-dtic-mil.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=apps.dtic.mil"
+  },
+  "crmxchange.com": {
+    "icon_path": "/images/source-icons/crmxchange-com.png",
+    "mime": "image/png",
+    "source": "https://crmxchange.com/apple-touch-icon.png"
+  },
+  "web.mit.edu": {
+    "icon_path": "/images/source-icons/web-mit-edu.ico",
+    "mime": "image/x-icon",
+    "source": "https://web.mit.edu/favicon.ico"
+  },
+  "testingeducation.org": {
+    "icon_path": "/images/source-icons/testingeducation-org.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=testingeducation.org"
+  },
+  "vpri.org": {
+    "icon_path": "/images/source-icons/vpri-org.gif",
+    "mime": "image/gif",
+    "source": "https://vpri.org/favicon.ico"
+  },
+  "consc.net": {
+    "icon_path": "/images/source-icons/consc-net.png",
+    "mime": "image/png",
+    "source": "https://consc.net/favicon.ico"
+  },
+  "medium.com": {
+    "icon_path": "/images/source-icons/medium-com.ico",
+    "mime": "image/x-icon",
+    "source": "https://medium.com/favicon.ico"
+  },
+  "ida.liu.se": {
+    "icon_path": "/images/source-icons/ida-liu-se.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=ida.liu.se"
+  },
+  "web.stanford.edu": {
+    "icon_path": "/images/source-icons/web-stanford-edu.png",
+    "mime": "image/png",
+    "source": "https://web.stanford.edu/apple-touch-icon.png"
+  },
+  "arxiv.org": {
+    "icon_path": "/images/source-icons/arxiv-org.ico",
+    "mime": "image/x-icon",
+    "source": "https://arxiv.org/favicon.ico"
+  },
+  "nlp.seas.harvard.edu": {
+    "icon_path": "/images/source-icons/nlp-seas-harvard-edu.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=nlp.seas.harvard.edu"
+  },
+  "quotapath.com": {
+    "icon_path": "/images/source-icons/quotapath-com.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=quotapath.com"
+  },
+  "valuize.co": {
+    "icon_path": "/images/source-icons/valuize-co.jpg",
+    "mime": "image/jpeg",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=valuize.co"
+  },
+  "kellblog.com": {
+    "icon_path": "/images/source-icons/kellblog-com.png",
+    "mime": "image/png",
+    "source": "https://kellblog.com/apple-touch-icon.png"
+  },
+  "github.com": {
+    "icon_path": "/images/source-icons/github-com.png",
+    "mime": "image/png",
+    "source": "https://github.com/apple-touch-icon.png"
+  },
+  "dubberly.com": {
+    "icon_path": "/images/source-icons/dubberly-com.png",
+    "mime": "image/png",
+    "source": "https://dubberly.com/favicon.ico"
+  },
+  "microsoft.com": {
+    "icon_path": "/images/source-icons/microsoft-com.jpg",
+    "mime": "image/jpeg",
+    "source": "https://microsoft.com/apple-touch-icon.png"
+  },
+  "gwern.net": {
+    "icon_path": "/images/source-icons/gwern-net.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=gwern.net"
+  },
+  "researchgate.net": {
+    "icon_path": "/images/source-icons/researchgate-net.ico",
+    "mime": "image/x-icon",
+    "source": "https://researchgate.net/favicon.ico"
+  },
+  "anthropic.com": {
+    "icon_path": "/images/source-icons/anthropic-com.ico",
+    "mime": "image/x-icon",
+    "source": "https://anthropic.com/favicon.ico"
+  },
+  "transformer-circuits.pub": {
+    "icon_path": "/images/source-icons/transformer-circuits-pub.png",
+    "mime": "image/png",
+    "source": "https://transformer-circuits.pub/favicon.ico"
+  },
+  "huyenchip.com": {
+    "icon_path": "/images/source-icons/huyenchip-com.ico",
+    "mime": "image/x-icon",
+    "source": "https://huyenchip.com/favicon.ico"
+  },
+  "google.github.io": {
+    "icon_path": "/images/source-icons/google-github-io.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=google.github.io"
+  }
+}

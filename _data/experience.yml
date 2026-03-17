@@ -1,0 +1,36 @@
+- company: Independent consulting and research collaborations
+  role: Strategy, forecasting, and AI systems partner
+  period: 2023 to present
+  scope: Help teams make ambiguous work more legible with clearer signals, stronger planning habits, and human-centered AI workflows.
+  bullets:
+    - Translate broad goals into operating rhythms, decision checkpoints, and simple dashboards.
+    - Design AI-assisted workflows that keep a human review step in the loop.
+    - Turn reading, research, and synthesis into reusable internal tools instead of one-off documents.
+  themes:
+    - AI systems
+    - Forecasting
+    - Decision design
+- company: Product and operations teams
+  role: Product strategy and operations lead
+  period: 2020 to 2023
+  scope: Worked across planning, delivery, enablement, and cross-functional execution where product, operations, and customer learning overlapped.
+  bullets:
+    - Built lightweight planning systems so teams could see risks and ownership earlier.
+    - Supported launch readiness, metrics conversations, and the operational side of product decisions.
+    - Helped teams shift from reactive updates to shared context and repeatable rituals.
+  themes:
+    - Product strategy
+    - Operations
+    - Analytics
+- company: Customer-facing and implementation roles
+  role: Implementation, support, and user education
+  period: 2017 to 2020
+  scope: Learned how people actually adopt tools, where systems break in practice, and how documentation changes outcomes.
+  bullets:
+    - Turned recurring support questions into guides, templates, and onboarding material.
+    - Bridged the gap between what builders shipped and what users needed to succeed.
+    - Developed a strong bias for clarity, teachability, and systems that can survive handoffs.
+  themes:
+    - Enablement
+    - Documentation
+    - Customer insight

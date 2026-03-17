@@ -1,29 +1,70 @@
-# Personal site retro log
+# Jameson Lee portfolio site
 
-This repository now powers a monochrome, retro-inspired personal site. The previous Tailwind-heavy treatment has been replaced with something simpler: single-pixel rules, typewriter typography, and zero gradients. Below is a quick reference for what changed and how to extend it.
+This repository powers a public-facing portfolio and writing site built with Jekyll. The current version is organized around three things:
 
-## What's new
+- a public homepage and work page for mixed audiences,
+- a writing and reading surface for essays and lab notes,
+- private `/vault/*` pages for company-specific application packets served through Cloudflare Pages Functions.
 
-- **Black & white interface.** The global layout, page templates, and homepage all run on a custom stylesheet that favors single-pixel borders, uppercase kickers, and Courier-esque pacing.【F:_layouts/default.html†L1-L44】【F:style.scss†L1-L274】
-- **Retro homepage.** The landing page now uses a minimalist hero, plain-text experiment cards, and a latest-writing list that matches the new aesthetic.【F:index.html†L1-L120】
-- **README notebook.** Dropping markdown files into `_readmes/` automatically lists them at the bottom of the homepage with simple pagination that reveals five entries at a time.【F:index.html†L122-L219】【F:_config.yml†L21-L35】
+## Content model
 
-## Adding README entries
+- `_case_studies/` contains public work examples. These build to `/work/:slug/`.
+- `_company_pages/` contains private company-specific pages. These build to `/vault/:slug/` and should only be shared via signed links.
+- `_readmes/` contains lighter-weight notes and templates.
+- `_data/experience.yml` powers the compact experience timeline on `/work/`.
 
-1. Create a markdown file inside `_readmes/` with front matter specifying at least a `title` and `date`. Optional fields like `summary` will be displayed beneath the title.【F:_readmes/data-playbook.md†L1-L11】
-2. Commit the file. Jekyll builds it as part of the `readmes` collection and the homepage table updates automatically.【F:_config.yml†L21-L35】【F:index.html†L122-L219】
-3. If more than five README files exist, pagination controls appear so visitors can browse batches without leaving the page.【F:index.html†L160-L219】
+Representative case studies are intentionally anonymized. Replace the placeholder language with company names, metrics, and role-specific details as you make them public.
 
-The `README notebook` section also ships with six sample entries you can edit or remove as needed.【F:_readmes/retro-interface-primer.md†L1-L18】【F:_readmes/operating-manual.md†L1-L16】【F:_readmes/data-playbook.md†L1-L11】【F:_readmes/collaboration-guide.md†L1-L12】【F:_readmes/reading-habits.md†L1-L10】【F:_readmes/lab-notes.md†L1-L15】
+## Running locally
 
-## Future tweaks to consider
+1. Use the Homebrew Ruby in this repo so Bundler matches the lockfile:
 
-- Wire the pagination script into a standalone asset if the notebook grows into its own page.
-- Layer in optional accent colors via CSS custom properties that can be toggled per page.
-- Add permalinks from the homepage table to the GitHub source for each README to encourage collaboration.
+```bash
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+```
 
-## Running the site locally
+2. Install the gem dependencies with `bundle install`.
+3. Build the site with `bundle exec jekyll build`.
+4. Preview locally with `bundle exec jekyll serve --livereload`.
 
-1. Install dependencies with `bundle install`, which pulls in GitHub Pages, Jekyll, and supporting plugins from the new `Gemfile`.【F:Gemfile†L1-L9】
-2. Build the site with `bundle exec jekyll build` to ensure templates and collections compile without errors.【9f4ea1†L1-L3】
-3. Optionally, run `bundle exec jekyll serve --livereload` to preview changes at `http://localhost:4000`.【F:Gemfile†L1-L9】
+If Bundler is missing, install it with the active Ruby:
+
+```bash
+gem install bundler
+```
+
+If `bundle install` fails while compiling `eventmachine` with an `iostream` error, the machine is missing the working C++ toolchain headers expected by the active Ruby. In that case, repair the Xcode Command Line Tools environment or rely on the Cloudflare Pages build instead of local serving.
+
+## Private company pages
+
+Private pages are meant for signed links, not shared passwords.
+
+### Cloudflare setup
+
+1. Deploy the repo to Cloudflare Pages.
+2. Set the build output directory to `_site`.
+3. Add the secret `VAULT_SIGNING_KEY` in your Pages project settings.
+4. Create an Analytics Engine dataset bound as `VAULT_LOGS`.
+5. Optionally set `cloudflare_web_analytics_token` in `_config.yml` if you want to inject the public analytics beacon from the site template.
+
+The access gate lives in `functions/vault/[[path]].js`. It validates signed query parameters, serves `/vault/*` when the signature is valid, and logs access events at the edge.
+
+### Generating a signed link
+
+Set the same signing secret locally, then run:
+
+```bash
+VAULT_SIGNING_KEY="replace-me" ruby scripts/generate_vault_link.rb _company_pages/example-company.md
+```
+
+That script reads the page front matter and prints a signed URL using:
+
+- the page slug,
+- the `token_id`,
+- the `expires_on` date if present.
+
+## Notes
+
+- The default public layout is no longer gated.
+- The old Universal Analytics integration has been removed.
+- `requests.md` is kept only as a legacy pointer to `/contact/`.

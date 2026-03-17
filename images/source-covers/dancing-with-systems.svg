@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#090B0E"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#0F1217" stroke="#2A2F36" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#11141A" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="0.09">
+    <path d="M92 108C178 90 258 174 344 116C430 96 494 150 548 130" stroke="#FFFFFF" stroke-width="2.2"/>
+    <path d="M92 314C170 290 250 178 332 330C404 420 488 318 550 252" stroke="#FFFFFF" stroke-width="1.8"/>
+    <path d="M94 462C202 416 286 510 364 462C442 412 510 532 548 486" stroke="#FFFFFF" stroke-width="1.6"/>
+  </g>
+  <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
+  <image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC8ElEQVQ4jX2SWUxTYRCF5/9729pCKXttoRKlEnABJCoIaBRERCUGUQygaFnii2KgcSEYjWtMxC2KcQMLLiEIaCAuCMRGiAmrYqQJWPZCFzaBUlpub/EJUpvqeZs5c76ZhwGw0GB3M0ur6iEW6i7ZSbfU09ku8B/hxbCiUcRg20e481eYAACaq8R2milI7h9DgZaBqHQJPSpdgv8CDCoa3ViOrrsAUN2CIRC6H2wbovurfwPDaqk9AKxZBAwqGhGT47SPnNXLeHxfQ368t7DsXKyfWW/c0DtEVpkIxhrLdM3TmxMIIWFEavY6AACCzrLfTTCXGN15Pj8eJ/gWcZw9PTFC7B75qLfvkHLtd27weCfADUvIHGn6RqPh/a/eVvRgJoc701P/jnoUJ7rCWel9MfFhbSR/vVcuy4NXx+ea76czW2J3ZkjElgCZ9M6wHRMJVnvSQrB+VLNc09YUQhO5SakAbrz0deLX4bmpZJYdY9neO19KHCndtkSOvDA09Wze1rRTTgAAoYclF+ZIKkAz9F2DZ1Qq+xmY7CAC+ZfBZI6hz5oVkzpdSkd/X2hbw5nIPQ8aZbzZkXthdiqJlmK3hqdI+gfGcVy4yJjnJ3RwBW2v/MDHNznaJwXRUZZnFjyLv/2qJGkeAKA0KyqwMjOsGgBgoziHBwAgrz12W/3r/SVsNE9PYRazLCOtusYSkCYuz5rRzX74/PH4vNeWVTF6EhMAAHkJJkZndUIudggSUEzvakLWkNeMEFZYfxgAAIMgTqgmxn8KGY7b2cv4vu31mS+Mo30Mg8umTzyPiEIzZWxFRdJ9dIxoDgjRJg6llJitIcWlSZXQPjZADaiHxc/brwEAqJVd0WbK0CHw8lfiI0crSITwNMC8rSMAGUiucVi1WRi847pqQO48qumPpkhdl8DLX2kzYC3p3V3jLeX5V6f0WkKt7Aga7G6yfu1/q/hlgkh6K+Y8AMCIuotuawbbai6aFNIZ2IZCAAC3pT6krZk/qPspJWJkt2YAAAAASUVORK5CYII=" x="88" y="104" width="104" height="104" preserveAspectRatio="xMidYMid meet"/>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">SYSTEMS & SENSEMAKING · ESSAY</text>
+  <text x="76" y="356" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Dancing with</text>
+  <text x="76" y="414" fill="#F5F1EB" font-family="Fraunces, Georgia, serif" font-size="44" font-weight="600">Systems</text>
+  <text x="76" y="706" fill="#9AA3AE" font-family="Manrope, sans-serif" font-size="24">Donella Meadows</text>
+  <path d="M76 846H564" stroke="#30353D" stroke-width="1.4"/>
+  <text x="76" y="894" fill="#D6D0C7" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.2">2020-04-10</text>
+</svg>
