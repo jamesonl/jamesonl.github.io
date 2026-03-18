@@ -62,14 +62,31 @@ function fetchBuffer(url) {
   return result.stdout;
 }
 
+function loadExistingMetadata() {
+  if (!fs.existsSync(OUTPUT_PATH)) return {};
+  return JSON.parse(fs.readFileSync(OUTPUT_PATH, "utf8"));
+}
+
+function existingIconOk(entry) {
+  if (!entry || !entry.icon_path) return false;
+  const iconPath = path.join(ROOT, entry.icon_path.replace(/^\//, ""));
+  return fs.existsSync(iconPath);
+}
+
 function main() {
   const entries = JSON.parse(fs.readFileSync(INPUT_PATH, "utf8"));
   const domains = [...new Set(entries.map((entry) => domainFromUrl(entry.source_url)).filter(Boolean))];
+  const existingMetadata = loadExistingMetadata();
   const metadata = {};
 
   fs.mkdirSync(ICONS_DIR, { recursive: true });
 
   domains.forEach((domain) => {
+    if (existingIconOk(existingMetadata[domain])) {
+      metadata[domain] = existingMetadata[domain];
+      return;
+    }
+
     const attempts = [`https://www.google.com/s2/favicons?sz=128&domain_url=${domain}`];
 
     let selected = null;

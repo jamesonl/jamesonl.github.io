@@ -2,6 +2,26 @@
 layout: default
 ---
 
+{% capture source_state %}{% include reading-item-state.html kind="source" reflection_status=page.reflection_status content_text=page.content %}{% endcapture %}
+{% assign source_state = source_state | strip %}
+{% assign source_slug = page.slug | default: page.title | slugify %}
+{% assign source_archive_anchor = "/readinglist/#source-" | append: source_slug %}
+
+{% if source_state == "draft" %}
+<article class="page redirect-page">
+  <header class="page-header">
+    <p class="page-kicker">
+      {{ page.category }}{% if page.source_type %} · {{ page.source_type }}{% endif %}{% if page.first_seen %} · {{ page.first_seen }}{% endif %}
+    </p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="page-tagline">This reflection is still in progress. Returning to the reading archive.</p>
+  </header>
+  <div class="page-body">
+    <p><a href="{{ site.baseurl }}{{ source_archive_anchor }}">Back to the inspiration library</a></p>
+  </div>
+</article>
+<script>window.location.replace({{ source_archive_anchor | relative_url | jsonify }});</script>
+{% else %}
 <article class="page source-page">
   <header class="page-header">
     <p class="page-kicker">
@@ -50,7 +70,7 @@ layout: default
         {% if page.source_url and page.source_url != "" %}
         <a class="link-button book-button" href="{{ page.source_url }}" target="_blank" rel="noopener">Open source</a>
         {% endif %}
-        <a class="link-button ghost book-button" href="{{ site.baseurl }}/inspiration">Back to inspiration library</a>
+        <a class="link-button ghost book-button" href="{{ site.baseurl }}/readinglist/#inspiration-library">Back to inspiration library</a>
       </div>
     </aside>
 
@@ -80,3 +100,4 @@ layout: default
     </div>
   </div>
 </article>
+{% endif %}

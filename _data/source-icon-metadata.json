@@ -5,9 +5,9 @@
     "source": "https://www.google.com/s2/favicons?sz=128&domain_url=danwang.co"
   },
   "lesswrong.com": {
-    "icon_path": "/images/source-icons/lesswrong-com.ico",
-    "mime": "image/x-icon",
-    "source": "https://lesswrong.com/favicon.ico"
+    "icon_path": "/images/source-icons/lesswrong-com.png",
+    "mime": "image/png",
+    "source": "https://www.google.com/s2/favicons?sz=128&domain_url=lesswrong.com"
   },
   "thesystemsthinker.com": {
     "icon_path": "/images/source-icons/thesystemsthinker-com.png",

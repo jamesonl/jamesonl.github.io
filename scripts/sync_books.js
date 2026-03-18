@@ -118,6 +118,119 @@ function yamlEscape(value) {
   return String(value ?? "").replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 }
 
+function escapeXml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function wrapLines(text, maxChars, maxLines) {
+  const words = String(text || "").split(/\s+/).filter(Boolean);
+  const lines = [];
+  let current = "";
+
+  words.forEach((word) => {
+    const next = current ? `${current} ${word}` : word;
+    if (next.length > maxChars && current) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = next;
+    }
+  });
+
+  if (current) lines.push(current);
+  if (lines.length <= maxLines) return lines;
+
+  const trimmed = lines.slice(0, maxLines);
+  trimmed[maxLines - 1] = trimmed[maxLines - 1].replace(/[.,;:!?-]*$/, "") + "...";
+  return trimmed;
+}
+
+function hashValue(value) {
+  return Array.from(String(value || "")).reduce((sum, char, index) => sum + char.charCodeAt(0) * (index + 1), 0);
+}
+
+function monogramForBook(book) {
+  const seed = book.title || book.author || "Book";
+  const parts = seed
+    .split(/[\s:/'"-]+/)
+    .filter(Boolean)
+    .slice(0, 2);
+  return parts.map((part) => part[0]).join("").toUpperCase() || "BK";
+}
+
+function coverImagePath(slug, extension) {
+  return `/images/book-covers/${slug}.${extension}`;
+}
+
+function existingCoverImage(slug) {
+  const pngPath = path.join(COVERS_DIR, `${slug}.png`);
+  const svgPath = path.join(COVERS_DIR, `${slug}.svg`);
+
+  if (fs.existsSync(pngPath)) return coverImagePath(slug, "png");
+  if (fs.existsSync(svgPath)) return coverImagePath(slug, "svg");
+  return "";
+}
+
+function createGeneratedCover(book, destination) {
+  const seed = hashValue(`${book.title}:${book.author}:${book.category}:${book.series || ""}`);
+  const accentA = 52 + (seed % 88);
+  const accentB = 128 + (seed % 136);
+  const accentC = 238 + (seed % 182);
+  const accentOpacity = (0.16 + (seed % 7) * 0.025).toFixed(2);
+  const mono = monogramForBook(book);
+  const label = (book.category || "Book").toUpperCase();
+  const titleLines = wrapLines(book.title, 18, 4);
+  const authorLines = wrapLines(book.author, 24, 2);
+  const seriesLines = book.series ? wrapLines(book.series, 28, 2) : [];
+
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640" height="960" viewBox="0 0 640 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="960" rx="42" fill="#151110"/>
+  <rect x="18" y="18" width="604" height="924" rx="30" fill="#1F1716" stroke="#4D3F3A" stroke-width="2"/>
+  <rect x="38" y="38" width="564" height="884" rx="24" fill="#261C19" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <g opacity="${accentOpacity}">
+    <path d="M88 ${accentA}C180 ${accentA - 18} 260 ${accentB} 344 ${accentA + 10}C428 ${accentA - 12} 500 ${accentB - 18} 552 ${accentC}" stroke="#F4D4B8" stroke-width="2.4"/>
+    <path d="M88 ${accentB + 122}C166 ${accentB + 104} 254 ${accentC + 36} 338 ${accentB + 144}C420 ${accentB + 214} 492 ${accentA + 216} 552 ${accentC + 118}" stroke="#F4D4B8" stroke-width="2"/>
+    <path d="M88 ${accentC + 286}C192 ${accentC + 236} 286 ${accentC + 336} 370 ${accentC + 284}C454 ${accentC + 232} 512 ${accentC + 352} 552 ${accentC + 298}" stroke="#F4D4B8" stroke-width="1.7"/>
+  </g>
+  <rect x="76" y="92" width="132" height="132" rx="24" fill="#F0E0CD" stroke="#E1CAB3" stroke-width="2"/>
+  <text x="142" y="176" text-anchor="middle" fill="#201715" font-family="IBM Plex Mono, monospace" font-size="40" font-weight="700">${escapeXml(mono)}</text>
+  <text x="76" y="280" fill="#D8B89A" font-family="IBM Plex Mono, monospace" font-size="20" letter-spacing="2.8">${escapeXml(label)}</text>
+  ${titleLines
+    .map(
+      (line, index) =>
+        `<text x="76" y="${356 + index * 58}" fill="#FBF4EC" font-family="Fraunces, Georgia, serif" font-size="46" font-weight="600">${escapeXml(
+          line
+        )}</text>`
+    )
+    .join("\n  ")}
+  ${authorLines
+    .map(
+      (line, index) =>
+        `<text x="76" y="${702 + index * 30}" fill="#DCCAB9" font-family="IBM Plex Mono, monospace" font-size="24">${escapeXml(
+          line
+        )}</text>`
+    )
+    .join("\n  ")}
+  <path d="M76 808H564" stroke="#5A4B45" stroke-width="1.4"/>
+  ${seriesLines
+    .map(
+      (line, index) =>
+        `<text x="76" y="${856 + index * 28}" fill="#BFA896" font-family="IBM Plex Mono, monospace" font-size="20" letter-spacing="1.3">${escapeXml(
+          line.toUpperCase()
+        )}</text>`
+    )
+    .join("\n  ")}
+</svg>
+`;
+
+  fs.writeFileSync(destination, svg);
+}
+
 async function fetchJson(url) {
   const response = await fetch(url, {
     headers: {
@@ -294,8 +407,9 @@ function buildMarkdownFromExisting(book, coverImage, amazonUrl, existing) {
 async function syncBook(book) {
   const slug = slugify(book.title);
   const markdownPath = path.join(BOOKS_DIR, `${slug}.md`);
-  const coverOutput = path.join(COVERS_DIR, `${slug}.png`);
-  const coverImage = `/images/book-covers/${slug}.png`;
+  const pngCoverOutput = path.join(COVERS_DIR, `${slug}.png`);
+  const svgCoverOutput = path.join(COVERS_DIR, `${slug}.svg`);
+  let coverImage = existingCoverImage(slug);
 
   let googleItem = null;
   let openLibraryDoc = null;
@@ -338,11 +452,20 @@ async function syncBook(book) {
     coverUrl = coverUrl.replace(/^http:\/\//i, "https://");
   }
 
-  if (!fs.existsSync(coverOutput)) {
-    if (!coverUrl) {
-      throw new Error(`No cover found for ${book.title}`);
+  if (!coverImage && coverUrl) {
+    try {
+      await downloadCover(coverUrl, pngCoverOutput);
+      coverImage = coverImagePath(slug, "png");
+    } catch (error) {
+      console.error(`Cover download failed for ${book.title}: ${error.message}`);
     }
-    await downloadCover(coverUrl, coverOutput);
+  }
+
+  if (!coverImage) {
+    if (!fs.existsSync(svgCoverOutput)) {
+      createGeneratedCover(book, svgCoverOutput);
+    }
+    coverImage = coverImagePath(slug, "svg");
   }
 
   const existingFields = readExistingFields(markdownPath);

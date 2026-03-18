@@ -2,6 +2,24 @@
 layout: default
 ---
 
+{% capture book_state %}{% include reading-item-state.html kind="book" reflection_status=page.reflection_status content_text=page.content %}{% endcapture %}
+{% assign book_state = book_state | strip %}
+{% assign book_slug = page.slug | default: page.title | slugify %}
+{% assign book_archive_anchor = "/readinglist/#book-" | append: book_slug %}
+
+{% if book_state == "draft" %}
+<article class="page redirect-page">
+  <header class="page-header">
+    <p class="page-kicker">{{ page.category }}{% if page.series %} · {{ page.series }}{% endif %}</p>
+    <h1 class="page-title">{{ page.title }}</h1>
+    <p class="page-tagline">This reflection is still in progress. Returning to the shelf.</p>
+  </header>
+  <div class="page-body">
+    <p><a href="{{ site.baseurl }}{{ book_archive_anchor }}">Back to the reading archive</a></p>
+  </div>
+</article>
+<script>window.location.replace({{ book_archive_anchor | relative_url | jsonify }});</script>
+{% else %}
 <article class="page book-page">
   <header class="page-header">
     <p class="page-kicker">{{ page.category }}{% if page.series %} · {{ page.series }}{% endif %}</p>
@@ -52,3 +70,4 @@ layout: default
     </div>
   </div>
 </article>
+{% endif %}

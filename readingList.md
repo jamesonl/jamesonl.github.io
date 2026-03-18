@@ -7,7 +7,7 @@ tagline: The books I keep nearby, organized as a shelf of titles that open into 
 kicker: Reading shelf
 ---
 
-<p class="journal-lede">This page is only the shelf now: the books that keep reshaping how I think, grouped by the kinds of questions they sharpen. Click any cover to open the fuller reflection.</p>
+<p class="journal-lede">This page holds the working reading archive: the books and source material that keep reshaping how I think, grouped by the kinds of questions they sharpen. Grey cards stay visible on the shelf until the generic notes have been replaced with a real reflection.</p>
 
 <section class="archive-section">
   <header class="section-header">
@@ -60,44 +60,71 @@ kicker: Reading shelf
       <li>O'Reilly books on AI, machine learning, and software development</li>
     </ul>
   </aside>
-</section>
 
-<section class="archive-section">
-  <header class="section-header">
+  <div id="inspiration-library" class="reading-archive-divider">
     <div>
       <p class="section-kicker">Inspiration library</p>
       <h2 class="section-title plain">Essays, papers, manuals, and source trails</h2>
     </div>
-    <p class="section-intro">The bookshelf holds books. The wider library holds the source material behind the way I think: systems essays, technical papers, tools-for-thought notes, manuals, and longer research trails.</p>
-  </header>
-
-  {% assign featured_sources = site.sources | where: "featured", true %}
-
-  <div class="source-grid source-preview-grid">
-    {% for source in featured_sources limit: 8 %}
-    <article class="source-card">
-      <a class="source-link" href="{{ site.baseurl }}{{ source.url }}">
-        <span class="source-cover">
-          <img src="{{ site.baseurl }}{{ source.cover_image }}" alt="{{ source.cover_alt | default: source.title }}" loading="lazy" decoding="async" />
-        </span>
-        <span class="source-copy">
-          <span class="source-title">{{ source.title }}</span>
-          <span class="source-meta">
-            {% if source.creator and source.creator != "" %}
-            {{ source.creator }}
-            {% elsif source.publication and source.publication != "" %}
-            {{ source.publication }}
-            {% elsif source.domain and source.domain != "" %}
-            {{ source.domain }}
-            {% endif %}
-          </span>
-        </span>
-      </a>
-    </article>
-    {% endfor %}
+    <p class="section-intro">The bookshelf holds books. The wider library holds the source material behind the way I think: systems essays, technical papers, tools-for-thought notes, manuals, and longer research trails. Grey cards stay on the shelf until I have replaced the generic notes with a real reflection.</p>
   </div>
 
-  <div class="hero-actions">
-    <a class="link-button secondary" href="{{ site.baseurl }}/inspiration">Open the inspiration library</a>
+  {% assign systems_sources = site.sources | where: "category", "Systems & Sensemaking" %}
+  {% assign ai_sources = site.sources | where: "category", "AI & Language" %}
+  {% assign forecasting_sources = site.sources | where: "category", "Forecasting & Operations" %}
+  {% assign tools_sources = site.sources | where: "category", "Tools for Thought" %}
+  {% assign design_sources = site.sources | where: "category", "Design & Interfaces" %}
+  {% assign notebooks_sources = site.sources | where: "category", "Books, Manuals & Notebooks" %}
+  {% assign strategy_sources = site.sources | where: "category", "Organizations & Strategy" %}
+
+  <div class="book-list inspiration-list">
+    {% include source-grid-section.html
+      title="Systems"
+      heading="Systems, legibility, and sensemaking"
+      subtitle="The material that shaped how I think about emergence, coordination, structure, and the hidden behavior of organizations."
+      sources=systems_sources
+    %}
+
+    {% include source-grid-section.html
+      title="AI & language"
+      heading="Language models, agent systems, and machine reasoning"
+      subtitle="Papers, essays, and references that changed how I think about intelligence, interaction, and model behavior."
+      sources=ai_sources
+    %}
+
+    {% include source-grid-section.html
+      title="Forecasting"
+      heading="Forecasting, logistics, and operational signal design"
+      subtitle="The supply-chain, demand-planning, and decision-support material that keeps showing up in practical systems work."
+      sources=forecasting_sources
+    %}
+
+    {% include source-grid-section.html
+      title="Tools"
+      heading="Tools for thought, notes, and knowledge systems"
+      subtitle="Reading on notebooks, shared context, memory systems, and the craft of keeping useful ideas alive."
+      sources=tools_sources
+    %}
+
+    {% include source-grid-section.html
+      title="Design"
+      heading="Design, interfaces, and interaction structures"
+      subtitle="Sources that helped me think more clearly about interfaces, explanation, navigation, and the shape of participation."
+      sources=design_sources
+    %}
+
+    {% include source-grid-section.html
+      title="Books & notebooks"
+      heading="Books, manuals, and notebook trails"
+      subtitle="Longer-form source material that sits outside the main bookshelf but still belongs in the wider reading archive."
+      sources=notebooks_sources
+    %}
+
+    {% include source-grid-section.html
+      title="Strategy"
+      heading="Organizations, strategy, and operating design"
+      subtitle="Sources I keep around for thinking about institutions, go-to-market motion, community, and decision structures."
+      sources=strategy_sources
+    %}
   </div>
 </section>

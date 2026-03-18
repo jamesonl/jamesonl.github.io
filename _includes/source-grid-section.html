@@ -1,3 +1,5 @@
+{% assign shelf_sources = include.sources | sort: "title" %}
+{% if shelf_sources.size > 0 %}
 <section class="source-library-section">
   <header class="section-header compact">
     <div>
@@ -10,9 +12,12 @@
   </header>
 
   <div class="source-grid">
-    {% assign shelf_sources = include.sources | sort: "title" %}
     {% for source in shelf_sources %}
-    <article class="source-card"{% if source.theme_slug %} data-tags="{{ source.theme_slug }}"{% endif %}>
+    {% capture source_state %}{% include reading-item-state.html kind="source" reflection_status=source.reflection_status content_text=source.content %}{% endcapture %}
+    {% assign source_state = source_state | strip %}
+    {% assign source_slug = source.slug | default: source.title | slugify %}
+    <article id="source-{{ source_slug }}" class="source-card{% if source_state == 'draft' %} is-draft{% endif %}"{% if source.theme_slug %} data-tags="{{ source.theme_slug }}"{% endif %}>
+      {% if source_state == "published" %}
       <a class="source-link" href="{{ site.baseurl }}{{ source.url }}">
         <span class="source-cover">
           <img src="{{ site.baseurl }}{{ source.cover_image }}" alt="{{ source.cover_alt | default: source.title }}" loading="lazy" decoding="async" />
@@ -30,7 +35,27 @@
           </span>
         </span>
       </a>
+      {% else %}
+      <div class="source-link is-draft" aria-disabled="true">
+        <span class="source-cover">
+          <img src="{{ site.baseurl }}{{ source.cover_image }}" alt="{{ source.cover_alt | default: source.title }}" loading="lazy" decoding="async" />
+        </span>
+        <span class="source-copy">
+          <span class="source-title">{{ source.title }}</span>
+          <span class="source-meta">
+            {% if source.creator and source.creator != "" %}
+            {{ source.creator }}
+            {% elsif source.publication and source.publication != "" %}
+            {{ source.publication }}
+            {% elsif source.domain and source.domain != "" %}
+            {{ source.domain }}
+            {% endif %}
+          </span>
+        </span>
+      </div>
+      {% endif %}
     </article>
     {% endfor %}
   </div>
 </section>
+{% endif %}

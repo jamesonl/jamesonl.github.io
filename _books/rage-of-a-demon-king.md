@@ -7,7 +7,7 @@ order: 408
 amazon_url: "https://www.amazon.com/s?k=9780008120856"
 cover_image: "/images/book-covers/rage-of-a-demon-king.png"
 impact_blurb: ""
-key_idea: ""
+key_idea: "sdfsdf"
 lasting_impact: ""
 recommended_for: ""
 reflection_status: "Draft"
@@ -30,4 +30,3 @@ reflection_status: "Draft"
 ## Who I would hand it to
 
 [Write about the kind of reader or moment this book is right for.]
-

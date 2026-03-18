@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book Editor</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <p class="eyebrow">Internal</p>
+          <h1>Book Editor</h1>
+          <p class="sidebar-copy">Edit the collected book markdown without exposing any of this UI in the production site.</p>
+        </div>
+
+        <div class="sidebar-controls">
+          <label class="field">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="Find a title or author" />
+          </label>
+
+          <label class="field">
+            <span>Category</span>
+            <select id="categoryFilter">
+              <option value="">All categories</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Status</span>
+            <select id="statusFilter">
+              <option value="">All statuses</option>
+              <option value="Draft">Draft</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Published">Published</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="bookList" class="book-list" aria-label="Collected books"></div>
+      </aside>
+
+      <main class="editor-panel">
+        <div id="emptyState" class="empty-state">
+          <p class="eyebrow">Ready</p>
+          <h2>Select a book</h2>
+          <p>Choose a title from the left rail to fill in its reflection fields.</p>
+        </div>
+
+        <form id="editorForm" class="editor-form" hidden>
+          <header class="editor-header">
+            <div>
+              <p class="eyebrow">Book Details</p>
+              <h2 id="editorTitle">Untitled</h2>
+              <p id="editorMeta" class="editor-meta"></p>
+            </div>
+
+            <div class="editor-actions">
+              <button id="discardButton" class="secondary" type="button">Discard</button>
+              <button id="saveButton" type="submit">Save Book</button>
+            </div>
+          </header>
+
+          <div class="editor-grid">
+            <section class="cover-panel">
+              <img id="coverPreview" alt="" />
+              <div class="cover-caption">
+                <p id="filePath" class="file-path"></p>
+                <p id="coverPath" class="file-path"></p>
+                <a id="amazonLink" class="meta-link" href="#" target="_blank" rel="noopener" hidden>Open Amazon listing</a>
+                <p id="saveState" class="save-state">No changes yet.</p>
+              </div>
+            </section>
+
+            <section class="fields-panel">
+              <div class="field-grid">
+                <label class="field">
+                  <span>Reflection Status</span>
+                  <select name="reflection_status">
+                    <option value="Draft">Draft</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Published">Published</option>
+                  </select>
+                </label>
+
+                <label class="field field-span">
+                  <span>Impact Blurb</span>
+                  <textarea name="impact_blurb" rows="2"></textarea>
+                  <small class="field-help">Short line used as the detail page tagline.</small>
+                </label>
+
+                <label class="field field-span">
+                  <span>Key Idea</span>
+                  <textarea name="key_idea" rows="3"></textarea>
+                </label>
+
+                <label class="field field-span">
+                  <span>Lasting Impact</span>
+                  <textarea name="lasting_impact" rows="3"></textarea>
+                </label>
+
+                <label class="field field-span">
+                  <span>Recommended For</span>
+                  <textarea name="recommended_for" rows="2"></textarea>
+                </label>
+
+                <label class="field field-span">
+                  <span>Why This Book Stayed With Me</span>
+                  <textarea name="why_this_book_stayed_with_me" rows="7"></textarea>
+                </label>
+
+                <label class="field field-span">
+                  <span>What I Kept Returning To</span>
+                  <textarea name="what_i_kept_returning_to" rows="5"></textarea>
+                  <small class="field-help">One idea per line. The editor turns this into the bullet list on the page.</small>
+                </label>
+
+                <label class="field field-span">
+                  <span>Where It Still Shows Up</span>
+                  <textarea name="where_it_still_shows_up" rows="6"></textarea>
+                </label>
+
+                <label class="field field-span">
+                  <span>Who I Would Hand It To</span>
+                  <textarea name="who_i_would_hand_it_to" rows="5"></textarea>
+                </label>
+              </div>
+            </section>
+          </div>
+        </form>
+      </main>
+    </div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

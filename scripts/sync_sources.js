@@ -1,5 +1,7 @@
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
+const { execFileSync } = require("child_process");
 
 const ROOT = process.cwd();
 const INPUT_PATH = process.argv[2] || path.join(ROOT, "_data", "curated-sources.json");
@@ -8,6 +10,7 @@ const COVERS_DIR = path.join(ROOT, "images", "source-covers");
 const BOOKS_DIR = path.join(ROOT, "_books");
 const PORTRAIT_METADATA_PATH = path.join(ROOT, "_data", "source-portrait-metadata.json");
 const ICON_METADATA_PATH = path.join(ROOT, "_data", "source-icon-metadata.json");
+const GENERATED_PAPER_CATEGORIES = new Set(["AI & Language", "Forecasting & Operations", "Systems & Sensemaking"]);
 
 function slugify(value) {
   return String(value || "")
@@ -69,7 +72,10 @@ function wrapLines(text, maxChars, maxLines) {
 }
 
 function monogramFor(entry) {
-  const seed = entry.creator || entry.publication || entry.domain || entry.title || "Source";
+  const seed =
+    entry.monogram_source === "title"
+      ? entry.title || "Source"
+      : entry.creator || entry.publication || entry.domain || entry.title || "Source";
   const pieces = seed
     .replace(/^www\./i, "")
     .split(/[\s.\-/]+/)
@@ -92,7 +98,7 @@ function buildIconDataUri(iconPath, mime) {
   return `data:${mime};base64,${buffer.toString("base64")}`;
 }
 
-function createSourceCover(entry, destination, icon = null) {
+function renderSourceCoverSvg(entry, icon = null) {
   const seed = hashValue(entry.slug || entry.title);
   const shiftA = 36 + (seed % 90);
   const shiftB = 72 + (seed % 120);
@@ -119,7 +125,7 @@ function createSourceCover(entry, destination, icon = null) {
   </g>
   <rect x="76" y="92" width="128" height="128" rx="22" fill="#07080A" stroke="#2C3138" stroke-width="2"/>
   ${iconMarkup}
-  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">${label}</text>
+  <text x="76" y="278" fill="#8E98A5" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="2.6">${escapeXml(label)}</text>
   ${titleLines
     .map(
       (line, index) =>
@@ -141,7 +147,7 @@ function createSourceCover(entry, destination, icon = null) {
 </svg>
 `;
 
-  fs.writeFileSync(destination, svg);
+  return svg;
 }
 
 function escapeXml(value) {
@@ -150,6 +156,39 @@ function escapeXml(value) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+}
+
+function writeSourceCover(entry, destinationBase, icon = null) {
+  const svg = renderSourceCoverSvg(entry, icon);
+  const pngDestination = `${destinationBase}.png`;
+  const svgDestination = `${destinationBase}.svg`;
+  const canRasterize = process.platform === "darwin" && fs.existsSync("/usr/bin/qlmanage");
+
+  if (!canRasterize) {
+    fs.writeFileSync(svgDestination, svg);
+    return { image: `/images/source-covers/${path.basename(svgDestination)}`, format: "svg" };
+  }
+
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "source-cover-"));
+  const tempSvgPath = path.join(tempDir, `${path.basename(destinationBase)}.svg`);
+  const quickLookOutput = path.join(tempDir, "thumbs");
+  const quickLookPngPath = path.join(quickLookOutput, `${path.basename(tempSvgPath)}.png`);
+
+  try {
+    fs.mkdirSync(quickLookOutput, { recursive: true });
+    fs.writeFileSync(tempSvgPath, svg);
+    execFileSync("/usr/bin/qlmanage", ["-t", "-s", "1200", "-o", quickLookOutput, tempSvgPath], { stdio: "ignore" });
+    fs.renameSync(quickLookPngPath, pngDestination);
+    if (fs.existsSync(svgDestination)) {
+      fs.rmSync(svgDestination, { force: true });
+    }
+    return { image: `/images/source-covers/${path.basename(pngDestination)}`, format: "png" };
+  } catch (error) {
+    fs.writeFileSync(svgDestination, svg);
+    return { image: `/images/source-covers/${path.basename(svgDestination)}`, format: "svg" };
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
 }
 
 function loadExistingBookCovers() {
@@ -254,18 +293,34 @@ ${body}
 `;
 }
 
+function shouldForceGeneratedPaperCover(entry) {
+  return entry.source_type === "Paper" && GENERATED_PAPER_CATEGORIES.has(entry.category || "");
+}
+
 function syncSource(entry, bookCoverMap, portraitMetadata, iconMetadata) {
   const slug = entry.slug || slugify(entry.title);
   const markdownPath = path.join(SOURCES_DIR, `${slug}.md`);
-  const coverOutput = path.join(COVERS_DIR, `${slug}.svg`);
+  const coverOutputBase = path.join(COVERS_DIR, slug);
   entry.domain = entry.domain || domainFromUrl(entry.source_url);
   entry.theme_slug = entry.theme_slug || categorySlug(entry.category);
   let cover = null;
   const portrait = portraitMetadata[slug];
   const bookCover = bookCoverMap.get(normalize(entry.title)) || "";
   const iconEntry = entry.domain ? iconMetadata[entry.domain] : null;
+  const forceGeneratedPaperCover = shouldForceGeneratedPaperCover(entry);
 
-  if (bookCover) {
+  if (forceGeneratedPaperCover) {
+    const generatedCover = writeSourceCover({ ...entry, slug, monogram_source: "title" }, coverOutputBase, null);
+    cover = {
+      image: generatedCover.image,
+      alt: `Cover treatment for ${entry.title}`,
+      kind: "generated",
+      subject: "",
+      credit: "",
+      creditUrl: "",
+      license: "",
+    };
+  } else if (bookCover) {
     cover = {
       image: bookCover,
       alt: entry.cover_alt || `Cover for ${entry.title}`,
@@ -298,9 +353,9 @@ function syncSource(entry, bookCoverMap, portraitMetadata, iconMetadata) {
             source: iconEntry.source || "",
           }
         : null;
-    createSourceCover({ ...entry, slug }, coverOutput, icon);
+    const generatedCover = writeSourceCover({ ...entry, slug }, coverOutputBase, icon);
     cover = {
-      image: `/images/source-covers/${slug}.svg`,
+      image: generatedCover.image,
       alt: entry.cover_alt || (icon ? `Logo treatment for ${entry.title}` : `Cover treatment for ${entry.title}`),
       kind: icon ? "site_logo" : "generated",
       subject: "",

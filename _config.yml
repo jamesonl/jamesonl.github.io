@@ -146,3 +146,4 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - internal-tools

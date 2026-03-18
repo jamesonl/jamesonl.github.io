@@ -65,18 +65,31 @@ def choose_credit(artist: str, credit: str) -> str:
     return "Wikimedia Commons"
 
 
+def existing_portrait_ok(entry: dict) -> bool:
+    cover_image = (entry or {}).get("cover_image", "")
+    if not cover_image.startswith("/images/source-portraits/"):
+        return False
+    local_path = ROOT / cover_image.removeprefix("/")
+    return local_path.exists()
+
+
 def main() -> int:
     if not REQUESTS_PATH.exists():
         raise SystemExit(f"Missing portrait request manifest: {REQUESTS_PATH}")
 
     requests = json.loads(REQUESTS_PATH.read_text())
     PORTRAITS_DIR.mkdir(parents=True, exist_ok=True)
+    existing_output = json.loads(OUTPUT_PATH.read_text()) if OUTPUT_PATH.exists() else {}
     output = {}
 
     for item in requests:
         slug = item["slug"]
         wiki_title = item["wiki_title"]
         subject = item["subject"]
+
+        if existing_portrait_ok(existing_output.get(slug)):
+            output[slug] = existing_output[slug]
+            continue
 
         summary = fetch_json(
             f"https://en.wikipedia.org/api/rest_v1/page/summary/{quote(wiki_title, safe='')}"
