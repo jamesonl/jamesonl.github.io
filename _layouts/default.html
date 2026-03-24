@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.name }} — {{ site.description }}</title>
     {% include meta.html %}
+    <script>
+      (function () {
+        try {
+          var storedTheme = localStorage.getItem("site-theme");
+          var theme = storedTheme || "light";
+          document.documentElement.dataset.theme = theme;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/images/favicon.svg" />
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
@@ -24,6 +35,7 @@
             <p class="site-tagline">{{ site.description }}</p>
           </div>
           <div class="site-header-actions">
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode">☾</button>
             <nav class="site-nav" aria-label="Primary">
               <a{% if page.url == "/" %} class="is-active"{% endif %} href="{{ site.baseurl }}/">Home</a>
               <a{% if page.url == "/work/" or page.collection == "case_studies" %} class="is-active"{% endif %} href="{{ site.baseurl }}/work">Work</a>
@@ -43,7 +55,6 @@
         <div class="site-inner site-footer-shell">
           <div class="footer-copy">
             <p class="footer-note">Reflections on emergent systems, intelligent design, predictive systems, and the forms ideas take while becoming useful.</p>
-            <a class="link-button secondary" href="{{ site.baseurl }}/contact">Contact</a>
           </div>
           <ul class="site-links" aria-label="Footer links">
             <li><a href="{{ site.socials.x }}" rel="noopener">X</a></li>

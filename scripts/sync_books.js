@@ -8,23 +8,11 @@ const BOOKS_DIR = path.join(ROOT, "_books");
 const COVERS_DIR = path.join(ROOT, "images", "book-covers");
 
 const BOOKS = [
-  { title: "Prelude to Foundation", author: "Isaac Asimov", category: "Science Fiction", series: "Foundation series", order: 101 },
-  { title: "Forward the Foundation", author: "Isaac Asimov", category: "Science Fiction", series: "Foundation series", order: 102 },
   { title: "Foundation", author: "Isaac Asimov", category: "Science Fiction", series: "Foundation series", order: 103 },
   { title: "Foundation and Empire", author: "Isaac Asimov", category: "Science Fiction", series: "Foundation series", order: 104 },
   { title: "Second Foundation", author: "Isaac Asimov", category: "Science Fiction", series: "Foundation series", order: 105 },
   { title: "Foundation's Edge", author: "Isaac Asimov", category: "Science Fiction", series: "Foundation series", order: 106 },
   { title: "Foundation and Earth", author: "Isaac Asimov", category: "Science Fiction", series: "Foundation series", order: 107 },
-  { title: "Foundation's Fear", author: "Gregory Benford", category: "Science Fiction", series: "Second Foundation Trilogy", order: 108 },
-  { title: "Foundation and Chaos", author: "Greg Bear", category: "Science Fiction", series: "Second Foundation Trilogy", order: 109 },
-  {
-    title: "Foundation's Triumph",
-    author: "David Brin",
-    category: "Science Fiction",
-    series: "Second Foundation Trilogy",
-    order: 110,
-    cover_url: "https://covers.openlibrary.org/b/id/44242-L.jpg",
-  },
   { title: "The Naked Sun", author: "Isaac Asimov", category: "Science Fiction", series: "Robot series", order: 111 },
   { title: "The Robots of Dawn", author: "Isaac Asimov", category: "Science Fiction", series: "Robot series", order: 112 },
   {
@@ -58,7 +46,17 @@ const BOOKS = [
   { title: "Zero to One", author: "Peter Thiel", category: "Technical", order: 202 },
   { title: "Seeing Like a State", author: "James C. Scott", category: "Technical", order: 203 },
   { title: "On Writing", author: "Stephen King", category: "Technical", order: 204 },
+  {
+    title: "Maintenance: Of Everything, Part One",
+    author: "Stewart Brand",
+    category: "Nonfiction",
+    order: 300,
+    currently_reading: true,
+  },
   { title: "The Dream Machine", author: "M. Mitchell Waldrop", category: "Nonfiction", order: 301 },
+  { title: "Tools for Thought", author: "Howard Rheingold", category: "Nonfiction", order: 302 },
+  { title: "Redwall", author: "Brian Jacques", category: "Fantasy", series: "Redwall Chronicles", order: 416 },
+  { title: "Mossflower", author: "Brian Jacques", category: "Fantasy", series: "Redwall Chronicles", order: 417 },
   {
     title: "Magician",
     author: "Raymond E. Feist",
@@ -363,7 +361,7 @@ function buildMarkdown(book, coverImage, amazonUrl) {
 title: "${yamlEscape(book.title)}"
 author: "${yamlEscape(book.author)}"
 category: "${yamlEscape(book.category)}"
-${book.series ? `series: "${yamlEscape(book.series)}"\n` : ""}order: ${book.order}
+${book.series ? `series: "${yamlEscape(book.series)}"\n` : ""}${book.currently_reading ? "currently_reading: true\n" : ""}order: ${book.order}
 amazon_url: "${yamlEscape(amazonUrl)}"
 cover_image: "${yamlEscape(coverImage)}"
 impact_blurb: ""

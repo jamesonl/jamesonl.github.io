@@ -1,36 +1,103 @@
-- company: Independent consulting and research collaborations
-  role: Strategy, forecasting, and AI systems partner
-  period: 2023 to present
-  scope: Help teams make ambiguous work more legible with clearer signals, stronger planning habits, and human-centered AI workflows.
+- company: OpenAI
+  logo: /images/company-logos/openai.svg
+  role: Go to market
+  period: Apr 2025 to present
+  location: New York City Metropolitan Area
+  scope: OpenAI is focused on bringing AGI to the world.
+  signals:
+    - icon: spark
+      label: Frontier LLMs
+    - icon: workflow
+      label: Agentic systems
+    - icon: cube
+      label: Generative AI
+
+- company: Moveworks
+  logo: /images/company-logos/moveworks.svg
+  role: Principal Solution Architect
+  period: Mar 2022 to Mar 2025
+  location: New York, New York
+  scope: This role expanded me from applied machine learning into enterprise AI architecture, where technical credibility, systems thinking, and executive communication had to operate together.
+  signals:
+    - icon: network
+      label: Enterprise systems
+    - icon: layers
+      label: Platform architecture
+    - icon: compass
+      label: Solution strategy
   bullets:
-    - Translate broad goals into operating rhythms, decision checkpoints, and simple dashboards.
-    - Design AI-assisted workflows that keep a human review step in the loop.
-    - Turn reading, research, and synthesis into reusable internal tools instead of one-off documents.
-  themes:
-    - AI systems
-    - Forecasting
-    - Decision design
-- company: Product and operations teams
-  role: Product strategy and operations lead
-  period: 2020 to 2023
-  scope: Worked across planning, delivery, enablement, and cross-functional execution where product, operations, and customer learning overlapped.
+    - Worked across identity, knowledge, collaboration, support, and workflow platforms, deepening fluency in complex enterprise environments.
+    - Connected architecture detail to business value so buyers, operators, and technical teams could align on adoption.
+    - Built the bridge from modeling-centric work toward broader platform thinking, which now informs how I evaluate AI in the market.
+
+- company: PredictHQ
+  logo: /images/company-logos/predicthq.svg
+  role: Lead ML Solutions Engineer
+  period: Jun 2020 to Mar 2022
+  location: San Francisco, California
+  scope: PredictHQ was where I learned to pair rigorous forecasting work with customer-facing problem solving, turning models into something explainable, deployable, and commercially meaningful.
+  signals:
+    - icon: chart
+      label: Forecasting
+    - icon: database
+      label: Signal engineering
+    - icon: message
+      label: Explainability
   bullets:
-    - Built lightweight planning systems so teams could see risks and ownership earlier.
-    - Supported launch readiness, metrics conversations, and the operational side of product decisions.
-    - Helped teams shift from reactive updates to shared context and repeatable rituals.
-  themes:
-    - Product strategy
-    - Operations
-    - Analytics
-- company: Customer-facing and implementation roles
-  role: Implementation, support, and user education
-  period: 2017 to 2020
-  scope: Learned how people actually adopt tools, where systems break in practice, and how documentation changes outcomes.
+    - Built end-to-end forecasting workflows spanning event data, feature generation, model evaluation, and performance improvement.
+    - Worked across APIs, data products, and technical enablement, widening my exposure beyond modeling alone.
+    - Established the habit of tying analytical sophistication to adoption, a through-line that carried into later architecture and GTM roles.
+
+- company: "A^3 by Airbus"
+  logo: /images/company-logos/airbus.svg
+  role: Product Lead for ML Forecasting
+  period: Apr 2019 to Jun 2020
+  location: Sunnyvale, California
+  scope: "Leading product for machine learning forecasting in an operational setting pushed me to think beyond model quality and toward full decision systems: workflows, incentives, and planning realities."
+  signals:
+    - icon: cube
+      label: ML product
+    - icon: chart
+      label: Planning systems
+    - icon: compass
+      label: Operational fit
   bullets:
-    - Turned recurring support questions into guides, templates, and onboarding material.
-    - Bridged the gap between what builders shipped and what users needed to succeed.
-    - Developed a strong bias for clarity, teachability, and systems that can survive handoffs.
-  themes:
-    - Enablement
-    - Documentation
-    - Customer insight
+    - Helped turn research-grade forecasting into a product that could support real planning decisions under uncertainty.
+    - Worked across product, applied ML, experimentation, and supply chain context, broadening the range of technical and organizational platforms I could navigate.
+    - "Added a systems lens that made later roles stronger: the best model is the one people can trust, operate, and learn from."
+
+- company: Medallia
+  logo: /images/company-logos/medallia.svg
+  role: "Insights & Data Science"
+  period: Jul 2017 to Apr 2019
+  location: San Francisco Bay Area
+  scope: Medallia grounded me in how organizations learn from customer and operational signals, and how analysis only matters when it changes the decisions people make.
+  signals:
+    - icon: message
+      label: Voice of customer
+    - icon: chart
+      label: Insight design
+    - icon: network
+      label: Stakeholder context
+  bullets:
+    - Translated qualitative and quantitative experience data into narratives, metrics, and decision support for teams across the business.
+    - Strengthened my ability to connect analytics, storytelling, and organizational context rather than treating data science as an isolated function.
+    - Set up the move into forecasting and product by sharpening judgment around evidence, usability, and cross-functional trust.
+
+- company: Goldman Sachs
+  logo: /images/company-logos/goldman-sachs.svg
+  role: Global Investment Research
+  period: May 2015 to Jun 2017
+  location: Salt Lake City, Utah
+  scope: "This was the technical and analytical foundation: rigorous research support, data infrastructure, and the discipline of producing signals that other people could depend on."
+  signals:
+    - icon: database
+      label: Data foundations
+    - icon: layers
+      label: Analytics systems
+    - icon: chart
+      label: Research modeling
+  bullets:
+    - Built fluency in data warehousing, infrastructure, business intelligence, and predictive analysis within a high-accountability research environment.
+    - Learned how to structure messy information, maintain analytical rigor, and support decision-makers with trustworthy outputs.
+    - "Created the baseline that every later role built on: strong data habits, clean thinking, and respect for the systems behind the story."

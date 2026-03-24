@@ -1,0 +1,86 @@
+- title: Use intelligent event data to drive down your forecasting error rate by 10-20% in weeks
+  company: PredictHQ
+  period: 2020
+  kind: Article
+  summary: A public piece on using intelligent event data to improve forecasting performance in a practical, measurable way.
+  tags:
+    - Forecasting
+    - Demand signals
+    - Event intelligence
+  href: https://www.predicthq.com/blog/reducing-forecast-error-rate
+  link_label: Read article
+  logo: /images/company-logos/predicthq.svg
+  external: true
+
+- title: "The Potential of Machine Learning Models: Forecasting Amid Unprecedented Uncertainty"
+  company: "A^3 by Airbus"
+  period: 2020
+  kind: Team feature
+  summary: A public example of the forecasting and product work I was involved in while helping machine learning planning systems operate under real uncertainty.
+  tags:
+    - ML forecasting
+    - Planning systems
+    - Aerospace operations
+  href: https://acubed.airbus.com/blog/adam/the-potential-of-machine-learning-models-forecasting-amid-unprecedented-uncertainty/
+  link_label: Read feature
+  logo: /images/company-logos/airbus.svg
+  external: true
+
+- title: "Beyond AI Prototypes: Mastering Agentic AI Deployment Through Reasoning and Function Calling"
+  company: Moveworks
+  period: 2025
+  kind: Blog
+  summary: A public piece on moving from AI experimentation toward production deployment with stronger reasoning and function-calling patterns.
+  tags:
+    - Agentic AI
+    - Enterprise systems
+    - Function calling
+  href: https://www.moveworks.com/us/en/resources/blog/master-agentic-ai-deployment-with-function-calling
+  link_label: Read post
+  logo: /images/company-logos/moveworks.svg
+  external: true
+
+- title: Paid Time Off (PTO) Optimization Python Package
+  company: Independent project
+  period: Jun 2015 to Jul 2015
+  kind: Project
+  summary: My first linear programming project, built to help professionals optimize vacation dates using preference scoring around consecutive days off and return-to-work constraints.
+  tags:
+    - Optimization
+    - Python
+    - Linear programming
+  href: https://www.linkedin.com/in/jamesonlee1/details/projects/
+  link_label: View on LinkedIn
+  logo: /images/company-logos/independent.svg
+  external: true
+  fallback_note: Routed through LinkedIn because the public project summary lives there.
+
+- title: USC Department of Public Safety Consulting Project
+  company: University of Southern California
+  period: Jan 2015 to Jun 2015
+  kind: Project
+  summary: Analyzed historical campus crime, surfaced geo-specific patterns, and advised on beat paths and reporting structures to help optimize resource allocation.
+  tags:
+    - Geospatial analysis
+    - Resource allocation
+    - Public safety
+  href: https://www.linkedin.com/in/jamesonlee1/details/projects/
+  link_label: View on LinkedIn
+  logo: /images/company-logos/usc.svg
+  external: true
+  fallback_note: Routed through LinkedIn because the public project summary lives there.
+
+- title: Bloomberg TimeSeriesComp Python Package
+  company: Bloomberg
+  period: Dec 2014 to Jan 2015
+  kind: Project
+  summary: Built a Python package for growth-of-$1 analysis, then applied it dynamically across time series so strategies and assets could be benchmarked and indexed more easily.
+  tags:
+    - Time series
+    - Python
+    - Quant tooling
+  href: https://www.linkedin.com/in/jamesonlee1/details/projects/
+  link_label: View on LinkedIn
+  logo: /images/company-logos/bloomberg.svg
+  external: true
+  fallback_note: Routed through LinkedIn because the public project summary lives there.

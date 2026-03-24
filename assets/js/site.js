@@ -1,4 +1,5 @@
 (function () {
+  const root = document.documentElement;
   const field = document.querySelector("[data-topo-field]");
   const svg = field ? field.querySelector(".topo-svg") : null;
   if (!field || !svg) return;
@@ -7,29 +8,32 @@
   const VIEW_HEIGHT = 960;
   const GRID_COLUMNS = 78;
   const GRID_ROWS = 52;
-  const FRAME_INTERVAL = 1000 / 15;
-  const COLOR_MIN = 46;
-  const COLOR_MAX = 196;
+  const FRAME_INTERVAL = 1000 / 30;
   const EDGE_PADDING = 56;
   const SOURCE_PADDING = 68;
   const SOURCE_GAP = 110;
-  const TRAIL_LIFETIME = 6200;
+  const TRAIL_LIFETIME = 2400;
   const TRAIL_MIN_DISTANCE = 9;
   const TRAIL_MAX_POINTS = 280;
   const TRAIL_WINDOWS = [
-    { minAge: 0, maxAge: 1400, alpha: 0.34, width: 1.25 },
-    { minAge: 1400, maxAge: 2800, alpha: 0.24, width: 1.1 },
-    { minAge: 2800, maxAge: 4300, alpha: 0.15, width: 0.95 },
-    { minAge: 4300, maxAge: TRAIL_LIFETIME, alpha: 0.08, width: 0.8 },
+    { minAge: 0, maxAge: 760, alpha: 0.17, width: 0.95 },
+    { minAge: 760, maxAge: 1580, alpha: 0.1, width: 0.82 },
+    { minAge: 1580, maxAge: TRAIL_LIFETIME, alpha: 0.05, width: 0.72 },
   ];
-  const CLICK_MARK_LIFETIME = 6200;
+  const MOVE_MARK_LIFETIME = 5000;
+  const MOVE_MARK_MIN_DISTANCE = 24;
+  const MOVE_MARK_MAX = 96;
+  const MOVE_MARK_SIZE = 5.9;
+  const CLICK_MARK_LIFETIME = 5000;
   const CLICK_MARK_MAX = 36;
-  const CLICK_MARK_SIZE = 7.5;
+  const CLICK_MARK_SIZE = 7.1;
+  const CURSOR_MARK_SIZE = 6.8;
   const THRESHOLDS = [0.18, 0.26, 0.34, 0.42, 0.5, 0.58, 0.66, 0.74, 0.82];
   const sources = [];
   const contourPaths = [];
   const trailPoints = [];
   const trailPaths = [];
+  const moveMarks = [];
   const clickMarks = [];
   const pointer = {
     x: VIEW_WIDTH * 0.5,
@@ -41,11 +45,24 @@
   let safeRects = [];
   let contourLayer = null;
   let trailLayer = null;
+  let echoLayer = null;
+  let cursorLayer = null;
   let clickLayer = null;
+  let cursorMarkPath = null;
   let rafId = 0;
   let lastFrame = 0;
   let lastTimestamp = 0;
   let scrollBias = 0;
+
+  function themeNumber(name, fallback) {
+    const value = Number.parseFloat(getComputedStyle(root).getPropertyValue(name));
+    return Number.isFinite(value) ? value : fallback;
+  }
+
+  function themeString(name, fallback) {
+    const value = getComputedStyle(root).getPropertyValue(name).trim();
+    return value || fallback;
+  }
 
   function random(min, max) {
     return min + Math.random() * (max - min);
@@ -86,6 +103,18 @@
 
   function copyPoint(point) {
     return { x: point.x, y: point.y };
+  }
+
+  function buildCrossPath(x, y, size) {
+    const x0 = (x - size).toFixed(2);
+    const y0 = (y - size).toFixed(2);
+    const x1 = (x + size).toFixed(2);
+    const y1 = (y + size).toFixed(2);
+    const x2 = (x - size).toFixed(2);
+    const y2 = (y + size).toFixed(2);
+    const x3 = (x + size).toFixed(2);
+    const y3 = (y - size).toFixed(2);
+    return `M ${x0} ${y0} L ${x1} ${y1} M ${x2} ${y2} L ${x3} ${y3}`;
   }
 
   function hash3(x, y, z) {
@@ -208,25 +237,25 @@
 
   function placeSource(index) {
     const anchors = [
-      { x: 0.14, y: 0.2, strength: 0.78 },
-      { x: 0.84, y: 0.18, strength: 0.72 },
-      { x: 0.18, y: 0.82, strength: 0.7 },
-      { x: 0.85, y: 0.78, strength: 0.76 },
-      { x: 0.54, y: 0.1, strength: -0.34 },
+      { x: 0.22, y: 0.24, strength: 0.68 },
+      { x: 0.78, y: 0.22, strength: 0.64 },
+      { x: 0.26, y: 0.76, strength: 0.62 },
+      { x: 0.74, y: 0.76, strength: 0.66 },
+      { x: 0.52, y: 0.18, strength: -0.28 },
     ];
     const anchor = anchors[index % anchors.length];
     return {
-      x: VIEW_WIDTH * anchor.x + random(-48, 48),
-      y: VIEW_HEIGHT * anchor.y + random(-36, 36),
-      vx: random(-0.03, 0.03),
-      vy: random(-0.03, 0.03),
-      radiusX: random(170, 250),
-      radiusY: random(105, 190),
+      x: VIEW_WIDTH * anchor.x + random(-32, 32),
+      y: VIEW_HEIGHT * anchor.y + random(-26, 26),
+      vx: random(-0.012, 0.012),
+      vy: random(-0.012, 0.012),
+      radiusX: random(220, 320),
+      radiusY: random(150, 240),
       rotation: random(0, Math.PI),
-      rotationVelocity: random(-0.000025, 0.000025),
+      rotationVelocity: random(-0.00001, 0.00001),
       phase: random(0, Math.PI * 2),
-      phaseVelocity: random(0.00045, 0.00095),
-      strength: anchor.strength + random(-0.06, 0.06),
+      phaseVelocity: random(0.00018, 0.00042),
+      strength: anchor.strength + random(-0.04, 0.04),
     };
   }
 
@@ -310,14 +339,14 @@
 
   function updateSources(delta, timeSeconds) {
     sources.forEach((source, index) => {
-      source.phase += source.phaseVelocity * delta * (1 + scrollBias * 0.08);
+      source.phase += source.phaseVelocity * delta * (1 + scrollBias * 0.03);
       source.rotation += source.rotationVelocity * delta;
       source.x += source.vx * delta;
       source.y += source.vy * delta;
-      source.vx *= 0.9974;
-      source.vy *= 0.9974;
-      source.vx += Math.sin(timeSeconds * 0.15 + index * 1.1) * 0.00018 * delta;
-      source.vy += Math.cos(timeSeconds * 0.14 + index * 1.7) * 0.00018 * delta;
+      source.vx *= 0.9984;
+      source.vy *= 0.9984;
+      source.vx += Math.sin(timeSeconds * 0.08 + index * 1.1) * 0.00008 * delta;
+      source.vy += Math.cos(timeSeconds * 0.075 + index * 1.7) * 0.00008 * delta;
     });
 
     resolveSourceBoundaries();
@@ -341,23 +370,23 @@
   function fieldValue(nx, ny, timeSeconds) {
     const x = nx * VIEW_WIDTH;
     const y = ny * VIEW_HEIGHT;
-    const coarseX = nx * 2.45;
-    const coarseY = ny * 2.1;
-    const warpA = fbm(coarseX + 2.7, coarseY - 1.9, timeSeconds * 0.045);
-    const warpB = fbm(coarseX * 1.14 - 9.1, coarseY * 1.08 + 4.2, timeSeconds * 0.045 + 18.5);
-    const warpedX = coarseX + (warpA - 0.5) * 0.82;
-    const warpedY = coarseY + (warpB - 0.5) * 0.82;
+    const coarseX = nx * 2.22;
+    const coarseY = ny * 1.95;
+    const warpA = fbm(coarseX + 2.7, coarseY - 1.9, timeSeconds * 0.022);
+    const warpB = fbm(coarseX * 1.14 - 9.1, coarseY * 1.08 + 4.2, timeSeconds * 0.022 + 18.5);
+    const warpedX = coarseX + (warpA - 0.5) * 0.54;
+    const warpedY = coarseY + (warpB - 0.5) * 0.54;
     let value = 0;
 
     sources.forEach((source) => {
       value += sourceContribution(source, x, y);
     });
 
-    value += (fbm(warpedX * 1.55 + 4.6, warpedY * 1.55 - 3.2, timeSeconds * 0.055) - 0.5) * 0.18;
-    value += (ridgedFbm(warpedX * 1.85, warpedY * 1.85, timeSeconds * 0.032) - 0.5) * 0.1;
+    value += (fbm(warpedX * 1.45 + 4.6, warpedY * 1.45 - 3.2, timeSeconds * 0.028) - 0.5) * 0.11;
+    value += (ridgedFbm(warpedX * 1.62, warpedY * 1.62, timeSeconds * 0.018) - 0.5) * 0.045;
 
     const centerFalloff = 1 - Math.min(Math.hypot(nx - 0.5, ny - 0.48) / 0.8, 1);
-    value += (0.5 - centerFalloff) * 0.06;
+    value += (0.48 - centerFalloff) * 0.04;
 
     const safe = safeInfluence(x, y);
     if (safe > 0) {
@@ -599,7 +628,25 @@
     }
   }
 
+  function registerMoveMark(x, y, timestamp) {
+    if (!pointer.enabled) return;
+
+    const lastMark = moveMarks[moveMarks.length - 1];
+    if (lastMark && pointDistance(lastMark, { x, y }) < MOVE_MARK_MIN_DISTANCE) {
+      lastMark.time = timestamp;
+      lastMark.x = x;
+      lastMark.y = y;
+      return;
+    }
+
+    moveMarks.push({ x, y, time: timestamp });
+    if (moveMarks.length > MOVE_MARK_MAX) {
+      moveMarks.splice(0, moveMarks.length - MOVE_MARK_MAX);
+    }
+  }
+
   function renderTrail(timestamp) {
+    const trailRgb = themeString("--topo-trail-rgb", "70, 84, 96");
     while (trailPoints.length && timestamp - trailPoints[0].time > TRAIL_LIFETIME) {
       trailPoints.shift();
     }
@@ -619,8 +666,39 @@
       const d = buildPath(smoothLine(points, false), false);
       path.setAttribute("d", d);
       path.setAttribute("stroke-width", window.width.toFixed(2));
-      path.setAttribute("stroke", `rgba(70, 84, 96, ${window.alpha})`);
+      path.setAttribute("stroke", `rgba(${trailRgb}, ${window.alpha})`);
     });
+  }
+
+  function renderMoveMarks(timestamp) {
+    while (moveMarks.length && timestamp - moveMarks[0].time > MOVE_MARK_LIFETIME) {
+      moveMarks.shift();
+    }
+
+    echoLayer.innerHTML = moveMarks
+      .map((mark) => {
+        const age = timestamp - mark.time;
+        const progress = clamp(age / MOVE_MARK_LIFETIME, 0, 1);
+        const opacity = lerp(0.26, 0, smoothstep(progress));
+        const size = lerp(MOVE_MARK_SIZE, MOVE_MARK_SIZE + 1.1, progress * 0.8);
+        return `<path class="topo-echo-mark" d="${buildCrossPath(mark.x, mark.y, size)}" style="opacity:${opacity.toFixed(
+          3
+        )}" />`;
+      })
+      .join("");
+  }
+
+  function renderPointerMark() {
+    if (!cursorMarkPath) return;
+
+    if (!pointer.active || !pointer.enabled) {
+      cursorMarkPath.setAttribute("d", "");
+      cursorMarkPath.style.opacity = "0";
+      return;
+    }
+
+    cursorMarkPath.setAttribute("d", buildCrossPath(pointer.x, pointer.y, CURSOR_MARK_SIZE));
+    cursorMarkPath.style.opacity = "0.28";
   }
 
   function registerClickMark(x, y, timestamp) {
@@ -639,17 +717,9 @@
       .map((mark) => {
         const age = timestamp - mark.time;
         const progress = clamp(age / CLICK_MARK_LIFETIME, 0, 1);
-        const opacity = lerp(0.34, 0, smoothstep(progress));
+        const opacity = lerp(0.3, 0, smoothstep(progress));
         const size = lerp(CLICK_MARK_SIZE, CLICK_MARK_SIZE + 1.2, progress * 0.6);
-        const x0 = (mark.x - size).toFixed(2);
-        const y0 = (mark.y - size).toFixed(2);
-        const x1 = (mark.x + size).toFixed(2);
-        const y1 = (mark.y + size).toFixed(2);
-        const x2 = (mark.x - size).toFixed(2);
-        const y2 = (mark.y + size).toFixed(2);
-        const x3 = (mark.x + size).toFixed(2);
-        const y3 = (mark.y - size).toFixed(2);
-        return `<path class="topo-click-mark" d="M ${x0} ${y0} L ${x1} ${y1} M ${x2} ${y2} L ${x3} ${y3}" style="opacity:${opacity.toFixed(
+        return `<path class="topo-click-mark" d="${buildCrossPath(mark.x, mark.y, size)}" style="opacity:${opacity.toFixed(
           3
         )}" />`;
       })
@@ -707,6 +777,10 @@
   }
 
   function renderContours(timestamp) {
+    const toneMin = themeNumber("--topo-tone-min", 58);
+    const toneMax = themeNumber("--topo-tone-max", 170);
+    const strongAlpha = themeNumber("--topo-line-alpha-strong", 0.24);
+    const softAlpha = themeNumber("--topo-line-alpha-soft", 0.11);
     const timeSeconds = timestamp * 0.001;
     const fieldData = computeField(timeSeconds);
     const cellSpan = Math.max(VIEW_WIDTH / GRID_COLUMNS, VIEW_HEIGHT / GRID_ROWS);
@@ -720,15 +794,15 @@
         })
         .join(" ");
 
-      const shadePhase = 0.5 + 0.5 * Math.sin(timeSeconds * 0.14 + index * 0.33);
-      const tone = Math.round(COLOR_MIN + shadePhase * (COLOR_MAX - COLOR_MIN));
+      const shadePhase = 0.5 + 0.5 * Math.sin(timeSeconds * 0.08 + index * 0.25);
+      const tone = Math.round(toneMin + shadePhase * (toneMax - toneMin));
       const emphasis = index % 3 === 0;
       contourPaths[index].setAttribute("d", d);
       contourPaths[index].setAttribute(
         "stroke",
-        `rgba(${tone}, ${tone}, ${tone}, ${emphasis ? "0.34" : "0.18"})`
+        `rgba(${tone}, ${tone}, ${tone}, ${emphasis ? strongAlpha : softAlpha})`
       );
-      contourPaths[index].setAttribute("stroke-width", emphasis ? "1.85" : "1.15");
+      contourPaths[index].setAttribute("stroke-width", emphasis ? "1.6" : "0.95");
     });
   }
 
@@ -736,7 +810,7 @@
     if (!lastTimestamp) lastTimestamp = timestamp;
     const delta = Math.min(timestamp - lastTimestamp, 40);
     lastTimestamp = timestamp;
-    scrollBias *= 0.94;
+    scrollBias *= 0.82;
 
     if (!reducedMotionQuery.matches) {
       updateSources(delta, timestamp * 0.001);
@@ -748,9 +822,11 @@
     }
 
     renderTrail(timestamp);
+    renderMoveMarks(timestamp);
+    renderPointerMark();
     renderClickMarks(timestamp);
 
-    if (!reducedMotionQuery.matches || trailPoints.length || clickMarks.length) {
+    if (!reducedMotionQuery.matches || trailPoints.length || moveMarks.length || clickMarks.length) {
       rafId = window.requestAnimationFrame(frame);
     } else {
       rafId = 0;
@@ -768,6 +844,7 @@
     trailPaths.length = 0;
     sources.length = 0;
     trailPoints.length = 0;
+    moveMarks.length = 0;
     clickMarks.length = 0;
     rebuildSafeZones();
 
@@ -775,10 +852,16 @@
     contourLayer.setAttribute("class", "topo-contours");
     trailLayer = createSvgElement("g");
     trailLayer.setAttribute("class", "topo-trails");
+    echoLayer = createSvgElement("g");
+    echoLayer.setAttribute("class", "topo-echoes");
+    cursorLayer = createSvgElement("g");
+    cursorLayer.setAttribute("class", "topo-cursor");
     clickLayer = createSvgElement("g");
     clickLayer.setAttribute("class", "topo-clicks");
     svg.appendChild(contourLayer);
     svg.appendChild(trailLayer);
+    svg.appendChild(echoLayer);
+    svg.appendChild(cursorLayer);
     svg.appendChild(clickLayer);
 
     THRESHOLDS.forEach(() => {
@@ -795,12 +878,19 @@
       trailPaths.push(path);
     });
 
+    cursorMarkPath = createSvgElement("path");
+    cursorMarkPath.setAttribute("class", "topo-pointer-mark");
+    cursorMarkPath.setAttribute("stroke-width", "1.15");
+    cursorMarkPath.style.opacity = "0";
+    cursorLayer.appendChild(cursorMarkPath);
+
     for (let index = 0; index < 5; index += 1) {
       sources.push(placeSource(index));
     }
 
     resolveSourceBoundaries();
     renderContours(0);
+    renderPointerMark();
   }
 
   function restart() {
@@ -809,7 +899,7 @@
     lastFrame = 0;
     lastTimestamp = 0;
     resetContours();
-    if (!reducedMotionQuery.matches || trailPoints.length || clickMarks.length) {
+    if (!reducedMotionQuery.matches || trailPoints.length || moveMarks.length || clickMarks.length) {
       rafId = window.requestAnimationFrame(frame);
     }
   }
@@ -818,7 +908,7 @@
   window.addEventListener(
     "scroll",
     () => {
-      scrollBias = clamp(scrollBias + 0.12, -1, 1);
+      scrollBias = clamp(scrollBias + 0.04, -0.4, 0.4);
       rebuildSafeZones();
     },
     { passive: true }
@@ -830,6 +920,7 @@
     pointer.y = viewportToViewY(event.clientY);
     pointer.active = pointer.enabled;
     registerTrailPoint(pointer.x, pointer.y, timestamp);
+    registerMoveMark(pointer.x, pointer.y, timestamp);
 
     if (!rafId) {
       rafId = window.requestAnimationFrame(frame);
@@ -838,6 +929,7 @@
 
   document.addEventListener("pointerleave", () => {
     pointer.active = false;
+    renderPointerMark();
   });
 
   document.addEventListener("pointerdown", (event) => {
@@ -855,6 +947,47 @@
   }
 
   restart();
+})();
+
+(function () {
+  const root = document.documentElement;
+  const button = document.querySelector("[data-theme-toggle]");
+  if (!button) return;
+
+  const storageKey = "site-theme";
+
+  function currentTheme() {
+    return root.dataset.theme === "dark" ? "dark" : "light";
+  }
+
+  function updateButton(theme) {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    button.textContent = theme === "dark" ? "☀" : "☾";
+    button.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
+    button.setAttribute("title", `Switch to ${nextTheme} mode`);
+    button.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+  }
+
+  function applyTheme(theme, persist) {
+    root.dataset.theme = theme;
+    updateButton(theme);
+
+    if (persist) {
+      try {
+        localStorage.setItem(storageKey, theme);
+      } catch (error) {
+        // Ignore storage failures and keep the in-memory theme.
+      }
+    }
+
+    window.dispatchEvent(new Event("resize"));
+  }
+
+  button.addEventListener("click", () => {
+    applyTheme(currentTheme() === "dark" ? "light" : "dark", true);
+  });
+
+  updateButton(currentTheme());
 })();
 
 (function () {

@@ -3,17 +3,15 @@ layout: page
 title: About
 permalink: /about/
 body_class: about-page
-tagline: I work at the intersection of systems thinking, forecasting, AI, and the practical craft of helping people stay oriented.
+tagline: "I have spent my career moving through forecasting, product, enterprise systems, and AI in search of the same thing: systems people can understand, trust, and extend."
 kicker: About Jameson
 ---
 
 <div class="about-intro">
   <div class="about-intro-copy">
-
-I like helping teams think more clearly when the work is messy, cross-functional, or changing faster than the systems around it. My background spans product strategy, operations, customer-facing work, and documentation, which means I usually land in the space between the technical system and the people trying to use it well.
-
-The through-line is simple: make complex work easier to see. Sometimes that means designing a forecasting workflow. Sometimes it means building a lighter planning rhythm, a better knowledge tool, or an AI-assisted process that keeps humans firmly in the loop.
-
+    <p>I began in research and data work, then moved through customer signals, forecasting systems, enterprise workflows, and AI architecture. Across those chapters, the through-line has been an interest in systems that help people stay oriented when the environment is changing faster than the language, process, or interface around them.</p>
+    <p>I am most useful when the terrain is still taking shape. New tools, ambiguous systems, uneven workflows, and emerging categories all produce the same underlying problem: there is signal in the room, but it has not yet become a map that other people can trust.</p>
+    <p>I care about explainability, adoption, and human-centered capability. The systems that matter most to me are the ones that help people see what drives behavior, understand what a tool is doing, and stay effective as new forms of technology change the shape of the work.</p>
   </div>
   {% if site.avatar %}
   <figure class="about-portrait">
@@ -22,26 +20,11 @@ The through-line is simple: make complex work easier to see. Sometimes that mean
   {% endif %}
 </div>
 
-## What I spend time on
-
-- Decision systems that help teams see priorities, risks, and tradeoffs earlier.
-- Forecasting and analytics workflows that support planning without pretending uncertainty does not exist.
-- Human-centered AI tools that summarize, route, and structure information while preserving review and accountability.
-- Tools-for-thought experiments that make notes, reading, and shared context more reusable.
-
-## Why this combination matters to me
-
-I am drawn to systems because they reveal how much of a problem lives outside the headline description. A forecasting model only matters if the surrounding workflow makes it useful. An AI assistant only matters if people can inspect it, trust it, and learn from it. A note-taking or documentation practice only matters if it survives real collaboration.
-
-That is why I keep returning to questions about emergence, coordination, and augmenting human judgment. I am interested in how better tools change behavior, how better habits change what a team can notice, and how small design choices can compound into more thoughtful work.
-
 ## How I like to work
 
-- Start with the real decision, not the tool.
-- Keep systems legible enough that other people can extend them.
-- Prefer small, testable loops over big promises.
-- Treat writing as part of the product, not a cleanup task at the end.
+- Start with the human decision at the center of the system, not the novelty of the tool.
+- Make uncertainty legible instead of hiding it behind false precision.
+- Build artifacts other people can inspect, challenge, and carry forward.
+- Use tight feedback loops so reality can correct the system before the story gets stuck.
 
-Outside of project work, I read widely across forecasting, AI, systems thinking, science fiction, and tools for thought. Writing here is my way of turning that reading into patterns I can reuse and share.
-
-If that sounds useful, [get in touch]({{ site.baseurl }}/contact/).
+Outside of project work, I read widely across forecasting, AI, systems thinking, science fiction, and tools for thought. [Writing]({{ site.baseurl }}/writing/) and the wider [reading archive]({{ site.baseurl }}/readinglist/) are two ways I keep turning that material into something reusable.

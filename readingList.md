@@ -10,6 +10,19 @@ kicker: Reading shelf
 <p class="journal-lede">This page holds the working reading archive: the books and source material that keep reshaping how I think, grouped by the kinds of questions they sharpen. Grey cards stay visible on the shelf until the generic notes have been replaced with a real reflection.</p>
 
 <section class="archive-section">
+  {% assign currently_reading_books = site.books | where: "currently_reading", true %}
+  {% assign science_books = site.books | where: "category", "Science Fiction" %}
+  {% assign technical_books = site.books | where: "category", "Technical" %}
+  {% assign nonfiction_books = site.books | where: "category", "Nonfiction" %}
+  {% assign fantasy_books = site.books | where: "category", "Fantasy" %}
+
+  {% include book-shelf-section.html
+    title="Currently reading"
+    heading="Currently reading"
+    subtitle="The book that is open right now, not just nearby on the shelf."
+    books=currently_reading_books
+  %}
+
   <header class="section-header">
     <div>
       <p class="section-kicker">Shelves</p>
@@ -17,11 +30,6 @@ kicker: Reading shelf
     </div>
     <p class="section-intro">Each title opens into its own reflection page, where the longer notes can grow over time.</p>
   </header>
-
-  {% assign science_books = site.books | where: "category", "Science Fiction" %}
-  {% assign technical_books = site.books | where: "category", "Technical" %}
-  {% assign nonfiction_books = site.books | where: "category", "Nonfiction" %}
-  {% assign fantasy_books = site.books | where: "category", "Fantasy" %}
 
   <div class="book-list">
     {% include book-shelf-section.html
@@ -48,7 +56,7 @@ kicker: Reading shelf
     {% include book-shelf-section.html
       title="Fantasy"
       heading="Worlds, alliances, and long arcs"
-      subtitle="The fantasy shelf leans toward political systems, loyalty, and the consequences of decisions that unfold over years."
+      subtitle="This stretch is mostly Raymond E. Feist: political systems, loyalty, and the consequences of decisions that unfold over years."
       books=fantasy_books
     %}
   </div>
@@ -56,8 +64,7 @@ kicker: Reading shelf
   <aside class="callout shelf-callout">
     <p class="card-kicker">Ongoing shelves</p>
     <ul class="list-dashed compact">
-      <li>Stripe Press books on technical leadership</li>
-      <li>O'Reilly books on AI, machine learning, and software development</li>
+      <li>O'Reilly and Stripe Press inspiration lists</li>
     </ul>
   </aside>
 
@@ -76,6 +83,11 @@ kicker: Reading shelf
   {% assign design_sources = site.sources | where: "category", "Design & Interfaces" %}
   {% assign notebooks_sources = site.sources | where: "category", "Books, Manuals & Notebooks" %}
   {% assign strategy_sources = site.sources | where: "category", "Organizations & Strategy" %}
+  {% assign sales_sources = site.sources | where: "category", "Sales" %}
+  {% assign leadership_sources = site.sources | where: "category", "Leadership" %}
+  {% assign hobbies_sources = site.sources | where: "category", "Hobbies" %}
+  {% assign oreilly_sources = site.sources | where: "category", "O'Reilly" %}
+  {% assign stripe_sources = site.sources | where: "category", "Stripe Press" %}
 
   <div class="book-list inspiration-list">
     {% include source-grid-section.html
@@ -100,10 +112,45 @@ kicker: Reading shelf
     %}
 
     {% include source-grid-section.html
+      title="O'Reilly"
+      heading="O'Reilly titles and inspired technical reading"
+      subtitle="Architecture, machine learning, and software craft references in the wider archive."
+      sources=oreilly_sources
+    %}
+
+    {% include source-grid-section.html
+      title="Sales"
+      heading="Sales and growth craft"
+      subtitle="Books focused on practical sales leadership and execution discipline."
+      sources=sales_sources
+    %}
+
+    {% include source-grid-section.html
+      title="Leadership"
+      heading="Leadership lenses and perspective"
+      subtitle="Frames and models for how people, teams, and institutions make decisions."
+      sources=leadership_sources
+    %}
+
+    {% include source-grid-section.html
+      title="Hobbies"
+      heading="Sailing, food, and card-play detours"
+      subtitle="Reading that keeps you connected to craft, play, and hands-on curiosity."
+      sources=hobbies_sources
+    %}
+
+    {% include source-grid-section.html
       title="Tools"
       heading="Tools for thought, notes, and knowledge systems"
       subtitle="Reading on notebooks, shared context, memory systems, and the craft of keeping useful ideas alive."
       sources=tools_sources
+    %}
+
+    {% include source-grid-section.html
+      title="Stripe Press"
+      heading="Stripe Press writing"
+      subtitle="Stories, essays, and books from Stripe's publishing collection."
+      sources=stripe_sources
     %}
 
     {% include source-grid-section.html

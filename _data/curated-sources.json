@@ -804,14 +804,6 @@
     "first_seen": "2024-09-03"
   },
   {
-    "title": "Network-centric warfare & operations",
-    "source_url": "https://en.wikipedia.org/wiki/Network-centric_warfare",
-    "publication": "Wikipedia",
-    "category": "Systems & Sensemaking",
-    "source_type": "Reference",
-    "first_seen": "2024-09-04"
-  },
-  {
     "title": "Observe, Orient, Decide, Act (OODA) loop",
     "source_url": "https://en.wikipedia.org/wiki/OODA_loop",
     "publication": "Wikipedia",
@@ -974,14 +966,6 @@
     "first_seen": "2025-05-11"
   },
   {
-    "title": "Review of DSPy",
-    "source_url": "https://github.com/stanfordnlp/dspy",
-    "publication": "GitHub",
-    "category": "AI & Language",
-    "source_type": "Manual",
-    "first_seen": "2025-06-19"
-  },
-  {
     "title": "Why language models hallucinate",
     "source_url": "https://cdn.openai.com/pdf/d04913be-3f6f-4d2b-b283-ff432ef4aaa5/why-language-models-hallucinate.pdf",
     "publication": "OpenAI",
@@ -1001,7 +985,7 @@
   },
   {
     "title": "How Forests Think",
-    "source_url": "",
+    "source_url": "https://openlibrary.org/search?q=How%20Forests%20Think",
     "creator": "Eduardo Kohn",
     "publication": "Kindle notes",
     "category": "Books, Manuals & Notebooks",
@@ -1010,10 +994,10 @@
   },
   {
     "title": "Forms of Talk",
-    "source_url": "",
+    "source_url": "https://books.google.com/books?id=7oRqAAAAMAAJ",
     "creator": "Erving Goffman",
     "publication": "Book notes",
-    "category": "Books, Manuals & Notebooks",
+    "category": "Leadership",
     "source_type": "Book",
     "first_seen": "2022-04-24"
   },
@@ -1037,7 +1021,7 @@
   },
   {
     "title": "Building Evolutionary Architectures",
-    "source_url": "",
+    "source_url": "https://books.google.com/books?id=2qL5jwEACAAJ",
     "creator": "Neal Ford, Rebecca Parsons, and Patrick Kua",
     "publication": "Book notes",
     "category": "Books, Manuals & Notebooks",
@@ -1080,10 +1064,10 @@
   },
   {
     "title": "What Computers Still Can't Do",
-    "source_url": "",
-    "creator": "Hubert Dreyfus",
-    "publication": "Book notes",
-    "category": "Books, Manuals & Notebooks",
+    "source_url": "http://books.google.com/books?id=oLtNEAAAQBAJ",
+    "creator": "Hubert L. Dreyfus",
+    "publication": "MIT Press",
+    "category": "Leadership",
     "source_type": "Book",
     "first_seen": "2024-10-24"
   },
@@ -1144,5 +1128,221 @@
     "source_type": "Notebook",
     "first_seen": "",
     "featured": true
+  },
+  {
+    "title": "Fundamentals of Software Architecture",
+    "source_url": "https://books.google.com/books?id=xa7MDwAAQBAJ",
+    "creator": "Mark Richards, Neal Ford",
+    "publication": "O'Reilly",
+    "category": "O'Reilly",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Software Architecture the Hard Way",
+    "source_url": "https://play.google.com/store/books/details?id=N31EEAAAQBAJ&source=gbs_api",
+    "creator": "Neal Ford, Mark Richards, Pramod Sadalage",
+    "publication": "O'Reilly Media, Inc.",
+    "category": "O'Reilly",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Container Security",
+    "source_url": "https://books.google.com/books?id=J4fiDwAAQBAJ",
+    "creator": "Liz Rice",
+    "publication": "O'Reilly Media, Inc.",
+    "category": "O'Reilly",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Machine Learning for High-Risk Applications",
+    "source_url": "https://books.google.com/books?id=qAu6EAAAQBAJ",
+    "creator": "Patrick Hall, James Curtis, Parul Pandey",
+    "publication": "O'Reilly Media, Inc.",
+    "category": "O'Reilly",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Introductory Graph Theory",
+    "source_url": "https://books.google.com/books?id=3J_DAgAAQBAJ",
+    "creator": "Gary Chartrand",
+    "publication": "Courier Corporation",
+    "category": "O'Reilly",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "The Hero with a Thousand Faces",
+    "source_url": "https://books.google.com/books?id=I1uFuXlvFgMC",
+    "creator": "Joseph Campbell",
+    "publication": "New World Library",
+    "category": "O'Reilly",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "How to Live Safely in a Science Fictional Universe",
+    "source_url": "https://play.google.com/store/books/details?id=NxjHBAAAQBAJ&source=gbs_api",
+    "creator": "Charles Yu",
+    "publication": "Vintage",
+    "category": "O'Reilly",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Human Problem Solving",
+    "source_url": "https://books.google.com/books?id=__zuAAAAMAAJ",
+    "creator": "Allen Newell, Herbert A. Simon",
+    "publication": "Prentice Hall",
+    "category": "O'Reilly",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "The Qualified Sales Leader",
+    "source_url": "https://books.google.com/books?id=I5ZlzgEACAAJ",
+    "creator": "John McMahon",
+    "publication": "John Wiley & Sons",
+    "category": "Sales",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Frame Analysis",
+    "source_url": "https://books.google.com/books?id=7oRqAAAAMAAJ",
+    "creator": "Erving Goffman",
+    "publication": "Routledge",
+    "category": "Leadership",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "The Contrarian's Guide to Leadership",
+    "source_url": "https://books.google.com/books?id=t9k6EAAAQBAJ",
+    "creator": "Steven B. Sample",
+    "publication": "John Wiley & Sons",
+    "category": "Leadership",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "The Whole Earth",
+    "source_url": "https://books.google.com/books?id=6KhPEAAAQBAJ",
+    "creator": "John Markoff",
+    "publication": "Penguin",
+    "category": "Leadership",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "The Complete Sailor",
+    "source_url": "http://books.google.com/books?id=wfXXoq_lvQcC",
+    "creator": "David Seidman",
+    "publication": "McGraw-Hill",
+    "category": "Hobbies",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Learning the Art of Sailing",
+    "source_url": "https://openlibrary.org/search?q=learning%20the%20art%20of%20sailing%20david%20seidman",
+    "creator": "David Seidman",
+    "publication": "Book notes",
+    "category": "Hobbies",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Advanced R",
+    "source_url": "https://books.google.com/books?id=G5PNBQAAQBAJ",
+    "creator": "Hadley Wickham",
+    "publication": "CRC Press",
+    "category": "Hobbies",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "The Great Grilled Cheese",
+    "source_url": "https://play.google.com/store/books/details?id=4HJjDwAAQBAJ&source=gbs_api",
+    "creator": "Eric Greenspan",
+    "publication": "Ten Speed Press",
+    "category": "Hobbies",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Hoyle's Encyclopedia of Card Games",
+    "source_url": "https://play.google.com/store/books/details?id=XSCcAAAAQBAJ&source=gbs_api",
+    "creator": "Walter B. Gibson",
+    "publication": "Crown",
+    "category": "Hobbies",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Poor Charlie's Almanack",
+    "source_url": "https://press.stripe.com/poor-charlies-almanack",
+    "creator": "Charles T. Munger, Peter D. Kaufman",
+    "publication": "Stripe Press",
+    "category": "Stripe Press",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Working in Public",
+    "source_url": "https://press.stripe.com/working-in-public",
+    "creator": "Nadia Eghbal",
+    "publication": "Stripe Press",
+    "category": "Stripe Press",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "The Art of Doing Science and Engineering",
+    "source_url": "https://press.stripe.com/the-art-of-doing-science-and-engineering",
+    "creator": "Richard W. Hamming",
+    "publication": "Stripe Press",
+    "category": "Stripe Press",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Get Together",
+    "source_url": "https://press.stripe.com/get-together",
+    "creator": "Bailey Richardson, Kevin Huynh, Kai Elmer Sotto",
+    "publication": "Stripe Press",
+    "category": "Stripe Press",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "An Elegant Puzzle: Systems of Engineering Management",
+    "source_url": "https://press.stripe.com/an-elegant-puzzle",
+    "creator": "Will Larson",
+    "publication": "Stripe Press",
+    "category": "Stripe Press",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "High Growth Handbook",
+    "source_url": "https://press.stripe.com/high-growth-handbook",
+    "creator": "Elad Gil",
+    "publication": "Stripe Press",
+    "category": "Stripe Press",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
+  },
+  {
+    "title": "Tools for Thought",
+    "source_url": "https://books.google.com/books?id=k6auljJ9hJUC",
+    "creator": "Howard Rheingold",
+    "publication": "MIT Press",
+    "category": "Books, Manuals & Notebooks",
+    "source_type": "Book",
+    "first_seen": "2026-03-21"
   }
 ]

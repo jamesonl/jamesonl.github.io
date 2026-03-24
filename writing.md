@@ -17,8 +17,9 @@ kicker: Notes in public
   <p class="section-intro">Patterns, observations, and longer thoughts on systems, interfaces, transformation, and design.</p>
 </div>
 
+{% assign posts = site.posts | sort: "date" | reverse %}
+{% if posts.size > 0 %}
 <div class="notes-grid writings-grid">
-  {% assign posts = site.posts | sort: "date" | reverse %}
   {% for post in posts %}
   {% assign title_size = post.title | size %}
   {% assign url_size = post.url | size %}
@@ -35,3 +36,10 @@ kicker: Notes in public
   </article>
   {% endfor %}
 </div>
+{% else %}
+<div class="empty-state-panel">
+  <p class="card-kicker">Writing archive</p>
+  <h2 class="section-title plain">New essays are on the way</h2>
+  <p>I am rebuilding this section so the writing that shows up here is more representative of the work and questions I care about now.</p>
+</div>
+{% endif %}

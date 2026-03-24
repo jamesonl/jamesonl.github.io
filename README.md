@@ -8,12 +8,11 @@ This repository powers a public-facing portfolio and writing site built with Jek
 
 ## Content model
 
-- `_case_studies/` contains public work examples. These build to `/work/:slug/`.
+- `_case_studies/` contains older public work examples that still build to `/work/:slug/`, but they are no longer the primary surface on `/work/`.
 - `_company_pages/` contains private company-specific pages. These build to `/vault/:slug/` and should only be shared via signed links.
 - `_readmes/` contains lighter-weight notes and templates.
+- `_data/public_work.yml` powers the public work grid on `/work/`.
 - `_data/experience.yml` powers the compact experience timeline on `/work/`.
-
-Representative case studies are intentionally anonymized. Replace the placeholder language with company names, metrics, and role-specific details as you make them public.
 
 ## Running locally
 

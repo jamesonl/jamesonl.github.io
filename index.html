@@ -4,35 +4,59 @@ title: Home
 body_class: home-page
 ---
 
-<section class="home-section home-directory">
-  <header class="section-header">
-    <div>
-      <p class="section-kicker">Site directory</p>
-      <h1 class="section-title plain">Four sections that show how I think and work</h1>
-    </div>
-    <p class="section-intro">This homepage is a simple starting point. Each section captures a different part of the same through-line: practical systems work, public thinking, the material that shapes my judgment, and the background behind it.</p>
+<article class="page home-essay">
+  <header class="page-header">
+    <p class="page-kicker">Personal statement</p>
+    <p class="page-tagline">A few words on the north star I work toward. If you would rather see the applied side first, you can start with <a href="{{ site.baseurl }}/work">work</a>, browse the <a href="{{ site.baseurl }}/readinglist">reading archive</a>, or look through the shorter biographical thread on <a href="{{ site.baseurl }}/about">about</a>.</p>
+    <h1 class="page-title">I build emergent systems to allow humans to achieve their fullest expression.</h1>
+    <p class="page-tagline">My work has moved through research, forecasting, product, enterprise architecture, and AI. The through-line has been an interest in emergent systems: where human judgment, technical capability, and organizational behavior keep reshaping one another.</p>
   </header>
 
-  <div class="route-grid">
-    <a class="route-card" href="{{ site.baseurl }}/work">
-      <p class="card-kicker">Work</p>
-      <h3>Systems work in practice</h3>
-      <p>Case studies on forecasting, AI workflows, and operational design that show how I turn complex work into something usable.</p>
-    </a>
-    <a class="route-card" href="{{ site.baseurl }}/writing">
-      <p class="card-kicker">Writing</p>
-      <h3>Essays and longer notes</h3>
-      <p>Public thinking through essays, patterns, and longer-form ideas on systems, interfaces, prediction, and design.</p>
-    </a>
-    <a class="route-card" href="{{ site.baseurl }}/readinglist">
-      <p class="card-kicker">Reading</p>
-      <h3>Bookshelf and source trails</h3>
-      <p>The books and source material that keep shaping my judgment, methods, and sense of what makes a tool worth using.</p>
-    </a>
-    <a class="route-card" href="{{ site.baseurl }}/about">
-      <p class="card-kicker">About</p>
-      <h3>Background and working style</h3>
-      <p>The cross-disciplinary thread behind the site: strategy, operations, documentation, and human-centered systems work.</p>
-    </a>
+  <div class="page-body">
+    <div class="about-intro home-opening">
+      <div class="about-intro-copy">
+        <p>When I began my career, I was drawn to messy information that had to become useful for someone else: customer comments, aerospace schematics, demand forecasting plans, geographic points of interest, and other operational signals that only mattered once they could support a real decision. The details changed as my career moved from one domain to the next, but the underlying problem stayed the same. Different surfaces, same question: how do you make complexity legible without flattening what matters?</p>
+        <p>I keep coming back to <a href="{{ site.baseurl }}/readinglist/#book-the-languages-of-pao"><em>The Languages of Pao</em></a> and the <a href="https://en.wikipedia.org/wiki/Linguistic_relativity" target="_blank" rel="noopener">Sapir-Whorf hypothesis</a> because they offer a useful warning about tools. People learn to think in the grammar of the systems around them. Over time, they start solving for what their tools can express instead of what the problem actually requires. Being able to name the real problem before choosing the tool makes it easier to stay fluid, adopt new capabilities without becoming trapped by them, and communicate across disciplines that would otherwise talk past one another.</p>
+        <p>Across my career, I have learned that intelligent systems often produce behavior that feels almost alive. That is part of what makes emergent systems so powerful and so difficult. We want them to be explainable and intuitive, but that may also be a requirement beyond what we are fully capable of achieving on our own. That is why humans have to remain inside every emergent system, and why change management is just as important to the deployment of generative technology as the technical feasibility of the solution itself.</p>
+      </div>
+      {% if site.avatar %}
+      <figure class="about-portrait">
+        <img src="{{ site.avatar }}" alt="Portrait of Jameson Lee" loading="lazy">
+      </figure>
+      {% endif %}
+    </div>
+
+    <section class="essay-section">
+      <h2>Building intuition through touch</h2>
+      <p>What I gradually learned is that people do not build trust in complex systems through analytics alone. They build it through repeated contact. They develop intuition by touching the system, seeing what changes, learning what it responds to, and noticing whether its behavior remains coherent over time. Explainability matters because it gives that intuition something to attach to.</p>
+      <p>That lesson stayed with me as I moved from research and analytics foundations into work that sat closer to operators, customers, and cross-functional teams. The deeper I got into technical systems, the less interested I became in isolated cleverness and the more interested I became in usable signals, interpretable behavior, and systems that people would actually adopt because they could feel how the pieces fit together.</p>
+    </section>
+
+    <section class="essay-section">
+      <h2>Emergent systems are living systems</h2>
+      <p>At A^3 by Airbus, while helping build a forecasting platform, the scale of the problem made the stakes of emergence impossible to ignore. Aerospace executives were trying to manage an immensely interconnected transportation system that moves people, materials, and ideas around the world, but that system rested on thousands of local human touchpoints that had outgrown purely manual coordination. The burden was simply too large to manage without better technical support.</p>
+      <p>Demand sparsity was everywhere. The body of an A320 is made of an enormous number of independent parts, and building a useful forecasting system meant aggregating and generalizing across tens of thousands of aircraft, hundreds of locations, huge workforces, and billions of dollars in capital expenditure, inventory, and warehoused components distributed across the world. Any single global solution imposed over that landscape would introduce new errors and miss the local human feedback that made adoption possible in the first place.</p>
+      <p>That period of my life was largely about technical feasibility: could we build something that gave this system enough meaningful signal to reduce the burden it placed on the people operating it? Before building, I spent a great deal of time steeping myself in forecasting literature, and two canonical ideas stayed with me. The <a href="https://en.wikipedia.org/wiki/Galton_board" target="_blank" rel="noopener">marble shooting experiment</a> captured how simple interactions can generate surprisingly rich patterns once a system is in motion. The <a href="https://en.wikipedia.org/wiki/Delphi_method" target="_blank" rel="noopener">Oracle of Delphi</a> highlighted that forecasting has always been social as well as technical. Both ideas shaped the way I approached the work, even before explainability and adoption fully emerged as the next layer of the problem.</p>
+      <p>As technology has shifted, solutions have generalized very rapidly. You can see it in the growth of model sizes, the benchmarks they saturate, the range of tasks they can perform, and the number of tools they can interface with. That is where the primitives of AI systems become more visible: they are changing over time, expanding what these systems can do, and making emergent behavior feel less like a single-domain exception and more like a general condition of modern computing.</p>
+    </section>
+
+    <section class="essay-section">
+      <h2>A north star for interface design</h2>
+      <p><a href="https://en.wikipedia.org/wiki/Douglas_Engelbart" target="_blank" rel="noopener">Douglas Engelbart</a> remains one of the clearest guides I have found for thinking about interfaces. His architectural vision for the computer was not centered on automation for its own sake. It was centered on augmentation: how a system can expand what a person or team is able to perceive, organize, test, and act on together.</p>
+      <p>That framing matters to me because it turns the interface into part of the thinking system, not just the delivery surface. It helps explain why enterprise workflows, language-mediated actions, retrieval systems, and agentic behavior all feel related. They are all attempts to redesign how capability is distributed between people, tools, and organizations. The question is not whether the tool is impressive. The question is whether the architecture makes people more capable inside the system they actually inhabit.</p>
+    </section>
+
+    <section class="essay-section">
+      <h2>Now at the frontier...</h2>
+      <p>At OpenAI, I have the unusual opportunity to peer into the future from inside the conversations that are shaping it. What stands out to me is that agentic systems are built from a set of AI primitives that have to work together: reasoning, tools, memory, interfaces, agents, evaluation, and organizational design.</p>
+      <p>That perspective has only strengthened my belief that the center of the system is still human. Capabilities may change quickly. Incentives may need to be redesigned. Organizations may need new operating assumptions. But the relevant question is still whether the system empowers a person or a team to see more clearly, act more effectively, and stay accountable for what happens next.</p>
+      <p>I have spent enough time across disciplines to know that these shifts are never purely technical. Forecasting changes planning. Language changes interfaces. Better retrieval changes organizational memory. Agents change how work gets delegated and reviewed. Each capability rearranges the surrounding system. That rearrangement is where most of the interesting work lives.</p>
+    </section>
+
+    <section class="essay-section">
+      <h2>What is this site for?</h2>
+      <p>This site is for people who want to get to know me better, for companies I work with or consult for, for curious individuals who want to understand how intelligent systems get built, and for readers who want a more organized view of how I see the world.</p>
+      <p>It is also a place where I share my own perspective in public so other people can respond to it, challenge it, and help me sharpen it. The <a href="{{ site.baseurl }}/work">work page</a> shows where these ideas have taken practical form. The <a href="{{ site.baseurl }}/readinglist">reading page</a> holds more of the material that shaped them. The <a href="{{ site.baseurl }}/about">about page</a> offers a shorter version of the through-line.</p>
+    </section>
   </div>
-</section>
+</article>

@@ -1,69 +1,84 @@
 ---
 layout: page
 title: Work
-tagline: "A hybrid view of how I work: selected case studies up top, then the through-line across roles and disciplines."
+tagline: "Public pieces, notable projects, and the through-line across roles and disciplines."
 permalink: /work/
 body_class: work-page
-kicker: Selected work and experience
+kicker: Public work and experience
 ---
 
-<p class="lede">I like working on problems where strategy, operations, data, and interface design all meet. The common thread is helping people make better decisions under uncertainty without burying them in process.</p>
+<p class="lede">I like working on problems where strategy, operations, data, and interface design all meet. The thread across these roles is learning how to make complex systems legible enough for people to trust, adopt, and use well.</p>
 
-<div class="callout">
-  <p>These case studies are representative and intentionally anonymized. They describe the kinds of systems I have worked on and the shape of the outcomes I aim for. Replace them with company names, concrete metrics, and role-specific detail as you publish fuller public versions.</p>
-</div>
+## Selected public work
 
-## Featured case studies
-
-<div class="case-grid">
-  {% assign studies = site.case_studies | where: "featured", true %}
-  {% for item in studies %}
-  <article class="case-card">
-    <p class="card-kicker">{{ item.role }}</p>
-    <h3><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></h3>
+<div class="public-work-grid">
+  {% for item in site.data.public_work %}
+  <article class="public-work-card">
+    <div class="public-work-topline">
+      <p class="card-kicker">{{ item.kind }}</p>
+      <p class="public-work-period">{{ item.period }}</p>
+    </div>
+    <div class="company-mark">
+      {% if item.logo %}
+      <img class="company-logo" src="{{ site.baseurl }}{{ item.logo }}" alt="{{ item.company }} logo" loading="lazy">
+      {% endif %}
+      <p class="public-work-company">{{ item.company }}</p>
+    </div>
+    <h3>{{ item.title }}</h3>
     <p>{{ item.summary }}</p>
-    <div class="meta-cluster">
-      {% for theme in item.themes %}
-      <span class="meta-pill">{{ theme }}</span>
+    {% if item.tags and item.tags.size > 0 %}
+    <div class="meta-cluster public-work-tags" aria-label="Core themes">
+      {% for tag in item.tags %}
+      <span class="meta-pill">{{ tag }}</span>
       {% endfor %}
     </div>
-    <a class="text-link" href="{{ site.baseurl }}{{ item.url }}">Read the case study</a>
+    {% endif %}
+    {% if item.fallback_note %}
+    <p class="public-work-note">{{ item.fallback_note }}</p>
+    {% endif %}
+    <a class="text-link" href="{{ item.href }}"{% if item.external %} target="_blank" rel="noopener"{% endif %}>{{ item.link_label }}</a>
   </article>
   {% endfor %}
 </div>
 
 ## Experience timeline
 
-<div class="timeline">
+<div class="timeline" aria-label="Experience timeline in reverse chronological order">
   {% for entry in site.data.experience %}
-  <details class="timeline-entry"{% if forloop.first %} open{% endif %}>
-    <summary>
-      <div class="timeline-heading">
-        <p class="timeline-period">{{ entry.period }}</p>
-        <h3>{{ entry.role }}</h3>
-        <p class="timeline-company">{{ entry.company }}</p>
-      </div>
-      <p class="timeline-scope">{{ entry.scope }}</p>
-    </summary>
-    <div class="timeline-panel">
-      <ul class="list-dashed compact">
-        {% for bullet in entry.bullets %}
-        <li>{{ bullet }}</li>
-        {% endfor %}
-      </ul>
-      <div class="meta-cluster">
-        {% for theme in entry.themes %}
-        <span class="meta-pill">{{ theme }}</span>
-        {% endfor %}
-      </div>
+  <article class="timeline-entry">
+    <div class="timeline-topline">
+      <p class="timeline-period">{{ entry.period }}</p>
+      <p class="timeline-location">{{ entry.location }}</p>
     </div>
-  </details>
+    <div class="timeline-main">
+      <div class="timeline-heading">
+        <h3>{{ entry.role }}</h3>
+        <div class="timeline-company-row">
+          {% if entry.logo %}
+          <img class="company-logo" src="{{ site.baseurl }}{{ entry.logo }}" alt="{{ entry.company }} logo" loading="lazy">
+          {% endif %}
+          <p class="timeline-company">{{ entry.company }}</p>
+        </div>
+      </div>
+      {% if entry.signals and entry.signals.size > 0 %}
+      <div class="timeline-signal-row" aria-label="Core capabilities">
+        {% for signal in entry.signals %}
+        <span class="timeline-signal">
+          <span class="timeline-signal-icon" aria-hidden="true">{% include experience-icon.html icon=signal.icon %}</span>
+          <span>{{ signal.label }}</span>
+        </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <p class="timeline-scope">{{ entry.scope }}</p>
+    {% if entry.bullets and entry.bullets.size > 0 %}
+    <ul class="list-dashed compact">
+      {% for bullet in entry.bullets %}
+      <li>{{ bullet }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </article>
   {% endfor %}
 </div>
-
-<section class="cta-panel">
-  <p class="card-kicker">If you're evaluating a fit</p>
-  <h2 class="section-title plain">I can also prepare tailored private pages</h2>
-  <p>For specific applications or conversations, I can send a signed link to a private brief that connects the role to relevant work, selected writing, and a tailored resume.</p>
-  <a class="link-button" href="{{ site.baseurl }}/contact">Request a tailored brief</a>
-</section>

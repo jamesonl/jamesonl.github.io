@@ -162,7 +162,7 @@ function writeSourceCover(entry, destinationBase, icon = null) {
   const svg = renderSourceCoverSvg(entry, icon);
   const pngDestination = `${destinationBase}.png`;
   const svgDestination = `${destinationBase}.svg`;
-  const canRasterize = process.platform === "darwin" && fs.existsSync("/usr/bin/qlmanage");
+  const canRasterize = process.platform === "darwin" && fs.existsSync("/usr/bin/sips");
 
   if (!canRasterize) {
     fs.writeFileSync(svgDestination, svg);
@@ -171,14 +171,10 @@ function writeSourceCover(entry, destinationBase, icon = null) {
 
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "source-cover-"));
   const tempSvgPath = path.join(tempDir, `${path.basename(destinationBase)}.svg`);
-  const quickLookOutput = path.join(tempDir, "thumbs");
-  const quickLookPngPath = path.join(quickLookOutput, `${path.basename(tempSvgPath)}.png`);
 
   try {
-    fs.mkdirSync(quickLookOutput, { recursive: true });
     fs.writeFileSync(tempSvgPath, svg);
-    execFileSync("/usr/bin/qlmanage", ["-t", "-s", "1200", "-o", quickLookOutput, tempSvgPath], { stdio: "ignore" });
-    fs.renameSync(quickLookPngPath, pngDestination);
+    execFileSync("/usr/bin/sips", ["-s", "format", "png", tempSvgPath, "--out", pngDestination], { stdio: "ignore" });
     if (fs.existsSync(svgDestination)) {
       fs.rmSync(svgDestination, { force: true });
     }
