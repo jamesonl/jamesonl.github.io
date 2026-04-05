@@ -16,6 +16,8 @@
     {% capture source_state %}{% include reading-item-state.html kind="source" reflection_status=source.reflection_status content_text=source.content %}{% endcapture %}
     {% assign source_state = source_state | strip %}
     {% assign source_slug = source.slug | default: source.title | slugify %}
+    {% capture source_label %}{% if source.creator and source.creator != "" %}{{ source.creator }}{% elsif source.publication and source.publication != "" %}{{ source.publication }}{% elsif source.domain and source.domain != "" %}{{ source.domain }}{% endif %}{% endcapture %}
+    {% assign source_label = source_label | strip %}
     <article id="source-{{ source_slug }}" class="source-card{% if source_state == 'draft' %} is-draft{% endif %}"{% if source.theme_slug %} data-tags="{{ source.theme_slug }}"{% endif %}>
       {% if source_state == "published" %}
       <a class="source-link" href="{{ site.baseurl }}{{ source.url }}">
@@ -24,17 +26,13 @@
         </span>
         <span class="source-copy">
           <span class="source-title">{{ source.title }}</span>
-          <span class="source-meta">
-            {% if source.creator and source.creator != "" %}
-            {{ source.creator }}
-            {% elsif source.publication and source.publication != "" %}
-            {{ source.publication }}
-            {% elsif source.domain and source.domain != "" %}
-            {{ source.domain }}
-            {% endif %}
-          </span>
         </span>
       </a>
+      {% if source.source_url and source.source_url != "" and source_label != "" %}
+      <a class="source-meta source-meta-link-inline" href="{{ source.source_url }}" target="_blank" rel="noopener">{{ source_label }}</a>
+      {% elsif source_label != "" %}
+      <div class="source-meta">{{ source_label }}</div>
+      {% endif %}
       {% else %}
       <div class="source-link is-draft" aria-disabled="true">
         <span class="source-cover">
@@ -42,17 +40,13 @@
         </span>
         <span class="source-copy">
           <span class="source-title">{{ source.title }}</span>
-          <span class="source-meta">
-            {% if source.creator and source.creator != "" %}
-            {{ source.creator }}
-            {% elsif source.publication and source.publication != "" %}
-            {{ source.publication }}
-            {% elsif source.domain and source.domain != "" %}
-            {{ source.domain }}
-            {% endif %}
-          </span>
         </span>
       </div>
+      {% if source.source_url and source.source_url != "" and source_label != "" %}
+      <a class="source-meta source-meta-link-inline" href="{{ source.source_url }}" target="_blank" rel="noopener">{{ source_label }}</a>
+      {% elsif source_label != "" %}
+      <div class="source-meta">{{ source_label }}</div>
+      {% endif %}
       {% endif %}
     </article>
     {% endfor %}

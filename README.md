@@ -22,9 +22,19 @@ This repository powers a public-facing portfolio and writing site built with Jek
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 ```
 
-2. Install the gem dependencies with `bundle install`.
-3. Build the site with `bundle exec jekyll build`.
-4. Preview locally with `bundle exec jekyll serve --livereload`.
+2. Start the local dev server with `sh start.sh`.
+
+That script will:
+
+- prefer the Homebrew Ruby when it is available,
+- run `bundle install` when gems are missing,
+- start `bundle exec jekyll serve --livereload`.
+
+If you want to run the commands manually instead:
+
+1. Install the gem dependencies with `bundle install`.
+2. Build the site with `bundle exec jekyll build`.
+3. Preview locally with `bundle exec jekyll serve --livereload`.
 
 If Bundler is missing, install it with the active Ruby:
 
@@ -67,3 +77,41 @@ That script reads the page front matter and prints a signed URL using:
 - The default public layout is no longer gated.
 - The old Universal Analytics integration has been removed.
 - `requests.md` is kept only as a legacy pointer to `/contact/`.
+
+<!-- readme-generator:appendix:start -->
+## Appendix: README Reality Audit
+
+_Generated 2026-03-25T13:13:59Z for `jamesonl.github.io` (`README.md`)._
+
+- Claims checked: 32
+- Findings generated: 1
+
+### Current-vs-Code Drift
+
+- Current drift findings: 1
+
+- **Align README claim for bundle install**: `Install the gem dependencies with `bundle install`.`. Evidence: no supporting code evidence found.
+
+### Future-vs-Code Gaps
+
+- Future gap findings: 0
+
+- No future-vs-code gaps detected.
+
+### Proposed Roadmap
+
+- No roadmap proposals generated.
+
+### Proposed Tech Debt
+
+- **Align README claim for bundle install** (`low`): README presents this as current behavior, but the codebase does not show supporting evidence. Features: documentation.
+
+### Proposed Design Tasks
+
+- No design proposals generated.
+
+### Recommended Next Proposal
+
+- `tech_debt`: **Align README claim for bundle install**. Features: documentation.
+
+<!-- readme-generator:appendix:end -->

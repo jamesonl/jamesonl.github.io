@@ -1042,3 +1042,438 @@
     setFilter(defaultFilter);
   });
 })();
+
+(function () {
+  const storyNodes = Array.from(document.querySelectorAll("[data-scroll-diagram-story]"));
+  if (!storyNodes.length) return;
+
+  const root = document.documentElement;
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const mermaidModuleUrl = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  const desktopStoryBreakpoint = 980;
+  const stories = [];
+  let mermaidPromise = null;
+  let renderCount = 0;
+  let syncFrame = 0;
+
+  function readThemeValue(name, fallback) {
+    const value = getComputedStyle(root).getPropertyValue(name).trim();
+    return value || fallback;
+  }
+
+  function normalizeDefinition(template) {
+    const source = template.content ? template.content.textContent : template.textContent;
+    return (source || "").trim();
+  }
+
+  function loadMermaid() {
+    if (!mermaidPromise) {
+      mermaidPromise = import(mermaidModuleUrl).then((module) => module.default || module);
+    }
+
+    return mermaidPromise;
+  }
+
+  function mermaidConfig() {
+    const isDark = root.dataset.theme === "dark";
+    return {
+      startOnLoad: false,
+      securityLevel: "loose",
+      theme: "base",
+      fontFamily: 'Manrope, "Segoe UI", sans-serif',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: false,
+      },
+      themeVariables: {
+        background: "transparent",
+        primaryColor: isDark ? "rgba(20, 30, 42, 0.96)" : "rgba(255, 251, 245, 0.98)",
+        primaryBorderColor: readThemeValue("--accent", isDark ? "#56b8b4" : "#176c6a"),
+        primaryTextColor: readThemeValue("--text", isDark ? "#edf3fb" : "#1b2430"),
+        secondaryColor: readThemeValue("--accent-wash", isDark ? "rgba(86, 184, 180, 0.18)" : "rgba(23, 108, 106, 0.1)"),
+        secondaryBorderColor: readThemeValue("--accent-strong", isDark ? "#8cddda" : "#0f4f55"),
+        secondaryTextColor: readThemeValue("--text", isDark ? "#edf3fb" : "#1b2430"),
+        tertiaryColor: readThemeValue("--accent-2-wash", isDark ? "rgba(240, 172, 114, 0.16)" : "rgba(185, 104, 47, 0.12)"),
+        tertiaryBorderColor: readThemeValue("--accent-2", isDark ? "#f0ac72" : "#b9682f"),
+        tertiaryTextColor: readThemeValue("--text", isDark ? "#edf3fb" : "#1b2430"),
+        lineColor: readThemeValue("--text", isDark ? "#dce8f4" : "#31404d"),
+        textColor: readThemeValue("--text", isDark ? "#edf3fb" : "#1b2430"),
+        clusterBkg: isDark ? "rgba(24, 36, 50, 0.88)" : "rgba(255, 251, 245, 0.94)",
+        clusterBorder: readThemeValue("--accent-strong", isDark ? "#8cddda" : "#0f4f55"),
+        edgeLabelBackground: isDark ? "rgba(16, 24, 34, 0.94)" : "rgba(255, 251, 245, 0.98)",
+        fontFamily: 'Manrope, "Segoe UI", sans-serif',
+      },
+    };
+  }
+
+  function scrollRootForStory(story) {
+    if (!story.prose) return window;
+    return window.innerWidth >= desktopStoryBreakpoint ? story.prose : window;
+  }
+
+  function activeIndexForStory(story) {
+    const scrollRoot = scrollRootForStory(story);
+    const threshold =
+      scrollRoot === window
+        ? window.innerHeight * 0.2
+        : scrollRoot.getBoundingClientRect().top + scrollRoot.clientHeight * 0.28;
+    let activeIndex = 0;
+
+    story.steps.forEach((step, index) => {
+      if (step.heading.getBoundingClientRect().top <= threshold) {
+        activeIndex = index;
+      }
+    });
+
+    return activeIndex;
+  }
+
+  function updateFallback(story) {
+    if (!story.fallbackCode) return;
+    story.fallbackCode.textContent = story.steps[story.activeIndex].definition;
+  }
+
+  function isStoryExpanded(story) {
+    return Boolean(story.pane && story.pane.classList.contains("is-expanded-overlay"));
+  }
+
+  function syncExpandedOverlayState() {
+    const expanded = stories.some((story) => isStoryExpanded(story));
+    document.body.classList.toggle("scroll-diagram-overlay-open", expanded);
+  }
+
+  function updateExpandButton(story) {
+    if (!story.expandButton) return;
+
+    const active = isStoryExpanded(story);
+    story.expandButton.classList.toggle("is-active", active);
+    story.expandButton.setAttribute("aria-pressed", active ? "true" : "false");
+    story.expandButton.setAttribute(
+      "aria-label",
+      active ? "Close expanded diagram view" : "Expand diagram pane to full screen"
+    );
+    story.expandButton.setAttribute(
+      "title",
+      active ? "Close expanded diagram view" : "Expand diagram pane to full screen"
+    );
+    story.expandButton.textContent = active ? "Close visual" : "Expand visual";
+
+    if (story.pane) {
+      story.pane.classList.toggle("is-expanded-overlay", active);
+    }
+  }
+
+  function activateStep(story, index) {
+    if (index < 0 || index >= story.steps.length) return;
+    story.activeIndex = index;
+
+    story.steps.forEach((step, stepIndex) => {
+      const active = stepIndex === index;
+      step.section.classList.toggle("is-active", active);
+    });
+
+    story.figures.forEach((figure, figureIndex) => {
+      const active = figureIndex === index;
+      figure.classList.toggle("is-active", active);
+      figure.setAttribute("aria-hidden", active ? "false" : "true");
+    });
+
+    story.navButtons.forEach((button, buttonIndex) => {
+      const active = buttonIndex === index;
+      button.classList.toggle("is-active", active);
+      if (active) {
+        button.setAttribute("aria-current", "step");
+      } else {
+        button.removeAttribute("aria-current");
+      }
+    });
+
+    if (story.currentStep) {
+      story.currentStep.textContent = story.steps[index].label;
+    }
+
+    if (story.currentTitle) {
+      story.currentTitle.textContent = story.steps[index].title;
+    }
+
+    updateFallback(story);
+  }
+
+  function closeExpandedStory(story) {
+    if (!story.pane) return;
+    story.pane.classList.remove("is-expanded-overlay");
+    updateExpandButton(story);
+    syncExpandedOverlayState();
+    queueSync();
+  }
+
+  function toggleExpandedStory(story) {
+    if (!story.pane) return;
+
+    const nextExpanded = !isStoryExpanded(story);
+    stories.forEach((entry) => {
+      if (!entry.pane) return;
+      entry.pane.classList.toggle("is-expanded-overlay", entry === story ? nextExpanded : false);
+      updateExpandButton(entry);
+    });
+
+    syncExpandedOverlayState();
+    queueSync();
+  }
+
+  function syncStory(story) {
+    activateStep(story, activeIndexForStory(story));
+  }
+
+  function syncStories() {
+    syncFrame = 0;
+    stories.forEach(syncStory);
+  }
+
+  function queueSync() {
+    if (syncFrame) return;
+    syncFrame = window.requestAnimationFrame(syncStories);
+  }
+
+  function buildFallback(story) {
+    story.figures = [];
+    story.stage.innerHTML = "";
+
+    const shell = document.createElement("div");
+    const message = document.createElement("p");
+    const code = document.createElement("pre");
+
+    shell.className = "scroll-diagram-fallback";
+    message.textContent = "Mermaid could not be loaded in this browser context. Showing the active diagram source instead.";
+    code.textContent = story.steps[story.activeIndex].definition;
+
+    shell.appendChild(message);
+    shell.appendChild(code);
+    story.stage.appendChild(shell);
+    story.fallbackCode = code;
+  }
+
+  async function renderStory(story) {
+    story.renderToken += 1;
+    const token = story.renderToken;
+    story.stage.setAttribute("aria-busy", "true");
+    story.fallbackCode = null;
+
+    try {
+      const mermaid = await loadMermaid();
+      mermaid.initialize(mermaidConfig());
+
+      const figures = [];
+
+      for (const [index, step] of story.steps.entries()) {
+        const figure = document.createElement("figure");
+        const renderId = `scroll-diagram-${story.id}-${index}-${renderCount}`;
+        renderCount += 1;
+
+        figure.className = "scroll-diagram-figure";
+        figure.setAttribute("aria-hidden", "true");
+
+        const { svg, bindFunctions } = await mermaid.render(renderId, step.definition);
+        if (token !== story.renderToken) return;
+
+        figure.innerHTML = svg;
+        figures.push({ figure, bindFunctions });
+      }
+
+      if (token !== story.renderToken) return;
+
+      story.stage.innerHTML = "";
+      story.figures = figures.map((entry) => entry.figure);
+      story.figures.forEach((figure) => story.stage.appendChild(figure));
+      figures.forEach(({ figure, bindFunctions }) => {
+        if (typeof bindFunctions === "function") {
+          bindFunctions(figure);
+        }
+      });
+      activateStep(story, story.activeIndex);
+    } catch (error) {
+      console.error("Unable to render Mermaid scroll story", error);
+      if (token !== story.renderToken) return;
+      buildFallback(story);
+      activateStep(story, story.activeIndex);
+    } finally {
+      if (token === story.renderToken) {
+        story.stage.removeAttribute("aria-busy");
+      }
+    }
+  }
+
+  function buildNavigation(story) {
+    story.nav.innerHTML = "";
+    story.navButtons = story.steps.map((step, index) => {
+      const item = document.createElement("li");
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.className = "scroll-diagram-nav-button";
+      button.textContent = step.navTitle;
+      button.addEventListener("click", () => {
+        activateStep(story, index);
+        step.section.scrollIntoView({
+          behavior: reducedMotionQuery.matches ? "auto" : "smooth",
+          block: "start",
+        });
+      });
+
+      item.appendChild(button);
+      story.nav.appendChild(item);
+      return button;
+    });
+  }
+
+  storyNodes.forEach((storyNode, storyIndex) => {
+    const pane = storyNode.querySelector(".scroll-diagram-pane");
+    const stage = storyNode.querySelector("[data-diagram-stage]");
+    const nav = storyNode.querySelector("[data-diagram-nav]");
+    const prose = storyNode.querySelector(".scroll-diagram-prose");
+    const currentStep = storyNode.querySelector("[data-diagram-current-step]");
+    const currentTitle = storyNode.querySelector("[data-diagram-current-title]");
+    const expandButton = storyNode.querySelector("[data-diagram-expand]");
+    const steps = Array.from(storyNode.querySelectorAll("[data-diagram-step]"))
+      .map((section, index) => {
+        const heading = section.querySelector("[data-diagram-heading]");
+        const definitionTemplate = section.querySelector("[data-diagram-definition]");
+
+        if (!heading || !definitionTemplate) return null;
+
+        return {
+          section,
+          heading,
+          definition: normalizeDefinition(definitionTemplate),
+          label: section.dataset.diagramLabel || `${index + 1}`.padStart(2, "0"),
+          title: heading.textContent.trim(),
+          navTitle: section.dataset.diagramNav || heading.textContent.trim(),
+        };
+      })
+      .filter(Boolean);
+
+    if (!stage || !nav || !steps.length) return;
+
+    const story = {
+      id: storyNode.id || `scroll-story-${storyIndex + 1}`,
+      node: storyNode,
+      pane,
+      stage,
+      nav,
+      prose,
+      currentStep,
+      currentTitle,
+      expandButton,
+      steps,
+      navButtons: [],
+      figures: [],
+      fallbackCode: null,
+      renderToken: 0,
+      activeIndex: 0,
+    };
+
+    buildNavigation(story);
+    if (story.prose) {
+      story.prose.addEventListener("scroll", () => syncStory(story), { passive: true });
+    }
+    if (story.expandButton) {
+      story.expandButton.addEventListener("click", () => {
+        toggleExpandedStory(story);
+      });
+      updateExpandButton(story);
+    }
+    stories.push(story);
+  });
+
+  if (!stories.length) return;
+
+  const themeObserver = new MutationObserver((mutations) => {
+    const themeChanged = mutations.some((mutation) => mutation.attributeName === "data-theme");
+    if (!themeChanged) return;
+    stories.forEach((story) => renderStory(story));
+  });
+
+  themeObserver.observe(root, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    stories.forEach((story) => {
+      if (isStoryExpanded(story)) {
+        closeExpandedStory(story);
+      }
+    });
+  });
+  window.addEventListener("scroll", queueSync, { passive: true });
+  window.addEventListener("resize", queueSync, { passive: true });
+
+  if (typeof reducedMotionQuery.addEventListener === "function") {
+    reducedMotionQuery.addEventListener("change", queueSync);
+  } else if (typeof reducedMotionQuery.addListener === "function") {
+    reducedMotionQuery.addListener(queueSync);
+  }
+
+  stories.forEach((story) => {
+    story.activeIndex = activeIndexForStory(story);
+    activateStep(story, story.activeIndex);
+    updateExpandButton(story);
+    renderStory(story);
+  });
+
+  queueSync();
+})();
+
+(function () {
+  const shell = document.querySelector("[data-writings-shell]");
+  const gate = document.querySelector("[data-writings-gate]");
+  const content = document.querySelector("[data-writings-content]");
+  const form = document.querySelector("[data-writings-gate-form]");
+  const input = document.querySelector("[data-writings-password-input]");
+  const feedback = document.querySelector("[data-writings-gate-feedback]");
+  const password = "emergence";
+
+  if (!shell || !gate || !content || !form || !input || !feedback) {
+    return;
+  }
+
+  function clearFeedback() {
+    feedback.hidden = true;
+    feedback.textContent = "";
+    input.removeAttribute("aria-invalid");
+  }
+
+  function unlockWritings() {
+    shell.classList.remove("is-locked");
+    gate.hidden = true;
+    content.hidden = false;
+    clearFeedback();
+    form.reset();
+
+    window.requestAnimationFrame(() => {
+      window.dispatchEvent(new Event("resize"));
+      window.dispatchEvent(new Event("scroll"));
+    });
+  }
+
+  input.addEventListener("input", () => {
+    if (feedback.hidden) return;
+    clearFeedback();
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (input.value.trim().toLowerCase() === password) {
+      unlockWritings();
+      return;
+    }
+
+    input.setAttribute("aria-invalid", "true");
+    feedback.hidden = false;
+    feedback.textContent = "Incorrect password.";
+    input.focus();
+    input.select();
+  });
+})();

@@ -20,11 +20,15 @@ kicker: About Jameson
   {% endif %}
 </div>
 
-## How I like to work
+## Working from augmentation primitives
 
-- Start with the human decision at the center of the system, not the novelty of the tool.
-- Make uncertainty legible instead of hiding it behind false precision.
-- Build artifacts other people can inspect, challenge, and carry forward.
-- Use tight feedback loops so reality can correct the system before the story gets stuck.
+<p><a href="https://www.dougengelbart.org/library/about-1962-manifesto.html" target="_blank" rel="noopener"><em>Augmenting Human Intellect: A Conceptual Framework</em></a> remains one of the clearest descriptions I know of how capability grows. Engelbart framed augmentation as a system of humans working with language, artifacts, and methodology; I read that today through a practical set of primitives: tools, language, concepts, and workflows.</p>
+
+- Start by defining the primitive that actually changes human capability, not by adding surface-level feature complexity.
+- Treat language and concepts as system components, because vocabulary changes what a team can notice, discuss, and coordinate.
+- Design workflows that make trust visible through repeated use, legible feedback loops, and room for human override.
+- Pay attention to the human primitives around the software: people, cultural preferences, incentives, and the local conditions that determine adoption.
+
+<p>I am especially interested in moments when a new primitive reorganizes the rest of the system: a better tool, a clearer concept, a new coordination pattern, or a feedback loop that suddenly makes collaboration easier. The technical architecture matters, but so do trust, multicultural working styles, and the conditions that let a system keep co-evolving with the people inside it.</p>
 
 Outside of project work, I read widely across forecasting, AI, systems thinking, science fiction, and tools for thought. [Writing]({{ site.baseurl }}/writing/) and the wider [reading archive]({{ site.baseurl }}/readinglist/) are two ways I keep turning that material into something reusable.

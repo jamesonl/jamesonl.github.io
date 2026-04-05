@@ -14,7 +14,6 @@ kicker: Reading shelf
   {% assign science_books = site.books | where: "category", "Science Fiction" %}
   {% assign technical_books = site.books | where: "category", "Technical" %}
   {% assign nonfiction_books = site.books | where: "category", "Nonfiction" %}
-  {% assign fantasy_books = site.books | where: "category", "Fantasy" %}
 
   {% include book-shelf-section.html
     title="Currently reading"
@@ -53,28 +52,66 @@ kicker: Reading shelf
       books=nonfiction_books
     %}
 
-    {% include book-shelf-section.html
-      title="Fantasy"
-      heading="Worlds, alliances, and long arcs"
-      subtitle="This stretch is mostly Raymond E. Feist: political systems, loyalty, and the consequences of decisions that unfold over years."
-      books=fantasy_books
-    %}
-  </div>
+    {% assign fantasy_books = site.books | where: "category", "Fantasy" | sort: "order" %}
+    {% if fantasy_books.size > 0 %}
+    <section class="bookshelf-section">
+      <header class="section-header compact">
+        <div>
+          <p class="section-kicker">Fantasy</p>
+          <h3 class="section-title plain">Worlds, alliances, and long arcs</h3>
+        </div>
+        <p class="section-intro">This stretch is mostly Raymond E. Feist: political systems, loyalty, and the consequences of decisions that unfold over years.</p>
+      </header>
 
-  <aside class="callout shelf-callout">
-    <p class="card-kicker">Ongoing shelves</p>
-    <ul class="list-dashed compact">
-      <li>O'Reilly and Stripe Press inspiration lists</li>
-    </ul>
-  </aside>
+      <div class="bookshelf-grid">
+        {% for book in fantasy_books %}
+        {% unless book.title == "Mossflower" or book.title == "Krondor: Tear of the Gods" or book.title == "Krondor: The Assassins" or book.title == "Krondor: The Betrayal" or book.title == "The King's Buccaneer" or book.title == "Prince of the Blood" %}
+        {% capture book_state %}{% include reading-item-state.html kind="book" reflection_status=book.reflection_status content_text=book.content %}{% endcapture %}
+        {% assign book_state = book_state | strip %}
+        {% assign book_slug = book.slug | default: book.title | slugify %}
+        {% assign cover_backdrop = site.data.book_cover_backdrops[book_slug] %}
+        <article id="book-{{ book_slug }}" class="book-card{% if book_state == 'draft' %} is-draft{% endif %}">
+          {% if book_state == "published" %}
+          <a class="book-shelf-link" href="{{ site.baseurl }}{{ book.url }}">
+            <span class="book-cover{% if cover_backdrop %} has-generated-backdrop backdrop-{{ cover_backdrop }}{% endif %}">
+              <img src="{{ site.baseurl }}{{ book.cover_image }}" alt="Cover of {{ book.title }} by {{ book.author }}" loading="lazy" decoding="async" />
+            </span>
+            <span class="book-copy">
+              <span class="book-title">{{ book.title }}</span>
+              <span class="book-author">{{ book.author }}</span>
+            </span>
+          </a>
+          {% else %}
+          <div class="book-shelf-link is-draft" aria-disabled="true">
+            <span class="book-cover{% if cover_backdrop %} has-generated-backdrop backdrop-{{ cover_backdrop }}{% endif %}">
+              <img src="{{ site.baseurl }}{{ book.cover_image }}" alt="Cover of {{ book.title }} by {{ book.author }}" loading="lazy" decoding="async" />
+            </span>
+            <span class="book-copy">
+              <span class="book-title">{{ book.title }}</span>
+              <span class="book-author">{{ book.author }}</span>
+            </span>
+          </div>
+          {% endif %}
+        </article>
+        {% endunless %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+  </div>
 
   <div id="inspiration-library" class="reading-archive-divider">
     <div>
       <p class="section-kicker">Inspiration library</p>
       <h2 class="section-title plain">Essays, papers, manuals, and source trails</h2>
     </div>
-    <p class="section-intro">The bookshelf holds books. The wider library holds the source material behind the way I think: systems essays, technical papers, tools-for-thought notes, manuals, and longer research trails. Grey cards stay on the shelf until I have replaced the generic notes with a real reflection.</p>
+    <p class="section-intro">The bookshelf holds books. The wider library holds the source material behind the way I think: systems essays, technical papers, tools-for-thought notes, manuals, and longer research trails. A meaningful share of my favorite readings begin as papers on arXiv, where early arguments, interface ideas, and research intuitions often show up before they have been compressed into summaries. Grey cards stay on the shelf until I have replaced the generic notes with a real reflection.</p>
   </div>
+
+  <aside class="callout shelf-callout">
+    <p class="card-kicker">Archive arXiv</p>
+    <p>Many of my favorite readings in AI, evaluation, interfaces, and agent design enter this library through arXiv. I like it as a source of inspiration because it exposes working ideas in their rougher, more generative form, before they have been rounded into consensus takes.</p>
+  </aside>
 
   {% assign systems_sources = site.sources | where: "category", "Systems & Sensemaking" %}
   {% assign ai_sources = site.sources | where: "category", "AI & Language" %}
@@ -100,7 +137,7 @@ kicker: Reading shelf
     {% include source-grid-section.html
       title="AI & language"
       heading="Language models, agent systems, and machine reasoning"
-      subtitle="Papers, essays, and references that changed how I think about intelligence, interaction, and model behavior."
+      subtitle="Papers, essays, and references that changed how I think about intelligence, interaction, and model behavior. A large share of this shelf traces back to arXiv."
       sources=ai_sources
     %}
 

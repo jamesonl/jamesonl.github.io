@@ -1,0 +1,271 @@
+Snapshot Created: 2026-04-05T15:04:31.116537-04:00
+Repository Root: /Users/jamesonlee/Documents/projects/jamesonl.github.io
+Words Per Page (Markdown Only): 250
+# Markdown Word Count And Python LOC Report
+
+Repository Root: /Users/jamesonlee/Documents/projects/jamesonl.github.io
+Words Per Page (Markdown Only): 250
+Included File Types: .md, .py
+Excluded Directories: .git, .hg, .idea, .mypy_cache, .nox, .pytest_cache, .ruff_cache, .svn, .tox, .venv, .vscode, __pycache__, build, dist, env, node_modules, snapshots, venv
+
+## Markdown Files
+
+- Files: 232
+- Words: 39598
+- Estimated Pages: 158.4
+
+- 51 words | 9 lines | 0.2 pages | 404.md
+- 575 words | 117 lines | 2.3 pages | README.md
+- 464 words | 34 lines | 1.9 pages | about.md
+- 217 words | 29 lines | 0.9 pages | contact.md
+- 133 words | 23 lines | 0.5 pages | contours.md
+- 63 words | 14 lines | 0.3 pages | inspiration.md
+- 898 words | 177 lines | 3.6 pages | readingList.md
+- 37 words | 11 lines | 0.1 pages | requests.md
+- 147 words | 19 lines | 0.6 pages | support.md
+- 558 words | 124 lines | 2.2 pages | work.md
+- 1424 words | 236 lines | 5.7 pages | writing.md
+- 120 words | 33 lines | 0.5 pages | _books/a-darkness-at-sethanon.md
+- 114 words | 32 lines | 0.5 pages | _books/electric-dreams.md
+- 118 words | 33 lines | 0.5 pages | _books/exile-s-return.md
+- 117 words | 32 lines | 0.5 pages | _books/forecasting-principles-and-practice.md
+- 118 words | 33 lines | 0.5 pages | _books/foundation-and-earth.md
+- 122 words | 33 lines | 0.5 pages | _books/foundation-and-empire.md
+- 117 words | 33 lines | 0.5 pages | _books/foundation-s-edge.md
+- 116 words | 33 lines | 0.5 pages | _books/foundation.md
+- 119 words | 33 lines | 0.5 pages | _books/king-of-foxes.md
+- 122 words | 33 lines | 0.5 pages | _books/krondor-tear-of-the-gods.md
+- 118 words | 33 lines | 0.5 pages | _books/krondor-the-assassins.md
+- 118 words | 33 lines | 0.5 pages | _books/krondor-the-betrayal.md
+- 122 words | 32 lines | 0.5 pages | _books/last-and-first-men.md
+- 114 words | 33 lines | 0.5 pages | _books/magician.md
+- 120 words | 33 lines | 0.5 pages | _books/maintenance-of-everything-part-one.md
+- 114 words | 32 lines | 0.5 pages | _books/minority-report.md
+- 111 words | 32 lines | 0.4 pages | _books/morphotrophic.md
+- 115 words | 33 lines | 0.5 pages | _books/mossflower.md
+- 112 words | 32 lines | 0.4 pages | _books/on-writing.md
+- 120 words | 33 lines | 0.5 pages | _books/prince-of-the-blood.md
+- 111 words | 32 lines | 0.4 pages | _books/ra.md
+- 123 words | 32 lines | 0.5 pages | _books/rage-of-a-demon-king.md
+- 113 words | 33 lines | 0.5 pages | _books/redwall.md
+- 122 words | 33 lines | 0.5 pages | _books/rise-of-a-merchant-prince.md
+- 116 words | 33 lines | 0.5 pages | _books/second-foundation.md
+- 117 words | 32 lines | 0.5 pages | _books/seeing-like-a-state.md
+- 122 words | 33 lines | 0.5 pages | _books/shadow-of-a-dark-queen.md
+- 122 words | 33 lines | 0.5 pages | _books/shards-of-a-broken-crown.md
+- 114 words | 33 lines | 0.5 pages | _books/silverthorn.md
+- 113 words | 32 lines | 0.5 pages | _books/star-maker.md
+- 119 words | 32 lines | 0.5 pages | _books/tales-of-the-dying-earth.md
+- 123 words | 33 lines | 0.5 pages | _books/talon-of-the-silver-hawk.md
+- 120 words | 32 lines | 0.5 pages | _books/the-dream-machine.md
+- 117 words | 32 lines | 0.5 pages | _books/the-fifth-science.md
+- 119 words | 33 lines | 0.5 pages | _books/the-king-s-buccaneer.md
+- 117 words | 32 lines | 0.5 pages | _books/the-languages-of-pao.md
+- 119 words | 32 lines | 0.5 pages | _books/the-mountain-in-the-sea.md
+- 118 words | 33 lines | 0.5 pages | _books/the-naked-sun.md
+- 120 words | 33 lines | 0.5 pages | _books/the-robots-of-dawn.md
+- 116 words | 32 lines | 0.5 pages | _books/the-unreasoning-mask.md
+- 118 words | 32 lines | 0.5 pages | _books/there-is-no-antimemetics-division.md
+- 114 words | 32 lines | 0.5 pages | _books/tools-for-thought.md
+- 116 words | 32 lines | 0.5 pages | _books/valuable-humans-in-transit.md
+- 126 words | 32 lines | 0.5 pages | _books/whiplash-how-to-survive-our-faster-future.md
+- 114 words | 32 lines | 0.5 pages | _books/zero-to-one.md
+- 264 words | 29 lines | 1.1 pages | _case_studies/forecasting-workflows.md
+- 255 words | 29 lines | 1.0 pages | _case_studies/human-centered-ai-workflows.md
+- 265 words | 29 lines | 1.1 pages | _case_studies/operational-signal-design.md
+- 211 words | 35 lines | 0.8 pages | _case_studies/sea-level-explorer.md
+- 216 words | 32 lines | 0.9 pages | _company_pages/example-company.md
+- 158 words | 17 lines | 0.6 pages | _illustrations/coordination-knot-study.md
+- 148 words | 16 lines | 0.6 pages | _illustrations/forecasting-field-study.md
+- 159 words | 17 lines | 0.6 pages | _illustrations/review-loop-study.md
+- 62 words | 11 lines | 0.2 pages | _readmes/collaboration-guide.md
+- 73 words | 10 lines | 0.3 pages | _readmes/data-playbook.md
+- 54 words | 15 lines | 0.2 pages | _readmes/lab-notes.md
+- 65 words | 17 lines | 0.3 pages | _readmes/operating-manual.md
+- 57 words | 9 lines | 0.2 pages | _readmes/reading-habits.md
+- 72 words | 17 lines | 0.3 pages | _readmes/retro-interface-primer.md
+- 147 words | 43 lines | 0.6 pages | _sources/3am-epiphany.md
+- 180 words | 43 lines | 0.7 pages | _sources/5-reasons-for-scenario-based-design.md
+- 179 words | 43 lines | 0.7 pages | _sources/a-big-little-idea-called-legibility.md
+- 182 words | 43 lines | 0.7 pages | _sources/a-brief-guide-to-interactive-planning-and-idealized-design.md
+- 174 words | 43 lines | 0.7 pages | _sources/a-home-for-pino.md
+- 177 words | 43 lines | 0.7 pages | _sources/a-personal-philosophy-of-shared-knowledge.md
+- 170 words | 43 lines | 0.7 pages | _sources/a-proposal-for-a-scenario-classification-framework.md
+- 167 words | 43 lines | 0.7 pages | _sources/a-system-literacy-manifesto.md
+- 157 words | 43 lines | 0.6 pages | _sources/advanced-r.md
+- 191 words | 43 lines | 0.8 pages | _sources/advances-in-mro-planning-and-scheduling-systems.md
+- 170 words | 43 lines | 0.7 pages | _sources/agent2agent-a2a-protocol.md
+- 160 words | 43 lines | 0.6 pages | _sources/agents.md
+- 161 words | 43 lines | 0.6 pages | _sources/ai-agents-that-matter.md
+- 158 words | 43 lines | 0.6 pages | _sources/ai-resilient-interfaces.md
+- 174 words | 44 lines | 0.7 pages | _sources/an-elegant-puzzle-systems-of-engineering-management.md
+- 181 words | 43 lines | 0.7 pages | _sources/an-innovative-approach-to-improving-ndr.md
+- 182 words | 43 lines | 0.7 pages | _sources/analogy-as-the-core-of-cognition.md
+- 172 words | 43 lines | 0.7 pages | _sources/answers-are-easy-questions-are-hard.md
+- 180 words | 43 lines | 0.7 pages | _sources/approaches-to-data-science-and-machine-learning.md
+- 171 words | 43 lines | 0.7 pages | _sources/attention-is-all-you-need.md
+- 162 words | 43 lines | 0.6 pages | _sources/attention-is-not-explanation.md
+- 165 words | 43 lines | 0.7 pages | _sources/building-effective-agents.md
+- 170 words | 43 lines | 0.7 pages | _sources/building-evolutionary-architectures.md
+- 169 words | 43 lines | 0.7 pages | _sources/building-scalable-explainable-and-adaptive-nlp-models-with-retrieval.md
+- 152 words | 43 lines | 0.6 pages | _sources/bureaucracy-and-organizational-politics.md
+- 147 words | 43 lines | 0.6 pages | _sources/career-therapy.md
+- 164 words | 43 lines | 0.7 pages | _sources/choice-architecture.md
+- 173 words | 43 lines | 0.7 pages | _sources/chronicle-of-the-death-of-a-laboratory.md
+- 164 words | 43 lines | 0.7 pages | _sources/cognitive-architectures-for-language-agents.md
+- 158 words | 43 lines | 0.6 pages | _sources/community-and-privacy.md
+- 186 words | 43 lines | 0.7 pages | _sources/community-qualified-leads-are-the-future-of-sales.md
+- 169 words | 43 lines | 0.7 pages | _sources/connected.md
+- 168 words | 43 lines | 0.7 pages | _sources/constitutional-ai-harmlessness-from-ai-feedback.md
+- 159 words | 43 lines | 0.6 pages | _sources/container-security.md
+- 164 words | 43 lines | 0.7 pages | _sources/context-management-with-openai.md
+- 158 words | 43 lines | 0.6 pages | _sources/conway-s-law.md
+- 164 words | 43 lines | 0.7 pages | _sources/cool-tools-a-catalog-of-possibilities.md
+- 152 words | 43 lines | 0.6 pages | _sources/crafting-interpreters.md
+- 152 words | 43 lines | 0.6 pages | _sources/creating-knowledge-objects.md
+- 171 words | 43 lines | 0.7 pages | _sources/creating-learning-organizations.md
+- 176 words | 43 lines | 0.7 pages | _sources/dan-wang-s-2019-annual-letter.md
+- 165 words | 43 lines | 0.7 pages | _sources/dancing-with-systems.md
+- 165 words | 43 lines | 0.7 pages | _sources/decision-systems-for-inventory-management-and-production-planning.md
+- 178 words | 43 lines | 0.7 pages | _sources/definite-optimism-as-human-capital.md
+- 171 words | 43 lines | 0.7 pages | _sources/developing-a-computer-use-model.md
+- 153 words | 43 lines | 0.6 pages | _sources/dive-into-deep-learning.md
+- 169 words | 43 lines | 0.7 pages | _sources/do-you-use-spatial-organization.md
+- 185 words | 43 lines | 0.7 pages | _sources/documentation-as-an-open-source-practice.md
+- 198 words | 43 lines | 0.8 pages | _sources/easa-ai-roadmap-a-human-centric-approach-to-ai-in-aviation.md
+- 168 words | 43 lines | 0.7 pages | _sources/emergent-abilities-of-large-language-models.md
+- 170 words | 43 lines | 0.7 pages | _sources/emergent-properties.md
+- 157 words | 43 lines | 0.6 pages | _sources/emergent-understanding-learning-without-teaching.md
+- 172 words | 43 lines | 0.7 pages | _sources/forms-of-talk.md
+- 156 words | 43 lines | 0.6 pages | _sources/frame-analysis.md
+- 165 words | 43 lines | 0.7 pages | _sources/fundamentals-of-software-architecture.md
+- 150 words | 43 lines | 0.6 pages | _sources/general-system-theory.md
+- 163 words | 44 lines | 0.7 pages | _sources/get-together.md
+- 165 words | 43 lines | 0.7 pages | _sources/google-is-not-enough.md
+- 191 words | 43 lines | 0.8 pages | _sources/graphrag-unlocking-llm-discovery-on-narrative-private-data.md
+- 162 words | 44 lines | 0.6 pages | _sources/high-growth-handbook.md
+- 165 words | 43 lines | 0.7 pages | _sources/holistic-evaluation-of-language-models.md
+- 189 words | 43 lines | 0.8 pages | _sources/how-demand-planning-can-improve-the-supply-chain.md
+- 165 words | 43 lines | 0.7 pages | _sources/how-forests-think.md
+- 196 words | 43 lines | 0.8 pages | _sources/how-quickly-should-you-grow-to-key-arr-milestones.md
+- 182 words | 43 lines | 0.7 pages | _sources/how-to-capture-thoughts-efficiently.md
+- 212 words | 43 lines | 0.8 pages | _sources/how-to-fix-a-broken-go-to-market-motion-using-a-steady-state-funnel.md
+- 182 words | 43 lines | 0.7 pages | _sources/how-to-live-safely-in-a-science-fictional-universe.md
+- 183 words | 43 lines | 0.7 pages | _sources/how-to-take-smart-notes.md
+- 186 words | 43 lines | 0.7 pages | _sources/how-to-think-the-skill-you-were-never-taught.md
+- 171 words | 43 lines | 0.7 pages | _sources/hoyle-s-encyclopedia-of-card-games.md
+- 164 words | 43 lines | 0.7 pages | _sources/human-problem-solving.md
+- 158 words | 43 lines | 0.6 pages | _sources/impute.md
+- 166 words | 43 lines | 0.7 pages | _sources/independent-research.md
+- 183 words | 43 lines | 0.7 pages | _sources/integrating-systems-thinking-and-design-thinking.md
+- 157 words | 43 lines | 0.6 pages | _sources/interaction-structures-of-the-universe.md
+- 164 words | 43 lines | 0.7 pages | _sources/interactive-planning.md
+- 161 words | 43 lines | 0.6 pages | _sources/introductory-graph-theory.md
+- 159 words | 43 lines | 0.6 pages | _sources/is-attention-interpretable.md
+- 190 words | 43 lines | 0.8 pages | _sources/journeys-and-notes-designing-social-computing-for-non-places.md
+- 163 words | 43 lines | 0.7 pages | _sources/knowledge-in-pieces.md
+- 155 words | 43 lines | 0.6 pages | _sources/knowledge-management-emerging-perspectives.md
+- 185 words | 43 lines | 0.7 pages | _sources/language-and-thought-in-action.md
+- 183 words | 43 lines | 0.7 pages | _sources/language-is-primarily-a-tool-for-communication-rather-than-thought.md
+- 168 words | 43 lines | 0.7 pages | _sources/language-models-are-few-shot-learners.md
+- 175 words | 43 lines | 0.7 pages | _sources/leading-ethically-through-foresight.md
+- 170 words | 43 lines | 0.7 pages | _sources/learning-the-art-of-sailing.md
+- 188 words | 43 lines | 0.8 pages | _sources/long-term-forecasting-with-machine-learning-models.md
+- 175 words | 43 lines | 0.7 pages | _sources/machine-learning-for-high-risk-applications.md
+- 167 words | 43 lines | 0.7 pages | _sources/making-sense-of-knowledge-intensive-processes.md
+- 168 words | 43 lines | 0.7 pages | _sources/memgpt-towards-llms-as-operating-systems.md
+- 167 words | 43 lines | 0.7 pages | _sources/microsoft-graphrag-repository-review.md
+- 172 words | 43 lines | 0.7 pages | _sources/models-and-modeling-for-manpower-planning.md
+- 182 words | 43 lines | 0.7 pages | _sources/multiple-output-modelling-for-multi-step-ahead-time-series-forecasting.md
+- 155 words | 43 lines | 0.6 pages | _sources/nebulosity.md
+- 193 words | 43 lines | 0.8 pages | _sources/netflix-techblog-data-science-and-the-art-of-producing-entertainment-at-netflix.md
+- 172 words | 43 lines | 0.7 pages | _sources/notes-on-notation.md
+- 176 words | 43 lines | 0.7 pages | _sources/observe-orient-decide-act-ooda-loop.md
+- 169 words | 43 lines | 0.7 pages | _sources/open-tabs-are-cognitive-spaces.md
+- 167 words | 43 lines | 0.7 pages | _sources/painkillers-vs-vitamins.md
+- 179 words | 43 lines | 0.7 pages | _sources/palette-of-systems-thinking-tools.md
+- 168 words | 43 lines | 0.7 pages | _sources/polysemanticity-and-capacity-in-neural-networks.md
+- 167 words | 44 lines | 0.7 pages | _sources/poor-charlie-s-almanack.md
+- 182 words | 43 lines | 0.7 pages | _sources/principles-of-marketing-forecasting.md
+- 185 words | 43 lines | 0.7 pages | _sources/reading-your-browser-s-history-with-sqlite.md
+- 170 words | 43 lines | 0.7 pages | _sources/reflections-on-2020-as-an-independent-researcher.md
+- 174 words | 43 lines | 0.7 pages | _sources/retrieval-augmented-generation-for-knowledge-intensive-nlp-tasks.md
+- 170 words | 43 lines | 0.7 pages | _sources/review-of-the-openai-agents-sdk.md
+- 164 words | 43 lines | 0.7 pages | _sources/review-slack.md
+- 172 words | 43 lines | 0.7 pages | _sources/scenius-or-communal-genius.md
+- 171 words | 43 lines | 0.7 pages | _sources/second-treatise-of-government.md
+- 177 words | 43 lines | 0.7 pages | _sources/self-organization-in-communicating-groups.md
+- 165 words | 43 lines | 0.7 pages | _sources/sensemaking-a-structure-for-an-intelligence-revolution.md
+- 161 words | 43 lines | 0.6 pages | _sources/sensemaking.md
+- 157 words | 43 lines | 0.6 pages | _sources/simulation-is-not-the-answer.md
+- 176 words | 43 lines | 0.7 pages | _sources/software-architecture-the-hard-way.md
+- 185 words | 43 lines | 0.7 pages | _sources/speculative-everything-design-fiction-and-social-dreaming.md
+- 163 words | 43 lines | 0.7 pages | _sources/stances-trump-systems.md
+- 168 words | 43 lines | 0.7 pages | _sources/state-space-representation.md
+- 157 words | 43 lines | 0.6 pages | _sources/strategically-ignorant.md
+- 179 words | 43 lines | 0.7 pages | _sources/sundial-a-family-of-highly-capable-time-series-foundation-models.md
+- 144 words | 43 lines | 0.6 pages | _sources/systemantics.md
+- 166 words | 43 lines | 0.7 pages | _sources/systems-thinking-an-operational-perspective-of-the-universe.md
+- 177 words | 43 lines | 0.7 pages | _sources/systems-thinking-applied-to-teaming.md
+- 167 words | 43 lines | 0.7 pages | _sources/technical-conversations.md
+- 163 words | 43 lines | 0.7 pages | _sources/technologically-coded-authority.md
+- 175 words | 43 lines | 0.7 pages | _sources/the-8-metaphors-of-organization.md
+- 174 words | 43 lines | 0.7 pages | _sources/the-architectural-relevance-of-cybernetics.md
+- 179 words | 44 lines | 0.7 pages | _sources/the-art-of-doing-science-and-engineering.md
+- 160 words | 43 lines | 0.6 pages | _sources/the-complete-sailor.md
+- 169 words | 43 lines | 0.7 pages | _sources/the-contrarian-s-guide-to-leadership.md
+- 172 words | 43 lines | 0.7 pages | _sources/the-decomposition-of-marketing.md
+- 182 words | 43 lines | 0.7 pages | _sources/the-economics-of-hierarchies-and-polyarchies.md
+- 176 words | 43 lines | 0.7 pages | _sources/the-extended-mind.md
+- 177 words | 43 lines | 0.7 pages | _sources/the-future-of-browser-history.md
+- 168 words | 43 lines | 0.7 pages | _sources/the-great-grilled-cheese.md
+- 171 words | 43 lines | 0.7 pages | _sources/the-hero-with-a-thousand-faces.md
+- 160 words | 43 lines | 0.6 pages | _sources/the-illustrated-transformer.md
+- 169 words | 43 lines | 0.7 pages | _sources/the-interface-theory-of-perception.md
+- 181 words | 43 lines | 0.7 pages | _sources/the-morning-paper-local-first-software.md
+- 179 words | 43 lines | 0.7 pages | _sources/the-organization-of-delegated-expertise.md
+- 177 words | 43 lines | 0.7 pages | _sources/the-philosophy-of-computer-science.md
+- 164 words | 43 lines | 0.7 pages | _sources/the-qualified-sales-leader.md
+- 159 words | 43 lines | 0.6 pages | _sources/the-whole-earth.md
+- 181 words | 43 lines | 0.7 pages | _sources/tools-and-tasks-in-sensemaking-a-visual-accessibility-perspective.md
+- 187 words | 43 lines | 0.7 pages | _sources/tools-for-thought-the-concept-of-a-support-system.md
+- 166 words | 43 lines | 0.7 pages | _sources/tools-for-thought.md
+- 171 words | 43 lines | 0.7 pages | _sources/toy-models-of-superposition.md
+- 177 words | 43 lines | 0.7 pages | _sources/training-language-models-to-follow-instructions-with-human-feedback.md
+- 158 words | 43 lines | 0.6 pages | _sources/transformer-inference-arithmetic.md
+- 188 words | 43 lines | 0.8 pages | _sources/tying-predictive-maintenance-into-inventory-management.md
+- 170 words | 43 lines | 0.7 pages | _sources/understanding-generative-ai-assisted-data-analysis-workflows.md
+- 144 words | 43 lines | 0.6 pages | _sources/unflattening.md
+- 192 words | 43 lines | 0.8 pages | _sources/what-companies-do-to-forecast-parts-demand.md
+- 183 words | 43 lines | 0.7 pages | _sources/what-computers-still-can-t-do.md
+- 168 words | 43 lines | 0.7 pages | _sources/what-is-a-dynabook.md
+- 162 words | 43 lines | 0.6 pages | _sources/why-books-don-t-work.md
+- 168 words | 43 lines | 0.7 pages | _sources/why-forecasts-fail.md
+- 171 words | 43 lines | 0.7 pages | _sources/why-language-models-hallucinate.md
+- 196 words | 43 lines | 0.8 pages | _sources/why-you-shouldn-t-use-moving-average-in-aircraft-spare-parts-forecasting.md
+- 178 words | 43 lines | 0.7 pages | _sources/workforce-management-ai-forecasting-for-dummies.md
+- 162 words | 44 lines | 0.6 pages | _sources/working-in-public.md
+- 193 words | 43 lines | 0.8 pages | _sources/you-can-t-fix-a-cac-payback-period.md
+
+Markdown Subtotal: 232 files | 39598 words | 158.4 pages
+
+## Python Files
+
+- Files: 2
+- Lines Of Code: 220
+- Physical Lines: 280
+
+- 110 code lines | 140 lines total | _site/scripts/fetch_source_portraits.py
+- 110 code lines | 140 lines total | scripts/fetch_source_portraits.py
+
+Python Subtotal: 2 files | 220 code lines | 280 lines total
+
+## Totals Across All Files
+
+- Total Files: 234
+- Markdown Files: 232
+- Markdown Words: 39598
+- Markdown Estimated Pages: 158.4
+- Python Files: 2
+- Python Lines Of Code: 220
+- Python Physical Lines: 280

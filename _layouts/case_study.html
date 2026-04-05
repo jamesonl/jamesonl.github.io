@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<article class="case-study">
+<article class="case-study{% if page.case_study_full_width %} case-study--full{% endif %}">
   <header class="page-header">
     <p class="page-kicker">{{ page.kicker | default: "Selected work" }}</p>
     <h1 class="page-title">{{ page.title }}</h1>
@@ -22,10 +22,11 @@ layout: default
     </div>
   </header>
 
-  <div class="case-study-grid">
+  <div class="case-study-grid{% if page.hide_sidebar %} case-study-grid--single{% endif %}">
     <div class="page-body">
       {{ content }}
     </div>
+    {% unless page.hide_sidebar %}
     <aside class="case-study-sidebar">
       {% if page.problem %}
       <section class="info-card">
@@ -63,5 +64,6 @@ layout: default
       </section>
       {% endif %}
     </aside>
+    {% endunless %}
   </div>
 </article>

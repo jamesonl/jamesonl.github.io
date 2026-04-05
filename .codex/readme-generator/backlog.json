@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-03-25T13:13:59Z",
+  "repo_root": "/Users/jamesonlee/Documents/projects/jamesonl.github.io",
+  "readme_path": "/Users/jamesonlee/Documents/projects/jamesonl.github.io/README.md",
+  "summary": {
+    "claims_checked": 32,
+    "findings": 1,
+    "roadmap": 0,
+    "tech_debt": 1,
+    "design": 0
+  },
+  "roadmap": [],
+  "tech_debt": [
+    {
+      "id": "tech_debt-cb9cc078",
+      "title": "Align README claim for bundle install",
+      "summary": "README presents this as current behavior, but the codebase does not show supporting evidence.",
+      "bucket": "tech_debt",
+      "readme_claim": "Install the gem dependencies with `bundle install`.",
+      "code_evidence": [],
+      "why_this_bucket": "Current-state README drift or documentation debt tied to implementation reality.",
+      "underlying_features": [
+        "documentation"
+      ],
+      "priority": "low",
+      "confidence": 0.7,
+      "acceptance_criteria": [
+        "The README claim is either updated or supported by concrete implementation evidence.",
+        "A future audit no longer reports this mismatch."
+      ]
+    }
+  ],
+  "design": []
+}

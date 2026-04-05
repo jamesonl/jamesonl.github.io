@@ -1,3 +1,32 @@
+- title: Tennis community building in New York City
+  company: Manhattan Tennis Association
+  period: Ongoing
+  kind: Community project
+  ongoing: true
+  summary: I help bring together players across Manhattan by making it easier to meet, coordinate hitting sessions, and stay connected online.
+  bullets:
+    - Built an agentic bot for the Manhattan Tennis Association Discord, which supports a community of nearly 1,000 members.
+    - Help organize in-person meetups and events for players of all levels.
+  tags:
+    - Community building
+    - Agentic systems
+    - Events
+  href: https://www.manhattantennisassociation.com/about/
+  link_label: About the association
+  external: true
+
+- title: Sea Level Explorer
+  company: Independent project
+  period: 2026
+  kind: Interactive artifact
+  summary: A lighter, faster hex-based globe that visualizes how rising water would redraw coastlines at planetary scale.
+  tags:
+    - Interactive cartography
+    - Spatial storytelling
+    - Data-rich interfaces
+  href: /work/sea-level-explorer/
+  link_label: View project page
+
 - title: Use intelligent event data to drive down your forecasting error rate by 10-20% in weeks
   company: PredictHQ
   period: 2020
@@ -39,48 +68,3 @@
   link_label: Read post
   logo: /images/company-logos/moveworks.svg
   external: true
-
-- title: Paid Time Off (PTO) Optimization Python Package
-  company: Independent project
-  period: Jun 2015 to Jul 2015
-  kind: Project
-  summary: My first linear programming project, built to help professionals optimize vacation dates using preference scoring around consecutive days off and return-to-work constraints.
-  tags:
-    - Optimization
-    - Python
-    - Linear programming
-  href: https://www.linkedin.com/in/jamesonlee1/details/projects/
-  link_label: View on LinkedIn
-  logo: /images/company-logos/independent.svg
-  external: true
-  fallback_note: Routed through LinkedIn because the public project summary lives there.
-
-- title: USC Department of Public Safety Consulting Project
-  company: University of Southern California
-  period: Jan 2015 to Jun 2015
-  kind: Project
-  summary: Analyzed historical campus crime, surfaced geo-specific patterns, and advised on beat paths and reporting structures to help optimize resource allocation.
-  tags:
-    - Geospatial analysis
-    - Resource allocation
-    - Public safety
-  href: https://www.linkedin.com/in/jamesonlee1/details/projects/
-  link_label: View on LinkedIn
-  logo: /images/company-logos/usc.svg
-  external: true
-  fallback_note: Routed through LinkedIn because the public project summary lives there.
-
-- title: Bloomberg TimeSeriesComp Python Package
-  company: Bloomberg
-  period: Dec 2014 to Jan 2015
-  kind: Project
-  summary: Built a Python package for growth-of-$1 analysis, then applied it dynamically across time series so strategies and assets could be benchmarked and indexed more easily.
-  tags:
-    - Time series
-    - Python
-    - Quant tooling
-  href: https://www.linkedin.com/in/jamesonlee1/details/projects/
-  link_label: View on LinkedIn
-  logo: /images/company-logos/bloomberg.svg
-  external: true
-  fallback_note: Routed through LinkedIn because the public project summary lives there.

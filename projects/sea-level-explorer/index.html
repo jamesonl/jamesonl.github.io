@@ -1,0 +1,3014 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="icon" href="data:," />
+     <title>Sea Level Explorer</title>
+    <style>
+      :root {
+        --bg: #06131e;
+        --panel: rgba(7, 25, 38, 0.92);
+        --panel-strong: rgba(9, 34, 50, 0.98);
+        --border: rgba(167, 220, 255, 0.22);
+        --text: #ecf7ff;
+        --muted: #9fc1d8;
+        --accent: #ffb85c;
+        --accent-soft: rgba(255, 184, 92, 0.15);
+        --danger: #ff6d5f;
+        --success: #59d39b;
+        --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(34, 90, 132, 0.55), transparent 34%),
+          radial-gradient(circle at 85% 15%, rgba(216, 138, 71, 0.28), transparent 20%),
+          linear-gradient(180deg, #0a2031 0%, #040b12 100%);
+      }
+
+      .page {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 32px 24px 48px;
+      }
+
+      .hero {
+        display: grid;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+
+      .hero h1 {
+        margin: 0;
+        width: 100%;
+        font-size: clamp(1.35rem, 5vw, 3.2rem);
+        line-height: 1.02;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
+      .hero-subhead {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: flex-start;
+      }
+
+      .hero p {
+        margin: 0;
+        max-width: none;
+        flex: 1 1 auto;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .badge {
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+
+      .main-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.9fr);
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+      }
+
+      .globe-panel {
+        display: grid;
+        gap: 14px;
+        min-height: 0;
+        padding: 14px;
+      }
+
+      .globe-control-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px 14px;
+        padding: 12px 14px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(167, 220, 255, 0.12);
+      }
+
+      .globe-control-copy {
+        display: grid;
+        gap: 4px;
+      }
+
+      .globe-control-copy > * {
+        margin: 0;
+      }
+
+      .globe-control-label {
+        color: #d8ecfa;
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .globe-control-note {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.4;
+      }
+
+      .globe-input-shell {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 16px;
+        background: rgba(5, 17, 26, 0.92);
+        border: 1px solid rgba(167, 220, 255, 0.16);
+      }
+
+      .globe-input-shell span {
+        color: var(--muted);
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+
+      .globe-input-shell input[type="number"] {
+        width: 7.5rem;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: var(--text);
+        font-size: 1rem;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .globe-shell {
+        position: relative;
+        min-height: 700px;
+        border-radius: 20px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 30% 18%, rgba(88, 153, 214, 0.16), transparent 24%),
+          radial-gradient(circle at 80% 80%, rgba(255, 184, 92, 0.12), transparent 18%),
+          linear-gradient(180deg, rgba(5, 16, 24, 0.82), rgba(3, 10, 16, 1));
+      }
+
+      #globe-canvas {
+        position: relative;
+        width: 100%;
+        height: 700px;
+        display: block;
+        cursor: grab;
+        touch-action: none;
+        z-index: 1;
+      }
+
+      #antarctica-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        z-index: 2;
+      }
+
+      .globe-shell.is-south-pole #globe-canvas {
+        display: none;
+      }
+
+      .globe-shell.is-south-pole #antarctica-canvas {
+        display: block;
+      }
+
+      .globe-shell.is-south-pole .globe-overlay {
+        max-width: 360px;
+        background: rgba(5, 17, 26, 0.84);
+      }
+
+      .globe-shell.is-south-pole .drag-hint {
+        color: #cfe4f4;
+      }
+
+      .globe-loading {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: linear-gradient(180deg, rgba(5, 16, 24, 0.5), rgba(3, 10, 16, 0.78));
+        z-index: 8;
+        transition: opacity 220ms ease, visibility 220ms ease;
+      }
+
+      .globe-loading.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .globe-loading.is-error .globe-loading-spinner {
+        display: none;
+      }
+
+      .globe-loading-card {
+        min-width: 240px;
+        max-width: 360px;
+        padding: 18px 20px;
+        border-radius: 18px;
+        background: rgba(6, 20, 31, 0.84);
+        border: 1px solid rgba(167, 220, 255, 0.18);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+        backdrop-filter: blur(12px);
+        text-align: center;
+      }
+
+      .globe-loading-spinner {
+        width: 54px;
+        height: 54px;
+        margin: 0 auto 14px;
+        border-radius: 50%;
+        border: 3px solid rgba(167, 220, 255, 0.16);
+        border-top-color: var(--accent);
+        animation: globe-spin 0.85s linear infinite;
+      }
+
+      .globe-loading-title {
+        display: block;
+        margin-bottom: 8px;
+        color: #ecf7ff;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .globe-loading-text {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.45;
+      }
+
+      @keyframes globe-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .globe-overlay {
+        position: absolute;
+        left: 18px;
+        top: 18px;
+        max-width: 270px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: rgba(5, 17, 26, 0.75);
+        border: 1px solid rgba(167, 220, 255, 0.18);
+        pointer-events: none;
+      }
+
+      .globe-toolbar {
+        position: absolute;
+        right: 18px;
+        top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-end;
+        z-index: 6;
+      }
+
+      .toolbar-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+        max-width: 320px;
+      }
+
+      .toolbar-button {
+        border: 1px solid rgba(167, 220, 255, 0.22);
+        background: rgba(13, 45, 68, 0.96);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 11px 16px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+      }
+
+      .toolbar-button:hover {
+        background: rgba(24, 72, 108, 0.98);
+      }
+
+      .toolbar-button:disabled {
+        cursor: not-allowed;
+        opacity: 0.45;
+        background: rgba(7, 25, 38, 0.74);
+        box-shadow: none;
+      }
+
+      .toolbar-button.is-secondary {
+        background: rgba(7, 25, 38, 0.92);
+      }
+
+      .drag-hint {
+        padding: 9px 12px;
+        border-radius: 999px;
+        background: rgba(5, 17, 26, 0.8);
+        border: 1px solid rgba(167, 220, 255, 0.16);
+        color: var(--muted);
+        font-size: 0.76rem;
+      }
+
+      .globe-overlay strong,
+      .control-card h2 {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #d8ecfa;
+      }
+
+      .globe-overlay span,
+      .control-copy,
+      .status-note,
+      .footer-note {
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .globe-overlay span {
+        font-size: 0.78rem;
+        line-height: 1.32;
+      }
+
+      .control-card {
+        padding: 22px 22px 20px;
+      }
+
+      .control-copy {
+        margin: 0 0 18px;
+      }
+
+      .control-stack {
+        display: grid;
+        gap: 18px;
+      }
+
+      .control-group {
+        padding: 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(167, 220, 255, 0.12);
+      }
+
+      .control-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #dceefa;
+        font-size: 0.92rem;
+      }
+
+      .scenario-title,
+      .scenario-copy,
+      .scenario-disclaimer {
+        margin: 0;
+      }
+
+      .scenario-title {
+        color: #ecf7ff;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+
+      .scenario-copy {
+        margin-top: 8px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .scenario-disclaimer {
+        margin-top: 10px;
+        color: #bfd8ea;
+        font-size: 0.86rem;
+        line-height: 1.5;
+      }
+
+      .reference-list {
+        display: grid;
+        gap: 8px;
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .reference-list li {
+        margin: 0;
+      }
+
+      .reference-list a {
+        color: #9ad2ff;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(154, 210, 255, 0.25);
+      }
+
+      .reference-list a:hover {
+        border-bottom-color: rgba(154, 210, 255, 0.75);
+      }
+
+      .legend-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .legend-row {
+        display: grid;
+        grid-template-columns: 20px minmax(0, 1fr);
+        gap: 10px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .legend-swatch {
+        width: 20px;
+        height: 20px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .stat-card {
+        appearance: none;
+        width: 100%;
+        border: 1px solid rgba(167, 220, 255, 0.14);
+        padding: 18px;
+        min-height: 112px;
+        text-align: left;
+        cursor: pointer;
+        background: rgba(6, 20, 31, 0.68);
+        color: #ffffff;
+        backdrop-filter: blur(10px);
+        transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+      }
+
+      .stat-card:hover,
+      .stat-card.is-active {
+        transform: translateY(-2px);
+        border-color: rgba(255, 184, 92, 0.42);
+        background: rgba(12, 33, 49, 0.82);
+      }
+
+      .stat-card .eyebrow {
+        display: block;
+        margin-bottom: 12px;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.8rem;
+      }
+
+      .stat-card .value {
+        display: block;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        line-height: 1;
+        margin-bottom: 8px;
+        font-variant-numeric: tabular-nums;
+        color: #ffffff;
+      }
+
+      .stat-card .detail {
+        color: #ffffff;
+        line-height: 1.45;
+      }
+
+      .stats-overlay {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        display: grid;
+        gap: 12px;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      #stats-toggle,
+      .stats-overlay {
+        display: none !important;
+      }
+
+      .stats-overlay > * {
+        pointer-events: auto;
+      }
+
+      .stats-overlay.is-collapsed .stats-detail,
+      .stats-overlay.is-collapsed .stats-grid {
+        display: none;
+      }
+
+      .stats-detail {
+        display: none;
+        padding: 16px 18px;
+        max-height: 280px;
+        overflow: auto;
+        background: rgba(5, 17, 26, 0.9);
+      }
+
+      .stats-detail.is-open {
+        display: block;
+      }
+
+      .detail-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: flex-start;
+        margin-bottom: 12px;
+      }
+
+      .detail-header h3 {
+        margin: 0 0 4px;
+        font-size: 1rem;
+      }
+
+      .detail-header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.86rem;
+        line-height: 1.4;
+      }
+
+      .detail-close {
+        border: 1px solid rgba(167, 220, 255, 0.16);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 0.78rem;
+        cursor: pointer;
+      }
+
+      .detail-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .detail-item {
+        display: grid;
+        grid-template-columns: minmax(0, 1.7fr) repeat(3, minmax(0, 0.9fr));
+        gap: 12px;
+        align-items: start;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(167, 220, 255, 0.1);
+      }
+
+      .detail-item strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.94rem;
+      }
+
+      .detail-item span {
+        color: var(--muted);
+        font-size: 0.82rem;
+        line-height: 1.35;
+      }
+
+      .detail-metric {
+        font-size: 0.82rem;
+        color: #dceefa;
+      }
+
+      .detail-empty {
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .footer-note {
+        padding: 18px 20px;
+      }
+
+      .footer-note a {
+        color: #9ad2ff;
+      }
+
+      @media (max-width: 1120px) {
+        .main-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .globe-panel {
+          min-height: 520px;
+        }
+
+        .globe-shell,
+        #globe-canvas {
+          height: 620px;
+          min-height: 620px;
+        }
+
+        .globe-toolbar {
+          top: 14px;
+          right: 14px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          padding: 20px 14px 34px;
+        }
+
+        .hero-subhead {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .detail-item {
+          grid-template-columns: 1fr;
+        }
+
+        .globe-toolbar {
+          top: 12px;
+          right: 12px;
+          max-width: calc(100% - 24px);
+        }
+
+        .globe-control-bar {
+          align-items: stretch;
+        }
+
+        .globe-input-shell {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .drag-hint {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <h1>Sea Level Explorer</h1>
+        <div class="hero-subhead">
+          <p>
+            I am environmentally conscious, and I wanted a compelling visual way to study what rising water would actually do to coastlines.
+            This lighter version keeps the adaptive hex terrain model, removes the heavier stats layer, and focuses on the visual scenario itself.
+          </p>
+          <div class="badge" id="observable-status">Exploratory scenario model</div>
+        </div>
+      </section>
+
+      <section class="main-grid">
+        <div class="panel globe-panel">
+          <div class="globe-control-bar">
+            <div class="globe-control-copy">
+              <p class="globe-control-label">Sea level</p>
+              <p class="globe-control-note">Use the stepper to raise the modeled waterline in 100 meter increments.</p>
+            </div>
+            <label class="globe-input-shell" for="sea-level-input">
+              <input id="sea-level-input" type="number" min="0" max="2000" step="100" value="0" />
+              <span>meters</span>
+            </label>
+          </div>
+          <div class="globe-shell">
+            <canvas id="globe-canvas"></canvas>
+            <canvas id="antarctica-canvas"></canvas>
+            <div class="globe-loading" id="globe-loading" aria-live="polite">
+              <div class="globe-loading-card">
+                <div class="globe-loading-spinner" id="globe-loading-spinner"></div>
+                <strong class="globe-loading-title">Loading Globe</strong>
+                <div class="globe-loading-text" id="globe-loading-text">Loading terrain, country geometry, and lighting.</div>
+              </div>
+            </div>
+            <div class="globe-overlay">
+              <strong>Model</strong>
+              <span>
+                Terrain is sampled from a public global relief texture, raised into adaptive hex prisms, and exaggerated vertically for legibility.
+                Treat this as a demonstrative scenario model rather than a literal flood forecast.
+              </span>
+            </div>
+            <div class="globe-toolbar">
+              <div class="toolbar-buttons">
+                <button class="toolbar-button" id="rotation-toggle" type="button">Pause Rotation</button>
+                <button class="toolbar-button is-secondary" id="reset-orientation" type="button">Reset Orientation</button>
+                <button class="toolbar-button is-secondary" id="focus-antarctica" type="button">View South Pole</button>
+              </div>
+              <div class="drag-hint">Drag to rotate</div>
+            </div>
+            <div class="stats-overlay" id="stats-overlay">
+              <section class="panel stats-detail" id="stats-detail">
+                <div class="detail-header">
+                  <div>
+                    <h3 id="detail-title">Stat details</h3>
+                    <p id="detail-meta">Click a stat card to inspect its underlying countries and terrain anchors.</p>
+                  </div>
+                  <button class="detail-close" id="detail-close" type="button">Close</button>
+                </div>
+                <div class="detail-list" id="detail-list"></div>
+                <div class="detail-empty" id="detail-empty">No detail rows available for this state.</div>
+              </section>
+              <section class="stats-grid" id="stats-grid"></section>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel control-card">
+          <h2>Scenario Notes</h2>
+          <p class="control-copy">
+            The input above the globe changes the waterline directly. Once you move beyond a few dozen meters, the model is no longer acting like a conventional planning forecast and starts behaving more like a planetary stress test.
+          </p>
+
+          <div class="control-stack">
+            <section class="control-group">
+              <label>Scenario commentary</label>
+              <p class="scenario-title" id="scenario-title">0 m · Present-day baseline</p>
+              <p class="scenario-copy" id="scenario-copy">Modern projections are measured in fractions of a meter to a meter scale over this century, not in hundreds of meters. This baseline is here so the later jumps stay visually grounded.</p>
+              <ul class="reference-list" id="scenario-references"></ul>
+              <p class="scenario-disclaimer" id="scenario-disclaimer">High slider values quickly move from climate projection into geological or speculative thought experiment territory.</p>
+            </section>
+
+            <section class="control-group">
+              <label>Terrain Legend</label>
+              <div class="legend-grid" id="legend-root"></div>
+            </section>
+
+            <section class="control-group">
+              <label>Disclaimer</label>
+              <div class="status-note">
+                This application exaggerates land relief and simplifies coastlines into adaptive hex cells so changes remain readable. It is designed to provoke reasoning, not to serve as an engineering-grade inundation model.
+              </div>
+            </section>
+
+            <section class="control-group">
+              <label>Status</label>
+              <div class="status-note" id="status-note">Loading terrain, country geometry, and lighting.</div>
+            </section>
+          </div>
+        </aside>
+      </section>
+
+      <section class="panel footer-note">
+        This is an exploratory visualization, not a forecast. Multi-hundred-meter global sea-level rise would require changes far beyond
+        near-term climate projections, and the most extreme slider positions intentionally cross into speculative territory.
+      </section>
+    </main>
+
+    <script type="module">
+      import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+      import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js";
+
+      const EARTH_RADIUS_METERS = 6_371_000;
+      const SEA_LEVEL_MIN = 0;
+      const SEA_LEVEL_MAX = 2_000;
+      const SEA_LEVEL_STEP = 100;
+      const SURFACE_RADIUS = 1;
+      const BASE_WATER_RADIUS = 1.008;
+      const HEX_COLS = 96;
+      const HEX_ROWS = 52;
+      const POLAR_INSET_LATITUDE = 82;
+      const ANTARCTICA_VIEW_NORTHERN_BOUND = -50;
+      const AUTO_ROTATION_SPEED = 0.00165;
+      const DEFAULT_PIVOT_ROTATION = { x: 0.42, y: -1.02 };
+      const ANTARCTICA_PIVOT_ROTATION = { x: 1.04, y: -1.02 };
+      const DEFAULT_PIVOT_POSITION = { x: 0, y: 0.08, z: 0 };
+      const ANTARCTICA_MARKER = { lat: -78, lon: 18 };
+      const TOPOLOGY_URL = "https://unpkg.com/three-globe/example/img/earth-topology.png";
+      const COUNTRIES_URL = "https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_50m_admin_0_countries.geojson";
+      const ELEVATION_POINTS_URL = "https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@master/geojson/ne_50m_geography_regions_elevation_points.geojson";
+      const EARTH_NORMAL_URL = "https://threejs.org/examples/textures/planets/earth_normal_2048.jpg";
+
+      const TERRAIN_LEGEND = {
+        deepOcean: { key: "deepOcean", label: "Deep ocean", color: "#1b6aa8" },
+        floodedLowlands: { key: "floodedLowlands", label: "Flooded lowlands", color: "#5aa9eb" },
+        lowElevationLand: { key: "lowElevationLand", label: "Low elevation land", color: "#4f8f4d" },
+        uplands: { key: "uplands", label: "Uplands", color: "#a88754" },
+        highMountains: { key: "highMountains", label: "High mountains", color: "#ece7df" },
+        waterShell: { key: "waterShell", label: "Water shell", color: "rgba(84, 189, 255, 0.6)" }
+      };
+
+      const legendItems = [
+        TERRAIN_LEGEND.deepOcean,
+        TERRAIN_LEGEND.floodedLowlands,
+        TERRAIN_LEGEND.lowElevationLand,
+        TERRAIN_LEGEND.uplands,
+        TERRAIN_LEGEND.highMountains,
+        TERRAIN_LEGEND.waterShell
+      ];
+
+      const REFERENCE_LIBRARY = {
+        noaa: {
+          title: "NOAA: 2022 sea-level rise technical report",
+          url: "https://oceanservice.noaa.gov/hazards/sealevelrise/sealevelrise-tech-report.html"
+        },
+        ipcc: {
+          title: "IPCC AR6 synthesis report",
+          url: "https://www.ipcc.ch/report/ar6/syr/longer-report/"
+        },
+        nasaIce: {
+          title: "NASA Earth indicator: ice sheets",
+          url: "https://science.nasa.gov/earth/explore/earth-indicators/ice-sheets/"
+        },
+        nasaAsteroids: {
+          title: "NASA: asteroid facts",
+          url: "https://science.nasa.gov/solar-system/asteroids/facts/"
+        },
+        usgsImpact: {
+          title: "USGS: cascading hazards from asteroid impacts",
+          url: "https://www.usgs.gov/publications/countdown-apophis-close-approach-cascading-hazards-asteroid-impacts"
+        },
+        ringwoodite: {
+          title: "Smithsonian: ringwoodite and Earth's deep water",
+          url: "https://www.smithsonianmag.com/air-space-magazine/new-mineral-never-seen-earth-points-our-planets-watery-interior-180950111/"
+        }
+      };
+
+      const statsTemplate = [
+        { id: "countries-above", eyebrow: "Countries Above Water", detailTitle: "Countries retaining exposed land" },
+        { id: "countries-submerged", eyebrow: "Countries Submerged", detailTitle: "Countries fully submerged" },
+        { id: "land-exposed", eyebrow: "Exposed Land Hexes", detailTitle: "Highest exposed terrain hexes" },
+        { id: "land-submerged", eyebrow: "Submerged Land Hexes", detailTitle: "Most affected flooded terrain hexes" },
+        { id: "highest-peak", eyebrow: "Highest Exposed Peak", detailTitle: "Top exposed peak anchors" },
+        { id: "mean-elevation", eyebrow: "Mean Exposed Elevation", detailTitle: "Countries nearest the current mean elevation" }
+      ];
+
+      const state = {
+        ready: false,
+        seaLevelMeters: 0,
+        hexCells: [],
+        countries: [],
+        elevationPoints: [],
+        waterCellCount: 0,
+        landCellCount: 0,
+        markerX: 0,
+        autoRotate: true,
+        dragging: false,
+        pointerId: null,
+        lastPointerX: 0,
+        lastPointerY: 0,
+        refinedCellCount: 0,
+        activeStatId: null,
+        statDetails: new Map(),
+        statsCollapsed: true,
+        viewMode: "globe",
+        autoRotateBeforeSouthPole: true
+      };
+
+      const seaLevelInput = document.getElementById("sea-level-input");
+      const statusNote = document.getElementById("status-note");
+      const globeLoading = document.getElementById("globe-loading");
+      const globeLoadingText = document.getElementById("globe-loading-text");
+      const statsGrid = d3.select("#stats-grid");
+      const observableStatus = document.getElementById("observable-status");
+      const scenarioTitle = document.getElementById("scenario-title");
+      const scenarioCopy = document.getElementById("scenario-copy");
+      const scenarioDisclaimer = document.getElementById("scenario-disclaimer");
+      const scenarioReferences = document.getElementById("scenario-references");
+      const rotationToggle = document.getElementById("rotation-toggle");
+      const resetOrientationButton = document.getElementById("reset-orientation");
+      const focusAntarcticaButton = document.getElementById("focus-antarctica");
+      const exportMercatorButton = document.getElementById("export-mercator");
+      const exportAntarcticaButton = document.getElementById("export-antarctica");
+      const statsToggle = document.getElementById("stats-toggle");
+      const statsOverlay = document.getElementById("stats-overlay");
+      const statsDetail = document.getElementById("stats-detail");
+      const detailTitle = document.getElementById("detail-title");
+      const detailMeta = document.getElementById("detail-meta");
+      const detailClose = document.getElementById("detail-close");
+      const detailEmpty = document.getElementById("detail-empty");
+      const detailList = d3.select("#detail-list");
+      const globeShell = document.querySelector(".globe-shell");
+      const antarcticaCanvas = document.getElementById("antarctica-canvas");
+      const dragHint = document.querySelector(".drag-hint");
+
+      const statNodes = new Map();
+      statsTemplate.forEach((item) => {
+        const card = statsGrid
+          .append("button")
+          .attr("type", "button")
+          .attr("class", "panel stat-card")
+          .attr("data-stat-id", item.id)
+          .attr("aria-expanded", "false");
+        card.append("span").attr("class", "eyebrow").text(item.eyebrow);
+        card.append("span").attr("class", "value").text("...");
+        card.append("span").attr("class", "detail").text("Loading");
+        card.on("click", () => toggleStatDetail(item.id));
+        statNodes.set(item.id, {
+          card,
+          value: card.select(".value"),
+          detail: card.select(".detail")
+        });
+      });
+
+      d3.select("#legend-root")
+        .selectAll(".legend-row")
+        .data(legendItems)
+        .join("div")
+        .attr("class", "legend-row")
+        .html((d) => `<span class="legend-swatch" style="background:${d.color}"></span><span>${d.label}</span>`);
+
+      const canvas = document.getElementById("globe-canvas");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+      const scene = new THREE.Scene();
+      scene.background = null;
+
+      const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+      camera.position.set(0, 0.02, 9.25);
+
+      const ambientLight = new THREE.AmbientLight(0xaedaff, 0.72);
+      scene.add(ambientLight);
+
+      const keyLight = new THREE.DirectionalLight(0xffffff, 1.45);
+      keyLight.position.set(3, 2.4, 4.2);
+      scene.add(keyLight);
+
+      const rimLight = new THREE.DirectionalLight(0x5cbdf5, 0.48);
+      rimLight.position.set(-4, -1.2, -3.5);
+      scene.add(rimLight);
+
+      const starGeometry = new THREE.BufferGeometry();
+      const starCount = 1400;
+      const positions = new Float32Array(starCount * 3);
+      for (let i = 0; i < starCount; i += 1) {
+        const radius = 24 + Math.random() * 18;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        positions[i * 3 + 0] = radius * Math.sin(phi) * Math.cos(theta);
+        positions[i * 3 + 1] = radius * Math.cos(phi);
+        positions[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
+      }
+      starGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      const stars = new THREE.Points(
+        starGeometry,
+        new THREE.PointsMaterial({ color: 0xf4fbff, size: 0.08, transparent: true, opacity: 0.65 })
+      );
+      scene.add(stars);
+
+      const earthPivot = new THREE.Group();
+      earthPivot.position.set(DEFAULT_PIVOT_POSITION.x, DEFAULT_PIVOT_POSITION.y, DEFAULT_PIVOT_POSITION.z);
+      earthPivot.rotation.x = DEFAULT_PIVOT_ROTATION.x;
+      earthPivot.rotation.y = DEFAULT_PIVOT_ROTATION.y;
+      scene.add(earthPivot);
+
+      const earthSpinGroup = new THREE.Group();
+      earthPivot.add(earthSpinGroup);
+
+      const earthGeometry = new THREE.SphereGeometry(1, 96, 96);
+      const earthTextureCanvas = document.createElement("canvas");
+      earthTextureCanvas.width = 2048;
+      earthTextureCanvas.height = 1024;
+      const earthTexture = new THREE.CanvasTexture(earthTextureCanvas);
+      earthTexture.colorSpace = THREE.SRGBColorSpace;
+      earthTexture.anisotropy = 8;
+
+      const earthMaterial = new THREE.MeshStandardMaterial({
+        map: earthTexture,
+        roughness: 0.95,
+        metalness: 0.02,
+        transparent: true,
+        opacity: 0.58,
+        color: new THREE.Color("#9bc7ef"),
+        emissive: new THREE.Color("#02070b"),
+        emissiveIntensity: 0.16
+      });
+
+      const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+      earthSpinGroup.add(earthMesh);
+
+      const waterMaterial = new THREE.MeshPhysicalMaterial({
+        color: new THREE.Color("#54bdff"),
+        transmission: 0.12,
+        opacity: 0.24,
+        transparent: true,
+        roughness: 0.14,
+        metalness: 0.08,
+        clearcoat: 0.85,
+        clearcoatRoughness: 0.24
+      });
+      const waterMesh = new THREE.Mesh(new THREE.SphereGeometry(BASE_WATER_RADIUS, 96, 96), waterMaterial);
+      earthSpinGroup.add(waterMesh);
+
+      const atmosphereMaterial = new THREE.MeshBasicMaterial({
+        color: new THREE.Color("#66c3ff"),
+        transparent: true,
+        opacity: 0.09,
+        side: THREE.BackSide
+      });
+      const atmosphereMesh = new THREE.Mesh(new THREE.SphereGeometry(1.075, 64, 64), atmosphereMaterial);
+      earthSpinGroup.add(atmosphereMesh);
+
+      const hexGeometry = new THREE.CylinderGeometry(1, 1, 1, 6, 1, false);
+      hexGeometry.rotateY(Math.PI / 6);
+      const hexMaterial = new THREE.MeshBasicMaterial({
+        color: 0xffffff
+      });
+      const hexInstance = {
+        mesh: null,
+        dummy: new THREE.Object3D(),
+        color: new THREE.Color(),
+        up: new THREE.Vector3(0, 1, 0)
+      };
+      const antarcticaMarkerGroup = new THREE.Group();
+      const antarcticaMarkerNormal = latLonToVector3(ANTARCTICA_MARKER.lat, ANTARCTICA_MARKER.lon).normalize();
+
+      const antarcticaRingMaterial = new THREE.MeshBasicMaterial({
+        color: new THREE.Color("#aee7ff"),
+        transparent: true,
+        opacity: 0.88,
+        side: THREE.DoubleSide,
+        depthWrite: false
+      });
+      const antarcticaRing = new THREE.Mesh(new THREE.RingGeometry(0.07, 0.108, 56), antarcticaRingMaterial);
+      antarcticaRing.position.copy(antarcticaMarkerNormal).multiplyScalar(1.024);
+      antarcticaRing.quaternion.setFromUnitVectors(hexInstance.up, antarcticaMarkerNormal);
+      antarcticaMarkerGroup.add(antarcticaRing);
+
+      const antarcticaLabelCanvas = document.createElement("canvas");
+      antarcticaLabelCanvas.width = 320;
+      antarcticaLabelCanvas.height = 96;
+      const antarcticaLabelContext = antarcticaLabelCanvas.getContext("2d");
+      antarcticaLabelContext.clearRect(0, 0, antarcticaLabelCanvas.width, antarcticaLabelCanvas.height);
+      antarcticaLabelContext.fillStyle = "rgba(6, 20, 31, 0.88)";
+      antarcticaLabelContext.strokeStyle = "rgba(167, 220, 255, 0.28)";
+      antarcticaLabelContext.lineWidth = 2;
+      antarcticaLabelContext.beginPath();
+      if (typeof antarcticaLabelContext.roundRect === "function") {
+        antarcticaLabelContext.roundRect(8, 8, 304, 80, 22);
+      } else {
+        const x = 8;
+        const y = 8;
+        const width = 304;
+        const height = 80;
+        const radius = 22;
+        antarcticaLabelContext.moveTo(x + radius, y);
+        antarcticaLabelContext.lineTo(x + width - radius, y);
+        antarcticaLabelContext.quadraticCurveTo(x + width, y, x + width, y + radius);
+        antarcticaLabelContext.lineTo(x + width, y + height - radius);
+        antarcticaLabelContext.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        antarcticaLabelContext.lineTo(x + radius, y + height);
+        antarcticaLabelContext.quadraticCurveTo(x, y + height, x, y + height - radius);
+        antarcticaLabelContext.lineTo(x, y + radius);
+        antarcticaLabelContext.quadraticCurveTo(x, y, x + radius, y);
+      }
+      antarcticaLabelContext.fill();
+      antarcticaLabelContext.stroke();
+      antarcticaLabelContext.fillStyle = "#ecf7ff";
+      antarcticaLabelContext.font = '700 34px "Avenir Next", "Segoe UI", sans-serif';
+      antarcticaLabelContext.textAlign = "center";
+      antarcticaLabelContext.textBaseline = "middle";
+      antarcticaLabelContext.fillText("Antarctica", 160, 48);
+
+      const antarcticaLabelTexture = new THREE.CanvasTexture(antarcticaLabelCanvas);
+      antarcticaLabelTexture.colorSpace = THREE.SRGBColorSpace;
+      const antarcticaLabelMaterial = new THREE.SpriteMaterial({
+        map: antarcticaLabelTexture,
+        transparent: true,
+        depthWrite: false,
+        depthTest: false
+      });
+      const antarcticaLabelSprite = new THREE.Sprite(antarcticaLabelMaterial);
+      antarcticaLabelSprite.scale.set(0.88, 0.264, 1);
+      antarcticaLabelSprite.position.copy(antarcticaMarkerNormal).multiplyScalar(1.22);
+      antarcticaMarkerGroup.add(antarcticaLabelSprite);
+      earthSpinGroup.add(antarcticaMarkerGroup);
+
+      function setObservableStatus() {
+        observableStatus.textContent = "Exploratory scenario model";
+      }
+
+      function clampSeaLevel(value) {
+        return Math.max(SEA_LEVEL_MIN, Math.min(SEA_LEVEL_MAX, Math.round(value / SEA_LEVEL_STEP) * SEA_LEVEL_STEP));
+      }
+
+      function formatMeters(value) {
+        const formatted = d3.format(",")(Math.round(value));
+        return `${formatted} m`;
+      }
+
+      function formatPopulation(value) {
+        if (!value || value <= 0) return "0";
+        if (value >= 1_000_000_000) return `${(value / 1_000_000_000).toFixed(2).replace(/\.00$/, "")}B`;
+        if (value >= 1_000_000) return `${(value / 1_000_000).toFixed(2).replace(/\.00$/, "")}M`;
+        if (value >= 1_000) return `${(value / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
+        return d3.format(",.0f")(value);
+      }
+
+      function formatPercent(value) {
+        if (!Number.isFinite(value)) return "0%";
+        if (value > 0 && value < 0.01) return "<1%";
+        return d3.format(".0%")(value);
+      }
+
+      function syncRotationToggle() {
+        rotationToggle.textContent = state.autoRotate ? "Pause Rotation" : "Resume Rotation";
+        rotationToggle.setAttribute("aria-pressed", String(!state.autoRotate));
+      }
+
+      function syncViewMode() {
+        const southPole = state.viewMode === "southPole";
+        globeShell.classList.toggle("is-south-pole", southPole);
+        focusAntarcticaButton.textContent = southPole ? "Return to Globe" : "View South Pole";
+        focusAntarcticaButton.setAttribute("aria-pressed", String(southPole));
+        rotationToggle.disabled = southPole;
+        resetOrientationButton.disabled = southPole;
+        dragHint.textContent = southPole ? "South pole map locked" : "Drag to rotate";
+      }
+
+      function syncStatsToggle() {
+        if (!statsToggle || !statsOverlay) {
+          return;
+        }
+        statsToggle.textContent = state.statsCollapsed ? "Show Stats" : "Collapse Stats";
+        statsToggle.setAttribute("aria-pressed", String(state.statsCollapsed));
+        statsOverlay.classList.toggle("is-collapsed", state.statsCollapsed);
+      }
+
+      function scenarioForSeaLevel(value) {
+        const refs = value <= 700
+          ? ["noaa", "ipcc", "nasaIce"]
+          : value <= 1100
+            ? ["nasaAsteroids", "usgsImpact", "ipcc"]
+            : ["ringwoodite", "nasaAsteroids", "ipcc"];
+
+        switch (value) {
+          case 0:
+            return {
+              title: "0 m · Present-day baseline",
+              body: "Modern public projections are measured in fractions of a meter to around a meter scale over this century, not in hundreds of meters. This baseline keeps the later jumps visually honest.",
+              disclaimer: "This is the only setting on this slider that resembles contemporary coastlines.",
+              refs
+            };
+          case 100:
+            return {
+              title: "100 m · Beyond modern sea-level scenarios",
+              body: "You are already beyond ordinary this-century projections. Getting here would require the collapse of the great ice sheets and still pushes past the range people usually mean when they discuss sea-level rise.",
+              disclaimer: "Even this first jump is better read as a stress test than a realistic near-term outcome.",
+              refs
+            };
+          case 200:
+            return {
+              title: "200 m · Beyond present land-ice inventories",
+              body: "At this point the water implied is no longer explained by melting today's glaciers and polar ice alone. You would need additional long-duration planetary changes beyond standard cryosphere loss.",
+              disclaimer: "This is not a mainstream climate forecast scenario.",
+              refs
+            };
+          case 300:
+            return {
+              title: "300 m · Deep-time greenhouse territory",
+              body: "A world like this looks less like a modern emissions projection and more like a deep-time or radically reorganized planetary state.",
+              disclaimer: "Useful for visualization, but already outside ordinary planning assumptions.",
+              refs
+            };
+          case 400:
+            return {
+              title: "400 m · Planetary reconfiguration",
+              body: "You would need far more than severe warming. This scale implies long-run geological, basin, or water-distribution changes, not just bad policy outcomes.",
+              disclaimer: "The application is illustrative here, not predictive.",
+              refs
+            };
+          case 500:
+            return {
+              title: "500 m · More than full cryosphere loss",
+              body: "Complete polar ice-sheet collapse still does not cleanly explain this magnitude. The slider has crossed into a deliberately extreme thought experiment.",
+              disclaimer: "Present-day land ice is not enough to sustain a stable ocean this high.",
+              refs
+            };
+          case 600:
+            return {
+              title: "600 m · Geological thought experiment",
+              body: "This is the point where public speculation usually has to invoke tectonic change, altered basin volume, or other nonstandard mechanisms in addition to ice loss.",
+              disclaimer: "Climate change is the intuitive entry point, but this value exceeds it.",
+              refs
+            };
+          case 700:
+            return {
+              title: "700 m · Beyond known ice reservoirs",
+              body: "The visual is still useful, but the mechanism is no longer ordinary sea-level rise physics. You are imagining a substantially different Earth system.",
+              disclaimer: "There is no accepted modern pathway to a stable +700 m ocean.",
+              refs
+            };
+          case 800:
+            return {
+              title: "800 m · Catastrophe-writing scale",
+              body: "Public catastrophe writing sometimes reaches for asteroid impacts here, but real impacts are better understood as transient megatsunami hazards, not a permanent +800 m global ocean.",
+              disclaimer: "Impact flooding and long-run global sea-level rise are not the same thing.",
+              refs
+            };
+          case 900:
+            return {
+              title: "900 m · Transient disaster is not enough",
+              body: "Even a civilization-ending impact does not by itself create a stable ocean nearly a kilometer higher. Lasting change at this level would require persistent planetary reconfiguration.",
+              disclaimer: "This step is best treated as extreme speculative modeling.",
+              refs
+            };
+          case 1000:
+            return {
+              title: "1,000 m · A radically different planet",
+              body: "One kilometer of durable rise means climate forcing alone is no longer the right frame. You are modeling a world with a different hydrological or tectonic balance.",
+              disclaimer: "This is intentionally outside mainstream geophysical forecasting.",
+              refs
+            };
+          case 1100:
+            return {
+              title: "1,100 m · Beyond accepted forecast mechanisms",
+              body: "At this level the slider becomes openly worldbuilding-adjacent. The value is in seeing how coastlines fail, not in claiming a plausible modern pathway.",
+              disclaimer: "No accepted public scenario places near-future Earth here.",
+              refs
+            };
+          case 1200:
+            return {
+              title: "1,200 m · Deep-interior speculation begins",
+              body: "This is where speculative conversations often shift toward hidden planetary water reservoirs, deep mantle processes, or extreme tectonic change rather than surface climate alone.",
+              disclaimer: "These ideas appear in public science writing, but they are not accepted as operational forecasts.",
+              refs
+            };
+          case 1300:
+            return {
+              title: "1,300 m · Ringwoodite enters the conversation",
+              body: "Ringwoodite is often cited because it suggests Earth stores large amounts of water deep below the crust. Releasing that water at global-ocean scale, however, is highly speculative.",
+              disclaimer: "Interesting as a concept, not established as a real-world near-term mechanism.",
+              refs
+            };
+          case 1400:
+            return {
+              title: "1,400 m · Hydrological reassembly",
+              body: "To hold an ocean this high for long, the planet would need a very different arrangement of basins, crust, or water reservoirs than the one we inhabit today.",
+              disclaimer: "The visual is clearer than the physics because the physics are intentionally stretched.",
+              refs
+            };
+          case 1500:
+            return {
+              title: "1,500 m · Worldbuilding scale",
+              body: "This is still meaningful as a visualization of vulnerability, but it has moved from climate interpretation into hypothetical planetary redesign.",
+              disclaimer: "Use it to reason about exposure, not probability.",
+              refs
+            };
+          case 1600:
+            return {
+              title: "1,600 m · Surface and basin transformation",
+              body: "A durable ocean this high implies profound restructuring of Earth's surface or interior water budget. The coastline story is compelling precisely because the mechanism is so extreme.",
+              disclaimer: "This is a maximum-stress demonstration, not a forecast line.",
+              refs
+            };
+          case 1700:
+            return {
+              title: "1,700 m · No accepted modern analogue",
+              body: "There is no accepted modern scenario that produces a stable shoreline configuration like this. The application is operating as a planetary thought experiment.",
+              disclaimer: "This is beyond ordinary risk communication and into speculative systems imagination.",
+              refs
+            };
+          case 1800:
+            return {
+              title: "1,800 m · Demonstrative extremity",
+              body: "At this point the main value is showing just how little familiar geography survives. The number is not there to claim realism; it is there to make planetary fragility obvious.",
+              disclaimer: "The coastline deformation is illustrative and vertically exaggerated.",
+              refs
+            };
+          case 1900:
+            return {
+              title: "1,900 m · Extreme deep-water thought experiment",
+              body: "A stable ocean nearly two kilometers higher would require mechanisms closer to speculative deep-interior release or radical basin collapse than anything in public climate guidance.",
+              disclaimer: "Ringwoodite-style discussions are interesting, but still speculative at this scale.",
+              refs
+            };
+          case 2000:
+          default:
+            return {
+              title: "2,000 m · Fully speculative endpoint",
+              body: "Two kilometers of rise is firmly in fictional or deep-planetary thought-experiment territory. The point here is visual consequence, not a claim that Earth is on track for this state.",
+              disclaimer: "The terrain model remains useful as an interface even when the scenario becomes deliberately implausible.",
+              refs
+            };
+        }
+      }
+
+      function updateScenarioNarrative(value) {
+        if (!scenarioTitle || !scenarioCopy || !scenarioDisclaimer || !scenarioReferences) {
+          return;
+        }
+        const scenario = scenarioForSeaLevel(value);
+        scenarioTitle.textContent = scenario.title;
+        scenarioCopy.textContent = scenario.body;
+        scenarioDisclaimer.textContent = scenario.disclaimer;
+        scenarioReferences.innerHTML = scenario.refs
+          .map((key) => {
+            const ref = REFERENCE_LIBRARY[key];
+            return `<li><a href="${ref.url}" target="_blank" rel="noopener">${ref.title}</a></li>`;
+          })
+          .join("");
+      }
+
+      function setGlobeLoading(active, message, isError = false) {
+        globeLoading.classList.toggle("is-hidden", !active);
+        globeLoading.classList.toggle("is-error", Boolean(isError));
+        if (message) {
+          globeLoadingText.textContent = message;
+        }
+      }
+
+      function updateAntarcticaMarkerVisibility() {
+        const markerWorld = antarcticaMarkerGroup.getWorldPosition(new THREE.Vector3());
+        const cameraDirection = camera.position.clone().sub(markerWorld).normalize();
+        const surfaceNormal = markerWorld.clone().sub(earthPivot.getWorldPosition(new THREE.Vector3())).normalize();
+        const facingCamera = surfaceNormal.dot(cameraDirection) > 0.18;
+        antarcticaMarkerGroup.visible = facingCamera;
+      }
+
+      function resetOrientation() {
+        earthPivot.rotation.x = DEFAULT_PIVOT_ROTATION.x;
+        earthPivot.rotation.y = DEFAULT_PIVOT_ROTATION.y;
+      }
+
+      function focusAntarctica() {
+        earthPivot.rotation.x = ANTARCTICA_PIVOT_ROTATION.x;
+        earthPivot.rotation.y = ANTARCTICA_PIVOT_ROTATION.y;
+      }
+
+      function toggleSouthPoleView() {
+        if (state.viewMode === "southPole") {
+          state.viewMode = "globe";
+          state.autoRotate = state.autoRotateBeforeSouthPole;
+          syncRotationToggle();
+          syncViewMode();
+          return;
+        }
+        focusAntarctica();
+        state.autoRotateBeforeSouthPole = state.autoRotate;
+        state.autoRotate = false;
+        state.viewMode = "southPole";
+        syncRotationToggle();
+        syncViewMode();
+        if (state.ready) {
+          renderSouthPoleViewport();
+        }
+      }
+
+      function terrainAnchorLabel(cellOrCountry) {
+        return cellOrCountry?.terrainAnchor?.name || cellOrCountry?.terrainAnchor?.label || "No named terrain anchor nearby";
+      }
+
+      function renderStatDetail(statId) {
+        statsTemplate.forEach((item) => {
+          const node = statNodes.get(item.id);
+          node.card.classed("is-active", item.id === statId);
+          node.card.attr("aria-expanded", String(item.id === statId));
+        });
+
+        if (!statId || !state.statDetails.has(statId)) {
+          statsDetail.classList.remove("is-open");
+          detailList.selectAll("*").remove();
+          detailEmpty.style.display = "block";
+          return;
+        }
+
+        const detail = state.statDetails.get(statId);
+        detailTitle.textContent = detail.title;
+        detailMeta.textContent = detail.meta;
+        detailList
+          .selectAll(".detail-item")
+          .data(detail.rows, (row) => `${row.name}-${row.coverage}-${row.population}`)
+          .join((enter) => {
+            const item = enter.append("div").attr("class", "detail-item");
+            item
+              .append("div")
+              .attr("class", "detail-main")
+              .html((row) => `<strong>${row.name}</strong><span>${row.subtitle}</span>`);
+            item.append("div").attr("class", "detail-metric").text((row) => row.population);
+            item.append("div").attr("class", "detail-metric").text((row) => row.coverage);
+            item.append("div").attr("class", "detail-metric").text((row) => row.extra);
+            return item;
+          }, (update) => {
+            update.select(".detail-main").html((row) => `<strong>${row.name}</strong><span>${row.subtitle}</span>`);
+            update.selectAll(".detail-metric").data((row) => [row.population, row.coverage, row.extra]).text((d) => d);
+            return update;
+          });
+        detailEmpty.style.display = detail.rows.length ? "none" : "block";
+        statsDetail.classList.add("is-open");
+      }
+
+      function toggleStatDetail(statId) {
+        if (state.statsCollapsed) {
+          state.statsCollapsed = false;
+          syncStatsToggle();
+        }
+        state.activeStatId = state.activeStatId === statId ? null : statId;
+        renderStatDetail(state.activeStatId);
+      }
+
+      function getCanvasContext(canvasNode) {
+        const context = canvasNode.getContext("2d");
+        context.imageSmoothingEnabled = true;
+        return context;
+      }
+
+      function loadImage(url) {
+        return new Promise((resolve, reject) => {
+          const image = new Image();
+          image.crossOrigin = "anonymous";
+          image.onload = () => resolve(image);
+          image.onerror = () => reject(new Error(`Failed to load image: ${url}`));
+          image.src = url;
+        });
+      }
+
+      async function loadTexture(url) {
+        const loader = new THREE.TextureLoader();
+        loader.crossOrigin = "anonymous";
+        return await loader.loadAsync(url);
+      }
+
+      function luminanceAt(data, width, height, x, y) {
+        const xi = Math.max(0, Math.min(width - 1, Math.round(x)));
+        const yi = Math.max(0, Math.min(height - 1, Math.round(y)));
+        const offset = (yi * width + xi) * 4;
+        return 0.2126 * data[offset] + 0.7152 * data[offset + 1] + 0.0722 * data[offset + 2];
+      }
+
+      function wrapLongitude(lon) {
+        let next = lon;
+        while (next > 180) next -= 360;
+        while (next < -180) next += 360;
+        return next;
+      }
+
+      function clampLatitude(lat) {
+        return Math.max(-89.999, Math.min(89.999, lat));
+      }
+
+      function latLonToVector3(lat, lon, radius = SURFACE_RADIUS) {
+        const phi = THREE.MathUtils.degToRad(90 - lat);
+        const theta = THREE.MathUtils.degToRad(lon + 180);
+        return new THREE.Vector3(
+          -(radius * Math.sin(phi) * Math.cos(theta)),
+          radius * Math.cos(phi),
+          radius * Math.sin(phi) * Math.sin(theta)
+        );
+      }
+
+      function sampleTerrainMetrics(data, width, height, lon, lat, lonSpan, latSpan) {
+        const x = ((lon + 180) / 360) * (width - 1);
+        const y = ((90 - lat) / 180) * (height - 1);
+        const stepX = Math.max(1.6, (lonSpan / 360) * width * 0.95);
+        const stepY = Math.max(1.6, (latSpan / 180) * height * 0.95);
+        const center = luminanceAt(data, width, height, x, y);
+        const samples = [
+          center,
+          luminanceAt(data, width, height, x - stepX, y),
+          luminanceAt(data, width, height, x + stepX, y),
+          luminanceAt(data, width, height, x, y - stepY),
+          luminanceAt(data, width, height, x, y + stepY),
+          luminanceAt(data, width, height, x - stepX, y - stepY),
+          luminanceAt(data, width, height, x + stepX, y - stepY),
+          luminanceAt(data, width, height, x - stepX, y + stepY),
+          luminanceAt(data, width, height, x + stepX, y + stepY)
+        ];
+        const raw = d3.mean(samples);
+        const roughness =
+          d3.mean(samples, (value) => Math.abs(value - center)) +
+          Math.abs(samples[1] - samples[2]) * 0.18 +
+          Math.abs(samples[3] - samples[4]) * 0.18;
+        return { raw, roughness };
+      }
+
+      function prepareCountries(features) {
+        return features.map((feature, index) => ({
+          id: feature.properties.ADM0_A3 || feature.properties.ISO_A3 || `country-${index}`,
+          feature,
+          name: feature.properties.NAME || feature.properties.ADMIN || "Unknown",
+          nameLong: feature.properties.NAME_LONG || feature.properties.NAME || feature.properties.ADMIN || "Unknown",
+          populationEstimate: Number(feature.properties.POP_EST) || 0,
+          continent: feature.properties.CONTINENT || "",
+          subregion: feature.properties.SUBREGION || feature.properties.REGION_UN || "",
+          centroid: d3.geoCentroid(feature),
+          bounds: featureBoundsWithWrap(feature),
+          cellIndices: []
+        }));
+      }
+
+      function countryContainingPoint(lon, lat, countries) {
+        for (const country of countries) {
+          const { minLon, maxLon, minLat, maxLat } = country.bounds;
+          if (lat < minLat || lat > maxLat || !pointInWrappedLonRange(lon, minLon, maxLon)) {
+            continue;
+          }
+          if (d3.geoContains(country.feature, [lon, lat])) {
+            return country;
+          }
+        }
+        return null;
+      }
+
+      function sampleCountryCoverage(lon, lat, lonStep, latStep, countries) {
+        const offsets = [
+          [0, 0],
+          [-0.34, 0],
+          [0.34, 0],
+          [0, -0.34],
+          [0, 0.34],
+          [-0.3, -0.3],
+          [0.3, -0.3],
+          [-0.3, 0.3],
+          [0.3, 0.3]
+        ];
+        let landHits = 0;
+        let centerCountry = null;
+        const countryHits = new Map();
+
+        offsets.forEach(([lonOffsetFactor, latOffsetFactor], sampleIndex) => {
+          const sampleLon = wrapLongitude(lon + lonOffsetFactor * lonStep);
+          const sampleLat = clampLatitude(lat + latOffsetFactor * latStep);
+          const country = countryContainingPoint(sampleLon, sampleLat, countries);
+          if (sampleIndex === 0) {
+            centerCountry = country;
+          }
+          if (country) {
+            landHits += 1;
+            countryHits.set(country.id, (countryHits.get(country.id) || 0) + 1);
+          }
+        });
+
+        const dominantCountryId = d3.greatest(Array.from(countryHits.entries()), (entry) => entry[1])?.[0] || null;
+        return {
+          landHits,
+          sampleCount: offsets.length,
+          landRatio: landHits / offsets.length,
+          isCoastal: landHits > 0 && landHits < offsets.length,
+          centerCountryId: centerCountry?.id || null,
+          dominantCountryId
+        };
+      }
+
+      function buildElevationScales(cells) {
+        const landRaw = cells.filter((cell) => cell.isLand).map((cell) => cell.raw);
+        const waterRaw = cells.filter((cell) => !cell.isLand).map((cell) => cell.raw);
+        const landExtent = landRaw.length ? d3.extent(landRaw) : [0, 255];
+        const waterExtent = waterRaw.length ? d3.extent(waterRaw) : [0, 255];
+        const safeLandExtent = landExtent[0] === landExtent[1] ? [landExtent[0] - 1, landExtent[1] + 1] : landExtent;
+        const safeWaterExtent = waterExtent[0] === waterExtent[1] ? [waterExtent[0] - 1, waterExtent[1] + 1] : waterExtent;
+        return {
+          oceanScale: d3.scaleLinear().domain(safeWaterExtent).range([-11000, -1]).clamp(true),
+          landScale: d3.scaleLinear().domain(safeLandExtent).range([20, 8850]).clamp(true)
+        };
+      }
+
+      function buildHexGrid(imageData, width, height, countries) {
+        const lonStep = 360 / HEX_COLS;
+        const latStep = 180 / HEX_ROWS;
+        const provisional = [];
+
+        for (let row = 0; row < HEX_ROWS; row += 1) {
+          const lat = 90 - (row + 0.5) * latStep;
+          const lonOffset = row % 2 === 0 ? 0 : lonStep / 2;
+          for (let col = 0; col < HEX_COLS; col += 1) {
+            let lon = -180 + lonOffset + (col + 0.5) * lonStep;
+            if (lon > 180) lon -= 360;
+            const metrics = sampleTerrainMetrics(imageData, width, height, lon, lat, lonStep, latStep);
+            const coverage = sampleCountryCoverage(lon, lat, lonStep, latStep, countries);
+            provisional.push({
+              lat,
+              lon,
+              row,
+              col,
+              spanLon: lonStep,
+              spanLat: latStep,
+              roughness: metrics.roughness,
+              raw: metrics.raw,
+              coverage
+            });
+          }
+        }
+
+        const roughnessSorted = provisional.map((cell) => cell.roughness).sort((a, b) => a - b);
+        const refineThreshold = d3.quantileSorted(roughnessSorted, 0.72);
+        const refined = [];
+
+        provisional.forEach((cell) => {
+          const divisions = cell.coverage.isCoastal ? 3 : cell.roughness >= refineThreshold ? 2 : 1;
+          const subLonStep = cell.spanLon / divisions;
+          const subLatStep = cell.spanLat / divisions;
+          const lonMin = cell.lon - cell.spanLon / 2;
+          const latMin = cell.lat - cell.spanLat / 2;
+
+          for (let subRow = 0; subRow < divisions; subRow += 1) {
+            for (let subCol = 0; subCol < divisions; subCol += 1) {
+              const lat = latMin + subLatStep * (subRow + 0.5);
+              const lon = wrapLongitude(lonMin + subLonStep * (subCol + 0.5));
+              const metrics = sampleTerrainMetrics(imageData, width, height, lon, lat, subLonStep, subLatStep);
+              const coverage = sampleCountryCoverage(lon, lat, subLonStep, subLatStep, countries);
+              refined.push({
+                lat,
+                lon,
+                row: cell.row,
+                col: cell.col,
+                spanLon: subLonStep,
+                spanLat: subLatStep,
+                resolution: divisions,
+                roughness: metrics.roughness,
+                raw: metrics.raw,
+                coverage
+              });
+            }
+          }
+        });
+
+        refined.forEach((cell) => {
+          cell.isLand = Boolean(cell.coverage.centerCountryId) || cell.coverage.landRatio >= 0.34;
+        });
+
+        const { oceanScale, landScale } = buildElevationScales(refined);
+        const roughExtent = d3.extent(refined, (cell) => cell.roughness);
+        const roughnessScale = d3.scaleLinear().domain(roughExtent).range([0, 1]).clamp(true);
+        const landHeightScale = d3.scaleSqrt().domain([0, 8850]).range([0.014, 0.22]).clamp(true);
+        const oceanHeightScale = d3.scaleSqrt().domain([0, 11000]).range([0.004, 0.024]).clamp(true);
+
+        return refined.map((cell, index) => {
+          const isLand = cell.isLand;
+          const elevation = isLand ? landScale(cell.raw) : oceanScale(cell.raw);
+          const ruggedness = roughnessScale(cell.roughness);
+          const sizeRatio = cell.spanLon / lonStep;
+          const latFactor = 0.72 + 0.28 * Math.sqrt(Math.max(0.18, Math.cos(THREE.MathUtils.degToRad(cell.lat))));
+          const hexRadius = (0.014 + sizeRatio * 0.03) * latFactor;
+          const columnHeight = isLand ? landHeightScale(elevation) : oceanHeightScale(Math.abs(elevation));
+          const normal = latLonToVector3(cell.lat, cell.lon).normalize();
+          return {
+            ...cell,
+            index,
+            isLand,
+            elevation,
+            ruggedness,
+            hexRadius,
+            columnHeight,
+            normal,
+            countryId: cell.coverage.centerCountryId || null
+          };
+        });
+      }
+
+      function pointInWrappedLonRange(lon, minLon, maxLon) {
+        if (minLon <= maxLon) {
+          return lon >= minLon && lon <= maxLon;
+        }
+        return lon >= minLon || lon <= maxLon;
+      }
+
+      function featureBoundsWithWrap(feature) {
+        const bounds = d3.geoBounds(feature);
+        let [[minLon, minLat], [maxLon, maxLat]] = bounds;
+        const lonSpan = maxLon - minLon;
+        if (lonSpan >= 350) {
+          return { minLon: -180, maxLon: 180, minLat, maxLat };
+        }
+        if (lonSpan > 300) {
+          [minLon, maxLon] = [maxLon, minLon];
+        }
+        return { minLon, maxLon, minLat, maxLat };
+      }
+
+      function buildElevationPoints(features) {
+        return features
+          .filter((feature) => feature?.geometry?.coordinates && feature?.properties)
+          .map((feature) => ({
+            name: feature.properties.name || feature.properties.name_en || "Unnamed terrain anchor",
+            featureClass: feature.properties.featurecla || "terrain",
+            elevation: Number(feature.properties.elevation) || 0,
+            region: feature.properties.region || "",
+            subregion: feature.properties.subregion || "",
+            lon: feature.geometry.coordinates[0],
+            lat: feature.geometry.coordinates[1]
+          }));
+      }
+
+      function nearestElevationPoint(lon, lat) {
+        if (!state.elevationPoints.length) {
+          return null;
+        }
+        let best = null;
+        let bestDistance = Infinity;
+        state.elevationPoints.forEach((point) => {
+          const distance = d3.geoDistance([lon, lat], [point.lon, point.lat]);
+          if (distance < bestDistance) {
+            best = point;
+            bestDistance = distance;
+          }
+        });
+        if (!best) {
+          return null;
+        }
+        return {
+          ...best,
+          distanceRadians: bestDistance,
+          distanceDegrees: bestDistance * (180 / Math.PI)
+        };
+      }
+
+      function inferTerrainAnchor(cell) {
+        const nearest = nearestElevationPoint(cell.lon, cell.lat);
+        if (nearest && nearest.distanceDegrees < 18) {
+          return {
+            name: nearest.name,
+            label: `${nearest.name} (${nearest.featureClass})`,
+            featureClass: nearest.featureClass,
+            elevation: nearest.elevation
+          };
+        }
+        if (!cell.isLand) {
+          return { name: "Ocean basin", label: "Ocean basin", featureClass: "ocean", elevation: cell.elevation };
+        }
+        if (cell.elevation > 4200) {
+          return { name: "Unnamed alpine chain", label: "Unnamed alpine chain", featureClass: "mountain", elevation: cell.elevation };
+        }
+        if (cell.elevation > 1200) {
+          return { name: "Interior uplands", label: "Interior uplands", featureClass: "uplands", elevation: cell.elevation };
+        }
+        return { name: "Coastal or inland lowlands", label: "Coastal or inland lowlands", featureClass: "lowlands", elevation: cell.elevation };
+      }
+
+      function featurePolygonFeatures(feature) {
+        if (!feature?.geometry) {
+          return [];
+        }
+        if (feature.geometry.type === "Polygon") {
+          return [{ type: "Feature", properties: feature.properties || {}, geometry: feature.geometry }];
+        }
+        if (feature.geometry.type === "MultiPolygon") {
+          return feature.geometry.coordinates.map((polygon) => ({
+            type: "Feature",
+            properties: feature.properties || {},
+            geometry: { type: "Polygon", coordinates: polygon }
+          }));
+        }
+        return [];
+      }
+
+      function findInteriorPoint(country) {
+        const candidates = [
+          country.centroid,
+          [(country.bounds.minLon + country.bounds.maxLon) / 2, (country.bounds.minLat + country.bounds.maxLat) / 2]
+        ];
+
+        for (const [candidateLon, candidateLat] of candidates) {
+          const lon = wrapLongitude(candidateLon);
+          const lat = clampLatitude(candidateLat);
+          if (d3.geoContains(country.feature, [lon, lat])) {
+            return [lon, lat];
+          }
+        }
+
+        for (const polygonFeature of featurePolygonFeatures(country.feature)) {
+          const polygonBounds = featureBoundsWithWrap(polygonFeature);
+          const polygonCentroid = d3.geoCentroid(polygonFeature);
+          const polygonCandidates = [
+            polygonCentroid,
+            [(polygonBounds.minLon + polygonBounds.maxLon) / 2, (polygonBounds.minLat + polygonBounds.maxLat) / 2]
+          ];
+
+          for (const [candidateLon, candidateLat] of polygonCandidates) {
+            const lon = wrapLongitude(candidateLon);
+            const lat = clampLatitude(candidateLat);
+            if (d3.geoContains(country.feature, [lon, lat])) {
+              return [lon, lat];
+            }
+          }
+
+          const lonSpanRaw = polygonBounds.maxLon - polygonBounds.minLon;
+          const lonSpan = lonSpanRaw >= 0 ? lonSpanRaw : lonSpanRaw + 360;
+          const latSpan = Math.max(0.08, polygonBounds.maxLat - polygonBounds.minLat);
+          const columns = 10;
+          const rows = 10;
+
+          for (let row = 0; row < rows; row += 1) {
+            const lat = clampLatitude(polygonBounds.minLat + ((row + 0.5) / rows) * latSpan);
+            for (let col = 0; col < columns; col += 1) {
+              const lon = wrapLongitude(polygonBounds.minLon + ((col + 0.5) / columns) * Math.max(0.08, lonSpan));
+              if (d3.geoContains(country.feature, [lon, lat])) {
+                return [lon, lat];
+              }
+            }
+          }
+        }
+
+        return null;
+      }
+
+      function seedCountryCells(countries, hexCells, imageData, width, height) {
+        const nextCells = [...hexCells];
+        const lonStep = 360 / HEX_COLS;
+        const latStep = 180 / HEX_ROWS;
+        const roughExtent = d3.extent(hexCells, (cell) => cell.roughness);
+        const roughnessScale = d3.scaleLinear().domain(roughExtent).range([0, 1]).clamp(true);
+        const landHeightScale = d3.scaleSqrt().domain([0, 8850]).range([0.014, 0.22]).clamp(true);
+        const { landScale } = buildElevationScales(hexCells.filter((cell) => cell.isLand));
+
+        countries.forEach((country) => {
+          if (country.cellIndices.length > 0) {
+            return;
+          }
+
+          const interiorPoint = findInteriorPoint(country);
+          if (!interiorPoint) {
+            return;
+          }
+
+          const [lon, lat] = interiorPoint;
+          const lonSpanRaw = country.bounds.maxLon - country.bounds.minLon;
+          const lonSpan = lonSpanRaw >= 0 ? lonSpanRaw : lonSpanRaw + 360;
+          const latSpan = Math.max(0.18, country.bounds.maxLat - country.bounds.minLat);
+          const spanLon = Math.max(0.3, Math.min(lonStep / 3, Math.max(0.3, lonSpan * 0.42)));
+          const spanLat = Math.max(0.3, Math.min(latStep / 3, Math.max(0.3, latSpan * 0.42)));
+          const metrics = sampleTerrainMetrics(imageData, width, height, lon, lat, spanLon, spanLat);
+          const elevation = landScale(metrics.raw);
+          const sizeRatio = spanLon / lonStep;
+          const latFactor = 0.72 + 0.28 * Math.sqrt(Math.max(0.18, Math.cos(THREE.MathUtils.degToRad(lat))));
+          const hexRadius = (0.014 + sizeRatio * 0.03) * latFactor;
+          const cell = {
+            lat,
+            lon,
+            row: -1,
+            col: -1,
+            spanLon,
+            spanLat,
+            resolution: 4,
+            roughness: metrics.roughness,
+            raw: metrics.raw,
+            coverage: {
+              landHits: 9,
+              sampleCount: 9,
+              landRatio: 1,
+              isCoastal: false,
+              centerCountryId: country.id,
+              dominantCountryId: country.id
+            },
+            index: nextCells.length,
+            isLand: true,
+            elevation,
+            ruggedness: roughnessScale(metrics.roughness),
+            hexRadius,
+            columnHeight: landHeightScale(elevation),
+            normal: latLonToVector3(lat, lon).normalize(),
+            countryId: country.id,
+            countryName: country.name,
+            countryPopulationEstimate: country.populationEstimate,
+            countryPopulationShare: 0,
+            seedCell: true
+          };
+          cell.terrainAnchor = inferTerrainAnchor(cell);
+          nextCells.push(cell);
+          country.cellIndices.push(cell.index);
+        });
+
+        return nextCells;
+      }
+
+      function buildCountryCellMap(countries, hexCells) {
+        const countryById = new Map(countries.map((country) => [country.id, country]));
+        countries.forEach((country) => {
+          country.cellIndices = [];
+        });
+
+        hexCells.forEach((cell) => {
+          let country = cell.countryId ? countryById.get(cell.countryId) : null;
+          if (!country) {
+            country = countryContainingPoint(cell.lon, cell.lat, countries);
+          }
+          if (country) {
+            country.cellIndices.push(cell.index);
+            cell.countryId = country.id;
+            cell.countryName = country.name;
+            cell.countryPopulationEstimate = country.populationEstimate;
+            cell.countryPopulationShare = 0;
+          }
+          cell.terrainAnchor = inferTerrainAnchor(cell);
+        });
+
+        countries.forEach((country) => {
+          const totalCells = country.cellIndices.length;
+          country.cellIndices.forEach((cellIndex) => {
+            const cell = hexCells[cellIndex];
+            cell.countryPopulationShare = totalCells ? country.populationEstimate / totalCells : 0;
+          });
+          const anchorCell = d3.greatest(country.cellIndices, (cellIndex) => hexCells[cellIndex].elevation);
+          if (anchorCell !== undefined) {
+            country.terrainAnchor = hexCells[anchorCell].terrainAnchor;
+          } else {
+            const fallbackAnchor = nearestElevationPoint(country.centroid[0], country.centroid[1]);
+            country.terrainAnchor = fallbackAnchor
+              ? { name: fallbackAnchor.name, label: `${fallbackAnchor.name} (${fallbackAnchor.featureClass})`, featureClass: fallbackAnchor.featureClass }
+              : { name: `${country.subregion || country.continent} terrain`, label: `${country.subregion || country.continent} terrain`, featureClass: "region" };
+          }
+        });
+
+        return countries;
+      }
+
+      function terrainLegendBand(cell, seaLevelMeters) {
+        const elevation = cell.elevation;
+
+        if (!cell.isLand) {
+          return {
+            entry: TERRAIN_LEGEND.deepOcean,
+            normalized: d3.scaleLinear().domain([-11000, -1]).range([0, 1]).clamp(true)(elevation)
+          };
+        }
+
+        if (elevation <= seaLevelMeters) {
+          return {
+            entry: TERRAIN_LEGEND.floodedLowlands,
+            normalized: d3.scaleLinear().domain([0, 6000]).range([0.15, 1]).clamp(true)(seaLevelMeters - elevation)
+          };
+        }
+
+        if (elevation < 1200) {
+          return {
+            entry: TERRAIN_LEGEND.lowElevationLand,
+            normalized: d3.scaleLinear().domain([0, 1200]).range([0, 1]).clamp(true)(elevation)
+          };
+        }
+
+        if (elevation < 4200) {
+          return {
+            entry: TERRAIN_LEGEND.uplands,
+            normalized: d3.scaleLinear().domain([1200, 4200]).range([0, 1]).clamp(true)(elevation)
+          };
+        }
+
+        return {
+          entry: TERRAIN_LEGEND.highMountains,
+          normalized: d3.scaleLinear().domain([4200, 8850]).range([0, 1]).clamp(true)(elevation)
+        };
+      }
+
+      function terrainColor(cell, seaLevelMeters) {
+        const band = terrainLegendBand(cell, seaLevelMeters);
+        return band.entry.color;
+      }
+
+      function drawHex(ctx, centerX, centerY, radius, fill, options = null) {
+        ctx.beginPath();
+        for (let side = 0; side < 6; side += 1) {
+          const angle = (Math.PI / 180) * (60 * side - 30);
+          const x = centerX + radius * Math.cos(angle);
+          const y = centerY + radius * Math.sin(angle);
+          if (side === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        }
+        ctx.closePath();
+        ctx.fillStyle = fill;
+        ctx.fill();
+        if (options?.strokeStyle) {
+          ctx.strokeStyle = options.strokeStyle;
+          ctx.lineWidth = options.lineWidth || 1;
+          ctx.stroke();
+        }
+      }
+
+      function polarCells(hexCells, north) {
+        return hexCells.filter((cell) => (north ? cell.lat >= POLAR_INSET_LATITUDE : cell.lat <= -POLAR_INSET_LATITUDE));
+      }
+
+      function polarCapSummary(hexCells, north, seaLevelMeters) {
+        const cells = polarCells(hexCells, north);
+        if (!cells.length) {
+          return null;
+        }
+        const representative = d3.greatest(cells, (cell) => (north ? cell.lat : -cell.lat)) || cells[0];
+        const boundaryLat = north
+          ? Math.max(...cells.map((cell) => clampLatitude(cell.lat + cell.spanLat * 0.5)))
+          : Math.min(...cells.map((cell) => clampLatitude(cell.lat - cell.spanLat * 0.5)));
+        return {
+          cells,
+          boundaryLat,
+          fill: terrainColor(representative, seaLevelMeters)
+        };
+      }
+
+      function drawPolarCapsToTexture(ctx, hexCells, seaLevelMeters, width, height) {
+        const northCap = polarCapSummary(hexCells, true, seaLevelMeters);
+        const southCap = polarCapSummary(hexCells, false, seaLevelMeters);
+
+        if (northCap) {
+          const capBottomY = ((90 - northCap.boundaryLat) / 180) * height;
+          ctx.fillStyle = northCap.fill;
+          ctx.fillRect(0, 0, width, Math.max(0, capBottomY));
+        }
+
+        if (southCap) {
+          const capTopY = ((90 - southCap.boundaryLat) / 180) * height;
+          ctx.fillStyle = southCap.fill;
+          ctx.fillRect(0, capTopY, width, Math.max(0, height - capTopY));
+        }
+      }
+
+      function mercatorY(lat) {
+        const clampedLat = Math.max(-85.05113, Math.min(85.05113, lat));
+        const radians = THREE.MathUtils.degToRad(clampedLat);
+        return Math.log(Math.tan(Math.PI / 4 + radians / 2));
+      }
+
+      function projectMercatorPoint(lon, lat, projection) {
+        const x = projection.centerX + projection.scale * THREE.MathUtils.degToRad(wrapLongitude(lon));
+        const y = projection.centerY - projection.scale * mercatorY(lat);
+        return { x, y };
+      }
+
+      function drawProjectedHex(ctx, cell, fill, projection) {
+        const center = projectMercatorPoint(cell.lon, cell.lat, projection);
+        const east = projectMercatorPoint(cell.lon + cell.spanLon * 0.5, cell.lat, projection);
+        const west = projectMercatorPoint(cell.lon - cell.spanLon * 0.5, cell.lat, projection);
+        const north = projectMercatorPoint(cell.lon, cell.lat + cell.spanLat * 0.45, projection);
+        const south = projectMercatorPoint(cell.lon, cell.lat - cell.spanLat * 0.45, projection);
+        const radius = Math.max(1.2, Math.min(Math.abs(east.x - west.x), Math.abs(south.y - north.y)) * 0.42);
+        drawHex(ctx, center.x, center.y, radius, fill);
+      }
+
+      function drawPolarInset(ctx, hexCells, north, centerX, centerY, radius, seaLevelMeters) {
+        const cells = polarCells(hexCells, north);
+        if (!cells.length) {
+          return;
+        }
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fillStyle = "rgba(6, 20, 31, 0.92)";
+        ctx.fill();
+        ctx.clip();
+
+        const latSpan = 90 - POLAR_INSET_LATITUDE;
+        cells.forEach((cell) => {
+          const angle = THREE.MathUtils.degToRad(cell.lon);
+          const polarLat = north ? 90 - cell.lat : 90 + cell.lat;
+          const radial = radius * (polarLat / latSpan) * 0.92;
+          const x = centerX + Math.cos(angle) * radial;
+          const y = centerY + Math.sin(angle) * radial;
+          const localRadius = Math.max(2.2, radius * 0.06 * (cell.resolution > 1 ? 0.8 : 1));
+          drawHex(ctx, x, y, localRadius, terrainColor(cell, seaLevelMeters));
+        });
+
+        ctx.restore();
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(167, 220, 255, 0.22)";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.fillStyle = "#dceefa";
+        ctx.font = "600 20px Avenir Next, Segoe UI, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(north ? "North Pole" : "South Pole / Antarctica", centerX, centerY + radius + 26);
+        ctx.textAlign = "left";
+      }
+
+      function projectSouthPolePoint(lon, lat, projection) {
+        const lonRad = THREE.MathUtils.degToRad(wrapLongitude(lon));
+        const clampedLat = clampLatitude(lat);
+        const polarLat = Math.max(0, 90 + clampedLat);
+        const latSpan = 90 + ANTARCTICA_VIEW_NORTHERN_BOUND;
+        const radial = projection.radius * Math.min(1, polarLat / latSpan);
+        return {
+          x: projection.centerX + radial * Math.sin(lonRad),
+          y: projection.centerY - radial * Math.cos(lonRad)
+        };
+      }
+
+      function drawSouthPolePerspectiveHex(ctx, cell, fill, projection, options = null) {
+        if (cell.lat - cell.spanLat * 0.5 > ANTARCTICA_VIEW_NORTHERN_BOUND) {
+          return;
+        }
+        const center = projectSouthPolePoint(cell.lon, cell.lat, projection);
+        const east = projectSouthPolePoint(cell.lon + cell.spanLon * 0.5, cell.lat, projection);
+        const west = projectSouthPolePoint(cell.lon - cell.spanLon * 0.5, cell.lat, projection);
+        const north = projectSouthPolePoint(
+          cell.lon,
+          Math.min(ANTARCTICA_VIEW_NORTHERN_BOUND, cell.lat + cell.spanLat * 0.45),
+          projection
+        );
+        const south = projectSouthPolePoint(cell.lon, cell.lat - cell.spanLat * 0.45, projection);
+        const radius = Math.max(1.2, Math.min(Math.abs(east.x - west.x), Math.abs(south.y - north.y)) * 0.42);
+        drawHex(ctx, center.x, center.y, radius, fill, {
+          strokeStyle: options?.strokeStyle || null,
+          lineWidth: options?.lineWidth ? options.lineWidth(radius, cell) : undefined
+        });
+      }
+
+      function antarcticaCountry() {
+        return state.countries.find((country) => /antarctica/i.test(country.nameLong) || /antarctica/i.test(country.name)) || null;
+      }
+
+      function traceProjectedFeaturePath(ctx, feature, projectPoint) {
+        featurePolygonFeatures(feature).forEach((polygonFeature) => {
+          polygonFeature.geometry.coordinates.forEach((ring) => {
+            ring.forEach(([lon, lat], index) => {
+              const point = projectPoint(lon, lat);
+              if (index === 0) {
+                ctx.moveTo(point.x, point.y);
+              } else {
+                ctx.lineTo(point.x, point.y);
+              }
+            });
+            ctx.closePath();
+          });
+        });
+      }
+
+      function drawAntarcticaProjection(ctx, projection, seaLevelMeters) {
+        const country = antarcticaCountry();
+        if (!country) {
+          state.hexCells.forEach((cell) => {
+            drawSouthPolePerspectiveHex(ctx, cell, terrainColor(cell, seaLevelMeters), projection, {
+              strokeStyle: "rgba(220, 238, 250, 0.26)",
+              lineWidth: (radius) => Math.max(0.6, radius * 0.18)
+            });
+          });
+          return;
+        }
+
+        const antarcticaCells = state.hexCells
+          .filter((cell) => cell.countryId === country.id || d3.geoContains(country.feature, [cell.lon, cell.lat]))
+          .slice()
+          .sort(
+            (a, b) =>
+              d3.ascending(a.resolution || 1, b.resolution || 1) ||
+              d3.ascending(a.elevation, b.elevation)
+          );
+
+        ctx.save();
+        ctx.beginPath();
+        traceProjectedFeaturePath(ctx, country.feature, (lon, lat) => projectSouthPolePoint(lon, lat, projection));
+        ctx.fillStyle = "rgba(15, 41, 58, 0.94)";
+        ctx.fill("evenodd");
+        ctx.clip("evenodd");
+        antarcticaCells.forEach((cell) => {
+          drawSouthPolePerspectiveHex(ctx, cell, terrainColor(cell, seaLevelMeters), projection, {
+            strokeStyle: cell.elevation <= seaLevelMeters ? "rgba(173, 223, 255, 0.52)" : "rgba(238, 247, 255, 0.38)",
+            lineWidth: (radius, nextCell) => Math.max(0.7, radius * (nextCell.resolution > 1 ? 0.24 : 0.18))
+          });
+        });
+        ctx.restore();
+
+        ctx.beginPath();
+        traceProjectedFeaturePath(ctx, country.feature, (lon, lat) => projectSouthPolePoint(lon, lat, projection));
+        ctx.strokeStyle = "rgba(220, 238, 250, 0.88)";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+      }
+
+      function antarcticaSeaLevelMetrics() {
+        const country = antarcticaCountry();
+        const cells = country
+          ? state.hexCells.filter((cell) => cell.isLand && (cell.countryId === country.id || d3.geoContains(country.feature, [cell.lon, cell.lat])))
+          : [];
+        const exposedCells = cells.filter((cell) => cell.elevation > state.seaLevelMeters);
+        const submergedCells = cells.filter((cell) => cell.elevation <= state.seaLevelMeters);
+        const highestExposed = exposedCells.length ? d3.max(exposedCells, (cell) => cell.elevation) : null;
+        return {
+          totalCells: cells.length,
+          exposedCells: exposedCells.length,
+          submergedCells: submergedCells.length,
+          exposedPct: cells.length ? exposedCells.length / cells.length : 0,
+          highestExposed
+        };
+      }
+
+      function drawExportStatCard(ctx, x, y, width, height, label, value, detail, options = {}) {
+        const radius = options.radius || 20;
+        const paddingX = options.paddingX || 22;
+        const labelY = options.labelY || 28;
+        const valueY = options.valueY || 64;
+        const detailY = options.detailY || 92;
+        const labelFont = options.labelFont || "600 18px Avenir Next, Segoe UI, sans-serif";
+        const valueFont = options.valueFont || "700 34px Avenir Next, Segoe UI, sans-serif";
+        const detailFont = options.detailFont || "500 15px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillStyle = "rgba(6, 20, 31, 0.82)";
+        ctx.strokeStyle = "rgba(167, 220, 255, 0.16)";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        if (typeof ctx.roundRect === "function") {
+          ctx.roundRect(x, y, width, height, radius);
+        } else {
+          ctx.rect(x, y, width, height);
+        }
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = "#9fc1d8";
+        ctx.font = labelFont;
+        ctx.textAlign = "left";
+        ctx.fillText(label, x + paddingX, y + labelY);
+
+        ctx.fillStyle = "#ecf7ff";
+        ctx.font = valueFont;
+        ctx.fillText(value, x + paddingX, y + valueY);
+
+        ctx.fillStyle = "#b9d2e3";
+        ctx.font = detailFont;
+        ctx.fillText(detail, x + paddingX, y + detailY);
+      }
+
+      function renderSouthPoleViewport() {
+        const bounds = antarcticaCanvas.getBoundingClientRect();
+        const width = Math.max(320, Math.floor(bounds.width || canvas.clientWidth || 612));
+        const height = Math.max(320, Math.floor(bounds.height || canvas.clientHeight || 612));
+        const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+        antarcticaCanvas.width = Math.floor(width * pixelRatio);
+        antarcticaCanvas.height = Math.floor(height * pixelRatio);
+        antarcticaCanvas.style.width = `${width}px`;
+        antarcticaCanvas.style.height = `${height}px`;
+
+        const ctx = antarcticaCanvas.getContext("2d");
+        ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+        ctx.clearRect(0, 0, width, height);
+
+        const gradient = ctx.createLinearGradient(0, 0, 0, height);
+        gradient.addColorStop(0, "#081927");
+        gradient.addColorStop(1, "#030a11");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+
+        const topInset = 108;
+        const bottomInset = 108;
+        const radius = Math.max(180, Math.min(width, height - topInset - bottomInset) * 0.43);
+        const centerX = width * 0.5;
+        const centerY = topInset + radius;
+        const projection = { centerX, centerY, radius };
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fillStyle = "#061a29";
+        ctx.fill();
+        ctx.strokeStyle = "rgba(167, 220, 255, 0.22)";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.save();
+        ctx.clip();
+        drawAntarcticaProjection(ctx, projection, state.seaLevelMeters);
+        ctx.restore();
+
+        ctx.strokeStyle = "rgba(255,255,255,0.08)";
+        ctx.lineWidth = 1;
+        [0.25, 0.5, 0.75, 1].forEach((ratio) => {
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, radius * ratio, 0, Math.PI * 2);
+          ctx.stroke();
+        });
+        [0, 45, 90, 135, 180, 225, 270, 315].forEach((deg) => {
+          const angle = THREE.MathUtils.degToRad(deg);
+          ctx.beginPath();
+          ctx.moveTo(centerX, centerY);
+          ctx.lineTo(centerX + Math.sin(angle) * radius, centerY - Math.cos(angle) * radius);
+          ctx.stroke();
+        });
+
+        ctx.fillStyle = "#ecf7ff";
+        ctx.textAlign = "center";
+        ctx.font = "700 32px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillText("Antarctica", centerX, 52);
+        ctx.fillStyle = "#9fc1d8";
+        ctx.font = "500 18px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillText("Flat south-pole view of the live hex terrain model", centerX, 80);
+        ctx.font = "600 18px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillText(`Waterline: ${formatMeters(state.seaLevelMeters)}`, centerX, Math.min(height - 42, centerY + radius + 34));
+        ctx.font = "500 14px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillText("Quantitative stat cards were removed in this lighter version to keep the interaction focused.", centerX, Math.min(height - 18, centerY + radius + 62));
+      }
+
+      function seaLevelSlug(value) {
+        return `${value < 0 ? "m" : "p"}${Math.abs(Math.round(value))}`;
+      }
+
+      function downloadCanvasAsPng(canvasNode, filename) {
+        const link = document.createElement("a");
+        link.download = filename;
+        link.href = canvasNode.toDataURL("image/png");
+        link.click();
+      }
+
+      function exportMercatorPng() {
+        if (!state.ready) {
+          return;
+        }
+
+        const exportCanvas = document.createElement("canvas");
+        exportCanvas.width = 2048;
+        exportCanvas.height = 1536;
+        const ctx = getCanvasContext(exportCanvas);
+        const headerHeight = 170;
+        const footerHeight = 380;
+        const mapPadding = 56;
+        const mapTop = headerHeight;
+        const mapBottom = exportCanvas.height - footerHeight;
+        const projection = (() => {
+          const mapWidth = exportCanvas.width - mapPadding * 2;
+          const mapHeight = mapBottom - mapTop;
+          const usableScale = Math.min(mapWidth / (2 * Math.PI), mapHeight / (2 * Math.PI)) * 0.94;
+          return {
+            scale: usableScale,
+            centerX: exportCanvas.width / 2,
+            centerY: mapTop + mapHeight / 2
+          };
+        })();
+
+        const gradient = ctx.createLinearGradient(0, 0, 0, exportCanvas.height);
+        gradient.addColorStop(0, "#071523");
+        gradient.addColorStop(1, "#030b12");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+
+        ctx.fillStyle = "#ecf7ff";
+        ctx.font = "700 54px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillText("Sea Level Explorer", 68, 82);
+        ctx.fillStyle = "#9fc1d8";
+        ctx.font = "500 28px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillText("Mercator projection of the current hex terrain state", 68, 122);
+        ctx.fillText(`Sea level: ${formatMeters(state.seaLevelMeters)}`, 68, 156);
+
+        ctx.fillStyle = "#061a29";
+        ctx.fillRect(mapPadding, mapTop, exportCanvas.width - mapPadding * 2, mapBottom - mapTop);
+
+        state.hexCells.forEach((cell) => {
+          drawProjectedHex(ctx, cell, terrainColor(cell, state.seaLevelMeters), projection);
+        });
+
+        ctx.strokeStyle = "rgba(255,255,255,0.05)";
+        ctx.lineWidth = 1;
+        [-120, -60, 0, 60, 120].forEach((lon) => {
+          const north = projectMercatorPoint(lon, 84.8, projection);
+          const south = projectMercatorPoint(lon, -84.8, projection);
+          ctx.beginPath();
+          ctx.moveTo(north.x, north.y);
+          ctx.lineTo(south.x, south.y);
+          ctx.stroke();
+        });
+        [-75, -45, 0, 45, 75].forEach((lat) => {
+          const left = projectMercatorPoint(-180, lat, projection);
+          const right = projectMercatorPoint(180, lat, projection);
+          ctx.beginPath();
+          ctx.moveTo(left.x, left.y);
+          ctx.lineTo(right.x, right.y);
+          ctx.stroke();
+        });
+
+        ctx.strokeStyle = "rgba(167, 220, 255, 0.18)";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(mapPadding, mapTop, exportCanvas.width - mapPadding * 2, mapBottom - mapTop);
+
+        ctx.fillStyle = "#dceefa";
+        ctx.font = "700 28px Avenir Next, Segoe UI, sans-serif";
+        ctx.textAlign = "left";
+        ctx.fillText("Antarctica Polar Inset", 68, exportCanvas.height - 248);
+
+        const southInsetY = exportCanvas.height - 182;
+        drawPolarInset(ctx, state.hexCells, false, 236, southInsetY, 128, state.seaLevelMeters);
+        drawPolarInset(ctx, state.hexCells, true, exportCanvas.width - 170, exportCanvas.height - 194, 72, state.seaLevelMeters);
+
+        const legendY = exportCanvas.height - 96;
+        legendItems
+          .filter((item) => item.key !== "waterShell")
+          .forEach((item, index) => {
+            const x = 520 + index * 280;
+            ctx.fillStyle = item.color;
+            ctx.fillRect(x, legendY, 28, 28);
+            ctx.strokeStyle = "rgba(255,255,255,0.18)";
+            ctx.lineWidth = 1;
+            ctx.strokeRect(x, legendY, 28, 28);
+            ctx.fillStyle = "#dceefa";
+            ctx.font = "500 22px Avenir Next, Segoe UI, sans-serif";
+            ctx.fillText(item.label, x + 42, legendY + 22);
+          });
+
+        ctx.fillStyle = "#7ea0b5";
+        ctx.font = "500 20px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillText("Downloaded from the current browser state as a PNG export. Antarctica is shown in the dedicated polar inset because Mercator omits exact poles.", 68, exportCanvas.height - 42);
+
+        downloadCanvasAsPng(exportCanvas, `sea-level-explorer-mercator-${seaLevelSlug(state.seaLevelMeters)}.png`);
+      }
+
+      function exportAntarcticaPng() {
+        if (!state.ready) {
+          return;
+        }
+
+        const exportCanvas = document.createElement("canvas");
+        exportCanvas.width = 1800;
+        exportCanvas.height = 1800;
+        const ctx = getCanvasContext(exportCanvas);
+        const centerX = exportCanvas.width / 2;
+        const centerY = 920;
+        const projection = { centerX, centerY, radius: 650 };
+        const antarcticaMetrics = antarcticaSeaLevelMetrics();
+
+        const gradient = ctx.createLinearGradient(0, 0, 0, exportCanvas.height);
+        gradient.addColorStop(0, "#071523");
+        gradient.addColorStop(1, "#030b12");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+
+        ctx.fillStyle = "#ecf7ff";
+        ctx.font = "700 58px Avenir Next, Segoe UI, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Antarctica Perspective", centerX, 94);
+        ctx.fillStyle = "#9fc1d8";
+        ctx.font = "500 28px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillText("South-pole-centered export clipped to the Antarctica continent boundary", centerX, 138);
+        ctx.fillText(`Sea level: ${formatMeters(state.seaLevelMeters)}`, centerX, 176);
+
+        drawExportStatCard(
+          ctx,
+          122,
+          202,
+          480,
+          108,
+          "Antarctic land hexes",
+          d3.format(",")(antarcticaMetrics.totalCells),
+          "Adaptive land cells sampled inside the Antarctica polygon"
+        );
+        drawExportStatCard(
+          ctx,
+          660,
+          202,
+          480,
+          108,
+          "Above-water hexes",
+          `${d3.format(",")(antarcticaMetrics.exposedCells)} (${formatPercent(antarcticaMetrics.exposedPct)})`,
+          "Hexes remaining above the current waterline"
+        );
+        drawExportStatCard(
+          ctx,
+          1198,
+          202,
+          480,
+          108,
+          "Flooded hexes",
+          d3.format(",")(antarcticaMetrics.submergedCells),
+          "Antarctic land cells currently submerged by the slider value"
+        );
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, projection.radius, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fillStyle = "#061a29";
+        ctx.fill();
+        ctx.strokeStyle = "rgba(167, 220, 255, 0.22)";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+        ctx.save();
+        ctx.clip();
+
+        drawAntarcticaProjection(ctx, projection, state.seaLevelMeters);
+
+        ctx.restore();
+
+        ctx.strokeStyle = "rgba(255,255,255,0.08)";
+        ctx.lineWidth = 1;
+        [0.25, 0.5, 0.75, 1].forEach((ratio) => {
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, projection.radius * ratio, 0, Math.PI * 2);
+          ctx.stroke();
+        });
+        [0, 45, 90, 135, 180, 225, 270, 315].forEach((deg) => {
+          const angle = THREE.MathUtils.degToRad(deg);
+          ctx.beginPath();
+          ctx.moveTo(centerX, centerY);
+          ctx.lineTo(centerX + Math.sin(angle) * projection.radius, centerY - Math.cos(angle) * projection.radius);
+          ctx.stroke();
+        });
+
+        ctx.fillStyle = "#dceefa";
+        ctx.font = "600 26px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillText("Antarctica", centerX, centerY + 16);
+
+        ctx.textAlign = "left";
+        legendItems
+          .filter((item) => item.key !== "waterShell")
+          .forEach((item, index) => {
+            const x = 138 + (index % 2) * 520;
+            const y = 1490 + Math.floor(index / 2) * 58;
+            ctx.fillStyle = item.color;
+            ctx.fillRect(x, y, 28, 28);
+            ctx.strokeStyle = "rgba(255,255,255,0.18)";
+            ctx.lineWidth = 1;
+            ctx.strokeRect(x, y, 28, 28);
+            ctx.fillStyle = "#dceefa";
+            ctx.font = "500 22px Avenir Next, Segoe UI, sans-serif";
+            ctx.fillText(item.label, x + 42, y + 22);
+          });
+
+        ctx.fillStyle = "#7ea0b5";
+        ctx.font = "500 20px Avenir Next, Segoe UI, sans-serif";
+        ctx.fillText("Hex boundaries are preserved in this export so sea-level changes can be read directly as above-water versus flooded Antarctic terrain cells.", 138, 1718);
+        if (Number.isFinite(antarcticaMetrics.highestExposed)) {
+          ctx.fillText(`Highest exposed sampled Antarctic terrain: ${formatMeters(antarcticaMetrics.highestExposed)}`, 138, 1750);
+        }
+
+        downloadCanvasAsPng(exportCanvas, `sea-level-explorer-antarctica-${seaLevelSlug(state.seaLevelMeters)}.png`);
+      }
+
+      function renderTexture(hexCells, seaLevelMeters) {
+        const ctx = getCanvasContext(earthTextureCanvas);
+        const width = earthTextureCanvas.width;
+        const height = earthTextureCanvas.height;
+        const lonStep = 360 / HEX_COLS;
+        const latStep = 180 / HEX_ROWS;
+
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = "#061a29";
+        ctx.fillRect(0, 0, width, height);
+
+        hexCells.forEach((cell) => {
+          const x = ((cell.lon + 180) / 360) * width;
+          const y = ((90 - cell.lat) / 180) * height;
+          const spanRadius = Math.min((width * cell.spanLon) / 360, (height * cell.spanLat) / 180);
+          const adaptiveRadius = Math.max(2, spanRadius * (cell.resolution > 1 ? 0.62 : 0.8));
+          drawHex(ctx, x, y, adaptiveRadius, terrainColor(cell, seaLevelMeters));
+        });
+
+        drawPolarCapsToTexture(ctx, hexCells, seaLevelMeters, width, height);
+
+        ctx.strokeStyle = "rgba(255,255,255,0.04)";
+        ctx.lineWidth = 1;
+        for (let lon = -180; lon <= 180; lon += lonStep * 2) {
+          const x = ((lon + 180) / 360) * width;
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, height);
+          ctx.stroke();
+        }
+        for (let lat = -90; lat <= 90; lat += latStep * 2) {
+          const y = ((90 - lat) / 180) * height;
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(width, y);
+          ctx.stroke();
+        }
+
+        earthTexture.needsUpdate = true;
+      }
+
+      function rebuildHexColumns(hexCells) {
+        if (hexInstance.mesh) {
+          earthSpinGroup.remove(hexInstance.mesh);
+        }
+
+        const mesh = new THREE.InstancedMesh(hexGeometry, hexMaterial, hexCells.length);
+        mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+        mesh.frustumCulled = false;
+        earthSpinGroup.add(mesh);
+        hexInstance.mesh = mesh;
+      }
+
+      function updateHexColumns(seaLevelMeters) {
+        if (!hexInstance.mesh) return;
+
+        state.hexCells.forEach((cell, index) => {
+          const height = cell.columnHeight;
+          const normal = cell.normal;
+          hexInstance.dummy.position.copy(normal).multiplyScalar(SURFACE_RADIUS + height * 0.5 - 0.002);
+          hexInstance.dummy.quaternion.setFromUnitVectors(hexInstance.up, normal);
+          hexInstance.dummy.scale.set(cell.hexRadius, height, cell.hexRadius);
+          hexInstance.dummy.updateMatrix();
+          hexInstance.mesh.setMatrixAt(index, hexInstance.dummy.matrix);
+          hexInstance.color.set(terrainColor(cell, seaLevelMeters));
+          hexInstance.mesh.setColorAt(index, hexInstance.color);
+        });
+
+        hexInstance.mesh.instanceMatrix.needsUpdate = true;
+        if (hexInstance.mesh.instanceColor) {
+          hexInstance.mesh.instanceColor.needsUpdate = true;
+        }
+      }
+
+      function setDragging(active) {
+        state.dragging = active;
+        canvas.style.cursor = active ? "grabbing" : "grab";
+      }
+
+      function attachPointerRotation() {
+        canvas.addEventListener("pointerdown", (event) => {
+          state.pointerId = event.pointerId;
+          state.lastPointerX = event.clientX;
+          state.lastPointerY = event.clientY;
+          setDragging(true);
+          canvas.setPointerCapture(event.pointerId);
+        });
+
+        canvas.addEventListener("pointermove", (event) => {
+          if (!state.dragging || event.pointerId !== state.pointerId) return;
+          const deltaX = event.clientX - state.lastPointerX;
+          const deltaY = event.clientY - state.lastPointerY;
+          state.lastPointerX = event.clientX;
+          state.lastPointerY = event.clientY;
+          earthPivot.rotation.y += deltaX * 0.0055;
+          earthPivot.rotation.x = THREE.MathUtils.clamp(earthPivot.rotation.x + deltaY * 0.0055, -1.2, 1.2);
+        });
+
+        const releasePointer = (event) => {
+          if (event.pointerId !== undefined && event.pointerId !== state.pointerId) return;
+          if (state.pointerId !== null && canvas.hasPointerCapture(state.pointerId)) {
+            canvas.releasePointerCapture(state.pointerId);
+          }
+          state.pointerId = null;
+          setDragging(false);
+        };
+
+        canvas.addEventListener("pointerup", releasePointer);
+        canvas.addEventListener("pointercancel", releasePointer);
+        canvas.addEventListener("pointerleave", (event) => {
+          if (!state.dragging) return;
+          releasePointer(event);
+        });
+      }
+
+      function resizeRenderer() {
+        const bounds = canvas.getBoundingClientRect();
+        const width = Math.max(320, Math.floor(bounds.width));
+        const height = Math.max(320, Math.floor(bounds.height));
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        if (state.viewMode === "southPole") {
+          renderSouthPoleViewport();
+        }
+      }
+
+      function syncControls(value) {
+        const clamped = clampSeaLevel(value);
+        state.seaLevelMeters = clamped;
+        seaLevelInput.value = String(clamped);
+        updateScenarioNarrative(clamped);
+      }
+
+      function updateWaterShell(seaLevelMeters) {
+        const nextRadius = BASE_WATER_RADIUS + seaLevelMeters / EARTH_RADIUS_METERS;
+        waterMesh.scale.setScalar(Math.max(0.9, nextRadius / BASE_WATER_RADIUS));
+      }
+
+      function computeCountryMetrics() {
+        return state.countries.map((country) => {
+          const cells = country.cellIndices.map((cellIndex) => state.hexCells[cellIndex]);
+          const submergedCells = cells.filter((cell) => cell.elevation <= state.seaLevelMeters);
+          const exposedCells = cells.filter((cell) => cell.elevation > state.seaLevelMeters);
+          const highestExposedCell = d3.greatest(exposedCells, (cell) => cell.elevation) || null;
+          const meanExposedElevation = exposedCells.length ? d3.mean(exposedCells, (cell) => cell.elevation) : null;
+          const coveragePct = cells.length ? submergedCells.length / cells.length : 0;
+
+          return {
+            ...country,
+            cells,
+            submergedCells,
+            exposedCells,
+            exposedCellCount: exposedCells.length,
+            submergedCellCount: submergedCells.length,
+            coveragePct,
+            highestExposedCell,
+            meanExposedElevation,
+            estimatedAffectedPopulation: country.populationEstimate * coveragePct
+          };
+        });
+      }
+
+      function buildCountryRow(countryMetric) {
+        return {
+          name: countryMetric.nameLong,
+          subtitle: `Terrain anchor: ${terrainAnchorLabel(countryMetric)} · ${countryMetric.exposedCellCount} exposed hexes`,
+          population: `Pop est. ${formatPopulation(countryMetric.populationEstimate)}`,
+          coverage: `${formatPercent(countryMetric.coveragePct)} covered`,
+          extra: `${formatPopulation(countryMetric.estimatedAffectedPopulation)} affected`
+        };
+      }
+
+      function buildHexRow(cell, countryMetric, prefix) {
+        const countryName = countryMetric?.nameLong || cell.countryName || "Unassigned area";
+        const populationEstimate = countryMetric ? cell.countryPopulationShare : 0;
+        const countryCoverage = countryMetric ? countryMetric.coveragePct : 0;
+        return {
+          name: `${prefix}${terrainAnchorLabel(cell)}`,
+          subtitle: `${countryName} · ${formatMeters(cell.elevation)} terrain`,
+          population: `Hex pop est. ${formatPopulation(populationEstimate)}`,
+          coverage: `${formatPercent(countryCoverage)} country covered`,
+          extra: countryMetric ? `${formatPopulation(countryMetric.populationEstimate)} country pop` : "No country population"
+        };
+      }
+
+      function evaluateStats() {
+        const exposedLand = state.hexCells.filter((cell) => cell.isLand && cell.elevation > state.seaLevelMeters);
+        const submergedLand = state.hexCells.filter((cell) => cell.isLand && cell.elevation <= state.seaLevelMeters);
+        const countryMetrics = computeCountryMetrics();
+        const countryMetricById = new Map(countryMetrics.map((country) => [country.id, country]));
+        const countriesAboveList = countryMetrics.filter((country) => country.exposedCellCount > 0);
+        const countriesSubmergedList = countryMetrics.filter((country) => country.exposedCellCount === 0);
+        const countriesAbove = countriesAboveList.length;
+        const countriesSubmerged = countriesSubmergedList.length;
+        const highestPeak = exposedLand.length ? d3.max(exposedLand, (cell) => cell.elevation) : null;
+        const meanElevation = exposedLand.length ? d3.mean(exposedLand, (cell) => cell.elevation) : null;
+
+        const aboveRows = countriesAboveList
+          .slice()
+          .sort((a, b) => d3.descending(a.populationEstimate * (1 - a.coveragePct), b.populationEstimate * (1 - b.coveragePct)))
+          .slice(0, 8)
+          .map(buildCountryRow);
+
+        const submergedRows = countriesSubmergedList
+          .slice()
+          .sort((a, b) => d3.descending(a.populationEstimate, b.populationEstimate))
+          .slice(0, 8)
+          .map(buildCountryRow);
+
+        const exposedHexRows = exposedLand
+          .filter((cell) => cell.countryId)
+          .slice()
+          .sort((a, b) => d3.descending(a.elevation, b.elevation))
+          .slice(0, 8)
+          .map((cell) => buildHexRow(cell, countryMetricById.get(cell.countryId), ""));
+
+        const submergedHexRows = submergedLand
+          .filter((cell) => cell.countryId)
+          .slice()
+          .sort(
+            (a, b) =>
+              d3.descending(
+                (countryMetricById.get(a.countryId)?.coveragePct || 0) * (a.countryPopulationShare || 0),
+                (countryMetricById.get(b.countryId)?.coveragePct || 0) * (b.countryPopulationShare || 0)
+              )
+          )
+          .slice(0, 8)
+          .map((cell) => buildHexRow(cell, countryMetricById.get(cell.countryId), "Flooded near "));
+
+        const highestPeakRows = exposedLand
+          .filter((cell) => cell.countryId)
+          .slice()
+          .sort((a, b) => d3.descending(a.elevation, b.elevation))
+          .slice(0, 8)
+          .map((cell) => buildHexRow(cell, countryMetricById.get(cell.countryId), ""));
+
+        const meanElevationRows = countryMetrics
+          .filter((country) => Number.isFinite(country.meanExposedElevation))
+          .slice()
+          .sort((a, b) => d3.ascending(Math.abs(a.meanExposedElevation - meanElevation), Math.abs(b.meanExposedElevation - meanElevation)))
+          .slice(0, 8)
+          .map((country) => ({
+            name: country.nameLong,
+            subtitle: `Terrain anchor: ${terrainAnchorLabel(country)} · mean exposed ${formatMeters(country.meanExposedElevation)}`,
+            population: `Pop est. ${formatPopulation(country.populationEstimate)}`,
+            coverage: `${formatPercent(country.coveragePct)} covered`,
+            extra: `${country.exposedCellCount} exposed hexes`
+          }));
+
+        state.statDetails = new Map([
+          [
+            "countries-above",
+            {
+              title: statsTemplate.find((item) => item.id === "countries-above").detailTitle,
+              meta: "Countries with at least one sampled land hex still above the current waterline.",
+              rows: aboveRows
+            }
+          ],
+          [
+            "countries-submerged",
+            {
+              title: statsTemplate.find((item) => item.id === "countries-submerged").detailTitle,
+              meta: "Countries whose sampled land cells are fully underwater at the current slider position.",
+              rows: submergedRows
+            }
+          ],
+          [
+            "land-exposed",
+            {
+              title: statsTemplate.find((item) => item.id === "land-exposed").detailTitle,
+              meta: "The currently exposed terrain anchors with the highest sampled relief.",
+              rows: exposedHexRows
+            }
+          ],
+          [
+            "land-submerged",
+            {
+              title: statsTemplate.find((item) => item.id === "land-submerged").detailTitle,
+              meta: "Flooded terrain anchors tied to the most affected country coverage and population estimates.",
+              rows: submergedHexRows
+            }
+          ],
+          [
+            "highest-peak",
+            {
+              title: statsTemplate.find((item) => item.id === "highest-peak").detailTitle,
+              meta: "The tallest sampled terrain anchors that remain above water.",
+              rows: highestPeakRows
+            }
+          ],
+          [
+            "mean-elevation",
+            {
+              title: statsTemplate.find((item) => item.id === "mean-elevation").detailTitle,
+              meta: "Countries whose exposed terrain currently sits nearest the global mean exposed elevation.",
+              rows: meanElevationRows
+            }
+          ]
+        ]);
+
+        statNodes.get("countries-above").value.text(d3.format(",")(countriesAbove));
+        statNodes.get("countries-above").detail.text(`${d3.format(".0%")(countriesAbove / Math.max(1, state.countries.length))} of sampled countries retain land in-bounds.`);
+
+        statNodes.get("countries-submerged").value.text(d3.format(",")(countriesSubmerged));
+        statNodes.get("countries-submerged").detail.text("Polygon-based country containment using Natural Earth admin boundaries.");
+
+        statNodes.get("land-exposed").value.text(d3.format(",")(exposedLand.length));
+        statNodes.get("land-exposed").detail.text(`${d3.format(".0%")(exposedLand.length / Math.max(1, state.landCellCount))} of sampled land hexes remain above the waterline.`);
+
+        statNodes.get("land-submerged").value.text(d3.format(",")(submergedLand.length));
+        statNodes.get("land-submerged").detail.text(`${d3.format(".0%")(submergedLand.length / Math.max(1, state.landCellCount))} of sampled land hexes are now underwater.`);
+
+        statNodes.get("highest-peak").value.text(highestPeak === null ? "0 m" : formatMeters(highestPeak));
+        statNodes.get("highest-peak").detail.text("Highest remaining sampled terrain still above the current waterline.");
+
+        statNodes.get("mean-elevation").value.text(meanElevation === null ? "0 m" : formatMeters(meanElevation));
+        statNodes.get("mean-elevation").detail.text(`Average across ${d3.format(",")(exposedLand.length)} exposed land hexes.`);
+
+        statusNote.textContent = `Loaded ${d3.format(",")(state.hexCells.length)} adaptive hex cells, including ${d3.format(",")(state.refinedCellCount)} higher-detail rugged cells, across ${d3.format(",")(state.countries.length)} polygon-mapped countries.`;
+        if (state.activeStatId) {
+          renderStatDetail(state.activeStatId);
+        }
+      }
+
+      function refreshScene() {
+        renderTexture(state.hexCells, state.seaLevelMeters);
+        updateHexColumns(state.seaLevelMeters);
+        updateWaterShell(state.seaLevelMeters);
+        updateAntarcticaMarkerVisibility();
+        if (state.viewMode === "southPole") {
+          renderSouthPoleViewport();
+        }
+      }
+
+      async function initialize() {
+        setObservableStatus();
+        syncRotationToggle();
+        syncStatsToggle();
+        syncViewMode();
+        syncControls(0);
+        setGlobeLoading(true, "Loading terrain, country geometry, and lighting.");
+        resizeRenderer();
+        attachPointerRotation();
+        window.addEventListener("resize", resizeRenderer);
+
+        try {
+          const [topologyImage, countriesResponse, elevationResponse, normalTexture] = await Promise.all([
+            loadImage(TOPOLOGY_URL),
+            fetch(COUNTRIES_URL).then((response) => {
+              if (!response.ok) throw new Error("Failed to load country geometry.");
+              return response.json();
+            }),
+            fetch(ELEVATION_POINTS_URL).then((response) => {
+              if (!response.ok) throw new Error("Failed to load named terrain anchors.");
+              return response.json();
+            }),
+            loadTexture(EARTH_NORMAL_URL)
+          ]);
+
+          normalTexture.colorSpace = THREE.NoColorSpace;
+          earthMaterial.normalMap = normalTexture;
+          earthMaterial.normalScale = new THREE.Vector2(0.45, 0.45);
+          earthMaterial.needsUpdate = true;
+
+          const sampleCanvas = document.createElement("canvas");
+          sampleCanvas.width = topologyImage.width;
+          sampleCanvas.height = topologyImage.height;
+          const sampleContext = sampleCanvas.getContext("2d", { willReadFrequently: true });
+          sampleContext.drawImage(topologyImage, 0, 0);
+          const imageData = sampleContext.getImageData(0, 0, sampleCanvas.width, sampleCanvas.height);
+
+          state.elevationPoints = buildElevationPoints(elevationResponse.features || []);
+          const preparedCountries = prepareCountries(countriesResponse.features || []);
+
+          state.hexCells = buildHexGrid(imageData.data, sampleCanvas.width, sampleCanvas.height, preparedCountries);
+          state.countries = buildCountryCellMap(preparedCountries, state.hexCells);
+          state.hexCells = seedCountryCells(state.countries, state.hexCells, imageData.data, sampleCanvas.width, sampleCanvas.height);
+          state.countries = buildCountryCellMap(state.countries, state.hexCells);
+          state.landCellCount = state.hexCells.filter((cell) => cell.isLand).length;
+          state.waterCellCount = state.hexCells.length - state.landCellCount;
+          state.refinedCellCount = state.hexCells.filter((cell) => cell.resolution > 1).length;
+          statusNote.textContent = `Loaded ${d3.format(",")(state.hexCells.length)} adaptive hex cells, including ${d3.format(",")(state.refinedCellCount)} higher-detail terrain cells.`;
+
+          rebuildHexColumns(state.hexCells);
+          refreshScene();
+          state.ready = true;
+          setGlobeLoading(false);
+        } catch (error) {
+          console.error(error);
+          statusNote.textContent = error.message;
+          setGlobeLoading(true, error.message, true);
+          throw error;
+        }
+      }
+
+      seaLevelInput.addEventListener("input", (event) => {
+        syncControls(Number(event.target.value));
+        if (state.ready) refreshScene();
+      });
+
+      rotationToggle.addEventListener("click", () => {
+        state.autoRotate = !state.autoRotate;
+        syncRotationToggle();
+      });
+
+      resetOrientationButton.addEventListener("click", () => {
+        resetOrientation();
+      });
+
+      focusAntarcticaButton.addEventListener("click", () => {
+        toggleSouthPoleView();
+      });
+
+      if (exportMercatorButton) {
+        exportMercatorButton.addEventListener("click", () => {
+          exportMercatorPng();
+        });
+      }
+
+      if (exportAntarcticaButton) {
+        exportAntarcticaButton.addEventListener("click", () => {
+          exportAntarcticaPng();
+        });
+      }
+
+      if (statsToggle) {
+        statsToggle.addEventListener("click", () => {
+          state.statsCollapsed = !state.statsCollapsed;
+          if (state.statsCollapsed) {
+            state.activeStatId = null;
+            renderStatDetail(null);
+          }
+          syncStatsToggle();
+        });
+      }
+
+      if (detailClose) {
+        detailClose.addEventListener("click", () => {
+          state.activeStatId = null;
+          renderStatDetail(null);
+        });
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        if (state.viewMode === "globe" && state.autoRotate) {
+          earthSpinGroup.rotation.y -= AUTO_ROTATION_SPEED;
+        }
+        updateAntarcticaMarkerVisibility();
+        if (state.viewMode === "globe") {
+          renderer.render(scene, camera);
+        }
+      }
+
+      initialize().then(() => animate());
+    </script>
+    <script>
+      window.__OBSERVABLE_KEY_PRESENT__ = true;
+    </script>
+  </body>
+</html>

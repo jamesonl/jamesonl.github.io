@@ -21,3 +21,9 @@ I am most useful when a team needs clearer thinking before it needs more softwar
 Email me at <a href="{{ site.baseurl }}/contact" data-email-link data-email-local="{{ site.contact.email_local }}" data-email-domain="{{ site.contact.email_domain }}">Email</a>.
 
 If it helps, include what you are working on, where the confusion or friction shows up, and what kind of outcome would make the work feel easier.
+
+## Support the work
+
+If the writing or research here has been useful to you, you can support it directly here.
+
+<p><a class="link-button secondary" href="{{ site.support.buy_me_a_coffee }}" target="_blank" rel="noopener">Buy me a coffee</a></p>
